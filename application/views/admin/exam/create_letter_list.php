@@ -70,7 +70,7 @@
 
                <?php }else {?>
 
-                  <a href="<?= base_url("admin/examshedule_schedule/create_invt_add/" . urlencrypt($row['id'])); ?>" title="Create Letter">                  
+                  <a href="<?= base_url("admin/examshedule_schedule/create_invt_add/" . urlencrypt($row['id'])); ?>" title="Create Letter" style="color: #E14658;">                  
                      Create Letter
                   </a>
 
@@ -81,7 +81,7 @@
 
             <td>
 
-               <h4 class="m0 mb5"> <?= $row['subjectline'] ?></h4>
+               <span class="text-bold"> <?= $row['subjectline'] ?></span>
 
                       
 

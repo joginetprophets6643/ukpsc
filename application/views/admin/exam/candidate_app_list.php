@@ -48,9 +48,9 @@
                      <?= $i ?>
 
                   </td>
-               <td>
+                  <td>
 
-                  <?= get_exam_name($row['exam_name']) ?> 
+                     <?= get_exam_name($row['exam_name']) ?> 
             
                   </td>
 
@@ -73,7 +73,7 @@
                         $array_total_sum = array_sum($str_array);
                      ?>
 
-                     <h4 class="m0 mb5"> <?= $array_total_sum; ?></h4>
+                     <span style="width:100%;"> <?= $array_total_sum; ?></span>
 
                            
 

@@ -51,70 +51,68 @@
 
 
                         </div>
-                        <?php foreach ($sub_info as $value) {?>
                             <?php //echo '<pre>'; print_r($value);?>
-                            <div class="form-group has-feedback col-md-3">
-                                <label>District<br />जिला</label>
-                                <!-- <p><?php echo get_district_name($value['state_array']); ?></p> -->
-                                <input type="text" readonly id="state" name="state" class="form-control" maxlength="4" value="<?php echo get_district_name($value['state_array']); ?>" placeholder="">
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label for="name" class="col-sm- control-label">District Code<br />जिला कोड</label>
-                                    <!-- <p><?php echo $value['district_code_array']; ?></p> -->
-                                    <input type="text" id="district_code" readonly name="district_code[]" class="form-control" maxlength="4" value="<?php echo $value['district_code_array']; ?>" placeholder="">
+                            
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped ">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No.</th>
+                                                <th>
+                                                    District 
+                                                    <br>
+                                                    जिला
+                                                </th>
+                                                <th>
+                                                    District Code 
+                                                    <br> 
+                                                    जिला कोड
+                                                </th>
+                                                <th>
+                                                    City 
+                                                    <br>
+                                                    शहर
+                                                </th>
+                                                <th>
+                                                    City Code 
+                                                    <br>
+                                                    शहर कोड
+                                                </th>
+                                                <th>
+                                                    Number of Candidates
+                                                    <br>
+                                                    संबंधित की संख्या
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                foreach ($sub_info as $key=> $value) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $key+1 ?></td>
+                                                <td>
+                                                    <?php echo get_district_name($value['state_array']); ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $value['district_code_array']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo get_subcity_name($value['city_array']); ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $value['city_code_array']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $value['number_of_can_array'];  ?>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <div class="form-group has-feedback col-md-2">
-                                <label>City<br />शहर</label>
-                                <!-- <p><?php echo get_subcity_name($value['city_array']); ?></p> -->
-                                <input type="text" readonly id="state" name="state" class="form-control" maxlength="4" value="<?php echo get_subcity_name($value['city_array']); ?>" placeholder="">
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label for="name" class="col-sm- control-label">City Code<br />शहर कोड</label>
-                                    <!-- <p><?php echo $value['city_code_array']; ?></p> -->
-                                    <input type="text" id="city_code" readonly name="city_code[]" class="form-control" maxlength="4" value="<?php echo $value['city_code_array']; ?>" placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="name" class="col-sm- control-label">Number of Candidates<br />संबंधित की संख्या
-                                        <span>*</span>
-                                    </label>
-                                    <!-- <p><?php echo $value['number_of_can_array'];  ?></p> -->
-                                    <input type="number" readonly id="number_of_can" min=1 name="number_of_can[]" class="form-control" maxlength="4" value="<?php echo $value['number_of_can_array']; ?>" placeholder="">
-                                </div>
-                            </div>
-                        <?php } ?>
-                        <!-- <div class="form-group has-feedback col-md-3">
-                            <label>District<br />जिला</label>
-                            <input type="text" readonly id="state" name="state" class="form-control" maxlength="4" value="<?php //echo get_district_name($admin['state']); ?>" placeholder="">
-                        </div>
-                        <div class="col-md-1.5">
-                            <div class="form-group">
-                                <label for="name" class="col-sm- control-label">District Code<br />जिला कोड</label>
-                                <input type="text" id="district_code" readonly name="district_code" class="form-control" maxlength="4" value="<?php //echo $admin['district_code']; ?>" placeholder="">
-                            </div>
-                        </div>
-                        <div class="form-group has-feedback col-md-2">
-                            <label>City<br />शहर</label>
-                            <input type="text" readonly id="state" name="state" class="form-control" maxlength="4" value="<?php //echo get_subcity_name($admin['city']); ?>" placeholder="">
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="name" class="col-sm- control-label">City Code<br />शहर कोड</label>
-                                <input type="text" id="city_code" readonly name="city_code" class="form-control" maxlength="4" value="<?php //echo $admin['city_code']; ?>" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="name" class="col-sm- control-label">Number of Candidates<br />संबंधित की संख्या
-                                    <span>*</span>
-                                </label>
-                                <input type="number" id="number_of_can" min=1 name="number_of_can" class="form-control" maxlength="4" value="<?php //echo $admin['number_of_can']; ?>" placeholder="">
-                            </div>
-                        </div> -->
                         <div class="col-md-12 mt-4">
                             <div class="form-group mb-0">
                                 <input type="button" onclick="window.history.go(-1)" class="btn btn-sec" value="Back"></input>

@@ -56,7 +56,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="name" class="col-sm- control-label">District Code<br />जिला कोड</label>
-                                    <input type="text" id="district_code" readonly name="district_code[]" class="form-control" maxlength="4" value="<?php echo $value['district_code_array']; ?>" placeholder="">
+                                    <input type="text" id="district_code" name="district_code[]" class="form-control" maxlength="4" value="<?php echo $value['district_code_array']; ?>" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group has-feedback col-md-2">
@@ -66,7 +66,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="name" class="col-sm- control-label">City Code<br />शहर कोड</label>
-                                    <input type="text" id="city_code" readonly name="city_code[]" class="form-control" maxlength="4" value="<?php echo $value['city_code_array']; ?>" placeholder="">
+                                    <input type="text" id="city_code" name="city_code[]" class="form-control" maxlength="4" value="<?php echo $value['city_code_array']; ?>" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-2">

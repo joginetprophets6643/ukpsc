@@ -12,9 +12,9 @@
 
         <?php $this->load->view('admin/includes/_messages.php') ?>
 
-        <div class="card">
+        <div class="card" style="margin-bottom: 0 !important;">
 
-            <div class="card-body">
+            <div class="card-header border-0">
 
                 <div class="d-inline-block">
 
@@ -63,7 +63,7 @@
 
     <!-- Main content -->
 
-    <section class="content mt10">
+    <section class="content">
 
     	<div class="card">
 
