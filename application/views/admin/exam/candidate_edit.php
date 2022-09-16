@@ -36,7 +36,7 @@
                 <div class="after-add-more field_wrapper">
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 mb-4">
 
                             <div class="form-group">
 
@@ -108,9 +108,9 @@
                         </div> -->
                         <div class="row">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <input type="submit" name="submit" style="margin-top:25px; margin-left: 15px;" value="Update " class="btn btn-primary pull-center">
+                                <input type="submit" name="submit" style="margin-top:25px;" value="Update " class="btn btn-primary pull-center">
                             </div>
                         </div>
                     </div>

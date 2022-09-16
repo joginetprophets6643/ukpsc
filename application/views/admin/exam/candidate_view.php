@@ -36,17 +36,16 @@
                 <div class="after-add-more field_wrapper">
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 mb-4">
 
-                            <div class="form-group">
+                            <div class="form-group d-flex align-items-center">
 
-                                <label for="name" class="col-sm- control-label"><b>Exam Name<br />परीक्षा का नाम :- </b></label>
-                                <!-- <label for="name" class="col-sm- control-label"> -->
+                                <h6 class="text-dark mr-3">
+                                    <strong>Exam Name :- </strong>
+                                    <br />परीक्षा का नाम
+                                </h6>
                                     <br/>
-                                    <p><?php echo get_exam_name($admin['exam_name']); ?></p>
-                                <!-- </label> -->
-                                
-                                <!-- <input type="text" readonly id="exam_name" name="exam_name" class="form-control" maxlength="4" value="<?php echo get_exam_name($admin['exam_name']); ?>" placeholder=""> -->
+                                <h2 class="text-bold" style="font-size: 30px"><?php echo get_exam_name($admin['exam_name']); ?></h2>
 
                             </div>
 
@@ -59,7 +58,7 @@
                                 <p><?php echo get_district_name($value['state_array']); ?></p>
                                 <!-- <input type="text" readonly id="state" name="state" class="form-control" maxlength="4" value="<?php  ?>" placeholder=""> -->
                             </div>
-                            <div class="col-md-1.5">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="name" class="col-sm- control-label">District Code<br />जिला कोड</label>
                                     <p><?php echo $value['district_code_array']; ?></p>
@@ -118,7 +117,7 @@
                         </div> -->
                         <div class="row">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <input type="button" onclick="window.history.go(-1)" class="btn btn-primary" value="Back"></input>
                                 <!-- <input type="submit" name="submit" style="margin-top:25px; margin-left: 15px;" value="Update " class="btn btn-primary pull-center"> -->

@@ -35,144 +35,51 @@
     
 </head>
 <body>
-    <div class="container-fluid">
-        <br>
+    <div class="container-fluid" style="padding-left: 15rem; margin-bottom: 5rem;">
             <div class="row">
-                <div class="col-6">
-                </div> 
-                <div class="col-6">   
-                    <p style="margin-left: -30%;"><b><?= $admin['subjectline'] ?></b></p>
-                    <!-- <p style="margin-left: -20%;"><b>Uttarakhand Combined State Engineering Service Exam-2021</b></p> -->
+                <div class="col-12 mt-5">   
+                    <p style="text-align: center;"><b><?= $admin['subjectline'] ?></b></p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-6">
-                </div> 
-                <div class="col-6">   
-                    <p style="margin-left: -10%;"><b><?= trans('written_examination') ?></b></p>
-                    <!-- <p style="margin-left: -10%;"><b>Written Examination (Objective Type)</b></p> -->
+            <div class="row"> 
+                <div class="col-12">   
+                    <p style="text-align: center;"><b><?= trans('written_examination') ?></b></p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
-                </div> 
-                <div class="col-6">   
-                    <p style="margin-left: 3%;"><b><?= trans('exam_schedule_vew') ?></b></p>
-                    <!-- <p style="margin-left: 3%;"><b>Exam Schedule</b></p> -->
+                <div class="col-12">   
+                    <p style="text-align: center;"><b><?= trans('exam_schedule_vew') ?></b></p>
                 </div>
             </div>
-                <!-- <div class="row">
-                    <div class="col-6">
-                    </div>
-                    <div class="col-6">
-                        <p class="hed">स्पीड पोस्ट/ईमेल संख्या: <span ><?php //echo $admin["speedpost"];?></span></p>
-                        
-                        
-                    </div>
-                </div> -->
+            <div class="row">
+                <div class="col-12">
 
-
-                <!-- <div class="row">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-4">
-                        <p style="margin-left: 10%;">प्रेषक,</p><p style="margin-left: 20%;">सचिव,<br>उत्तराखंड लोक सेवा आयोग,<br>हरिद्वार |<br></p>
-                    </div>
-                </div> -->
-                <!-- <div class="row">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-4">
-                        <p style="margin-left: 10%;">सेवा में,</p><p style="margin-left: 20%;">प्राचार्य / केंद्र व्यवस्थापक,</p><input type="text" placeholder="------------------------------------------"style="margin-left: 20%; border: none; text-decoration: none; width:50%;">
-                        <input type="text" placeholder="---------------------------------------------------------"style="margin-left: 20%; border: none; text-decoration: none; width:50%;">
-                    </div>
-                </div> -->
-
-
-               <!-- <div class="row">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-3">
-                        <p style="margin-left: 10%;">परीक्षा अनुभाग 4</p>
-                    </div>
-                    <div class="col-4">
-                    </div>
-                    <div class="col-3">
-                        <div class="row">
-                            <div class="col-1"></div>
-                            <div class="col-8">
-                                <p>हरिद्वार  ;दिनांक:-<span style="font-weight:;"><?php //echo date("d-m-Y"); ?></span></p>
-                            </div>
-                        
-                        </div>
-                    </div>
-                </div> -->
-
-                <!--<div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-10">
-                    <p style="margin-left: 10%;"></p>
-                    <p style=",a    Subject::  Uttrakhand hthdt ff hfsgh gd paper ugducgg-<span id="yr"></span>, Date <span id="dt"></span> to <span id="dt2"></span>  dgbhycvy  ydyefdy ydtyfd yyedf ftyfdbd vffddjn gthh gthhy hyhh vvggdvx vyfd dxyfwtf cfdcv wrsxw stdrst byggs|</p>
-                </div>-->
-                <!-- <br> -->
-                <!-- <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-10">
-                    <p style="margin-left: 5%;">विषय::    उत्तराखंड संबंधित राज्य कनिष्ठ अभियंता परीक्षा-<span ><?php echo $admin["startdate"]; ?></span>, Date <span ><?php echo $admin["enddate"];?></span> तक आयोजन के सम्बन्ध में परीक्षा केन्द्र निर्धारण सम्बन्धी सहमति कृपया उपर्युक्त विषय के सम्बन्ध में मुझे यह कहने का निदेश हुआ है कि मा० आयोग द्वारा</p>
-                </div> -->
-            </div>
-
-
-                <!-- <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-10">
-                    <p style="margin-left: 5%;">महोदय,,<br>आयोजन दिनांक-<span id="yr"></span>परीक्षा तिथि व दिवस  <span id="dt"></span><span id="dt2"></span>  :------</p>
-                </div> -->
-                <div class="row">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-10">
-
-                        <table style="width:90%; border: 1px solid black; margin-left:8%; font-weight: normal !important; text-decoration:none;">
-                        <tr>
-                            <th style="width:8%; padding:5px;  border: 1px solid black; ">S.No:</th>
-                            <th style="width:20%; padding:5px;  border: 1px solid black;">Subject Name</th>
-                            <!-- <th style="width:20%; padding:10px;  border: 1px solid black;">No. of Candidates</th> -->
-                            <th style="width:8%; padding:5px;  border: 1px solid black;">Exam Date</th>
-                            <th style="width:20%; padding:5px;  border: 1px solid black;">Exam Shift</th>
-                            <th style="width:20%; padding:5px;  border: 1px solid black;">Exam Time</th>
-                        </tr>
-                        <?php for($i=0; $i<count($sub_name);$i++) {  $a= $i+1 ;  ?>
-                        <tr>
-                            <th style="width:8%; padding:5px; font-weight: normal !important; border: 1px solid black;"> <?php echo $a; ?> </th>
-                            <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo get_subject_name($sub_name[$i]) ?></th>
-                            <!-- <th style="width:20%; padding:10px;  border: 1px solid black;"><?php //echo $no_candidate[$i] ?></th> -->
-                            <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $date_exam[$i] ?></th>
-                            <th style="width:8%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $shft_exam[$i] ?></th>
-                            <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $time_exam[$i] ?></th>
-
-                        </tr>
-                    <?php } ?>
-                        </table>
-                    </div>
+                    <table style="width:90%; margin-left: 5rem; border: 1px solid black; font-weight: normal !important; text-decoration:none;">
+                        <tbody>
+                            <tr>
+                                <th style="width:8%; padding:5px;  border: 1px solid black; ">S.No:</th>
+                                <th style="width:20%; padding:5px;  border: 1px solid black;">Subject Name</th>
+                                <!-- <th style="width:20%; padding:10px;  border: 1px solid black;">No. of Candidates</th> -->
+                                <th style="width:8%; padding:5px;  border: 1px solid black;">Exam Date</th>
+                                <th style="width:20%; padding:5px;  border: 1px solid black;">Exam Shift</th>
+                                <th style="width:20%; padding:5px;  border: 1px solid black;">Exam Time</th>
+                            </tr>
+                            <?php for($i=0; $i<count($sub_name);$i++) {  $a= $i+1 ;  ?>
+                            <tr>
+                                <th style="width:8%; padding:5px; font-weight: normal !important; border: 1px solid black;"> <?php echo $a; ?> </th>
+                                <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo get_subject_name($sub_name[$i]) ?></th>
+                                <!-- <th style="width:20%; padding:10px;  border: 1px solid black;"><?php //echo $no_candidate[$i] ?></th> -->
+                                <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $date_exam[$i] ?></th>
+                                <th style="width:8%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $shft_exam[$i] ?></th>
+                                <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $time_exam[$i] ?></th>
+        
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="row">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-10">
-                        <!-- <p style="padding:5%">अवगत कराना है कि विगत में भी आपके विद्यालय में आयोग की परीक्षाओं का आयोजन कुशलतापूर्वक किया जाता रहा है। इसी क्रम में अनुरोध है कि कृपया सलग्न सहमति-पत्र एवं ऑनलाइन पेमेन्ट के प्रारूप पर वांछित सूचना प्रदान करते हुए प्रश्नगत परीक्षा के सम्बनध में अपनी सहमति आयोग को email: sorxamfour@gmail.com पर जाने का कष्ट करें। -->
-                        <p style="padding:5%"></p>
-                    </div>
-                </div>
-
-                <!-- <div class="row">
-                    <div class="col-10">
-                    </div>
-                    <div class="col-2">
-                        Regards,<br><span ></span>
-                    </div>
-                </div> -->
             </div>
+    </div>
 </body>
 </html>
 

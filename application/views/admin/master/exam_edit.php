@@ -71,17 +71,16 @@
                     </div>                   
                 </div> -->
                 <div class="row">
-                    <div class="col-8"></div>
+                    <div class="col-12">
+                        <div class="d-flex justify-content-end">
+                            <div class="form-group" >
+                                <input type="button" onclick="window.history.go(-1)" class="btn btn-primary mr-4" value="Back&nbsp;(पीछे)"></input>
+                            </div>
+        
+                            <div class="form-group">
+                                <input type="submit" name="submit" value="Update&nbsp;(नवीनतम बनाना)" class="btn btn-info pull-right">
+                            </div>
 
-                    <div class="form-group" >
-                        <div class="col-md-12">
-                            <input type="button" onclick="window.history.go(-1)" class="btn btn-primary " value="Back&nbsp;(पीछे)"></input>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <input type="submit" name="submit" value="Update&nbsp;(नवीनतम बनाना)" class="btn btn-info pull-right">
                         </div>
                     </div>
                 </div>

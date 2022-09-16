@@ -14,41 +14,18 @@
         
 
         <div class="card">
-
             <div class="card-body">
-
                 <div class="d-inline-block">
-
                   <h3 class="card-title">
-
                     <i class="fa fa-list"></i>
-
                     Consent List for Recieved
-
                   </h3>
-
-                    
-
-              </div>
-
-           
-
-              <div class="d-inline-block float-right">
-                
-                
-
-              </div>
-
+                </div>
             </div>
 
-            <div class="card-body">
-
-                
-
+            <div class="card-body" style="display:none;">
                 <?php echo form_open("/",'class="filterdata"') ?>    
-
-                <div class="row" style="display:none;">
-
+                <div class="row">
                     <?php 
 
                     if (in_array($_SESSION['admin_role_id'], array(1,2,3,4,5,6))){?>
@@ -155,9 +132,7 @@
                     </div>
 
                 </div>
-
                 <?php echo form_close(); ?> 
-
             </div> 
 
         </div>

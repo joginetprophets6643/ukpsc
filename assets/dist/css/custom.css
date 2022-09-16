@@ -1,0 +1,26 @@
+.main-footer {
+    text-align: center;
+}
+.navbar-light .navbar-nav .nav-link {
+    font-weight: 600;
+}
+.sidebar {
+    height: calc(100% - 0.5rem);
+}
+.btn {
+    padding: 7px 10px;
+}
+.btn.update,
+.btn.delete,
+.btn.btn-danger,
+.btn.btn-success,
+.btn.btn-warning {
+    padding: 3px 5px;
+}
+.btn i {
+    font-size: 15px;
+    line-height: 1.5;
+}
+.card .card-header .card-title {
+    margin-top: 8px;
+}

@@ -5,7 +5,7 @@
    }
    .apply-btn {
       font-size: 15px !important;
-      padding: 5px !important;
+      padding: 3px 5px !important;
    }
    table tbody td h4 { 
       font-size: 15px !important;
@@ -14,44 +14,20 @@
 
 <div class="datalist">
 
-<table id="example1" class="table table-bordered table-hover" style="overflow: auto; 
-
- ">
-
+<table id="example1" class="table table-bordered table-hover" style="overflow: auto; ">
    <thead>
-
       <tr style="text-align: center;">
-
          <th width="50">S.No.</th>
-
          <th>Letter/Email/Speed Post Number</th>
-
          <th>Subject Line of Letter</th>
-
          <th> Start Date of exam</th>
-
          <th>End Date of exam</th>
-
-         <!-- <th>Shift of Exam </th> -->
-
-         <!-- <th>Time of Exam </th> -->
-
-
-
          <th width="120" ><?= trans('action') ?></th>
-
       </tr>
-
    </thead>
 
    <tbody>
-
-       
-
       <?php
-
-      
-
          $i = 1;
          // echo '<pre>';print_r($info['row']);
          // echo '<pre>';print_r($row); 
@@ -60,57 +36,30 @@
          foreach ($info as $row):
             // echo '<pre>';
             // print_r($row); die();
-
          $admin_role_id = $this->session->userdata('admin_role_id');
-
          $admin_id = $this->session->userdata('admin_id'); 
-
-   ?>
-
-
-
+      ?>
       <tr>
-
          <td>
-
             <?= $i ?>
-
          </td>
-
          <td>
-
             <?= $row['ciespeedpost'] ?>
-           
-
          </td>
-
          <td>
-
             <h4 class="m0 mb5"> <?= $row['ciesubjectline'] ?></h4>
-
-                   
-
          </td>
-
          <td>
-
             <?= $row['ciestartdate']; ?>
-
          </td>
-
          <td>
-
             <?= $row['cieenddate']; ?>
-
          </td>
          <td style="text-align:center;">
-
          <?php  if ($admin_role_id == 6 )  { ?>
-
-
            <!-- <a href="<?php //echo base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['ref_id'])); ?>" title="Reply"   class="btn btn-success btn-xs reply-btn"> -->
            <!-- <a href="<?= base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['id'])); ?>" title="Reply"   class="btn btn-success btn-xs reply-btn"> -->
-           <a href="<?= base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['cieid'])); ?>" title="Reply"   class="btn btn-success btn-xs reply-btn">
+           <a href="<?= base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['cieid'])); ?>" title="Reply"   class="btn btn-success">
             <i class="fa fa-reply"></i>
            </a>
             <?php //echo '<pre>'; print_r($row['ref_id']); exit; ?>
@@ -122,7 +71,7 @@
                      <!-- <i class="fa fa-apply"></i> -->
                      <!-- <i class="fa fa-reply"></i> -->
                   <!-- </a> -->
-                  <a href="<?= base_url("admin/consent_active/consent_add/" . $_SESSION['admin_id']).'/'.$row['cieid']; ?>" title="Apply" rel="<?php echo $row['cieid'] ?>" class="btn btn-warning btn-xs apply-btn">
+                  <a href="<?= base_url("admin/consent_active/consent_add/" . $_SESSION['admin_id']).'/'.$row['cieid']; ?>" title="Apply" rel="<?php echo $row['cieid'] ?>" class="btn btn-warning apply-btn">
                      Apply  
                   </a>   
             <?php

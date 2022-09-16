@@ -1703,3 +1703,37 @@ ERROR - 2022-09-16 12:43:46 --> Severity: Notice --> Undefined index: id D:\xamm
 ERROR - 2022-09-16 12:43:46 --> Severity: Notice --> Undefined index: id D:\xammp7.4\htdocs\uk\uk\application\views\admin\consent_active\consent_list_recieved.php 112
 ERROR - 2022-09-16 12:43:46 --> Severity: Notice --> Undefined index: id D:\xammp7.4\htdocs\uk\uk\application\views\admin\consent_active\consent_list_recieved.php 120
 ERROR - 2022-09-16 12:43:46 --> Severity: Notice --> Undefined index: id D:\xammp7.4\htdocs\uk\uk\application\views\admin\consent_active\consent_list_recieved.php 120
+ERROR - 2022-09-16 14:30:35 --> Severity: Warning --> Undefined variable $states E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_letter\consent_letter_index.php 82
+ERROR - 2022-09-16 14:30:35 --> Severity: Warning --> foreach() argument must be of type array|object, null given E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_letter\consent_letter_index.php 82
+ERROR - 2022-09-16 14:46:00 --> Severity: Warning --> Undefined variable $states E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_letter\consent_letter_index.php 55
+ERROR - 2022-09-16 14:46:00 --> Severity: Warning --> foreach() argument must be of type array|object, null given E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_letter\consent_letter_index.php 55
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:15 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 61
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69
+ERROR - 2022-09-16 14:47:43 --> Severity: Warning --> Undefined array key "id" E:\Xamp\htdocs\ukpsc\ukpsc\application\views\admin\consent_active\consent_list_recieved.php 69

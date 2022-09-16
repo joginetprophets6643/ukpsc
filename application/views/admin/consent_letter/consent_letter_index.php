@@ -33,33 +33,6 @@
         <?php $this->load->view('admin/includes/_messages.php') ?>
 
         <div class="card">
-
-            <div class="card-body">
-
-                <!-- <div class="d-inline-block">
-
-                  <h3 class="card-title">
-
-                    <i class="fa fa-list"></i>
-
-                    Consent List for Sending Invitations
-
-                  </h3>
-
-                    
-
-              </div> -->
-
-           
-
-              <div class="d-inline-block float-right">
-
-                
-
-              </div>
-
-            </div>
-
             <div class="card-body">
 
                 <?php echo form_open("/",'class="filterdata"') ?>    
@@ -70,9 +43,9 @@
 
                     if (in_array($_SESSION['admin_role_id'], array(1,2,3,4,5,6))){?>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                     <label>District&nbsp;ज़िला</label>
-                        <div class="form-group">
+                        <div class="form-group mb-0">
 
                             <!-- <select name="state" class="form-control dd_state" onchange="filter_data()" > -->
                             <select id="state" name="state" class="form-control dd_state">
@@ -99,9 +72,9 @@
 
                              ?>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label>City&nbsp;शहर</label>
-                        <div class="form-group">
+                        <div class="form-group mb-0">
                             <select name="district" id="district" class="form-control">
                                 <option value=""> Select City</option>
                             </select>
@@ -132,9 +105,9 @@
 
                      <?php } ?>
 
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                     <label>Grade&nbsp;श्रेणी</label>
-                        <div class="form-group">
+                        <div class="form-group mb-0">
 
                             <!-- <select name="status" class="form-control" onchange="filter_data()" > -->
                             <select id="grade"  name="status" class="form-control">
@@ -198,9 +171,9 @@
 <script>
 $('document').ready(function()
 {
-  $(function () {
-    $("#consent_list").DataTable();
-  });
+//   $(function () {
+//     $("#consent_list").DataTable();
+//   });
   function filter_data()
 {
 $('.data_container').html('<div class="text-center"><img src="<?=base_url('assets/dist/img')?>/loading.png"/></div>');
@@ -281,7 +254,7 @@ function(data){
                 });
             }
             else {
-              //  $('#state').val('').hide();
+                location.reload();
 
             }
         });
@@ -306,10 +279,10 @@ function(data){
                    }
                 });
             }
-            // else {
-            //    $('#district').val('').hide();
+            else {
+                location.reload();
 
-            // }
+            }
         });
 
         $('#grade').change( function() {
@@ -331,20 +304,11 @@ function(data){
                    }
                 });
             }
-            // else {
-            //   //  $('#state').val('').hide();
+            else {
+                location.reload();
 
-            // }
+            }
         });
     });
 });
-</script>
-<script>
-  
-
-</script> 
-
-<script>
-//------------------------------------------------------------------
-
 </script>

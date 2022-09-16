@@ -1,203 +1,73 @@
-  <div class="content-wrapper">
+<div class="content-wrapper">
 
-    <div class="content-header">
+<div class="content-header">
 
-      <div class="container-fluid">
+  <div class="container-fluid">
 
-        <div class="row mb-2">
+    <div class="row mb-2">
 
-          <div class="col-sm-6">
+      <div class="col-sm-6">
 
-            <h1 class="m-0 text-dark"><?= trans('dashboard') ?></h1>
+        <h1 class="m-0 text-dark"><?= trans('dashboard') ?></h1>
 
-          </div>
+      </div>
 
-          <div class="col-sm-6">
+      <div class="col-sm-6">
 
-            <ol class="breadcrumb float-sm-right">
+        <ol class="breadcrumb float-sm-right">
 
-              <li class="breadcrumb-item"><a href="#"><?= trans('home') ?></a></li>
+          <li class="breadcrumb-item"><a href="#"><?= trans('home') ?></a></li>
 
-              <li class="breadcrumb-item active"><?= trans('dashboard') ?></li>
+          <li class="breadcrumb-item active"><?= trans('dashboard') ?></li>
 
-            </ol>
-
-          </div>
-
-        </div>
+        </ol>
 
       </div>
 
     </div>
 
-    <section class="content">
+  </div>
 
-      <div class="container-fluid">
+</div>
 
-        <div class="row">
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <section class="col-md-12 connectedSortable">
 
-<!--          <div class="col-lg-3 col-6">
+        <div class="card">
 
-            <div class="small-box bg-warning">
+          <div class="card-body d-flex p-0">
 
-              <div class="inner">
+            <h3 class="card-title p-3">
 
-                <h3><?= $all_users; ?></h3>
+              <i class="fa fa-pie-chart mr-1"></i>
 
-                <p><?= trans('user_registrations') ?></p>
+              <?= trans('sales') ?>
 
-              </div>
+            </h3>
+            <ul class="nav nav-pills ml-auto p-2">
 
-              <div class="icon">
+              <li class="nav-item">
 
-                <i class="ion ion-person-add"></i>
+                <a class="nav-link active" href="<?php echo base_url("admin/profile/consent_user") ?>" >View Consent</a>
+              
 
-              </div>
+              </li>
 
-              <a href="#" class="small-box-footer"><?= trans('more_info') ?> <i class="fa fa-arrow-circle-right"></i></a>
+             
 
-            </div>
-
-          </div>-->
-
-        <!--   <div class="col-lg-3 col-6">
-
-            <div class="small-box bg-info">
-
-              <div class="inner">
-
-                <h3><?= $active_users; ?></h3>
-
-                <p><?= trans('active_users') ?></p>
-
-              </div>
-
-              <div class="icon">
-
-                <i class="ion ion-bag"></i>
-
-              </div>
-
-              <a href="#" class="small-box-footer"><?= trans('more_info') ?> <i class="fa fa-arrow-circle-right"></i></a>
-
-            </div>
-
+            </ul>
           </div>
-
-         <div class="col-lg-3 col-6">
-
-            <div class="small-box bg-success">
-
-              <div class="inner">
-
-                <h3><?= $deactive_users; ?></h3>
-
-                <p><?= trans('inactive_users') ?></p>
-
-              </div>
-
-              <div class="icon">
-
-                <i class="ion ion-stats-bars"></i>
-
-              </div>
-
-              <a href="#" class="small-box-footer"><?= trans('more_info') ?> <i class="fa fa-arrow-circle-right"></i></a>
-
-            </div>
-
-          </div>
-
-          
-
-          <div class="col-lg-3 col-6">
-
-            <div class="small-box bg-danger">
-
-              <div class="inner">
-
-                <h3>65</h3>
-
-                <p><?= trans('unique_visitors') ?></p>
-
-              </div>
-
-              <div class="icon">
-
-                <i class="ion ion-pie-graph"></i>
-
-              </div>
-
-              <a href="#" class="small-box-footer"><?= trans('more_info') ?> <i class="fa fa-arrow-circle-right"></i></a>
-
-            </div>
-
-          </div>-->
-
         </div>
-
-        <div class="row">
-
-          <section class="col-lg-7 connectedSortable">
-
-            <div class="card">
-
-              <div class="card-header d-flex p-0">
-
-                <h3 class="card-title p-3">
-
-                  <i class="fa fa-pie-chart mr-1"></i>
-
-                  <?= trans('sales') ?>
-
-                </h3>
-
-                <ul class="nav nav-pills ml-auto p-2">
-
-                  <li class="nav-item">
-
-                    <a class="nav-link active" href="<?php echo base_url("admin/profile/consent_user") ?>" >View Consent</a>
-                  
-
-                  </li>
-
-                 
-
-                </ul>
-
-              </div>
-
-              <div class="card-body">
-
-                <div class="tab-content p-0">
-
-           <!--        <div class="chart tab-pane active" id="revenue-chart"
-
-                       style="position: relative; height: 300px;"> 
-                      
-                      <span style="font-weight:bold;"> <a href="<?php// echo base_url("admin/profile/consent_user") ?>">Consent</a>
-
- </span>
-
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
-
-                </div> -->
-
-              </div>
-
-            </div>
-
-          </section>
-
-          
-
-        </div>
-
-      </div>
-
-    </section>
+      </section>
+    </div>
 
   </div>
+
+</section>
+
+</div>
 
 <!-- Morris.js charts -->
 

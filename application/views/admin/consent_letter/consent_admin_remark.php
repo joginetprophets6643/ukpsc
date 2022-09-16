@@ -130,7 +130,7 @@
                     <div class="col-md-4" id="emai_superadmin">
                         <div class="form-group">
                             <label for="email" class="col-sm- control-label">Landmark (सीमाचिह्न)</label>
-                            <input type="landmark" name="landmark" readonly  value="<?= $admin['landmark']; ?>"  class="form-control" disabled id="landmark" placeholder="">
+                            <input type="text" name="landmark" readonly  value="<?= $admin['landmark']; ?>"  class="form-control" disabled id="landmark" placeholder="">
                             <!-- <input type="text" class="form-control" disabled id="sup_mail" > -->
                         </div>
                     </div>
@@ -404,33 +404,38 @@ Account Number</label>
                <div class="col-md-4">
                   <div class="form-group">
                      <label for="Address2">
-Confirm Account Number</label>
+                        Confirm Account Number</label>
                      <input class="form-control" disabled  name="acc_num_con" maxlength="60" placeholder="IFSC Code" id="acc_num_con" type="text" value="<?= $admin['acc_num_con']; ?>"  >
                   </div>
                </div>
               
             </div>
-                        
             <hr style="1">
             <div class="row">
-               <table>
-                  <thead>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td>Name</td>
-                        <td> <input class="form-control" disabled id="name_fill" type="text" readonly </td>
-                     </tr> </br> </br> </br> </br><tr>
-                        <td>Date</td>
-                        <td> <input class="form-control" disabled type="text" name="date" readonly placeholder="<?php echo date("d/m/Y h:s:a"); ?>"  </td>
-                     </tr> </br> </br> </br> </br>
-                     <tr>
-                        <td>Place</td>
-                        <td> <input class="form-control" disabled name="place" type="text" placeholder="Place" </td>
-                     </tr>
-                  </tbody>
-               </table>
-            </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="">
+                            Name
+                        </label>
+                        <input class="form-control" disabled id="name_fill" type="text" readonly>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="">
+                            Date
+                        </label>
+                        <input class="form-control" disabled type="text" name="date" readonly placeholder="<?php echo date("d/m/Y h:s:a"); ?>">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="">
+                            Place
+                        </label>
+                        <input class="form-control" disabled name="place" type="text" placeholder="Place">
+                  </div>
+                </div>
             </div>
             
                             <?php
@@ -443,7 +448,7 @@ Confirm Account Number</label>
                         <input type="button" class="btn btn-primary  Print_preview" value="Print_preview"></input>
                     </div> <?php echo form_close(); ?> <?php } ?>
 
-            </div>
+
 
             <hr class="style1">
             <label class="abc">Only For Official Use</label>
@@ -455,11 +460,14 @@ Confirm Account Number</label>
                 <?php
                 IF ($_SESSION['admin_role_id'] == 5) {
                     ?>
-                    <div class="col-md-2">
+                    <div class="row">
+                    <div class="col-md-12 mb-3">
                     <label for="employee_id" style="font-size: 15px;"> Admin Action :</label>
-                    </div>
+                    
                     <input type="hidden" name="con_id"  class="form-control" id="con_id" value="<?php echo $id; ?>" >
                     <input type="hidden" name="admin_role_id"  class="form-control" id="admin_role_id" value="<?php echo $_SESSION['admin_role_id']; ?>" >
+                    </div>
+                    </div>
 
                 <div class="row">
                     <div class="col-md-4">
@@ -514,16 +522,19 @@ Confirm Account Number</label>
 
                 <?php } ?>
 
-                <div class="col-md-4">
+                <div class="row">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label for="remark_dra">Remark</label>
-                        <textarea class="form-control dd_person"  id="remard_admin"  name="remard_admin" type="text" value=""  rows="4" cols="50"></textarea>
+                        <textarea class="form-control dd_person"  id="remard_admin"  name="remard_admin" type="text" value=""  rows="3"></textarea>
                     </div>
-                </div>   
+                </div> 
+                </div> 
+                </div> 
                 <div class="card-footer" align="center" >
                     <input type="submit" name="submit" class="btn btn-primary " value="Save"></input>
                 </div>
-
+                
 <?php echo form_close(); ?>
         </div>
 </div>

@@ -114,22 +114,22 @@
 
                <td>
                <?php  if ($admin_role_id == 6 )  { ?>
-               <a href="<?= base_url("admin/consent_letter/consent_add_2/" . $row['id']); ?>" title="Edit" class="btn btn-warning btn-xs mr5" >
+               <a href="<?= base_url("admin/consent_letter/consent_add_2/" . $row['id']); ?>" title="Edit" class="btn btn-warning" >
                <i class="fa fa-edit"></i>
                </a> 
             <?php }  if ($admin_role_id == 5 )  { ?>
-               <a href="<?= base_url("admin/consent_letter/add_remark_concent/" . $row['id']); ?>" title="Add Action" class="btn btn-warning btn-xs mr5"  style="margin-top: 8px !important; padding:3% !important;  font-weight: 100 !important; font-size: 15px;">
+               <a href="<?= base_url("admin/consent_letter/add_remark_concent/" . $row['id']); ?>" title="Add Action" class="btn btn-warning">
                <i class="fa fa-edit"></i>
                </a>
 
                <?php }
                if ($admin_role_id == 5 ) { ?>
-               <a href="<?= base_url("admin/consent_active/send_mail/" . $row['id']) ?>" onclick="myfunction()" title="Send Email" class="btn btn-success"  style="margin-top: ; font-size: 13px; padding:2% !important;  font-weight: 50 !important;">
-               <i class="fa fa-paper-plane"></i>
+               <a href="<?= base_url("admin/consent_active/send_mail/" . $row['id']) ?>" onclick="myfunction()" title="Send Email" class="btn btn-success">
+               <i class="fa fa-paper-plane" style="font-size: 13px;"></i>
                </a>
                <?php }
                ?>
-               <a href="<?= base_url("admin/consent_letter/preview_form/" . urlencrypt($row['id'])); ?>" title="Download Form"  onclick="return confirm('Download form ?')" class="btn btn-warning btn-xs"  style="margin-top: 5px;  padding:2% !important;  font-weight: 100 !important; font-size:13px;"><i class="fa fa-eye"></i></a>
+               <a href="<?= base_url("admin/consent_letter/preview_form/" . urlencrypt($row['id'])); ?>" title="Download Form"  onclick="return confirm('Download form ?')" class="btn btn-warning"><i class="fa fa-eye"></i></a>
                </td>
             </tr>
          <?php
@@ -197,9 +197,10 @@
     }
 });
 
+
 var table = $('#consent_list').DataTable( {
-   retrieve: true,
-    paging: true
+      retrieve: true,
+      paging: true, 
   });
 
 </script>

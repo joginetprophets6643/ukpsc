@@ -62,6 +62,9 @@
   <!-- Google Font: Source Sans Pro -->
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+  <!-- ujjwal -->
+  <link rel="stylesheet" href="<?= base_url()?>assets/dist/css/custom.css">
 
   <!-- jQuery -->
 
