@@ -1,0 +1,282 @@
+<style>
+   .reply-btn {
+      font-size: 14px !important;
+      padding: 5px !important;
+   }
+   .apply-btn {
+      font-size: 15px !important;
+      padding: 5px !important;
+   }
+   table tbody td h4 { 
+      font-size: 15px !important;
+   }
+</style>
+
+<div class="datalist">
+
+<table id="example1" class="table table-bordered table-hover" style="overflow: auto; 
+
+ ">
+
+   <thead>
+
+      <tr style="text-align: center;">
+
+         <th width="50">S.No.</th>
+
+         <th>Letter/Email/Speed Post Number</th>
+
+         <th>Subject Line of Letter</th>
+
+         <th> Start Date of exam</th>
+
+         <th>End Date of exam</th>
+
+         <!-- <th>Shift of Exam </th> -->
+
+         <!-- <th>Time of Exam </th> -->
+
+
+
+         <th width="120" ><?= trans('action') ?></th>
+
+      </tr>
+
+   </thead>
+
+   <tbody>
+
+       
+
+      <?php
+
+      
+
+         $i = 1;
+         // echo '<pre>';print_r($info['row']);
+         // echo '<pre>';print_r($row); 
+         // echo '<pre>'; print_r(array_merge($info,$row));
+         // die();
+         foreach ($info as $row):
+            // echo '<pre>';
+            // print_r($row); die();
+
+         $admin_role_id = $this->session->userdata('admin_role_id');
+
+         $admin_id = $this->session->userdata('admin_id'); 
+
+   ?>
+
+
+
+      <tr>
+
+         <td>
+
+            <?= $i ?>
+
+         </td>
+
+         <td>
+
+            <?= $row['ciespeedpost'] ?>
+           
+
+         </td>
+
+         <td>
+
+            <h4 class="m0 mb5"> <?= $row['ciesubjectline'] ?></h4>
+
+                   
+
+         </td>
+
+         <td>
+
+            <?= $row['ciestartdate']; ?>
+
+         </td>
+
+         <td>
+
+            <?= $row['cieenddate']; ?>
+
+         </td>
+         <td style="text-align:center;">
+
+         <?php  if ($admin_role_id == 6 )  { ?>
+
+
+           <!-- <a href="<?php //echo base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['ref_id'])); ?>" title="Reply"   class="btn btn-success btn-xs reply-btn"> -->
+           <!-- <a href="<?= base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['id'])); ?>" title="Reply"   class="btn btn-success btn-xs reply-btn"> -->
+           <a href="<?= base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['cieid'])); ?>" title="Reply"   class="btn btn-success btn-xs reply-btn">
+            <i class="fa fa-reply"></i>
+           </a>
+            <?php //echo '<pre>'; print_r($row['ref_id']); exit; ?>
+            <?php
+               if($row['circonsents_signstamp_status'] != 1){
+               ?>
+                  <!-- <a href="<?= base_url("admin/consent_active/consent_add/" . $_SESSION['admin_id']).'/'.$row['id']; ?>" title="Apply" rel="<?php echo $row['id'] ?>" class="btn btn-warning btn-xs update_db apply-btn"> -->
+                     <!-- Apply   -->
+                     <!-- <i class="fa fa-apply"></i> -->
+                     <!-- <i class="fa fa-reply"></i> -->
+                  <!-- </a> -->
+                  <a href="<?= base_url("admin/consent_active/consent_add/" . $_SESSION['admin_id']).'/'.$row['cieid']; ?>" title="Apply" rel="<?php echo $row['cieid'] ?>" class="btn btn-warning btn-xs apply-btn">
+                     Apply  
+                  </a>   
+            <?php
+               }   
+            ?>
+           
+
+       <?php }  if ($admin_role_id == 5 )  { ?>
+
+
+
+         <?php }
+
+         if ($admin_role_id == 6 ) { ?>
+
+        
+
+         <?php }
+
+         ?>
+
+        
+
+      
+       
+
+         </td>
+
+      </tr>
+
+      <?php
+
+         $i++;
+
+         endforeach;
+
+         ?>
+
+   </tbody>
+
+</table>
+
+<!-- Modal -->
+
+   
+
+
+   </div>
+
+   </div>
+
+
+
+<script>
+
+$(document).ready(function () {
+
+   // $("#consent_recieved").show().delay(5000).queue(function(n) {
+   //     $(this).remove();
+   // });
+
+
+   // $(window).bind("load", function() {
+      // window.setTimeout(function() {
+      //    $("#consent_recieved").fadeTo(500, 0).slideUp(500, function(){
+      //       $(this).remove();
+      //    });
+      // }, 4000);
+   // });
+
+    $('.update_db').click(function () {
+      
+        var prov_id = $(this).attr('rel');
+
+        $.ajax({
+
+            url: 'update_exam_name/',
+
+            type: 'get',
+
+            data: {prov_id: prov_id},
+
+            success: function (response) {
+
+             
+
+            }
+
+        });
+
+    });
+
+});
+
+function myfunction(id){
+
+  $.ajax({
+
+    url: 'get_renew_data_ref_permanent/'+id,
+
+     type:'get',
+
+     dataType: 'html',
+
+     data : {data:id},
+
+     success:function(result){
+
+         $("#gres").html(result);
+
+     } 
+
+ });
+
+}
+
+
+
+
+</script>
+
+<style type="text/css">
+
+.permanent_info{
+
+   margin-bottom: 05px;
+
+}
+
+.remarkss{
+
+   padding: 15px;
+
+   /*font-size: 12px;*/
+
+}
+
+.his{
+
+   margin: 0 0 10px 0;
+
+}
+
+.mr5{
+
+   margin-bottom: 5px;
+   margin-top: 10px;
+   border: none !important;
+   padding: 4% !important;
+   font-weight: lighter !important;
+   font-size: 60% !important;
+
+}
+
+
+
+</style>
