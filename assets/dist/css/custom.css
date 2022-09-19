@@ -24,3 +24,21 @@
 .card .card-header .card-title {
     margin-top: 8px;
 }
+.form-background {
+    min-height: 100%;
+    overflow-x: hidden;
+    background-image: url(../../img/ukpsc-bg.jpg) !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+input:focus {
+    background-color: #e1eaff !important;
+    /* border-color: #e1eaff !important; */
+    box-shadow: none !important;
+}
+select:focus {
+    background-color: #e1eaff !important;
+    /* border-color: #e1eaff !important; */
+    box-shadow: none !important;
+}

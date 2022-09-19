@@ -8,20 +8,20 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <style type="text/css">
-    
+    .control-sidebar {
+        display: none;
+    } 
 </style>
 
 <div class="form-background"> 
     <div class="register-box">
-      
-        
         <div class="card_reg"  >
-            <div class="register-logo" style="background-color:#71024f; color:#fff; border-radius:20px 20px 0px 0">				
+            <div class="register-logo" style="background-color:#71024f; color:#fff; border-radius:20px 20px 0 0;">				
                 <div style="float:left; margin: 1% 0 0 1%; "><img style="width: 100px;" src="<?= base_url(); ?>assets/dist/img/ukpsc_logo.png" /></div>
-				<div style="float:right"> <p class="mb-4 head1" style="background-color:#71024f; margin: 8% 0 0 0%; ">Registration of School/College for UKPSC Exam Centre <br>यूके0पी0एस0सी0 परीक्षा केंद्र के लिए स्कूल/कॉलेज का पंजीकरण</p></div>
+				<div style="float:right"> <p class="mb-4 head1 text-bold" style="background-color:#71024f; margin: 8% 0 0 0%; ">Registration of School/College for UKPSC Exam Centre <br>यूके0पी0एस0सी0 परीक्षा केंद्र के लिए स्कूल/कॉलेज का पंजीकरण</p></div>
                 <!--<h2><a href="<?= base_url('admin'); ?>"><?= $this->general_settings['application_name']; ?></a></h2>-->
         </div>
-            <div class="card-body register-card-body custom-register" style=" border: 1px solid rgba(0, 0, 0, 0.125);">
+            <div class="card-body register-card-body custom-register" style="border-radius: 0 0 20px 20px; background: #fff;">
                 <?php $this->load->view('admin/includes/_messages.php') ?>
                 <label style="font-style: oblique;"><span style="color:red;font-style: italic;">*</span>Marked fields are mandatory (चिह्नित फ़ील्ड अनिवार्य हैं)</label>
                 <?php echo form_open(base_url('admin/auth/register'), 'id="xin-form" class="login-form" '); ?>
@@ -142,8 +142,8 @@
                         </div>   
 					</div>
                 </div>
-				<div class="row justify-content-center">
-						 <div class="col-md-9 checkbox icheck">
+				<div class="row justify-content-center mb-4">
+						 <div class="col-md-12 checkbox icheck">
                                     <label >
                                         <input type="checkbox" id="i_agree" name="i_agree" style="margin-right: 10px;"> 
                                         <?php // echo trans('i_agree_to_the') ?> 
@@ -153,16 +153,21 @@
                          </div>
 						 </div> 
 						 <div class="row justify-content-center">
-							 <div class="form-group has-feedback col-md-2">
-							 <input type="reset" name="" id="" class="btn btn-primary btn-block btn-flat" value="Reset (रीसेट करें)"> 
-							 </div>
-							  <div class="form-group has-feedback col-md-3">
-							 <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat" value="<?= trans('create_form_new') ?> (खाता बनाएं)">
-							 </div>
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-center">
+                                    <div class="form-group has-feedback mr-4">
+                                    <input type="reset" name="" id="" class="btn btn-primary btn-block btn-flat" value="Reset (रीसेट करें)"> 
+                                    </div>
+                                     <div class="form-group has-feedback">
+                                    <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat" value="<?= trans('create_form_new') ?> (खाता बनाएं)">
+                                    </div>
+                                </div>
+
+                            </div>
 						</div> 
 						 <div class="row justify-content-center">
-							 <div class="form-group has-feedback col-md-8">
-							 <a href="<?= base_url('admin/auth/login'); ?>" class="text-center "><?= trans('i_already_have_membership') ?> (क्या आपके पास पहले से एक खाता मौजूद है? लॉग इन करें)</a>
+							 <div class="form-group has-feedback col-md-12 text-center">
+							 <a href="<?= base_url('admin/auth/login'); ?>" class="text-center"><?= trans('i_already_have_membership') ?> (क्या आपके पास पहले से एक खाता मौजूद है? लॉग इन करें)</a>
 							 </div>
 							 
 						</div> 
