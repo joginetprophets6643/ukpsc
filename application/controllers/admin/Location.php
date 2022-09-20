@@ -519,6 +519,18 @@ class Location extends MY_Controller {
         // $query = $this->db->query("SELECT * from ci_cities where id = $district_id");
         // $query = $this->db->query("SELECT * from ci_cities c INNER JOIN ci_sub_cities cs where cs.cities_id = $district_id");
         $query = $this->db->query("SELECT * from ci_cities c INNER JOIN ci_sub_cities cs ON c.id = cs.cities_id where cs.cities_id = $district_id and cs.status = 1");
+        $query->result();
+        // $arr = [];
+         
+        // foreach ($query->result() as $key=>$r) {
+        //     $arr[$r->id] = $r->subcityname;
+        // }
+        // echo json_encode($arr);
+
+
+
+
+
         $options = '<option value="">' .'Select City'. '</option>';
         // $options = '';
 

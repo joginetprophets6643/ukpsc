@@ -129,7 +129,6 @@ class Auth extends MY_Controller {
 
 
 			
-
 			$this->form_validation->set_rules('username', 'Username', 'trim|required');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
@@ -153,6 +152,8 @@ class Auth extends MY_Controller {
 				}
 			
 				$result = $this->auth_model->login($data,$type);
+				
+				
 				if($result){
 					if($result['is_verify'] == 0){
 						$this->session->set_flashdata('error', 'Please verify your email address!');
@@ -176,9 +177,11 @@ class Auth extends MY_Controller {
                             'district_id' => $result['district_id'],
 							'is_supper' => $result['is_supper'],
                             'last_login' => $result['last_login'],
-                            'last_ip' => $result['last_ip'],
+                            'last_ip' => $result['last_ip'],   
 							'is_admin_login' => TRUE
 						);		
+						
+				
 						$this->session->set_userdata($admin_data);
 						$this->rbac->set_access_in_session(); // set access in session
 						$admin_id = $this->session->userdata['admin_id'];
@@ -193,11 +196,12 @@ class Auth extends MY_Controller {
                         	redirect(base_url('admin/step1'), 'refresh');
                         }
                     }else if($admin_role_id == 5){
+						
                     	// redirect(base_url('admin/dashboard'), 'refresh');
                     	 redirect(base_url('admin/consent_letter/consent_list'), 'refresh');
                     	 
                     }else{
-
+						
                     	redirect(base_url('admin/dashboard'), 'refresh');
                     } 
 						}

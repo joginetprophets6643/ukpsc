@@ -120,11 +120,11 @@ class Exam_model extends CI_Model {
 //                     $this->session->userdata('state_id'));
 // //            $this->db->where('ci_exam_registration.file_movement !=', 1);
 //         }
-//         if ($admin_role_id == 5) {
-//             $this->db->where('ci_exam_registration.district',
-//                     $this->session->userdata('district_id'));
-// //            $this->db->where('ci_exam_registration.file_movement !=', 1);
-//         }
+        // if ($admin_role_id == 5) {
+        //     $this->db->where('ci_exam_registration.district',
+        //             $this->session->userdata('district_id'));
+        //    $this->db->where('ci_exam_registration.file_movement !=', 1);
+        // }
         if ($admin_role_id == 6) {
             $this->db->where('ci_exam_registration.created_by',$this->session->userdata('admin_id'));
         }
@@ -136,6 +136,7 @@ class Exam_model extends CI_Model {
         $this->db->order_by('ci_exam_registration.id', 'desc');
 		// echo $this->db->last_query(); die;
         $query = $this->db->get();
+        // echo 'here' ; print_r($query->num_rows()); die();
         $module = array();
         
         if ($query->num_rows() > 0) {

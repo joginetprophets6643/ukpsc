@@ -12,6 +12,7 @@
 
             <th>Exam Name</th>
             <th>District</th>
+            <th>City</th>
 
             <th>Number Of Candidates</th>
 
@@ -32,6 +33,7 @@
          <?php         
             if(!empty($info)){   
                $i = 1;
+             
                foreach ($info as $row):
                   $admin_role_id = $this->session->userdata('admin_role_id');
                   $admin_id = $this->session->userdata('admin_id'); 
@@ -55,6 +57,11 @@
                   <td>
 
                   <span style="width:100%;"> <?= get_district_name($row['state']) ?> </span>
+            
+                  </td>
+                  <td>
+
+                  <span style="width:100%;"> <?= get_city_name($row['city']) ?> </span>
             
                   </td>
 

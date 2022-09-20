@@ -250,9 +250,11 @@ class Examshedule_schedule extends MY_Controller {
 
     public function send_invitation() {
 
-
+       
         $data['states'] = $this->location_model->get_states();
-
+        // echo '<prev>';
+        // print_r($data);
+        // die();
         $data['title'] = 'Invitation and Schedule List';
 
         // $this->db->update('ci_exam_registration', ['invite_sent'=> "2"])->where('id',$id);

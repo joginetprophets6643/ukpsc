@@ -505,7 +505,7 @@ var table = $('#send_invitation_list').DataTable({
                 data : {id:id,'send_consent_id':send_consent_id},
                 success:function(result){
             
-                    alert("success, Sent Sucessfully ok");
+                    alert("success, Sent Sucessfully");
                     this.checked = false;     
                 }
             });

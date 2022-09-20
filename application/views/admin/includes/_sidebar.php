@@ -27,16 +27,16 @@ $cur_tab = $this->uri->segment(2) == '' ? 'dashboard' : $this->uri->segment(2); 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 
             <div class="image">
-
+            <?php // echo $this->session->userdata['admin_id'];die();?>
               <!-- <img src="<?= base_url() ?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
 
             </div>
 
             <div class="info">
 
-                <a href="#" class="d-block"><?php echo ucwords($this->session->userdata('fullname')) . "<br/>" . " (" . ucwords($this->session->userdata('admin_role')) . ")"; ?><br/>
+                <a href="#" class="d-block"><?php echo ucwords($this->session->userdata['username']) . "<br/>" . " (" . ucwords($this->session->userdata('admin_role')) . ")"; ?><br/>
 
-                    Last Login IP : <?php echo $this->session->userdata('last_ip') . " <br/>Time: " . $this->session->userdata('last_login'); ?>
+                    Last Login IP :  <?php echo $this->session->userdata('last_ip') . " <br/>Time: " . $this->session->userdata('last_login'); ?>
 
                 </a>
 

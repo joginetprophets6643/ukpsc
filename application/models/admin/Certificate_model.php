@@ -343,6 +343,7 @@ class Certificate_model extends CI_Model {
     }
     public function get_all_data_consent($ref_id) {
         // echo $ref_id;
+        // die();
         // $admin_id = $this->session->userdata('admin_id');
         // // echo $examinationid;exit;
         // $this->db->where('invite_sent','1');
@@ -365,7 +366,7 @@ class Certificate_model extends CI_Model {
         // $query = $this->db->query("SELECT * FROM `ci_exam_invitation` where `ci_exam_invitation`.`invite_sent` = '1'");
         // $query = $this->db->query("SELECT ciei.id,cier.ref_id  FROM `ci_exam_invitation` as ciei JOIN `ci_exam_registration` as cier ON `ci_exam_invitation`.`id` = `ci_exam_registration`.`ref_id` where `ci_exam_invitation`.`invite_sent` = '1'");
         // echo '<hr/>';
-        // print_r($query->result_array());
+        // print_r($query);
         // die;
         return $query->result_array();
     }

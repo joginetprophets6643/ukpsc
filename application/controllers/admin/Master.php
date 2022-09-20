@@ -294,7 +294,7 @@ class Master extends MY_Controller
         $data['title'] = 'Applications of Candidate';
 
         $this->load->view('admin/includes/_header', $data);
-
+       
         $this->load->view('admin/exam/candidate_list_index', $data);
 
         $this->load->view('admin/includes/_footer', $data);
@@ -308,8 +308,7 @@ class Master extends MY_Controller
         $data['total'] = ($a['sum(number_of_can)']);
 
         $data['info'] = $this->Exam_model->get_all_candidate_data();
-        // echo $data['info'][0]['number_of_can'];
-        // echo '<br>';
+       
         // $array_total_sum = array_sum($data['info'][0]['number_of_can']);
         // echo '<pre>';print_r($data);exit;
         $this->load->view('admin/exam/candidate_app_list', $data);
