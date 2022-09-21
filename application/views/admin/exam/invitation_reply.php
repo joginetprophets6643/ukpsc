@@ -11,6 +11,7 @@
     }
     else
     {
+        
         $sub_name =  [];
         $exam_name =  '';
         $no_candidate =  '';
@@ -120,7 +121,7 @@
                             <tbody>
                                 <tr>
                                     <th style="padding:5px; font-weight: normal !important; border: 1px solid black;">
-                                     <?php echo $a; ?> 
+                                     <?php echo $a+1; ?> 
                                     </th>
                                     <td style="padding:5px;  font-weight: normal !important; border: 1px solid black;">
                                         <input type="text" name="sub_name[]" readonly value="<?php echo get_subject_name($sub_name[$i]) ?>" >

@@ -73,8 +73,7 @@
             <td>
 
                <h4 class="m0 mb5"> <?= $row['subjectline'] ?></h4>
-               <br/>
-               <?php echo  $row['id'];?>
+              
 
                       
 

@@ -215,7 +215,62 @@ class Exam_model extends CI_Model {
         }
         return $module;
     }
+// NEW LOGIC FOR COUNTS
+    public function getTotalCountinDistrict($district_name)
+    {
+     
+            $this->db->select_sum('ci_exam_registration.max_allocate_candidate');
+            $this->db->from('ci_exam_registration');
+            $this->db->where('ci_exam_registration.district',$district_name);
+            $this->db->order_by('max_allocate_candidate desc');
+            $query = $this->db->get();
+            $data = $query->result_array();
+            
+            if(isset($data[0]['max_allocate_candidate']))
+            {
+                $data = $data[0]['max_allocate_candidate'];
+            }
+            else
+            {
+                $data = 0;
+            }
+            return $data;
+    
+    }
+    public function getTotalCountinSchoolWise($ids)
+    {
+           if($ids=='all')
+           {
+            $this->db->select_sum('ci_exam_registration.max_allocate_candidate');
+            $this->db->from('ci_exam_registration');
+            // $this->db->where_in('ci_exam_registration.id',$ids);
+            $this->db->order_by('max_allocate_candidate desc');
+           }
+           else
+           {
+            $this->db->select_sum('ci_exam_registration.max_allocate_candidate');
+            $this->db->from('ci_exam_registration');
+            $this->db->where_in('ci_exam_registration.id',$ids);
+            $this->db->order_by('max_allocate_candidate desc');
+           }
+         
+            $query = $this->db->get();
+            $data = $query->result_array();
+            
+            if(isset($data[0]['max_allocate_candidate']))
+            {
+                $data = $data[0]['max_allocate_candidate'];
+            }
+            else
+            {
+                $data = 0;
+            }
+            return $data;
+    
+    }
+    // END NEW LOGIC FOR COUNTS
 
+   
 
      public function edit_date_sheet($data, $id) {
         $this->db->where('id', $id);
@@ -1397,7 +1452,7 @@ public function get_deactivation_data($id) {
         $query = $this->db->get();
         return $query->result_array();
     }
-     public function get_consent_recved_data($state_name, $city_name, $grade_name) {
+     public function get_consent_recved_data($state_name, $city_name, $grade_name,$ref_id) {
         
         // $this->db->select('*');
         // $this->db->from('ci_exam_registration');
@@ -1476,21 +1531,25 @@ public function get_deactivation_data($id) {
         $filterData = $this->session->userdata('filter_keyword');
 
         // $this->db->where('status','1');
+        $this->db->where('ref_id', $ref_id);
         $this->db->where('invt_recieved', '1');
         $this->db->order_by('ci_exam_registration.id', 'desc');
 		// echo $this->db->last_query();
         $query = $this->db->get();
+
         $module = array();
+       
         $num_rows_count = $query->num_rows();
         if ($query->num_rows() > 0) {
             $module = $query->result_array();
             
         }
         $module = array($num_rows_count,$module);
+      
         return $module;
     }   
     
-    public function get_consent_not_recved_data($state_name, $city_name, $grade_name) {
+    public function get_consent_not_recved_data($state_name, $city_name, $grade_name,$ref_id) {
         // echo 123;exit;
         // $this->db->select('*');
         // $this->db->from('ci_exam_registration');
@@ -1558,6 +1617,7 @@ public function get_deactivation_data($id) {
 
         // $this->db->where('status','1');
         $this->db->where('invt_recieved', '0');
+        $this->db->where('ref_id', $ref_id);
         $this->db->order_by('ci_exam_registration.id', 'desc');
 		// echo $this->db->last_query();
         $query = $this->db->get();
@@ -1673,7 +1733,11 @@ public function get_deactivation_data($id) {
 
 public function get_invitation_data($id) {
         $admin_id = $this->session->userdata('admin_id');
-        $query = $this->db->get_where('ci_exam_invitation', array('id' => $id, 'created_by' => $admin_id));
+        // echo $id ."or".$admin_id;
+        // exit;
+        $query = $this->db->get_where('ci_exam_invitation', array('id' => $id));
+        // for backup
+        // $query = $this->db->get_where('ci_exam_invitation', array('id' => $id, 'created_by' => $admin_id));
       
         return $result = $query->row_array();
     }

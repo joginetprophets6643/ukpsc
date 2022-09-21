@@ -184,7 +184,7 @@
                       <span id="total_candidate_display" style="display:none;" class="total_candidate_display" name="total_candidate_display"></span>
                       <input type="hidden" id="send_consent_id" name="send_consent_id" value="<?= $this->uri->segment(4);?>">
                       <!-- </div> -->
-                      <div id="allcheckids" style="margin-left:50%;padding: 0 0 20px 10px;">
+                      <div id="allcheckids" style="margin-left:50%;padding: 0 0 20px 10px; display:none;">
                           <input  type="button" class="select_all_count btn btn-success" id="select_all" value="Select All(सभी चुनें)"> 
                           <input  type="button"  class="btn btn-success" id="send_all" onclick="return confirm('Are you sure want to send all invitation?\nक्या आप वाकई सभी आमंत्रण भेजना चाहते हैं?')" value="Send to All(सभी को भेजो)"> 
                           <input  type="button"class=" btn btn-success" id="select_single_count" onclick="return confirm('Are you sure want to send select user invitation?\nक्या आप वाकई चुनिंदा उपयोगकर्ता आमंत्रण भेजना चाहते हैं?')" value="Send to Selected(चयनित को भेजें)">
@@ -225,7 +225,7 @@
 var table = $('#consent_recieved_list').DataTable({
         "processing": true,
         "serverSide": false,
-        "ajax": "<?=base_url('admin/Examshedule_schedule/consent_recieved_list')?>",
+        "ajax": "<?=base_url('admin/Examshedule_schedule/consent_recieved_list/'.$id)?>",
         "order": [
             [0, 'asc']
         ],
