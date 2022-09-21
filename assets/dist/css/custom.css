@@ -66,3 +66,47 @@ select {
     color: #fff;
     font-weight: 600;
 }
+.btn-signin:hover {
+    border-color: #ffa500;
+    background-color: #fff;
+    color: #ffa500;
+}
+.form-background {
+    height: 100%;
+}
+.has-feedback a:hover {
+    color:#ffa500;
+}
+.sidebar-dark-primary {
+    background-color: #091583;
+    color: #fff;
+}
+.sidebar-dark-primary .sidebar a {
+    color: #fff;
+}
+[class*="sidebar-dark"] .user-panel {
+    border-bottom: 1px solid #fff;
+}
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active {
+    color: #ffffff;
+    background-color: #17a2b8;
+}
+
+.content-wrapper, .main-footer, .main-header {
+    margin-left: 280px;
+}
+.main-sidebar, .main-sidebar:before {
+    width: 280px;
+}
+.sidebar-dark-primary .nav-sidebar > .nav-item.menu-open > .nav-link {
+    color: #ffffff;
+    background-color: #17a2b8;
+}
+.sidebar-dark-primary .nav-sidebar > .nav-item.menu-open > .nav-link.active {
+    color: #ffffff;
+    background-color: #ffa500;
+}
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link:hover {
+    color: #ffffff;
+    background-color: #ffa500;
+}

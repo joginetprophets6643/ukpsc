@@ -76,7 +76,7 @@
                     <div class="" style="color:#fff; width:682.5px"><img style="border-radius: 20px 0 0px 20px;height: 100%; width: 100%;"
                             src="<?= base_url(); ?>assets/dist/img/side_bg2.jpg" /></div>
                     <div class="column"
-                    style="background-color: #142085; border-radius: 0 20px 20px 0; color:#fff; width:430px; padding: 2rem;">
+                    style="background-color: #142085; border-radius: 0 20px 20px 0; color:#fff; width:430px; padding: 0.98rem 2rem;">
 
                         <p class="login-box-msg">User Login (उपयोगकर्ता लॉगिन)</p>
                         <hr class="style1">
@@ -172,16 +172,18 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="mb-1" style="font-size: 14px;">
+                                    <p class="mb-1" style="font-size: 16px;">
                                         <a href="<?= base_url('admin/auth/forgot_password'); ?>">
                                             <?= trans('i_forgot_my_password') ?> ? (पासवर्ड भूल गए?)
                                         </a>
                                     </p>
                                     <p class="mb-0" style="font-size: 12px;margin:10px 0 0 0;">
-                                        <label style="font-size: 12px; font-weight:bold">
-                                            Don't have a UKPSC ID? (यूकेपीएससी आईडी नहीं है?)<br><a
+                                        <label class="mb-0" style="font-size: 13px;">
+                                            <span class="mb-4" style="color: #c7c7c7;">Don't have a UKPSC ID? (यूकेपीएससी आईडी नहीं है?)</span>
+                                            <a
                                                 href="<?= base_url('admin/auth/register'); ?>" class="text-center"
-                                                style="font-size: 14px;">Register Here! (यहां रजिस्टर करें!)</a>
+                                                style="font-size: 16px;">Register Here! (यहां रजिस्टर करें!)
+                                            </a>
                                         </label>
 
                                     </p>
