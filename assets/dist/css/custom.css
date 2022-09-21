@@ -27,18 +27,42 @@
 .form-background {
     min-height: 100%;
     overflow-x: hidden;
-    background-image: url(../../img/ukpsc-bg.jpg) !important;
+    /* background-image: url(../../img/ukpsc-bg.jpg) !important;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    background: linear-gradient(#e8e8e8 120px,white,#3a4a6bcc) !important;
 }
-input:focus {
-    background-color: #e1eaff !important;
-    /* border-color: #e1eaff !important; */
-    box-shadow: none !important;
-}
+input:focus,
 select:focus {
     background-color: #e1eaff !important;
-    /* border-color: #e1eaff !important; */
+    border-color: #142085 !important;
     box-shadow: none !important;
+}
+input,
+select {
+
+}
+.form-group label {
+    font-size: 1rem;
+}
+.form-group {
+    margin-bottom: 1.2rem;
+}
+.btn-primary {
+    background-color: #142085;
+    border-color: #142085;
+}
+.btn-primary:hover,
+.btn-primary:focus, 
+.btn-primary:active:focus,
+.btn-primary:active {
+    background-color: #fff;
+    color: #142085 !important;
+}
+.btn-signin {
+    border-color: #fff;
+    background-color: #ffa500;
+    color: #fff;
+    font-weight: 600;
 }

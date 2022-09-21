@@ -16,14 +16,14 @@
 <div class="form-background"> 
     <div class="register-box">
         <div class="card_reg"  >
-            <div class="register-logo" style="background-color:#71024f; color:#fff; border-radius:20px 20px 0 0;">				
+            <div class="register-logo" style="background-color:#142085; color:#fff; border-radius:20px 20px 0 0;">				
                 <div style="float:left; margin: 1% 0 0 1%; "><img style="width: 100px;" src="<?= base_url(); ?>assets/dist/img/ukpsc_logo.png" /></div>
-				<div style="float:right"> <p class="mb-4 head1 text-bold" style="background-color:#71024f; margin: 8% 0 0 0%; ">Registration of School/College for UKPSC Exam Centre <br>यूके0पी0एस0सी0 परीक्षा केंद्र के लिए स्कूल/कॉलेज का पंजीकरण</p></div>
+				<div style="float:right"> <p class="mb-4 head1 text-bold" style="background-color:#142085; margin: 8% 0 0 0%; ">Registration of School/College for UKPSC Exam Centre <br>यूके0पी0एस0सी0 परीक्षा केंद्र के लिए स्कूल/कॉलेज का पंजीकरण</p></div>
                 <!--<h2><a href="<?= base_url('admin'); ?>"><?= $this->general_settings['application_name']; ?></a></h2>-->
         </div>
             <div class="card-body register-card-body custom-register" style="border-radius: 0 0 20px 20px; background: #fff;">
                 <?php $this->load->view('admin/includes/_messages.php') ?>
-                <label style="font-style: oblique;"><span style="color:red;font-style: italic;">*</span>Marked fields are mandatory (चिह्नित फ़ील्ड अनिवार्य हैं)</label>
+                <label class="mb-4" style="font-style: oblique; color: #2a348f;"><span class="mr-1" style="color:red;font-style: italic;">*</span>Marked fields are mandatory (चिह्नित फ़ील्ड अनिवार्य हैं)</label>
                 <?php echo form_open(base_url('admin/auth/register'), 'id="xin-form" class="login-form" '); ?>
                 <script type="text/javascript">
                     $(function () {
@@ -144,10 +144,11 @@
                 </div>
 				<div class="row justify-content-center mb-4">
 						 <div class="col-md-12 checkbox icheck">
-                                    <label >
-                                        <input type="checkbox" id="i_agree" name="i_agree" style="margin-right: 10px;"> 
+                                    
+                                    <input type="checkbox" id="i_agree" name="i_agree" style="margin-right: 10px;"> 
                                         <?php // echo trans('i_agree_to_the') ?> 
                                         <!-- and confirm above data is correct. (मैं सहमत हूं और पुष्टि करता हूं कि उपरोक्त डेटा सही है।) -->
+                                    <label >
                                         I checked the information furnished above and its correct (मैंने ऊपर दी गई जानकारी की जाँच की और यह सही है)
                                     </label>
                          </div>
