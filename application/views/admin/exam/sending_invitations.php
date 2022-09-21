@@ -19,6 +19,7 @@
       <tbody>
           
          <?php
+       
             if(!empty($data)){   
                   $i = 1;
                   foreach ($data as $row):
@@ -75,7 +76,7 @@
                </td>             
                <td style="text-align: center;">
                      <!-- <input type="checkbox" id="a" class="checkbox-item" rel="<?php echo $row['id']; ?>"> -->
-                     <input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="<?php echo $row['id']; ?>">
+                     <input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="<?php echo $row['id']; ?>" value="<?php echo $row['id']; ?>">
                      
                         <?php  if ($admin_role_id == 5 )  { ?>
                            <!-- <a href="<?php // echo base_url("admin/examshedule_schedule/send_invitation_user/" . $row[8]); ?>" title="Send Invitations" class="btn btn-success btn-xs mr5" >
@@ -159,6 +160,31 @@
 });
 
 
+$(document).ready(function () {
+let arr=[];
+$('.send_email_ids').click(function(e) {
+        if($(this).is(":checked")) {
+            arr.push(e.target.value)
+        }
+        else{
+            arr = arr.filter(item => item !== e.target.value)
+        }
+        console.log(arr);
+        // New Logic For Count Students on the basis of School Id  -- Jogi
+        $.ajax({
+                type: "GET", 
+                url: base_url+'admin/Examshedule_schedule/totalCountSchoolWise',
+                data: { 'school_ids' : arr,'csfr_token_name':csfr_token_value },
+                success: function(data) {
+                    $('#schoolCount').removeClass("d-none");
+                    $('#schoolWiseCounts').html(data);
+                }
+
+            });
+
+    });
+    
+})
 </script>
 <style type="text/css">
    .permanent_info{

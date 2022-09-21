@@ -227,7 +227,7 @@
     var table = $('#consent_not_recieved_by_user_list').DataTable({
         "processing": true,
         "serverSide": false,
-        "ajax": "<?=base_url('admin/Examshedule_schedule/consent_notrecieved_by_user_data')?>",
+        "ajax": "<?=base_url('admin/Examshedule_schedule/consent_notrecieved_by_user_data/'.$id)?>",
         "order": [
             [0, 'asc']
         ],

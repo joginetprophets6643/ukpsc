@@ -157,7 +157,7 @@ public function consent_recieved(){
         // echo '123456789';exit;
         // $this->rbac->check_operation_access();
         $admin_id = $this->session->userdata['admin_id'];
-
+       
     if ($this->input->post('submit')) {
 
         $data = [
@@ -172,7 +172,7 @@ public function consent_recieved(){
             'exam_name' => $this->input->post('exam_name'),                
             ];
 
-            // echo '<pre>';print_r($data);exit;
+            // echo '<pre>';echo 'ab me yha hu';print_r($data);exit;
             $data = $this->security->xss_clean($data);
         
 
@@ -196,7 +196,7 @@ public function consent_recieved(){
             $city_id = $data['admin'][0]['city'];
             $data['district'] = $this->Certificate_model->generatedistrict($district);
             $data['city_name'] = $this->Certificate_model->generateukpscid($city_id);
-            // echo '<pre>';print_r($data);exit;
+            // echo '<pre>';echo 'I am Ujjwal';print_r($data);exit;
             $this->load->view('admin/includes/_header');
             $this->load->view('admin/consent_active/consent',$data);
             $this->load->view('admin/includes/_footer');
@@ -312,10 +312,11 @@ public function consent_recieved(){
                 'remark_if' => $this->input->post('remark_if'),
                 'ref_id' => $this->input->post('ci_exam_registrationid3'),
                 ];
-                
+              
                 $data = $this->security->xss_clean($data);
                 // $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
+                // $result = true;
                 if ($result) {
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
                     $ci_exam_registrationid3 = $this->input->post('ci_exam_registrationid3'); 
@@ -630,10 +631,12 @@ public function consent_recieved(){
         }
         else {
         $ref_id = $this->uri->segment(4);
+     
         $data['admin'] = $this->admin_model->get_user_detail($admin_id);
         // $data['user'] = $this->admin_model->get_old_data($admin_id);
         $data['user'] = $this->admin_model->get_center_data($admin_id,$ref_id);    
         $data["info"] = $this->Certificate_model->get_all_active_consent();
+
         $examinationid = $this->uri->segment(4);
 
         // $sub_name = $data['admin']['examincation_id'];
@@ -718,9 +721,11 @@ public function consent_recieved(){
 
         
         // echo '<pre>';
-        // print_r($sub_info);
-        // // print_r($xs);
-        // die;
+        // // print_r($sub_info);
+        // // // print_r($xs);
+        // // die;
+        // print_r($data);
+        // die();
         $sub_info['sub_info'] = $sub_info;
         $this->load->view('admin/includes/_header',$sub_info);
         $this->load->view('admin/consent_active/consent5',$data);

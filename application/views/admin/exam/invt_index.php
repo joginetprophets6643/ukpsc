@@ -164,6 +164,8 @@
         </div>
         <div class="card">
             <div class="card-body table-responsive">
+                <div id="countInDistrict" class="d-none">Total Applicants in District : <span id="districtCounts"></span></div>
+                <div id="schoolCount" class="d-none">Total No. of Applicants Selected in School : <span id="schoolWiseCounts"></span></div>
                 <table id="send_invitation_list" class="table table-bordered table-striped" width="100%">
                     <thead>
                         <tr>
@@ -201,7 +203,7 @@
 
 <script>
   var total_candidate = location.search.split('total_number=')[1] ? location.search.split('total_number=')[1] : '0';
-  console.log("total_candidate",total_candidate);
+  
   $('#total_candidate_display').html(total_candidate);
 
 $(document).ready(function() {
@@ -222,10 +224,11 @@ $(document).ready(function() {
     $(function() {
         $('#state').change( function() {
           // var grade = $('#grade').val();
-          // console.log('grade',grade);
+        //   console.log('grade',grade);
           // return false;
               var district_id = $(this).val();
-              console.log("district",district_id);
+            //   console.log();
+              
               // return false;
                 if (district_id != '') {
                     $('#othstate').val('').hide();
@@ -236,7 +239,10 @@ $(document).ready(function() {
                         dataType: 'html',
                         data: {'district_id': district_id, 'csfr_token_name': csfr_token_value},
                         success: function (data) {
+                            // console.log(data);
                             $('#district').html(data);
+                          
+                            
                         }
                     });
                 } 
@@ -263,8 +269,23 @@ $(document).ready(function() {
                    dataType: 'html',
                    data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade, 'csfr_token_name':csfr_token_value },
                    success: function(data) {
-                       console.log("data 31",data);
+                    
                        $('#send_invitation_list').html(data);
+                       // New Logic For Count Students on the basis of Distrcit Id  -- Jogi
+                        $.ajax({
+                            type: "GET", 
+                            url: base_url+'admin/Examshedule_schedule/districtWiseCountOfStudents',
+                            // dataType: 'html',
+                            data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade, 'csfr_token_name':csfr_token_value },
+                            success: function(data) {
+                                $('#countInDistrict').removeClass("d-none");
+                                $('#districtCounts').html(data);
+                                $('#schoolCount').addClass("d-none");
+                                $('#schoolWiseCounts').html('');
+                               
+                            }
+
+                            });
                    }
                 });
             }
@@ -279,8 +300,6 @@ $(document).ready(function() {
           var state_id = $('#state').val();
           var grade = $('#grade').val();
           var district_id = $(this).val();
-          // console.log("grade",grade);
-          // return false;
             if (district_id != '') {
            
                 $.ajax({
@@ -289,7 +308,7 @@ $(document).ready(function() {
                    dataType: 'html',
                    data: { 'district_id' : district_id, 'state_id':state_id, 'grade':grade, 'csfr_token_name':csfr_token_value },
                    success: function(data) {
-                      
+                      console.log(totalcountindistricts);
                        $('#send_invitation_list').html(data);
                    }
                 });
@@ -552,6 +571,70 @@ var table = $('#send_invitation_list').DataTable({
         }
 
     });
+      // New Logic For Count Students on the basis of School Id  -- Jogi
+$(document).ready(function () {
+let arr=[];
+$('.send_email_ids').click(function(e) {
+        if($(this).is(".send_email_ids:checked")) {
+            arr.push(e.target.value)
+        }
+        else{
+            arr = arr.filter(item => item !== e.target.value)
+        }
+      console.log(arr);
+        $.ajax({
+                type: "GET", 
+                url: base_url+'admin/Examshedule_schedule/totalCountSchoolWise',
+                data: { 'school_ids' : arr,'csfr_token_name':csfr_token_value },
+                success: function(data) {
+                    $('#schoolCount').removeClass("d-none");
+                    $('#schoolWiseCounts').html(data);
+                }
 
+            });
 
+    });
+
+$('.select_all_count').click(function(e) {
+    //  let arr=[];
+        // alert(this.checked).attr('rel');
+        // Iterate each checkbox
+        
+        $('.send_email_ids:checkbox').each(function() {
+        // alert(this.checked)
+            this.checked = true;     
+            var r= $(this).attr('value'); 
+            if(r !== 'undefined'){   
+                arr.push(r); 
+            
+            }
+        });
+        // console.log('testing',arr);
+        $.ajax({
+                type: "GET", 
+                url: base_url+'admin/Examshedule_schedule/totalCountSchoolWise',
+                data: { 'school_ids' : 'all','csfr_token_name':csfr_token_value },
+                success: function(data) {
+                    $('#schoolCount').removeClass("d-none");
+                    $('#schoolWiseCounts').html(data);
+                }
+
+            });
+
+    });
+
+$('.select_all_uncheck').click(function(e) {  
+    $('.send_email_ids:checkbox').each(function() {
+        // alert(this.checked)
+            this.checked = false;     
+            var r= $(this).attr('value'); 
+            if(r !== 'undefined'){   
+                arr.push(r); 
+            
+            }
+        }); 
+    $('#schoolCount').addClass("d-none");
+    });
+    
+})
 </script>

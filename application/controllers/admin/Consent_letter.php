@@ -223,11 +223,12 @@ public function consent_add_1() {
     }
     public function consent_add_3() {
         // $this->rbac->check_operation_access();
+    
         $admin_id = $this->session->userdata['admin_id'];
       
 
-    if (!$this->input->post('submit')) {
-
+    if ($this->input->post('submit')) {
+            
                 $data = [
                    'no_room' => $this->input->post('no_room'),
                     'no_sheet' => $this->input->post('no_sheet'),
@@ -255,8 +256,7 @@ public function consent_add_1() {
                 }
        
         } else {
-            echo 'kkk';
-            print_r($admin_id); die();
+           
             $data['admin'] = $this->admin_model->get_user_detail($admin_id);
             $data['user'] = $this->admin_model->get_old_data($admin_id);
             $this->load->view('admin/includes/_header');

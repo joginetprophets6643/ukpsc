@@ -67,9 +67,9 @@
 		  <div class="input-text">
 			   <div class="input-div">
 			   <label>Total Number of room<br>कक्षा की कुल संख्या</label> <span style="color:red">*</span>
-				  <input type="text" name="no_room" maxlength="2" value="<?php if (isset($user['no_room'])) {
+				  <input type="text"  name="no_room" maxlength="2" value="<?php if (isset($user['no_room'])) {
                                     echo $user['no_room'];
-                                } ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="no_room" >
+                                } ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="no_room"  readonly>
 				</div>
 				<div class="input-div">
 				<label>Number of seats for candidates in each room.<br>प्रत्येक कक्ष में अभ्यर्थियों के बैठने की संख्या</label><span style="color:red">*</span>
