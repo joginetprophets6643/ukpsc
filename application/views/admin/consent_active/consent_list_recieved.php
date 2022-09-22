@@ -129,6 +129,11 @@
 
 $(document).ready(function () {
 
+   var table = $('#example1').DataTable( {
+    "processing": true,
+    "serverSide": false, 
+  });
+
    // $("#consent_recieved").show().delay(5000).queue(function(n) {
    //     $(this).remove();
    // });

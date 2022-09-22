@@ -56,16 +56,16 @@ class Consent_active extends MY_Controller
     function consent_recieved_data()
 
     {
+        
         $data["row"] = $this->Certificate_model->get_all_active_consent_reg();
+       
         foreach ($data["row"] as $valueid){
             // echo '<pre>';
             $ref_id = $valueid['ref_id'];
             $get_full_data = $this->Certificate_model->get_all_data_consent($ref_id);
         }
 
-        // echo '<pre>';
-        // print_r($get_full_data);
-        // die;
+       
         $data["info"] = $get_full_data;
 
         // $data["info"] = $this->Certificate_model->get_all_active_consent();

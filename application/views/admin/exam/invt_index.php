@@ -370,8 +370,8 @@ var table = $('#send_invitation_list').DataTable({
 
 
     $('#select_all').click(function(event) {  
-
-        if($('input[name="send_email_ids"]:checked').length > 2){
+       console.log($('input[name="send_email_ids"]:checked').length);
+        if($('input[name="send_email_ids"]:checked').length > 0){
             // alert(123456);
             // return false;
             var send_consent_id = $("#send_consent_id").val()

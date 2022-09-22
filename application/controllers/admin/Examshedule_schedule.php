@@ -731,9 +731,9 @@ class Examshedule_schedule extends MY_Controller {
         $ids = $this->input->get('data');
      
         $send_consent_id = $this->input->get('send_consent_id');
-        // echo '123456';echo $send_consent_id;exit;
+        
         $new_id = urldecrypt($send_consent_id); 
-        // echo $new_id;exit;
+       
         $data['exam'] = $this->Exam_model->get_invites_byid($new_id);
         echo '<pre>';
         echo '<br/>';
@@ -749,14 +749,19 @@ class Examshedule_schedule extends MY_Controller {
         echo '<br/>';
 
         if(!empty($ids)){
-           
-          
             foreach ($ids as $id) {
+                $arr = [
+                    'exam_name' => $data['exam'][0]['subjectline'],
+                    'ref_id' => $new_id,
+                    'invite_sent' => '1',
+                    'invt_recieved' => '0'
+                ];
+                $this->db->where(['id' => $id])->update('ci_exam_registration', $arr);
                 // print_r($id);
-                $this->db->update('ci_exam_registration', ['invite_sent' => '1']);
-                $this->db->update('ci_exam_registration', ['invt_recieved' => '0']);
-                $this->db->update('ci_exam_invitation', ['invite_sent' => '1']);
-                $this->db->where('id', $id);
+                // $this->db->update('ci_exam_registration', ['invite_sent' => '1']);
+                // $this->db->update('ci_exam_registration', ['invt_recieved' => '0']);
+                // $this->db->update('ci_exam_invitation', ['invite_sent' => '1']);
+                // $this->db->where('id', $id);
             }
 
 
@@ -836,10 +841,20 @@ class Examshedule_schedule extends MY_Controller {
         }else{
             
             $id = $this->input->get('id');
-            $this->db->update('ci_exam_registration', ['invite_sent' => '1']);
-            $this->db->update('ci_exam_registration', ['invt_recieved' => '0']);
-            $this->db->update('ci_exam_invitation', ['invite_sent' => '1']);
-            $this->db->where('id', $id);
+            
+            // $this->db->where('ci_exam_registrationid', $id);
+            $arr = [
+                'exam_name' => $data['exam'][0]['subjectline'],
+                'ref_id' => $new_id,
+                'invite_sent' => '1',
+                'invt_recieved' => '0'
+            ];
+            $this->db->where(['id' => $id])->update('ci_exam_registration', $arr);
+            // $this->db->where(['id' => $id])->update('ci_exam_registration', ['ref_id' => $new_id]);
+            // $this->db->where(['id' => $id])->update('ci_exam_registration', ['invite_sent' => '1']);
+            // $this->db->where(['id' => $id])->update('ci_exam_registration', ['invt_recieved' => '0']);
+            // $this->db->update('ci_exam_invitation', ['invite_sent' => '1']);
+           
             
             $data['user_data'] = $this->Exam_model->get_all_invites_ids($id); 
 
