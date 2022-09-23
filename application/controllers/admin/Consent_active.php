@@ -616,9 +616,21 @@ public function consent_recieved(){
                     'created_at' => date('d-m-Y : h:m:s'),
                     'created_by' => $this->session->userdata('admin_id'),                                     
                     ];
-                // echo '<pre>';print_r($data);exit;
+                
                 $data = $this->security->xss_clean($data);
                 // $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
+
+                $dataUpdate = array(
+                    'invt_recieved' => '1'
+                );
+                $dataUpdate2 = array(
+                    'invt_recieved' => '1',
+                    'ref_id' =>$this->input->post('ci_exam_fileupload6')
+                );
+                 $this->db->where('admin_id', $admin_id);
+                            $this->db->update('ci_exam_registration', $dataUpdate2);
+                            $this->db->update('ci_exam_invitation', $dataUpdate);
+
                 $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
                 if ($result) {
                     $data['fileupload'] = 'fileupload';

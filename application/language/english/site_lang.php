@@ -642,7 +642,8 @@ $lang['consent_active_list'] = "Consent Active List";
 
 
 
-$lang['que_list'] = "Create Paper (Subject)";
+// $lang['que_list'] = "Create Paper (Subject)";
+$lang['que_list'] = "View Paper (Subject)";
 // $lang['exam_list'] = "Manage Exam";
 
 $lang['quepaper_list'] = "Question paper List ";

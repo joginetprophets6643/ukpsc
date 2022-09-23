@@ -10,16 +10,18 @@
             <th width="50">S.No.</th>
             <th>School Registration No.  </th>
             <th>School Name  </th>
-            <th>District</th>
-            <th>City</th>
+            <th>Address  </th>
+
+            <!-- <th>District</th>
+            <th>City</th> -->
             <th>Principal Details</th>
             <!-- <th>Exam Center Name</th> -->
-            <th>Bank Details</th>
+            <!-- <th>Bank Details</th>
             <th>Date of Apply</th>
             <th>Documents</th>
             <th width="120">Ranking & <?= trans('status') ?></th>
-            <th>Ranking</th>
-            <th width="120"><?= trans('action') ?></th>
+            <th>Ranking</th>-->
+            <th width="120"><?= trans('action') ?></th> 
          </tr>
       </thead>
       <tbody>
@@ -49,11 +51,14 @@
                   <?= $row['school_name'] ?>        
                </td>
                <td>
+                  <?= $row['address'] ?>        
+               </td>
+               <!-- <td>
                   <?= $row['district']; ?>
                </td>
                <td>
                   <?= $row['city']; ?>
-               </td>
+               </td> -->
                <td>
                   <h4 class="m0 mb5">
                      <?php echo $row['principal_name']; ?>
@@ -71,7 +76,7 @@
                      $row['exam_center_eng']
                      ?></small>
                   </td> -->
-               <td>
+               <!-- <td>
                   <h4 class="m0 mb5">
                      <?php echo $row['acc_holder_name']; ?>
                   </h4>
@@ -108,7 +113,7 @@
 
                   <?= $row['ranking_admin'] ?>
                   
-               </td>
+               </td> -->
                
                
 

@@ -33,15 +33,15 @@
         <?php $this->load->view('admin/includes/_messages.php') ?>
 
         <div class="card">
-            <div class="card-body">
+            <div class="card-body d-none">
 
                 <?php echo form_open("/",'class="filterdata"') ?>    
 
                 <div class="row">
                   
                     <?php 
-
-                    if (in_array($_SESSION['admin_role_id'], array(1,2,3,4,5,6))){?>
+                     
+                    if (in_array($_SESSION['admin_role_id'], array(1,2,3,4,5))){?>
 
                     <div class="col-md-4">
                     <label>District&nbsp;ज़िला</label>

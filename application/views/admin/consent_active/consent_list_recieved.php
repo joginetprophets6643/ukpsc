@@ -59,9 +59,17 @@
          <?php  if ($admin_role_id == 6 )  { ?>
            <!-- <a href="<?php //echo base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['ref_id'])); ?>" title="Reply"   class="btn btn-success btn-xs reply-btn"> -->
            <!-- <a href="<?= base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['id'])); ?>" title="Reply"   class="btn btn-success btn-xs reply-btn"> -->
-           <a href="<?= base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['cieid'])); ?>" title="Reply"   class="btn btn-success">
+           <?php
+               if($row['circonsents_signstamp_status'] == 1){
+               ?>
+           <a class="d-none" href="<?= base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['cieid'])); ?>" title="Reply"   class="btn btn-success">
             <i class="fa fa-reply"></i>
            </a>
+           <button type="button" class="btn btn-secondary" disabled>Applied</button>
+           <?php
+               }   
+            ?>
+           
             <?php //echo '<pre>'; print_r($row['ref_id']); exit; ?>
             <?php
                if($row['circonsents_signstamp_status'] != 1){

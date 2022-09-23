@@ -109,15 +109,7 @@
                             <label for="name" class="col-sm- control-label">Subject Name<br/>विषय नाम<span>*</span></label>
                                 <select name="sub_name[]" class="form-control" id="sub_name" >
                                     <option value="">Select Subject</option>
-                                    <?php
-                                        $b = $subject;
-                                        foreach ($subject as $k => $subject) { ?>
-                                            <option value="<?= $subject->id ?>">
-                                                <?php echo $subject->sub_name . '(' . $subject->sub_name_hindi . ')'; ?>
-                                            </option>
-
-                                        <?php }
-                                    ?>
+                                   
                                 </select>
                         </div>
                         
@@ -171,7 +163,7 @@ $(document).ready(function() {
     $(addButton).click(function(){
 
         if(x < maxField){ 
-            var fieldHTML ='<div id="'+x+'"><div class="after-add-more field_wrapper"><div class="row"><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">District<i style="color:#ff0000; font-size:12px;">*</i></label> <select class="state" name="state[]" id="state'+x+'" class="form-control" onchange="getval(this,'+x+');"><option value=""><?= trans('select_state') ?></option><?php foreach ($states as $k => $state) { ?><option value="<?= $state->id ?>"><?= $state->name ?></option><?php } ?></select></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">District Code<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="district_code[]" id="district_code'+x+'" min=1 class="form-control" required placeholder="District Code"/></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">City<i style="color:#ff0000; font-size:12px;">*</i></label> <select name="city[]" id="city'+x+'" class="form-control"><option value=""> Select City</option></select></div></div><div class="col-md-1"><div class="form-group"><label for="name" class="col-sm- control-label">City Code<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="city_code[]" id="city_code'+x+'" min=1 class="form-control" required placeholder="City Code"/></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">Subject Name <i style="color:#ff0000; font-size:12px;">*</i></label> <br/><select name="sub_name[]" class="form-control" id="sub_name'+x+'" required><option value="">Select Subject</option><?php foreach ($b as $k => $subjects) { ?> <option value="<?php echo $subjects->id; ?>" ><?php echo $subjects->sub_name."(".$subjects->sub_name_hindi.")"; ?></option><?php } ?></select></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">No. of Candidate<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="number_of_can[]" id="number_of_can'+x+'" min=1 class="form-control" required placeholder="No. of Candidate"/></div></div><div class="col-md-1"><a class="btn btn-danger remove_button" style="height:34px ; margin-top:29px; padding:5px 12px; text-align:center; color:white; font-weight:bolder;"> - </a></div></div> </div>';
+            var fieldHTML ='<div id="'+x+'"><div class="after-add-more field_wrapper"><div class="row"><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">District<i style="color:#ff0000; font-size:12px;">*</i></label> <select class="state" name="state[]" id="state'+x+'" class="form-control" onchange="getval(this,'+x+');"><option value=""><?= trans('select_state') ?></option><?php foreach ($states as $k => $state) { ?><option value="<?= $state->id ?>"><?= $state->name ?></option><?php } ?></select></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">District Code<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="district_code[]" id="district_code'+x+'" min=1 class="form-control" required placeholder="District Code"/></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">City<i style="color:#ff0000; font-size:12px;">*</i></label> <select name="city[]" id="city'+x+'" class="form-control"><option value=""> Select City</option></select></div></div><div class="col-md-1"><div class="form-group"><label for="name" class="col-sm- control-label">City Code<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="city_code[]" id="city_code'+x+'" min=1 class="form-control" required placeholder="City Code"/></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">Subject Name <i style="color:#ff0000; font-size:12px;">*</i></label> <br/><select name="sub_name[]" class="form-control" id="sub_name'+x+'" required><option value="">Select Subject</option><?php foreach ($subject as $k => $subjects) { ?> <option value="<?php echo $subjects->id; ?>" ><?php echo $subjects->sub_name."(".$subjects->sub_name_hindi.")"; ?></option><?php } ?></select></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">No. of Candidate<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="number_of_can[]" id="number_of_can'+x+'" min=1 class="form-control" required placeholder="No. of Candidate"/></div></div><div class="col-md-1"><a class="btn btn-danger remove_button" style="height:34px ; margin-top:29px; padding:5px 12px; text-align:center; color:white; font-weight:bolder;"> - </a></div></div> </div>';
 
              
             x++;             
@@ -299,4 +291,23 @@ function getval(sel,id){
     }
 }
 
+$('document').ready(function () {
+$("#exam_name").change(function () {
+        var id = $('select[name=exam_name]').val();
+        var url = "<?php echo base_url('admin/Examshedule_schedule/getSubjectNameNew/');?>"
+        alert(id);
+               // 22-09-2022
+                $.ajax({
+                    url:url,
+                    type: 'get',
+                    dataType: 'html',
+                    data: { 'exam_id' : id, 'csfr_token_name':csfr_token_value },
+                    success: function (data) {
+                        console.log('hete');
+                       $('#sub_name').html(data);
+                    // console.log();
+                    }
+                });
+    });
+});
 </script>                        
