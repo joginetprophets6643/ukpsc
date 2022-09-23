@@ -61,6 +61,9 @@
     .cursor {
         cursor: pointer;
     }
+    .form-background {
+        height: 100%;
+    }
 </style>
 
 <div class="form-background">
@@ -71,20 +74,20 @@
                 <img src="<?= base_url(); ?>assets/dist/img/ukpsc_logo.png" />
             </div>-->
             <div class="card-body login-card-body">
-                <div class="row" style="border: 1px solid #142085; border-radius: 20px;">
+                <div class="row" style="border: 1px solid #373250; border-radius: 20px;">
 
                     <div class="" style="color:#fff; width:682.5px"><img style="border-radius: 20px 0 0px 20px;height: 100%; width: 100%;"
                             src="<?= base_url(); ?>assets/dist/img/side_bg2.jpg" /></div>
                     <div class="column"
-                    style="background-color: #142085; border-radius: 0 20px 20px 0; color:#fff; width:430px; padding: 0.98rem 2rem;">
+                    style="background-color: #373250; border-radius: 0 20px 20px 0; color:#fff; width:430px; padding: 0.98rem 2rem;">
 
-                        <p class="login-box-msg">User Login (उपयोगकर्ता लॉगिन)</p>
-                        <hr class="style1">
+                        <p class="login-box-msg text-bold">User Login (उपयोगकर्ता लॉगिन)</p>
+                        <hr class="style1" style="border-color: #fff;">
 
                         <?php $this->load->view('admin/includes/_messages.php') ?>
 
                         <?php echo form_open(base_url('admin/auth/login'), 'id="xin-form"  class="login-form" '); ?>
-                        <div class="form-group has-feedback col-12">
+                        <div class="form-group has-feedback col-12 mt-4 mb-4">
                             <!-- <label>Enter Username</label> -->
                             <script type="text/javascript">
                                 $(function () {
@@ -98,7 +101,7 @@
                             <label>Institute ID / Email ID (संस्थान आईडी / ईमेल आईडी)</label>
                             <input type="text" name="username" id="name" class="form-control" placeholder="">
                         </div>
-                        <div class="form-group col-12 atz">
+                        <div class="form-group col-12 atz mb-4">
                             <label>Password (पासवर्ड)</label>
                             <input type="password" name="password" id="password" class="form-control" placeholder="">
 
@@ -153,7 +156,7 @@
 
                                     </script>
                                 </div>
-                                <div class="col-12 mb-5">
+                                <div class="col-12 mb-4">
                                     <div class="row align-items-center">
                                         <div class="col-3">
                                             <label class="mb-0">Captcha</label>
@@ -172,12 +175,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="mb-1" style="font-size: 16px;">
+                                    <p class="mb-1 text-white" style="font-size: 16px;">
                                         <a href="<?= base_url('admin/auth/forgot_password'); ?>">
                                             <?= trans('i_forgot_my_password') ?> ? (पासवर्ड भूल गए?)
                                         </a>
                                     </p>
-                                    <p class="mb-0" style="font-size: 12px;margin:10px 0 0 0;">
+                                    <p class="mb-0" style="font-size: 12px;margin:12px 0 0 0;">
                                         <label class="mb-0" style="font-size: 13px;">
                                             <span class="mb-4" style="color: #c7c7c7;">Don't have a UKPSC ID? (यूकेपीएससी आईडी नहीं है?)</span>
                                             <a

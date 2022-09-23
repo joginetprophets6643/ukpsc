@@ -27,16 +27,12 @@
 .form-background {
     min-height: 100%;
     overflow-x: hidden;
-    /* background-image: url(../../img/ukpsc-bg.jpg) !important;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
     background: linear-gradient(#e8e8e8 120px,white,#3a4a6bcc) !important;
 }
 input:focus,
 select:focus {
     background-color: #e1eaff !important;
-    border-color: #142085 !important;
+    border-color: #373250 !important;
     box-shadow: none !important;
 }
 input,
@@ -62,51 +58,80 @@ select {
 }
 .btn-signin {
     border-color: #fff;
-    background-color: #ffa500;
+    background-color: #E14658;
     color: #fff;
     font-weight: 600;
 }
-.btn-signin:hover {
-    border-color: #ffa500;
-    background-color: #fff;
-    color: #ffa500;
+.btn-signin:hover,
+.btn-signin:focus {
+    border-color: #E14658 !important;
+    background-color: #fff !important;
+    color: #E14658;
 }
-.form-background {
-    height: 100%;
+.hs-pass a {
+    color: #fff;
 }
-.has-feedback a:hover {
-    color:#ffa500;
+.has-feedback a:hover,
+.hs-pass a:hover {
+    color:#E14658;
 }
 .sidebar-dark-primary {
-    background-color: #091583;
-    color: #fff;
+    background-color: #373250 !important;
+    color: #fff !important;
 }
 .sidebar-dark-primary .sidebar a {
-    color: #fff;
+    color: #fff !important;
 }
 [class*="sidebar-dark"] .user-panel {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #fff !important;
 }
 .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active {
-    color: #ffffff;
-    background-color: #17a2b8;
+    color: #ffffff !important;
+    background-color: #567670 !important;
 }
 
 .content-wrapper, .main-footer, .main-header {
-    margin-left: 280px;
+    margin-left: 280px !important;
 }
 .main-sidebar, .main-sidebar:before {
-    width: 280px;
+    width: 280px !important;
 }
 .sidebar-dark-primary .nav-sidebar > .nav-item.menu-open > .nav-link {
     color: #ffffff;
-    background-color: #17a2b8;
+    background-color: #567670 !important;
 }
 .sidebar-dark-primary .nav-sidebar > .nav-item.menu-open > .nav-link.active {
     color: #ffffff;
-    background-color: #ffa500;
+    background-color: #E14658 !important;
 }
 .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link:hover {
     color: #ffffff;
-    background-color: #ffa500;
+    background-color: #E14658 !important;
+}
+.container .card .left-side {
+    background-color: #17a2b8 !important;
+}
+.progress-bar li::before {
+    background-color: #091583 !important;
+}
+.progress-bar li {
+    margin-left: 32px !important;
+    font-size: 14px;
+    color: #d6d7d9 !important;
+}
+.login-box-msg {
+    font-size: 18px !important;
+}
+.retrive {
+    padding: 12px !important;
+    color: #C0B3A0;
+}
+.fpass #captcha {
+    color: #fff;
+    background: #eee;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+.text-normal {
+    font-weight: 500 !important;
 }

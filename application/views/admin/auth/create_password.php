@@ -57,7 +57,7 @@
 <div class="form-background">
   <div class="login-box">
     <!-- /.login-logo -->
-    <div class="card">
+    <div class="card" style="background: #373250; color:#fff;">
       <div class="card-body login-card-body">
         <div class="login-logo mb-4">
           <img src="<?= base_url(); ?>assets/dist/img/ukpsc_logo.png" height="150" /> 
@@ -65,19 +65,19 @@
 
         <div class="row">
 
-          <div class="column" style="background-color: #72dfa8; border-radius: 1.25rem; margin:0 auto;">
+          <div class="column col-10">
 
-            <p class="login-box-msg">
-              <?= trans('create_password') ?>(पासवर्ड बनाएं)
+            <p class="login-box-msg text-bold">
+              <?= trans('create_password') ?> (पासवर्ड बनाएं)
             </p>
 
-            <hr class="style1">
+            <hr class="style1" style="border-color:#fff;">
 
             <?php $this->load->view('admin/includes/_messages.php') ?>
 
             <?php echo form_open(current_url(), 'class="login-form"  id="xin-form" '); ?>
 
-            <div class="form-group has-feedback col-10">
+            <div class="form-group has-feedback col-12 mt-4">
 
               <!-- <label>Enter Username</label> -->
 
@@ -105,7 +105,7 @@
 
             </div>
 
-            <div class="form-group col-10 atz">
+            <div class="form-group col-12 atz">
 
               <label>Confirm Password (पासवर्ड की पुष्टि कीजिये)</label>
 
@@ -122,7 +122,7 @@
 
               <label>&nbsp;</label>
 
-              <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat"
+              <input type="submit" name="submit" id="submit" class="btn btn-signin btn-block btn-flat"
                 value="<?= trans('create') ?> (पासवर्ड बनाएं)">
             </div>
 
@@ -184,8 +184,6 @@
     // createCaptcha();
 
     $("#xin-form")["submit"](function () {
-
-
 
       var password = $("#password").val();
 

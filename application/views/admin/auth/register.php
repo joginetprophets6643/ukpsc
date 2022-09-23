@@ -15,15 +15,15 @@
 
 <div class="form-background"> 
     <div class="register-box">
-        <div class="card_reg"  >
-            <div class="register-logo" style="background-color:#142085; color:#fff; border-radius:20px 20px 0 0;">				
+        <div class="card_reg" style="border-color: #373250;" >
+            <div class="register-logo" style="background-color:#373250; color:#fff; border-radius:20px 20px 0 0;">				
                 <div style="float:left; margin: 1% 0 0 1%; "><img style="width: 100px;" src="<?= base_url(); ?>assets/dist/img/ukpsc_logo.png" /></div>
-				<div style="float:right"> <p class="mb-4 head1 text-bold" style="background-color:#142085; margin: 8% 0 0 0%; ">Registration of School/College for UKPSC Exam Centre <br>यूके0पी0एस0सी0 परीक्षा केंद्र के लिए स्कूल/कॉलेज का पंजीकरण</p></div>
+				<div style="float:right"> <p class="mb-4 head1 text-bold" style="background-color:#373250; margin: 8% 0 0 0%; ">Registration of School/College for UKPSC Exam Centre <br>यूके0पी0एस0सी0 परीक्षा केंद्र के लिए स्कूल/कॉलेज का पंजीकरण</p></div>
                 <!--<h2><a href="<?= base_url('admin'); ?>"><?= $this->general_settings['application_name']; ?></a></h2>-->
         </div>
             <div class="card-body register-card-body custom-register" style="border-radius: 0 0 20px 20px; background: #fff;">
                 <?php $this->load->view('admin/includes/_messages.php') ?>
-                <label class="mb-4" style="font-style: oblique; color: #2a348f;"><span class="mr-1" style="color:red;font-style: italic;">*</span>Marked fields are mandatory (चिह्नित फ़ील्ड अनिवार्य हैं)</label>
+                <label class="mb-4" style="font-style: oblique; color: #373250;"><span class="mr-1" style="color:red;font-style: italic;">*</span>Marked fields are mandatory (चिह्नित फ़ील्ड अनिवार्य हैं)</label>
                 <?php echo form_open(base_url('admin/auth/register'), 'id="xin-form" class="login-form" '); ?>
                 <script type="text/javascript">
                     $(function () {
@@ -157,10 +157,10 @@
                             <div class="col-md-12">
                                 <div class="d-flex justify-content-center">
                                     <div class="form-group has-feedback mr-4">
-                                    <input type="reset" name="" id="" class="btn btn-primary btn-block btn-flat" value="Reset (रीसेट करें)"> 
+                                    <input type="reset" name="" id="" class="btn btn-signin btn-block btn-flat" value="Reset (रीसेट करें)"> 
                                     </div>
                                      <div class="form-group has-feedback">
-                                    <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat" value="<?= trans('create_form_new') ?> (खाता बनाएं)">
+                                    <input type="submit" name="submit" id="submit" class="btn btn-signin btn-block btn-flat" value="<?= trans('create_form_new') ?> (खाता बनाएं)">
                                     </div>
                                 </div>
 

@@ -670,7 +670,8 @@ $lang['exam_list'] = "Create Exam Detail";
 $lang['invt_list'] = "Create Exam Schedule";
 
 
-$lang['app_of_candidate'] = "Candidate Applications(District Wise)";
+// $lang['app_of_candidate'] = "Candidate Applications(District Wise)";
+$lang['app_of_candidate'] = "Candidate Applications";
 
 
 $lang['create_letter'] = "Create Letter";
