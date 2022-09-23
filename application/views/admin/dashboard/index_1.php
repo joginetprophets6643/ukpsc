@@ -4,11 +4,11 @@
 
       <div class="container-fluid">
 
-        <div class="row mb-2">
+        <div class="row">
 
           <div class="col-sm-6">
 
-            <h1 class="m-0 text-dark"><?= trans('dashboard') ?> (Super Admin)</h1>
+            <h3 class="mb-0 text-head"><?= trans('dashboard') ?> (Super Admin)</h3>
 
           </div>
 
@@ -60,7 +60,7 @@
 
           </div>
 
-          <div class="col-lg-3 col-6"style="display:none;"">
+          <div class="col-lg-3 col-6"style="display:none;">
 
             <div class="small-box bg-info">
 

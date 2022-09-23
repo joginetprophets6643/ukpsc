@@ -61,9 +61,6 @@
     .cursor {
         cursor: pointer;
     }
-    .form-background {
-        height: 100%;
-    }
 </style>
 
 <div class="form-background">

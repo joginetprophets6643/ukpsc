@@ -31,7 +31,7 @@
 }
 input:focus,
 select:focus {
-    background-color: #e1eaff !important;
+    background-color: #c0b3a057 !important;
     border-color: #373250 !important;
     box-shadow: none !important;
 }
@@ -41,20 +41,23 @@ select {
 }
 .form-group label {
     font-size: 1rem;
+    color: #373250;
+    padding: 0;
 }
 .form-group {
     margin-bottom: 1.2rem;
 }
 .btn-primary {
-    background-color: #142085;
-    border-color: #142085;
+    background-color: #E14658;
+    border-color: #E14658;
 }
 .btn-primary:hover,
 .btn-primary:focus, 
 .btn-primary:active:focus,
 .btn-primary:active {
-    background-color: #fff;
-    color: #142085 !important;
+    background-color: #fff !important;
+    color: #E14658 !important;
+    border-color: #E14658 !important;
 }
 .btn-signin {
     border-color: #fff;
@@ -134,4 +137,40 @@ select {
 }
 .text-normal {
     font-weight: 500 !important;
+}
+.login-box {
+    margin: 0 !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-50%) !important;
+}
+.text-head {
+    color: #373250;
+    font-size: 1.55rem;
+    font-weight: 600;
+}
+.content-header {
+    padding: 15px 0.8rem;
+}
+.breadcrumb .breadcrumb-item a {
+    color: #373250;
+    font-weight: 600;
+}
+.breadcrumb .breadcrumb-item.active {
+    color: #567670;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #373250;
+}
+.small-box h3, 
+.small-box a, 
+.small-box p 
+{
+    color: #fff !important;
+    font-weight: 600;
+}
+.card-header .card-title {
+    color: #E14658;
+    font-weight: 600;
 }

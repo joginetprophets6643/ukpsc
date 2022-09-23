@@ -4,11 +4,11 @@
 
   <div class="container-fluid">
 
-    <div class="row mb-2">
+    <div class="row">
 
       <div class="col-sm-6">
 
-        <h1 class="m-0 text-dark"><?= trans('dashboard') ?></h1>
+        <h3 class="mb-0 text-head"><?= trans('dashboard') ?></h3>
 
       </div>
 
