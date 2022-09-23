@@ -64,6 +64,7 @@ class Master_model extends CI_Model {
         return true;
     }
 
+
     public function add_exam($data) {
 
         $this->db->insert('ci_exam_master', $data);
@@ -314,6 +315,31 @@ public function get_diseases_by_id($id) {
     }
 
 
+// New Code 22-09-2022 ----JOgi
+    public function get_subject_new_by_id($id) {
+        $query = $this->db->get_where('ci_subject', array('exam_id' => $id));
+        // $this->db->get('ci_establishment_type')
+        return $result = $query->result_array();
+    }
+    public function edit_subject_new_by_id($id) {
+        $query = $this->db->get_where('ci_subject', array('id' => $id));
+        // $this->db->get('ci_establishment_type')
+        return $result = $query->row_array();
+    }
+
+    // New Code 22-09-2022
+   public function edit_subjectNew($data,$id) {
+
+        $this->db->where('id', $id);
+        $this->db->update('ci_subject', $data);
+        return true;
+    }
+    // New Code 22-09-2022
+   public function add_subjectNew($data) {
+
+        $this->db->insert('ci_subject', $data);
+        return true;
+    }
 }
 
 ?>

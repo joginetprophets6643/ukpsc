@@ -269,11 +269,13 @@ class Examshedule_schedule extends MY_Controller {
     // 21-09-2022 New Functoin Add 
     public function districtWiseCountOfStudents()
     {
-        if(isset($_GET['district_id']))
+        if(isset($_GET['state_id']) && isset($_GET['district_id']))
         {
             $id = $_GET['state_id'];
             $state_name = get_district_name($id);
-            $districtWiseCountOfStudents = $this->Exam_model->getTotalCountinDistrict($state_name);
+            $district_id = $_GET['district_id'];
+            $city_name = get_subcity_name($district_id);
+            $districtWiseCountOfStudents = $this->Exam_model->getTotalCountinDistrict($state_name,$city_name);
             echo $districtWiseCountOfStudents;
             exit;
 
@@ -1099,14 +1101,14 @@ class Examshedule_schedule extends MY_Controller {
     public function consent_recieved_by_user_list() {
         // urldecrypt($id)
         $id = urldecrypt($this->uri->segment(4));
-       
+         
         // $this->rbac->check_operation_access();
         
         $data['states'] = $this->location_model->get_states();
-
+         
         $data['title'] = 'Recieved Consent';
         $data['id'] = $id;
-        
+    
         $this->load->view('admin/includes/_header', $data);
        
         $this->load->view('admin/exam/invt_recived_index', $data);
@@ -1272,7 +1274,7 @@ class Examshedule_schedule extends MY_Controller {
     public function consent_not_recieved_by_user_list() {
     //    echo ('hi'); die();
         // $this->rbac->check_operation_access();
-        $id = $this->uri->segment(4);
+        $id = urldecrypt($this->uri->segment(4));
         $data['states'] = $this->location_model->get_states();
         
         $data['title'] = 'Recieved Not Consent';
@@ -1473,9 +1475,7 @@ class Examshedule_schedule extends MY_Controller {
 
     public function consent_notrecieved_by_user_data($id) {
 
-        // $data['info'] = $this->Exam_model->get_consent_not_recved_data();
-        // echo '<pre>';print_r($data['info']); die();
-        // $this->load->view('admin/exam/consnt_notrecievd_list', $data);
+      
         $data['states'] = $this->location_model->get_states();
 
         $state_name = $city_name = $grade_name = '';
@@ -1666,6 +1666,27 @@ class Examshedule_schedule extends MY_Controller {
         $this->load->view('admin/exam/send_letter_list', $data);
     }
 
+    public function getSubjectNameNew() {
+
+        if(isset($_GET['exam_id']))
+        {
+            $id = $_GET['exam_id'];
+            $subjectList = $this->Exam_model->get_subject_new_by_id($id);
+            if (count($subjectList)==0) {
+                $options = '<option value="">' .' Add Subjects First'. '</option>';
+            }
+            else{
+                $options = '<option value="">' .'Select Subject'. '</option>';
+                foreach ($subjectList as $r) {
+                    $options .= '<option value="' . $r['id'] . '">' . $r['sub_name'].'('.$r['sub_name_hindi'].')' . '</option>';
+                }
+    
+            }
+            
+        
+            echo $options;
+        }
+    }
 
 
 

@@ -379,7 +379,8 @@
     $(document).ready(function () {
         
         $("#xin-form")["submit"](function () {
-        
+        // $("#form_submit_validation")(function () {
+        // $("#form_submit_validation").click(function() {    
             var fileName1 = $("#fileName1").val();
             var extension1 = fileName1.split('.').pop().toUpperCase();   
             if (fileName1 == "") {

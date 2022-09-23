@@ -216,12 +216,13 @@ class Exam_model extends CI_Model {
         return $module;
     }
 // NEW LOGIC FOR COUNTS
-    public function getTotalCountinDistrict($district_name)
+    public function getTotalCountinDistrict($district_name,$city_name)
     {
      
             $this->db->select_sum('ci_exam_registration.max_allocate_candidate');
             $this->db->from('ci_exam_registration');
             $this->db->where('ci_exam_registration.district',$district_name);
+            $this->db->where('ci_exam_registration.city',$city_name);
             $this->db->order_by('max_allocate_candidate desc');
             $query = $this->db->get();
             $data = $query->result_array();
@@ -1748,6 +1749,11 @@ public function get_invitation_data($id) {
         return $result = $query->result_array();
 
     }
-
+// New Code 22-09-2022 ----JOgi
+public function get_subject_new_by_id($id) {
+    $query = $this->db->get_where('ci_subject', array('exam_id' => $id));
+   
+    return $result = $query->result_array();
+}
 
 }

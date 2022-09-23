@@ -10,12 +10,10 @@
       <div class="card-header">
         <div class="d-inline-block">
           <!-- <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; <?php //echo trans('establishment_type') ?> List</h3> -->
-          <h3 class="card-title "><i class="fa fa-list"></i>&nbsp; Subject List&nbsp;(विषय सूची)</h3>
+          <h3 class="card-title"><i class="fa fa-list"></i> <?php echo $title?> &nbsp;(विषय सूची)</h3>
         </div>
-          <div class="float-right d-none">
-          <?php if($this->rbac->check_operation_permission('quetion_paper_add')): ?>
-            <a href="<?= base_url('admin/master/quetion_paper_add'); ?>" class="btn btn-success">Add Subject &nbsp;(विषय जोड़ें)</a>
-          <?php endif; ?>
+          <div class="d-inline-block float-right">
+            <a href="<?php echo base_url('admin/master/addSubjectNew/' . urlencrypt($id))?>" class="btn btn-success">Add Subject &nbsp;(विषय जोड़ें)</a>
         </div>
       </div>
     </div>
@@ -25,13 +23,24 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Exam Name</th>
               <th>Subject English Name</th>
               <th>Subject Hindi Name</th>
                <th>Subject Code</th>
+               <!-- <th>Status</th> -->
               <th>Action</th>
             </tr>
           </thead>
+          <?php foreach ($subjectList as $key => $value) {?>
+              <tr>
+              <td><?php echo $value['id'] ?></td>
+              <td><?php echo $value['sub_name'] ?></td>
+              <td><?php echo $value['sub_name_hindi'] ?></td>
+              <td><?php echo $value['sub_code'] ?></td>
+              <td> <a title="Edit"  class="update btn btn-sm btn-success" href="<?php echo base_url('admin/master/edit_subject_new/' . urlencrypt($value['id']).'/'.urlencrypt($value['exam_id']))?>"> <i class="fa fa-edit"></i></a> </td>
+       
+            </tr>
+          <?php } ?>
+        
         </table>
       </div>
     </div>
@@ -56,10 +65,6 @@ $(document).ready(function () {
   var table = $('#na_datatable').DataTable( {
     "processing": true,
     "serverSide": false,
-    "ajax": "<?=base_url('admin/master/datatable_json')?>",
-    "order": [[0,'asc']],
-    "columnDefs": [
-    { "targets": 0, "name": "id", 'searchable':true, 'orderable':true},
-    ]
+ 
   });
 </script>

@@ -48,7 +48,7 @@ class Consent_active extends MY_Controller
     {
 
         $data["info"] = $this->Certificate_model->get_all_active_consent();
-
+       
         $this->load->view("admin/consent_active/consent_list", $data);
 
     }
@@ -62,6 +62,7 @@ class Consent_active extends MY_Controller
         foreach ($data["row"] as $valueid){
             // echo '<pre>';
             $ref_id = $valueid['ref_id'];
+            
             $get_full_data = $this->Certificate_model->get_all_data_consent($ref_id);
         }
 
@@ -154,7 +155,7 @@ public function consent_recieved(){
 
     }
     public function consent_add() {
-        // echo '123456789';exit;
+       
         // $this->rbac->check_operation_access();
         $admin_id = $this->session->userdata['admin_id'];
        

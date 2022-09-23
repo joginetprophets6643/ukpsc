@@ -67,10 +67,7 @@
                if($row['circonsents_signstamp_status'] != 1){
                ?>
                   <!-- <a href="<?= base_url("admin/consent_active/consent_add/" . $_SESSION['admin_id']).'/'.$row['id']; ?>" title="Apply" rel="<?php echo $row['id'] ?>" class="btn btn-warning btn-xs update_db apply-btn"> -->
-                     <!-- Apply   -->
-                     <!-- <i class="fa fa-apply"></i> -->
-                     <!-- <i class="fa fa-reply"></i> -->
-                  <!-- </a> -->
+            
                   <a href="<?= base_url("admin/consent_active/consent_add/" . $_SESSION['admin_id']).'/'.$row['cieid']; ?>" title="Apply" rel="<?php echo $row['cieid'] ?>" class="btn btn-warning apply-btn">
                      Apply  
                   </a>   

@@ -332,10 +332,10 @@ class Certificate_model extends CI_Model {
 	
 	 public function get_all_active_consent() {
         $admin_id = $this->session->userdata('admin_id');
-        // echo $examinationid;exit;
-        $this->db->where('invite_sent','1');
-        // $this->db->where('id',$examinationid);
+        $this->db->where('ci_exam_invitation.invite_sent','1');
+        $this->db->where('admin_id',$admin_id);
         $this->db->from('ci_exam_invitation');
+        $this->db->join(' ci_exam_registration', ' ci_exam_registration.ref_id = ci_exam_invitation.id');
         $this->db->order_by('ci_exam_invitation.id', 'desc');
    
         $query = $this->db->get();
@@ -343,6 +343,7 @@ class Certificate_model extends CI_Model {
     }
     public function get_all_data_consent($ref_id) {
     
+        $ref_id = isset($ref_id)?$ref_id:0;
         $admin_id = $this->session->userdata('admin_id');
      
         // // echo $examinationid;exit;
@@ -398,7 +399,7 @@ public function get_all_active_consent_reg() {
     //     $this->db->join('ci_exam_registration',
     //             'ci_exam_registration.admin_id =ci_exam_invitation.id');
     //     // $this->db->where('ci_exam_registration.admin_id', $admin_id);
-    //     // $this->db->where('invite_sent','1');
+    //     $this->db->where('invite_sent','1');
     //     $this->db->order_by('ci_exam_registration.admin_id', 'asc');
     //     $query = $this->db->get();
     //     return $query->result();

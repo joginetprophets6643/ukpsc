@@ -200,19 +200,19 @@ $(document).ready(function() {
                     data: {'district_id': district_id, 'csfr_token_name': csfr_token_value},
                     success: function (data) {
                         console.log(data);
-                        for (i = 0; i < data.length; i++) {
-                            console.log(data.subcityname);
-                        // $('#city').append(`<option value="${data.id}">
-                        //                ${data.subcityname}
-                        //           </option>`);
-                        } 
+                        // for (i = 0; i < data.length; i++) {
+                        //     console.log(data.subcityname);
+                        // // $('#city').append(`<option value="${data.id}">
+                        // //                ${data.subcityname}
+                        // //           </option>`);
+                        // } 
                        
                         // return false;
-                        // $('#city').html(data);
+                        $('#city').html(data);
                     }
                 });
             } else {
-             alert('else');
+          
                 $('#state').val('').hide();
                 // $('#othstate').show();
             }
@@ -271,7 +271,7 @@ $(document).ready(function() {
 
 function getval(sel,id){
     // alert(sel.value);
-    alert(id);
+   
     // console.log(s[s.selectedIndex].id);
     var district_id = sel.value;
     // var district_id = $(this).val();

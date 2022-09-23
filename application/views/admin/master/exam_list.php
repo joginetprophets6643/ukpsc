@@ -30,9 +30,8 @@
                <th>No of Candidates</th>
                <th>Start Date</th>
                <th>End Date</th>
-               <!-- <th>Status</th> -->
+              <th>Add/Edit Subject</th>
               <th>Action</th>
-
             </tr>
           </thead>
         </table>

@@ -46,7 +46,7 @@
 
                                     <option value="">Select Exam Name</option>
 
-                                    <?php
+                                 <?php
                          foreach ($exam as $k => $exam) { ?>
 
                                     <option value="<?= $exam->id ?>">
@@ -55,6 +55,7 @@
 
                                     <?php }
                         ?>
+                        
 
                                 </select>
 
@@ -107,17 +108,17 @@
                                 <select name="sub_name[]" class="form-control" id="sub_name" style="width:420px;">
                                     <option value="">Select Subject</option>
 
-                                    <?php
-                                        $b = $subject;
+                                    <!-- <?php
+                                       // $b = $subject;
 
-                                        foreach ($subject as $k => $subject) { ?>
+                                       // foreach ($subject as $k => $subject) { ?>
 
                                                     <option value="<?= $subject->id ?>">
-                                                        <?php echo $subject->sub_name.'(' .$subject->sub_name_hindi .')'; ?>
+                                                        <?php //echo $subject->sub_name.'(' .$subject->sub_name_hindi .')'; ?>
                                                     </option>
 
-                                                    <?php }
-                                    ?>
+                                                    <?php //}
+                                    ?> -->
                                 </select>
                             </div>
                         </div>
@@ -387,7 +388,6 @@
     $("#exam_name").change(function () {
         var id = $('select[name=exam_name]').val();
         var url = "<?php echo base_url('admin/examshedule_schedule/fetch_examname_data/');?>"
-        // alert(id); 
         $.ajax({
             url: url + id,
             type: 'get',
@@ -398,8 +398,17 @@
                 $('#no_candidate').val(data.no_of_cand);
                 $('#startdate').val(data.start_date_exam);
                 $('#end_date').val(data.end_date_exam);
-                // $('#no_candidate').val(data.no_candidate); 
-                // alert(data.id)
+               // 22-09-2022
+                $.ajax({
+                    url: base_url+'admin/Examshedule_schedule/getSubjectNameNew',
+                    type: 'get',
+                    dataType: 'html',
+                    data: { 'exam_id' : id, 'csfr_token_name':csfr_token_value },
+                    success: function (data) {
+                       $('#sub_name').html(data);
+                    // console.log();
+                    }
+                });
 
             }
         });

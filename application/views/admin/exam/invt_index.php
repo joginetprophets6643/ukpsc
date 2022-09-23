@@ -308,8 +308,23 @@ $(document).ready(function() {
                    dataType: 'html',
                    data: { 'district_id' : district_id, 'state_id':state_id, 'grade':grade, 'csfr_token_name':csfr_token_value },
                    success: function(data) {
-                      console.log(totalcountindistricts);
+                     
                        $('#send_invitation_list').html(data);
+                         // New Logic For Count Students on the basis of Distrcit Id  -- Jogi
+                         $.ajax({
+                            type: "GET", 
+                            url: base_url+'admin/Examshedule_schedule/districtWiseCountOfStudents',
+                            // dataType: 'html',
+                            data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade, 'csfr_token_name':csfr_token_value },
+                            success: function(data) {
+                                $('#countInDistrict').removeClass("d-none");
+                                $('#districtCounts').html(data);
+                                $('#schoolCount').addClass("d-none");
+                                $('#schoolWiseCounts').html('');
+                               
+                            }
+
+                            });
                    }
                 });
             }
@@ -571,7 +586,9 @@ var table = $('#send_invitation_list').DataTable({
         }
 
     });
-      // New Logic For Count Students on the basis of School Id  -- Jogi
+
+
+    // New Logic For Count Students on the basis of School Id  -- Jogi
 $(document).ready(function () {
 let arr=[];
 $('.send_email_ids').click(function(e) {
