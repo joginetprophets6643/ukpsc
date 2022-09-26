@@ -367,7 +367,7 @@ $(document).ready(function() {
 var table = $('#send_invitation_list').DataTable({
     "processing": true,
     "serverSide": false,
-    "ajax": "<?=base_url('admin/Examshedule_schedule/inv_all_data_for_mail')?>",
+    "ajax": "<?=base_url('admin/Examshedule_schedule/inv_all_data_for_mail/'.$exam_id)?>",
     "order": [
         [0, 'asc']
     ],

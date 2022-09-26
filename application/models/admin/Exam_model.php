@@ -132,13 +132,14 @@ class Exam_model extends CI_Model {
         $filterData = $this->session->userdata('filter_keyword');
 
         // $this->db->where('status','1');
-        
+      
+        // $this->db->join('ci_exam_invitation','ci_exam_invitation.id = ci_exam_registration.ref_id');
         $this->db->order_by('ci_exam_registration.id', 'desc');
 		// echo $this->db->last_query(); die;
         $query = $this->db->get();
         // echo 'here' ; print_r($query->num_rows()); die();
         $module = array();
-        
+    
         if ($query->num_rows() > 0) {
             $module = $query->result_array();
         }

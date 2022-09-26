@@ -249,12 +249,12 @@ class Examshedule_schedule extends MY_Controller {
 
 
     public function send_invitation() {
-
-       
+        
+        $examid = $this->uri->segment(4);
         $data['states'] = $this->location_model->get_states();
          
         $data['title'] = 'Invitation and Schedule List';
-
+        $data['exam_id'] = urldecrypt($examid);
         // $this->db->update('ci_exam_registration', ['invite_sent'=> "2"])->where('id',$id);
   
       
@@ -397,9 +397,9 @@ class Examshedule_schedule extends MY_Controller {
     }
 
 
-    public function inv_all_data_for_mail() {
-        
-        // echo '<pre>'; print_r($records); die();
+    public function inv_all_data_for_mail($exam_id) {
+    //    echo $exam_id;
+    //    die;
         $array = array('created_by' => $this->session->userdata('admin_id'));
         // $records['data'] = $this->db
         //     ->select('*')
@@ -419,8 +419,29 @@ class Examshedule_schedule extends MY_Controller {
 
         foreach ($records['data'] as $row) {
             if($row['school_name'] != ''){
-                // echo $row['invt_recieved']."=".$row['invite_sent'];
-                // exit;
+                
+                $invitationStatus = $this->checkExamInvitationStatus($exam_id,$row['id']);
+                // echo $invitationStatus;
+                // die;
+                // if($row['invt_recieved']==0 && $row['invite_sent']==1)
+                // {
+                //     $action =   'Pending';
+                // }
+                // elseif ($row['invt_recieved']==1 && $row['invite_sent']==1) {
+                //     $action =   'Done';
+                // }
+                // else{
+                //     $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
+                //     <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
+               
+                // }
+                if($invitationStatus==0)
+                {
+                     $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
+                    <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
+                }
+                else
+                {
                 if($row['invt_recieved']==0 && $row['invite_sent']==1)
                 {
                     $action =   'Pending';
@@ -432,6 +453,7 @@ class Examshedule_schedule extends MY_Controller {
                     $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
                     <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
                
+                }
                 }
 
                 $row['principal_name'] = '<h4 class="m0 mb5">'.$row['principal_name'] .'</h4>'.'<small class="text-muted">'.$row['pri_mobile'].'</small><br/>'.'<small class="text-muted">'.$row['email'].'</small>';
@@ -1688,6 +1710,38 @@ class Examshedule_schedule extends MY_Controller {
         }
     }
 
+    public function checkExamInvitationStatus($exam_id,$school_rgister_id)
+    {
+    //     $this->db->select('id');
+    //     $this->db->from('ci_exam_invitation');
+    //     $query = $this->db->get();
+    //     $data = $query->result_array();
+    //     $examIds = [];
+    //     foreach ($data as $key => $value) {
+    //         $examIds[] = $value['id'];
+    //     }
+    //   if (in_array($exam_id, $examIds))
+    //     {
+    //     return "Match found";
+    //     }
+    //     else
+    //     {
+    //     return "Match not found";
+    //     }
 
+    //     echo '<prev>';
+    //     print_r($examIds);
+    //     die;
+        
+
+        $this->db->from('ci_exam_registration');
+        $this->db->where('ci_exam_registration.ref_id',$exam_id);
+        $this->db->where('ci_exam_registration.id',$school_rgister_id);
+        $query = $this->db->get();
+        $count = $query->num_rows();
+
+        return $count.'test';
+    //     die;
+    }
 
 }
