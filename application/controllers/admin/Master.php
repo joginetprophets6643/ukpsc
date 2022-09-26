@@ -601,7 +601,7 @@ class Master extends MY_Controller
 
 
             $data['exam'] = $this->Master_model->get_exam();
-            // echo '<pre>'; print_r($data); die();
+            // echo '<pre>'; print_r($data['subject']); die();
             $this->load->view('admin/includes/_header');
 
             $this->load->view('admin/exam/invitation_add', $data);

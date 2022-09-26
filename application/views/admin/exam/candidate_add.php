@@ -161,14 +161,19 @@ $(document).ready(function() {
     var wrapper = $('.field_wrapper'); //Input field wrapper
 
     $(addButton).click(function(){
-
-        if(x < maxField){ 
-            var fieldHTML ='<div id="'+x+'"><div class="after-add-more field_wrapper"><div class="row"><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">District<i style="color:#ff0000; font-size:12px;">*</i></label> <select class="state" name="state[]" id="state'+x+'" class="form-control" onchange="getval(this,'+x+');"><option value=""><?= trans('select_state') ?></option><?php foreach ($states as $k => $state) { ?><option value="<?= $state->id ?>"><?= $state->name ?></option><?php } ?></select></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">District Code<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="district_code[]" id="district_code'+x+'" min=1 class="form-control" required placeholder="District Code"/></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">City<i style="color:#ff0000; font-size:12px;">*</i></label> <select name="city[]" id="city'+x+'" class="form-control"><option value=""> Select City</option></select></div></div><div class="col-md-1"><div class="form-group"><label for="name" class="col-sm- control-label">City Code<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="city_code[]" id="city_code'+x+'" min=1 class="form-control" required placeholder="City Code"/></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">Subject Name <i style="color:#ff0000; font-size:12px;">*</i></label> <br/><select name="sub_name[]" class="form-control" id="sub_name'+x+'" required><option value="">Select Subject</option><?php foreach ($subject as $k => $subjects) { ?> <option value="<?php echo $subjects->id; ?>" ><?php echo $subjects->sub_name."(".$subjects->sub_name_hindi.")"; ?></option><?php } ?></select></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">No. of Candidate<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="number_of_can[]" id="number_of_can'+x+'" min=1 class="form-control" required placeholder="No. of Candidate"/></div></div><div class="col-md-1"><a class="btn btn-danger remove_button" style="height:34px ; margin-top:29px; padding:5px 12px; text-align:center; color:white; font-weight:bolder;"> - </a></div></div> </div>';
+      var id = $('select[name=exam_name]').val();
+        if(id){
+            if(x < maxField){ 
+            var fieldHTML ='<div id="'+x+'"><div class="after-add-more field_wrapper"><div class="row"><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">District<i style="color:#ff0000; font-size:12px;">*</i></label> <select class="state" name="state[]" id="state'+x+'" class="form-control" onchange="getval(this,'+x+');"><option value=""><?= trans('select_state') ?></option><?php foreach ($states as $k => $state) { ?><option value="<?= $state->id ?>"><?= $state->name ?></option><?php } ?></select></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">District Code<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="district_code[]" id="district_code'+x+'" min=1 class="form-control" required placeholder="District Code"/></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">City<i style="color:#ff0000; font-size:12px;">*</i></label> <select name="city[]" id="city'+x+'" class="form-control"><option value=""> Select City</option></select></div></div><div class="col-md-1"><div class="form-group"><label for="name" class="col-sm- control-label">City Code<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="city_code[]" id="city_code'+x+'" min=1 class="form-control" required placeholder="City Code"/></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">Subject Name <i style="color:#ff0000; font-size:12px;">*</i></label> <br/><select name="sub_name[]" class="form-control" id="sub_name'+x+'" required><option value="">Select Subject</option><?php foreach ($subject as $k => $subjects) {if($subjects->exam_id==$_COOKIE['exam_id']){ ?> <option value="<?php echo $subjects->id; ?>" ><?php echo $subjects->sub_name."(".$subjects->sub_name_hindi.")"; ?></option><?php }} ?></select></div></div><div class="col-md-2"><div class="form-group"><label for="name" class="col-sm- control-label">No. of Candidate<i style="color:#ff0000; font-size:12px;">*</i></label> <input type="number" name="number_of_can[]" id="number_of_can'+x+'" min=1 class="form-control" required placeholder="No. of Candidate"/></div></div><div class="col-md-1"><a class="btn btn-danger remove_button" style="height:34px ; margin-top:29px; padding:5px 12px; text-align:center; color:white; font-weight:bolder;"> - </a></div></div> </div>';
 
              
             x++;             
             $(wrapper).append(fieldHTML); //Add field html      
         }
+        }else{
+            alert('Please first select the exam')
+        }
+      
     });
 
     $(wrapper).on('click', '.remove_button', function(e){
@@ -179,27 +184,17 @@ $(document).ready(function() {
 
     $(function () {
         $('#state').change(function () {
-            // alert('hi'); 
             var district_id = $(this).val();
             if (district_id != '') {
-
-                // $('#othstate').val('').hide();
-
                 $.ajax({
                     type: "POST",
                     url: base_url + 'admin/location/get_city_by_state_id',
                     dataType: 'html',
+                    "processing": true,
+                    "serverSide": false,
                     data: {'district_id': district_id, 'csfr_token_name': csfr_token_value},
                     success: function (data) {
-                        console.log(data);
-                        // for (i = 0; i < data.length; i++) {
-                        //     console.log(data.subcityname);
-                        // // $('#city').append(`<option value="${data.id}">
-                        // //                ${data.subcityname}
-                        // //           </option>`);
-                        // } 
-                       
-                        // return false;
+                        // console.log(data);
                         $('#city').html(data);
                     }
                 });
@@ -263,16 +258,9 @@ $(document).ready(function() {
 
 function getval(sel,id){
     // alert(sel.value);
-   
-    // console.log(s[s.selectedIndex].id);
     var district_id = sel.value;
-    // var district_id = $(this).val();
-    // alert(district_id);
-    // console.log("district_id",district_id);
-    // console.log("id",id);
-    // return false;
+    
     if (district_id != '') {
-        // $('#othstate').val('').hide();
 
         $.ajax({
             type: "POST",
@@ -280,8 +268,6 @@ function getval(sel,id){
             dataType: 'html',
             data: {'district_id': district_id, 'csfr_token_name': csfr_token_value},
             success: function (data) {
-                console.log("id",id);
-                // return false;
                 $('#city'+id+'').html(data);
             }
         });
@@ -294,8 +280,8 @@ function getval(sel,id){
 $('document').ready(function () {
 $("#exam_name").change(function () {
         var id = $('select[name=exam_name]').val();
+        document.cookie = `exam_id=${$('select[name=exam_name]').val()}`;
         var url = "<?php echo base_url('admin/Examshedule_schedule/getSubjectNameNew/');?>"
-        alert(id);
                // 22-09-2022
                 $.ajax({
                     url:url,
@@ -303,7 +289,7 @@ $("#exam_name").change(function () {
                     dataType: 'html',
                     data: { 'exam_id' : id, 'csfr_token_name':csfr_token_value },
                     success: function (data) {
-                        console.log('hete');
+                       
                        $('#sub_name').html(data);
                     // console.log();
                     }

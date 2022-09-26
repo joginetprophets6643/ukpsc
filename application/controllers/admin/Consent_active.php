@@ -657,8 +657,9 @@ public function consent_recieved(){
 
         //$examinationid = $this->uri->segment(5);
         $data["examination_form"] = $this->Certificate_model->get_examination_form($examinationid);
+
         // echo '<pre>';
-        // print_r($data["examination_form"] );
+        // print_r($data["examination_form"][0]['sub_name']);
         // die;
         $sub_name = $data["examination_form"][0]['sub_name'];
         $sub_name_array = explode(",",$sub_name);
