@@ -1,10 +1,6 @@
-
-
 <div class="datalist">
 
-   <table id="na_datatable" class="table table-bordered table-hover" style="overflow: auto; 
-
-    ">
+   <table id="na_datatable" class="table table-bordered table-hover" style="overflow: auto; border-collapse: collapse !important;">
 
       <thead>
 
@@ -102,10 +98,10 @@
            
  
            
-              <a href="<?= base_url("admin/master/invitation_preview/" . urlencrypt($row['id'])); ?>" title="Preview"  class="btn btn-warning btn-xs  mr5">
+              <a href="<?= base_url("admin/master/invitation_preview/" . urlencrypt($row['id'])); ?>" title="Preview"  class="btn btn-warning btn-xs">
                <i class="fa fa-eye"></i>
               </a>
-              <a href="<?= base_url("admin/master/date_sheet_del/" . urlencrypt($row['id'])); ?>" onclick="return confirm ('Are You Sure?\nक्या आपको यकीन है?')" title="Delete" class="btn btn-danger btn-xs mr5" >
+              <a href="<?= base_url("admin/master/date_sheet_del/" . urlencrypt($row['id'])); ?>" onclick="return confirm ('Are You Sure?\nक्या आपको यकीन है?')" title="Delete" class="btn btn-danger btn-xs" >
 
             <i class="fa fa-trash"></i>
 

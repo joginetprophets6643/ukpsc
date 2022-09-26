@@ -35,7 +35,7 @@
 
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
 
                             <div class="form-group">
 
@@ -46,28 +46,21 @@
 
                                     <option value="">Select Exam Name</option>
 
-                                 <?php
-                         foreach ($exam as $k => $exam) { ?>
+                                    <?php
+                                    foreach ($exam as $k => $exam) { ?>
 
                                     <option value="<?= $exam->id ?>">
                                         <?= $exam->exam_name ?>
                                     </option>
 
                                     <?php }
-                        ?>
-                        
-
+                                    ?>
                                 </select>
-
                             </div>
-
-
                         </div>
                     </div>
-
-
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
 
                             <div class="form-group">
 
@@ -80,7 +73,7 @@
 
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-6">
 
                             <div class="form-group">
 
@@ -99,7 +92,7 @@
                         <div class="">
                             <div class="form-group">
                                 <label for="name" class="col-sm- control-label">
-                                    Subject Name 
+                                    Subject Name
                                     <i style="color:#ff0000; font-size:12px;">*</i>
                                 </label>
                                 <br>
@@ -135,7 +128,7 @@
                                 var wrapper = $('.field_wrapper'); //Input field wrapper
 
                                 var fieldHTML = '<div id="' + x + '"> <div class="after-add-more field_wrapper"> <div class="d-flex"> <div class=""> <div class="form-group"> <label for="name" class="col-sm- control-label">Subject Name <i style="color:#ff0000; font-size:12px;">*</i></label> <br><select name="sub_name[]" class="form-control" id="sub_name" style="width:420px;" required> <option value="">Select Subject</option> <?php foreach (
-                                $subject as $k => $subjects) { ?> <option value="<?php echo $subjects->id; ?>" ><?php echo $subjects->sub_name."(".$subjects->sub_name_hindi.")"; ?></option> <?php } ?> </select > </div ></div > <div class="class="" style="margin-left: 20px; "> <div class="form-group"><label for="name" class="col-sm- control-label">No. of Candidate<i style="color: #ff0000; font-size: 12px;">*</i></label> <input type="number" name="no_candidate[]" min=1 style="width: 140px; " class="form - control" required placeholder="No.of Candidate"/></div></div><div class="" style="margin-left: 20px;"> <div class="form-group"><label for="name" class="col-sm - control - label">Exam Date<i style="color: #ff0000; font-size: 12px;">*</i></label> <input type="date" name="date_exam[]" class="form-control abc " id="date_exam1" style="width: 150px;" placeholder="Number of Candidate" required/></div></div><div class=""  style="margin-left:20px;" > <div class="form-group"> <label for="name" class="col-sm- control-label">Exam Shift <i style="color:#ff0000; font-size:12px;">*</i></label><br> <select class="form-control" name="shft_exam[]" style="width:140px;" class="" id="shft_exam" required> <option value="">Select</option> <option value="Morning">Morning</option> <option value="Evening">Evening</option> </select> </div></div ><div class="" style="margin-left:20px;"> <div class="form-group"><label for="name" class="col-sm- control-label">Exam Time <i style="color:#ff0000; font-size:12px;">*</i></label> <input type="text" style="width:90%;" name="time_exam[]" class="form-control" id="time_exam" placeholder="Exam Time" required/></div></div><a class="btn btn-danger remove_button" style="height:40px ; margin-top:30px; margin-left:7px; padding:12px; text-align:center; color:white; font-weight:bolder;"> - </a> </div ></div ></div > ';
+                                $subject as $k => $subjects) { ?> <option value="<?php echo $subjects->id; ?>" ><?php echo $subjects->sub_name."(".$subjects->sub_name_hindi.")"; ?></option> <?php } ?> </select > </div ></div > <div class="class="" style="margin - left: 20px; "> <div class="form - group"><label for="name" class="col - sm - control - label">No. of Candidate<i style="color: #ff0000; font - size: 12px; ">*</i></label> <input type="number" name="no_candidate[]" min=1 style="width: 140px; " class="form - control" required placeholder="No.of Candidate"/></div></div><div class="" style="margin - left: 20px; "> <div class="form - group"><label for="name" class="col - sm - control - label">Exam Date<i style="color: #ff0000; font - size: 12px; ">*</i></label> <input type="date" name="date_exam[]" class="form - control abc " id="date_exam1" style="width: 150px; " placeholder="Number of Candidate" required/></div></div><div class=""  style="margin - left: 20px; " > <div class="form - group"> <label for="name" class="col - sm - control - label">Exam Shift <i style="color: #ff0000; font - size: 12px; ">*</i></label><br> <select class="form - control" name="shft_exam[]" style="width: 140px; " class="" id="shft_exam" required> <option value="">Select</option> <option value="Morning">Morning</option> <option value="Evening">Evening</option> </select> </div></div ><div class="" style="margin - left: 20px; "> <div class="form - group"><label for="name" class="col - sm - control - label">Exam Time <i style="color: #ff0000; font - size: 12px; ">*</i></label> <input type="text" style="width: 90 %; " name="time_exam[]" class="form - control" id="time_exam" placeholder="Exam Time" required/></div></div><a class="btn btn - danger remove_button" style="height: 40px; margin - top: 30px; margin - left: 7px; padding: 12px; text - align: center; color: white; font - weight: bolder; "> - </a> </div ></div ></div > ';
                             $(addButton).click(function () {
 
                                 if (x < maxField) {
@@ -262,23 +255,16 @@
                 </div>
 
                 <div class="row">
-
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            <!-- <input type="submit" name="submit" value="Update Admin" class="btn btn-primary pull-right"> -->
-                            <input type="button" onclick="window.history.go(-1)" class="btn btn-primary "
-                                value="Back"></input>
+                    <div class="col-md-12">
+                        <div class="d-flex">
+                            <div class="form-group mb-0 mr-4">
+                                <input type="button" onclick="window.history.go(-1)" class="btn btn-sec" value="Back">
+                            </div>
+                            <div class="form-group mb-0">
+                                <input type="hidden" readonly name="speedpost" id="speedpost">
+                                <input type="submit" name="submit" value="Create " class="btn btn-primary">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-
-                        <div class="col-md-6">
-                            <input type="hidden" readonly name="speedpost" id="speedpost">
-                            <input type="submit" name="submit" value="Create " class="btn btn-primary pull-center">
-
-                        </div>
-
                     </div>
                 </div>
 
@@ -398,15 +384,15 @@
                 $('#no_candidate').val(data.no_of_cand);
                 $('#startdate').val(data.start_date_exam);
                 $('#end_date').val(data.end_date_exam);
-               // 22-09-2022
+                // 22-09-2022
                 $.ajax({
-                    url: base_url+'admin/Examshedule_schedule/getSubjectNameNew',
+                    url: base_url + 'admin/Examshedule_schedule/getSubjectNameNew',
                     type: 'get',
                     dataType: 'html',
-                    data: { 'exam_id' : id, 'csfr_token_name':csfr_token_value },
+                    data: { 'exam_id': id, 'csfr_token_name': csfr_token_value },
                     success: function (data) {
-                       $('#sub_name').html(data);
-                    // console.log();
+                        $('#sub_name').html(data);
+                        // console.log();
                     }
                 });
 

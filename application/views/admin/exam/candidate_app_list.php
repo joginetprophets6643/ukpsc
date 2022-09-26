@@ -2,7 +2,7 @@
 
 <div class="datalist">
 
-   <table id="na_datatable" class="table table-bordered table-hover" style="overflow: auto;">
+   <table id="na_datatable" class="table table-bordered table-hover" style="overflow: auto; border-collapse: collapse !important;">
 
       <thead>
 
@@ -94,12 +94,12 @@
                   <?php }
 
                   ?>
-                  <a href="<?= base_url("admin/master/candidate_view/" . urlencrypt($row['id'])); ?>" title="Candidate View"  class="btn btn-warning btn-xs  mr5">
+                  <a href="<?= base_url("admin/master/candidate_view/" . urlencrypt($row['id'])); ?>" title="Candidate View"  class="btn btn-warning btn-xs">
                      <i class="fa fa-eye"></i>
                   </a>
-                  <a href="<?= base_url("admin/master/candidate_edit/" . urlencrypt($row['id'])); ?>" title="Edit"  class="btn btn-warning btn-xs mr5"><i class="fa fa-edit"></i>
+                  <a href="<?= base_url("admin/master/candidate_edit/" . urlencrypt($row['id'])); ?>" title="Edit"  class="btn btn-warning btn-xs"><i class="fa fa-edit"></i>
                   </a>
-                  <a href="<?= base_url("admin/master/candiate_del/" . urlencrypt($row['id'])); ?>" onclick="return confirm ('Are You Sure?\nक्या आपको यकीन है?')" title="Delete" class="btn btn-danger btn-xs mr5" style="margin-top:8px;">
+                  <a href="<?= base_url("admin/master/candiate_del/" . urlencrypt($row['id'])); ?>" onclick="return confirm ('Are You Sure?\nक्या आपको यकीन है?')" title="Delete" class="btn btn-danger btn-xs">
 
                   <i class="fa fa-trash"></i>
 

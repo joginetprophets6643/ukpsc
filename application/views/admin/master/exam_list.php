@@ -1,5 +1,10 @@
 <!-- DataTables -->
-<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css"> 
+<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css">
+<style>
+  .table {
+    
+}
+</style> 
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -7,20 +12,28 @@
     <!-- For Messages -->
     <?php $this->load->view('admin/includes/_messages.php') ?>
     <div class="card">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <div class="d-inline-block">
-          <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; Exam List&nbsp;(परीक्षा सूची)</h3>
+      <div class="card-header">
+        <div class=" d-flex justify-content-between align-items-center">
+          <div class="left">
+            <div class="d-inline-block">
+              <h3 class="card-title m-0"><i class="fa fa-list"></i>&nbsp; Exam List&nbsp;(परीक्षा सूची)</h3>
+            </div>
+
+          </div>
+          <div class="right">
+            <div class="d-flex justify-content-end">
+              <?php if($this->rbac->check_operation_permission('quetion_paper_add')): ?>
+                <a href="<?= base_url('admin/master/exam_add'); ?>" class="btn btn-admin"> Add Exam&nbsp;(परीक्षा जोड़ें)</a>
+              <?php endif; ?>
+            </div>
+          </div>
         </div>
-          <div class="d-flex justify-content-end">
-          <?php if($this->rbac->check_operation_permission('quetion_paper_add')): ?>
-            <a href="<?= base_url('admin/master/exam_add'); ?>" class="btn btn-success"> Add Exam&nbsp;(परीक्षा जोड़ें)</a>
-          <?php endif; ?>
-        </div>
+          
       </div>
     </div>
     <div class="card">
       <div class="card-body table-responsive">
-        <table id="na_datatable" class="table table-bordered table-striped" width="100%">
+        <table id="na_datatable" class="table table-bordered table-striped" width="100%" style="border-collapse: collapse !important;">
           <thead>
             <tr>
               <th>#</th>

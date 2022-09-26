@@ -79,7 +79,7 @@
 
             <div class="form-group has-feedback col-12 mt-4">
 
-              <!-- <label>Enter Username</label> -->
+              <!-- <label class="text-white">Enter Username</label> -->
 
               <script type="text/javascript">
 
@@ -99,7 +99,7 @@
 
               </script>
 
-              <label>Password (पासवर्ड)</label>
+              <label class="text-white">Password (पासवर्ड)</label>
 
               <input type="password" name="password" id="password" class="form-control" placeholder="">
 
@@ -107,7 +107,7 @@
 
             <div class="form-group col-12 atz">
 
-              <label>Confirm Password (पासवर्ड की पुष्टि कीजिये)</label>
+              <label class="text-white">Confirm Password (पासवर्ड की पुष्टि कीजिये)</label>
 
               <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="">
             </div>
@@ -120,7 +120,7 @@
 
             <div class="col-6" style="margin: auto;">
 
-              <label>&nbsp;</label>
+              <label class="text-white">&nbsp;</label>
 
               <input type="submit" name="submit" id="submit" class="btn btn-signin btn-block btn-flat"
                 value="<?= trans('create') ?> (पासवर्ड बनाएं)">
@@ -135,14 +135,6 @@
               <div class="col-12">
 
                 <div class="checkbox icheck ">
-
-                  <label>
-
-                    <!--   <input  type="checkbox"> -->
-
-                  </label>
-
-                  <!-- <span class="hhm"> // trans('remember_me') ?></span> -->
 
                 </div>
 

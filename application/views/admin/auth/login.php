@@ -85,7 +85,7 @@
 
                         <?php echo form_open(base_url('admin/auth/login'), 'id="xin-form"  class="login-form" '); ?>
                         <div class="form-group has-feedback col-12 mt-4 mb-4">
-                            <!-- <label>Enter Username</label> -->
+                            <!-- <label class="text-white">Enter Username</label> -->
                             <script type="text/javascript">
                                 $(function () {
                                     $('input').blur(function () {
@@ -95,11 +95,11 @@
                                     });
                                 });
                             </script>
-                            <label>Institute ID / Email ID (संस्थान आईडी / ईमेल आईडी)</label>
+                            <label class="text-white">Institute ID / Email ID (संस्थान आईडी / ईमेल आईडी)</label>
                             <input type="text" name="username" id="name" class="form-control" placeholder="">
                         </div>
                         <div class="form-group col-12 atz mb-4">
-                            <label>Password (पासवर्ड)</label>
+                            <label class="text-white">Password (पासवर्ड)</label>
                             <input type="password" name="password" id="password" class="form-control" placeholder="">
 
                             <input type='checkbox' class="atz" id='toggle' value='0'
@@ -137,7 +137,7 @@
                                         <div class="col-7">
                                             <div class="ml-4"> 
                                                 <i class="fa fa-refresh cursor" id="captcha_refres" aria-hidden="true"></i>
-                                                <label class="mb-0" style="margin-left: 5px;">Refresh Captcha</label> 
+                                                <label class="text-white" class="mb-0" style="margin-left: 5px;">Refresh Captcha</label> 
                                             </div>
                                         </div>
                                     </div>
@@ -156,7 +156,7 @@
                                 <div class="col-12 mb-4">
                                     <div class="row align-items-center">
                                         <div class="col-3">
-                                            <label class="mb-0">Captcha</label>
+                                            <label class="text-white" class="mb-0">Captcha</label>
                                         </div>
                                         <div class="col-9">
                                             <input type="text" name="cpatchaTextBox" id="cpatchaTextBox" class="form-control" placeholder="">
@@ -178,7 +178,7 @@
                                         </a>
                                     </p>
                                     <p class="mb-0" style="font-size: 12px;margin:12px 0 0 0;">
-                                        <label class="mb-0" style="font-size: 13px;">
+                                        <label class="text-white" class="mb-0" style="font-size: 13px;">
                                             <span class="mb-4" style="color: #c7c7c7;">Don't have a UKPSC ID? (यूकेपीएससी आईडी नहीं है?)</span>
                                             <a
                                                 href="<?= base_url('admin/auth/register'); ?>" class="text-center"

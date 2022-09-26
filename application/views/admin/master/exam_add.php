@@ -7,7 +7,7 @@
                     <h3 class="card-title"><i class="fa fa-plus"></i>&nbsp; Add Exam&nbsp;(परीक्षा जोड़ें)</h3>
                 </div>
                 <div class="d-inline-block float-right">
-                    <a href="<?= base_url('admin/master/exam_list'); ?>" class="btn btn-success"><i class="fa fa-list"></i>&nbsp; Exam List&nbsp;(परीक्षा सूची)</a>
+                    <a href="<?= base_url('admin/master/exam_list'); ?>" class="btn btn-admin"><i class="fa fa-list"></i>&nbsp; Exam List&nbsp;(परीक्षा सूची)</a>
                 </div>
             </div>
             <div class="card-body">
@@ -64,23 +64,21 @@
 
 
                 <div class="row">
-                    <div class="col-8"></div>
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <div class="form-group mb-0" >
+                                <input type="button" onclick="window.history.go(-1)" class="btn btn-sec mr-4" value="Back&nbsp;(पीछे)"></input>
+                            </div>
+    
+                            <div class="form-group mb-0">
+                                <input type="submit" name="submit" id="submit" value="Add Exam&nbsp;(परीक्षा जोड़ें)" class="btn btn-primary">
+                            </div>
 
-                    <div class="form-group" >
-                        <div class="col-md-12">
-                            <input type="button" onclick="window.history.go(-1)" class="btn btn-primary " value="Back&nbsp;(पीछे)"></input>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <input type="submit" name="submit" id="submit" value="Add Exam&nbsp;(परीक्षा जोड़ें)" class="btn btn-info pull-right">
                         </div>
                     </div>
                 </div>
-     <?php echo form_close(); ?>
+                <?php echo form_close(); ?>
             </div>
-
         </div>
     </section> 
 </div>

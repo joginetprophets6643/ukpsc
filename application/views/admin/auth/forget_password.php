@@ -39,7 +39,7 @@
         </p>
 
         <div class="form-group has-feedback col-10 group-edit mb-4">
-          <label>Registered Email ID (पंजीकृत ईमेल आईडी)</label>
+          <label class="text-white">Registered Email ID (पंजीकृत ईमेल आईडी)</label>
           <input type="email" name="email" id="email" class="form-control" placeholder="">
         </div>
 
@@ -48,7 +48,7 @@
             <div name="captcha" id="captcha" class="fpass" placeholder="<?= trans('password') ?>"></div>
             <div class="d-flex" style="cursor:pointer;">
               <i class="fa fa-refresh cursor pt-1" id="captcha_refres" aria-hidden="true"></i> 
-              <label class="" style="margin-left: 5px;"> 
+              <label class="text-white" class="" style="margin-left: 5px;"> 
                 <span class="text-white text-normal">Refresh Captcha </span> 
                 <span class="text-white text-normal">(कैप्चा रिफ्रेश करें)</span> 
               </label> 
@@ -62,7 +62,7 @@
           </script>
         </div>
         <div class="form-group has-feedback  col-10 group-edit">
-          <label>Captcha (कॅप्चा)</label> 
+          <label class="text-white">Captcha (कॅप्चा)</label> 
           <input type="text" name="cpatchaTextBox" id="cpatchaTextBox" class="form-control" placeholder="">
         </div>
 

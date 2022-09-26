@@ -4,6 +4,9 @@
 .navbar-light .navbar-nav .nav-link {
     font-weight: 600;
 }
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #E14658;
+}
 .sidebar {
     height: calc(100% - 0.5rem);
 }
@@ -31,7 +34,7 @@
 }
 input:focus,
 select:focus {
-    background-color: #c0b3a057 !important;
+    background-color: #f1f8ff !important;
     border-color: #373250 !important;
     box-shadow: none !important;
 }
@@ -70,6 +73,32 @@ select {
     border-color: #E14658 !important;
     background-color: #fff !important;
     color: #E14658;
+    box-shadow: none !important;
+}
+.btn-admin {
+    border-color: #fff;
+    background-color: #373250;
+    color: #fff;
+    font-weight: 600;
+}
+.btn-admin:hover,
+.btn-admin:focus {
+    border-color: #373250 !important;
+    background-color: #fff !important;
+    color: #373250;
+    box-shadow: none !important;
+}
+.btn-sec {
+    border-color: #fff;
+    background-color: #567670;
+    color: #fff;
+}
+.btn-sec:hover,
+.btn-sec:focus {
+    border-color: #567670 !important;
+    background-color: #fff !important;
+    color: #567670;
+    box-shadow: none !important;
 }
 .hs-pass a {
     color: #fff;
@@ -173,4 +202,35 @@ select {
 .card-header .card-title {
     color: #E14658;
     font-weight: 600;
+}
+.card-header {
+    /* border-bottom: none; */
+}
+.table thead th {
+    border-bottom: none !important;
+}
+.table-bordered,
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #373250;
+}
+table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:after {
+    color: #567670;
+}
+.page-item.disabled .page-link {
+    color: #373250;
+    border-color: #373250;
+}
+.page-item.active .page-link {
+    background-color: #373250;
+    border-color: #373250;
+}
+.page-link {
+    padding: 0.3rem 0.5rem;
+    line-height: 1.2;
+    color: #373250;
+    border: 1px solid #373250;
+}
+.page-link:focus {
+    box-shadow: none;
 }

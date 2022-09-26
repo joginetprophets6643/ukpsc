@@ -15,7 +15,7 @@
 
         <div class="card">
 
-            <div class="card-body">
+            <div class="card-header border-0">
 
                 <div class="d-inline-block">
 
@@ -35,7 +35,7 @@
 
           <?php //if($this->rbac->check_operation_permission('country_add')): ?>
 
-            <a style="display:block;" href="<?= base_url('admin/master/candidate_add'); ?>" class="btn btn-success"> Add Candidates Details&nbsp;(उम्मीदवारों का विवरण जोड़ें)</a>
+            <a style="display:block;" href="<?= base_url('admin/master/candidate_add'); ?>" class="btn btn-admin"> Add Candidates Details&nbsp;(उम्मीदवारों का विवरण जोड़ें)</a>
 
           <?php //endif; ?>
 

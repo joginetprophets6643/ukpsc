@@ -295,7 +295,7 @@ $('document').ready(function () {
 $("#exam_name").change(function () {
         var id = $('select[name=exam_name]').val();
         var url = "<?php echo base_url('admin/Examshedule_schedule/getSubjectNameNew/');?>"
-        alert(id);
+        // alert(id);
                // 22-09-2022
                 $.ajax({
                     url:url,

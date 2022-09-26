@@ -15,7 +15,7 @@
 
         <div class="card">
 
-            <div class="card-body">
+            <div class="card-header border-0">
 
                 <div class="d-inline-block">
 
@@ -36,7 +36,7 @@
 
           <?php //if($this->rbac->check_operation_permission('country_add')): ?>
 
-            <a style="display:block;" href="<?= base_url('admin/master/invitation_add'); ?>" class="btn btn-success"> Create Exam Schedule&nbsp;(परीक्षा कार्यक्रम बनाएं)  </a>
+            <a style="display:block;" href="<?= base_url('admin/master/invitation_add'); ?>" class="btn btn-admin"> Create Exam Schedule&nbsp;(परीक्षा कार्यक्रम बनाएं)  </a>
 
           <?php //endif; ?>
 
