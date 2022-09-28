@@ -540,7 +540,8 @@ var table = $('#send_invitation_list').DataTable({
                 success:function(result){
             
                     alert("success, Sent Sucessfully");
-                    this.checked = false;     
+                    this.checked = false; 
+                    window.location.reload();    
                 }
             });
     }
