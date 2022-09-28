@@ -255,9 +255,11 @@ class Examshedule_schedule extends MY_Controller {
          
         $data['title'] = 'Invitation and Schedule List';
         $data['exam_id'] = urldecrypt($examid);
-        // $this->db->update('ci_exam_registration', ['invite_sent'=> "2"])->where('id',$id);
-  
-      
+        $this->db->from('ci_exam_invitation');
+        $this->db->where('ci_exam_invitation.id',$data['exam_id']);
+        $query = $this->db->get();
+        $examName = $query->row_array();
+        $data['examName'] = $examName['subjectline'];
         $this->load->view('admin/includes/_header', $data);
         
         $this->load->view('admin/exam/invt_index', $data);
@@ -421,32 +423,14 @@ class Examshedule_schedule extends MY_Controller {
             if($row['school_name'] != ''){
                 
                 $invitationStatus = $this->checkExamInvitationStatus($exam_id,$row['id']);
-                // echo $invitationStatus;
-                // die;
-                // if($row['invt_recieved']==0 && $row['invite_sent']==1)
-                // {
-                //     $action =   'Pending';
-                // }
-                // elseif ($row['invt_recieved']==1 && $row['invite_sent']==1) {
-                //     $action =   'Done';
-                // }
-                // else{
-                //     $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
-                //     <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
-               
-                // }
-                if($invitationStatus==0)
-                {
-                     $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
-                    <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
-                }
-                else
-                {
-                if($row['invt_recieved']==0 && $row['invite_sent']==1)
+                
+                $invt_recieved = isset($invitationStatus['invt_recieved'])?$invitationStatus['invt_recieved']:0;
+                $invite_sent = isset($invitationStatus['invite_sent'])?$invitationStatus['invite_sent']:0;
+                if($invt_recieved==0 && $invite_sent==1)
                 {
                     $action =   'Pending';
                 }
-                elseif ($row['invt_recieved']==1 && $row['invite_sent']==1) {
+                elseif ($invt_recieved==1 && $invite_sent==1) {
                     $action =   'Done';
                 }
                 else{
@@ -454,7 +438,28 @@ class Examshedule_schedule extends MY_Controller {
                     <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
                
                 }
-                }
+            //    print_r($invitationStatus['invt_recieved']);
+            //    die;
+            //     if($invitationStatus==0)
+            //     {
+            //          $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
+            //         <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
+            //     }
+            //     else
+            //     {
+            //     if($row['invt_recieved']==0 && $row['invite_sent']==1)
+            //     {
+            //         $action =   'Pending';
+            //     }
+            //     elseif ($row['invt_recieved']==1 && $row['invite_sent']==1) {
+            //         $action =   'Done';
+            //     }
+            //     else{
+            //         $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
+            //         <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
+               
+            //     }
+            //     }
 
                 $row['principal_name'] = '<h4 class="m0 mb5">'.$row['principal_name'] .'</h4>'.'<small class="text-muted">'.$row['pri_mobile'].'</small><br/>'.'<small class="text-muted">'.$row['email'].'</small>';
                 $row['max_allocate_candidate'] = $row['max_allocate_candidate'];
@@ -771,7 +776,7 @@ class Examshedule_schedule extends MY_Controller {
         echo '<br/>';
         echo $data['exam'][0]['name_designation_mobile'];
         echo '<br/>';
-
+        
         if(!empty($ids)){
             foreach ($ids as $id) {
                 $arr = [
@@ -780,12 +785,25 @@ class Examshedule_schedule extends MY_Controller {
                     'invite_sent' => '1',
                     'invt_recieved' => '0'
                 ];
+
+                
+                $dataForNewTable = [
+                    'school_id' =>$id,
+                    'exam_name' => $data['exam'][0]['subjectline'],
+                    'speedpost'=>$data['exam'][0]['speedpost'],
+                    'startdate'=>$data['exam'][0]['startdate'],
+                    'enddate'=>$data['exam'][0]['enddate'],
+                    'name_designation_mobile'=>$data['exam'][0]['name_designation_mobile'],
+                    'ref_id' => $new_id,
+                    'invite_sent' => '1',
+                    'invt_recieved' => '0',
+                    'consents_signstamp_status'=>'0'
+                ];
+
+                $this->db->insert('ci_registration_invitation', $dataForNewTable);
+                
                 $this->db->where(['id' => $id])->update('ci_exam_registration', $arr);
-                // print_r($id);
-                // $this->db->update('ci_exam_registration', ['invite_sent' => '1']);
-                // $this->db->update('ci_exam_registration', ['invt_recieved' => '0']);
-                // $this->db->update('ci_exam_invitation', ['invite_sent' => '1']);
-                // $this->db->where('id', $id);
+               
             }
 
 
@@ -865,20 +883,30 @@ class Examshedule_schedule extends MY_Controller {
         }else{
             
             $id = $this->input->get('id');
-            
-            // $this->db->where('ci_exam_registrationid', $id);
             $arr = [
                 'exam_name' => $data['exam'][0]['subjectline'],
                 'ref_id' => $new_id,
                 'invite_sent' => '1',
                 'invt_recieved' => '0'
             ];
+
+            $dataForNewTable = [
+                'school_id' =>$id,
+                'exam_name' => $data['exam'][0]['subjectline'],
+                'speedpost'=>$data['exam'][0]['speedpost'],
+                'startdate'=>$data['exam'][0]['startdate'],
+                'enddate'=>$data['exam'][0]['enddate'],
+                'name_designation_mobile'=>$data['exam'][0]['name_designation_mobile'],
+                'ref_id' => $new_id,
+                'invite_sent' => '1',
+                'invt_recieved' => '0',
+                'consents_signstamp_status'=>'0'
+            ];
+
+            $this->db->insert('ci_registration_invitation', $dataForNewTable);
+
             $this->db->where(['id' => $id])->update('ci_exam_registration', $arr);
-            // $this->db->where(['id' => $id])->update('ci_exam_registration', ['ref_id' => $new_id]);
-            // $this->db->where(['id' => $id])->update('ci_exam_registration', ['invite_sent' => '1']);
-            // $this->db->where(['id' => $id])->update('ci_exam_registration', ['invt_recieved' => '0']);
-            // $this->db->update('ci_exam_invitation', ['invite_sent' => '1']);
-           
+       
             
             $data['user_data'] = $this->Exam_model->get_all_invites_ids($id); 
 
@@ -1712,35 +1740,15 @@ class Examshedule_schedule extends MY_Controller {
 
     public function checkExamInvitationStatus($exam_id,$school_rgister_id)
     {
-    //     $this->db->select('id');
-    //     $this->db->from('ci_exam_invitation');
-    //     $query = $this->db->get();
-    //     $data = $query->result_array();
-    //     $examIds = [];
-    //     foreach ($data as $key => $value) {
-    //         $examIds[] = $value['id'];
-    //     }
-    //   if (in_array($exam_id, $examIds))
-    //     {
-    //     return "Match found";
-    //     }
-    //     else
-    //     {
-    //     return "Match not found";
-    //     }
 
-    //     echo '<prev>';
-    //     print_r($examIds);
-    //     die;
-        
-
-        $this->db->from('ci_exam_registration');
-        $this->db->where('ci_exam_registration.ref_id',$exam_id);
-        $this->db->where('ci_exam_registration.id',$school_rgister_id);
+        $this->db->from('ci_registration_invitation');
+        $this->db->where('ci_registration_invitation.ref_id',$exam_id);
+        $this->db->where('ci_registration_invitation.school_id',$school_rgister_id);
+        // $data = $this->db->result_array();
         $query = $this->db->get();
-        $count = $query->num_rows();
-
-        return $count.'test';
+        // row_array
+        // $count = $query->num_rows();
+        return $query->row_array();
     //     die;
     }
 

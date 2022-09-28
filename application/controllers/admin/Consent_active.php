@@ -58,10 +58,11 @@ class Consent_active extends MY_Controller
     {
         
         $data["row"] = $this->Certificate_model->get_all_active_consent_reg();
-       
+      
         foreach ($data["row"] as $valueid){
             // echo '<pre>';
             $ref_id = $valueid['ref_id'];
+            $school_id = $valueid['id'];
             
             $get_full_data = $this->Certificate_model->get_all_data_consent($ref_id);
         }
@@ -71,7 +72,7 @@ class Consent_active extends MY_Controller
 
         // $data["info"] = $this->Certificate_model->get_all_active_consent();
         
-        // echo '<pre>';print_r($data);die;
+        // echo '<pre>';print_r($data['info']);die;
 
 
         $this->load->view("admin/consent_active/consent_list_recieved", $data);
@@ -609,6 +610,8 @@ public function consent_recieved(){
             }
 
             if ($this->input->post('submitupload')) {
+                // echo 'new table';
+                // die;
                 $data = [
                     'consents_signstamp_file' => $from_upload_file,
                     'consents_signstamp_status' => 1,
@@ -631,6 +634,20 @@ public function consent_recieved(){
                             $this->db->update('ci_exam_registration', $dataUpdate2);
                             $this->db->update('ci_exam_invitation', $dataUpdate);
 
+                // add new table Feature 27-09-2022
+                $dataForNewTable = [
+                    'invite_sent' => '1',
+                    'invt_recieved' => '1',
+                    'consents_signstamp_status'=>'1'
+                ];
+                $this->db->select('*');
+                $this->db->from('ci_exam_registration');
+                $this->db->where('admin_id', $admin_id);
+                $q= $this->db->get();
+                $school_Id =  $q->row_array();
+                $school_Id = $school_Id['id'];
+                $this->db->where(['school_id' => $school_Id])->update('ci_registration_invitation', $dataForNewTable);
+                $this->db->where(['ref_id' => $this->input->post('ci_exam_fileupload6')])->update('ci_registration_invitation', $dataForNewTable);
                 $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
                 if ($result) {
                     $data['fileupload'] = 'fileupload';
@@ -656,11 +673,11 @@ public function consent_recieved(){
         // $sub_name_array = explode(",",$sub_name);
 
         //$examinationid = $this->uri->segment(5);
+     
         $data["examination_form"] = $this->Certificate_model->get_examination_form($examinationid);
 
         // echo '<pre>';
-        // print_r($data["examination_form"][0]['sub_name']);
-        // die;
+     
         $sub_name = $data["examination_form"][0]['sub_name'];
         $sub_name_array = explode(",",$sub_name);
         

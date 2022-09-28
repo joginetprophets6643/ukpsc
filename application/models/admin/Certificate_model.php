@@ -342,35 +342,19 @@ class Certificate_model extends CI_Model {
         return $query->result_array();
     }
     public function get_all_data_consent($ref_id) {
-    
         $ref_id = isset($ref_id)?$ref_id:0;
-      
         $admin_id = $this->session->userdata('admin_id');
-       
-        // // echo $examinationid;exit;
-        // $this->db->where('invite_sent','1');
-        // $this->db->where('id','1');
-        // // $this->db->where('id',$examinationid);
-        // $this->db->from('ci_exam_invitation');
-        // $this->db->order_by('ci_exam_invitation.id', 'desc');
 
-        // $this->db->select('*');   
-        // // $this->db->select('ci_exam_invitation.*, ci_exam_registration.* '); 
-        // $this->db->from('ci_exam_invitation');
-        // $this->db->join('ci_exam_registration', 'ci_exam_invitation.ref_id = ci_exam_registration.ref_id');
-        // $query = $this->db->get();
-        // echo '<pre>';
-        // print_r($this->db->last_query());   
-        // echo '<hr/>';
-        // print_r($query);
-        // $query = $this->db->query("SELECT  FROM `ci_exam_invitation` as cie left JOIN `ci_exam_registration` as cir ON cie.`id` = cir.`ref_id` where cie.`invite_sent` = '1'");
-        $query = $this->db->query("SELECT cie.id as cieid, cie.speedpost as ciespeedpost, cie.subjectline as ciesubjectline, cie.startdate as ciestartdate, cie.enddate as cieenddate, cir.admin_id as ciradminid , cir.consents_signstamp_status as circonsents_signstamp_status  FROM `ci_exam_invitation` as cie left JOIN `ci_exam_registration` as cir ON cie.`id` = cir.`ref_id` where cir.`invite_sent` = '1' and cie.id=$ref_id and cir.admin_id=$admin_id");
+        $this->db->select('*');
+        $this->db->from('ci_exam_registration');
+        $this->db->where('admin_id',$admin_id);
+        $school_id = $this->db->get();
+        $school_id = $school_id->row_array();
+        $school_id = isset($school_id['id'])?$school_id['id']:0;
+      
+        // $query = $this->db->query("SELECT cie.id as cieid, cie.speedpost as ciespeedpost, cie.subjectline as ciesubjectline, cie.startdate as ciestartdate, cie.enddate as cieenddate, cir.admin_id as ciradminid , cir.consents_signstamp_status as circonsents_signstamp_status  FROM `ci_exam_invitation` as cie left JOIN `ci_exam_registration` as cir ON cie.`id` = cir.`ref_id` where cir.`invite_sent` = '1' and cie.id=$ref_id and cir.admin_id=$admin_id");
 
-        // SELECT cie.id as cieid, cie.speedpost as ciespeedpost, cie.subjectline as ciesubjectline, cie.startdate as ciestartdate, cie.enddate as cieenddate, cir.admin_id as ciradminid , cir.consents_signstamp_status as circonsents_signstamp_status FROM `ci_exam_invitation` as cie left JOIN `ci_exam_registration` as cir ON cie.`id` = cir.`ref_id` where cie.id =2 and cir.admin_id=328;
-        // $query = $this->db->query("SELECT * FROM `ci_exam_invitation` where `ci_exam_invitation`.`invite_sent` = '1'");
-        // $query = $this->db->query("SELECT ciei.id,cier.ref_id  FROM `ci_exam_invitation` as ciei JOIN `ci_exam_registration` as cier ON `ci_exam_invitation`.`id` = `ci_exam_registration`.`ref_id` where `ci_exam_invitation`.`invite_sent` = '1'");
-        // echo '<hr/>';
-       
+        $query = $this->db->query("SELECT DISTINCT cri.ref_id as cieid, cri.speedpost as ciespeedpost, cri.exam_name as ciesubjectline, cri.startdate as ciestartdate, cri.enddate as cieenddate, cir.admin_id as ciradminid , cri.consents_signstamp_status as circonsents_signstamp_status FROM `ci_exam_invitation` as cie left JOIN `ci_exam_registration` as cir ON cie.`id` = cir.`ref_id` LEFT JOIN ci_registration_invitation as cri ON cri.school_id = cir.id where cri.`invite_sent` = '1' and cir.admin_id=$admin_id and cir.id=$school_id");
         return $query->result_array();
     }
 	 public function get_examination_form($examinationid) {
@@ -390,11 +374,12 @@ class Certificate_model extends CI_Model {
     }
 public function get_all_active_consent_reg() {
         $admin_id = $this->session->userdata('admin_id');
-        $this->db->where('admin_id',$admin_id );
+        $this->db->where('admin_id',$admin_id);
         $this->db->from('ci_exam_registration');
         $this->db->order_by('ci_exam_registration.id', 'desc');
    
         $query = $this->db->get();
+    
         return $query->result_array();
     }
 

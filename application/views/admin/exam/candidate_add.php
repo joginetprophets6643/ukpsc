@@ -289,9 +289,7 @@ $("#exam_name").change(function () {
                     dataType: 'html',
                     data: { 'exam_id' : id, 'csfr_token_name':csfr_token_value },
                     success: function (data) {
-                       
                        $('#sub_name').html(data);
-                    // console.log();
                     }
                 });
     });

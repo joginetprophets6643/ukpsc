@@ -23,7 +23,7 @@
         <div class="card">
 
             <div class="card-body">
-
+                 <?php echo $examName;?>
                 <!-- <div class="d-inline-block">
 
                   <h3 class="card-title">
@@ -529,7 +529,7 @@ var table = $('#send_invitation_list').DataTable({
 
 
     function single_send_invitations(id){
-    
+       
         var send_consent_id = $("#send_consent_id").val()
         var url = "<?php echo base_url('admin/examshedule_schedule/send_invitation_user_all/')?>"
             $.ajax({
