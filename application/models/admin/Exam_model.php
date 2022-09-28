@@ -92,7 +92,7 @@ class Exam_model extends CI_Model {
         return  $this->db->select('*')->from('ci_exam_registration')->where($array)->order_by('id','desc')->get()->result_array();       
     }
 	function get_all_registration_data() {
-
+    
         $this->db->from('ci_exam_registration');
 
         // if ($this->session->userdata('filter_state') != '') {
@@ -126,6 +126,7 @@ class Exam_model extends CI_Model {
         //    $this->db->where('ci_exam_registration.file_movement !=', 1);
         // }
         if ($admin_role_id == 6) {
+            
             $this->db->where('ci_exam_registration.created_by',$this->session->userdata('admin_id'));
         }
 
