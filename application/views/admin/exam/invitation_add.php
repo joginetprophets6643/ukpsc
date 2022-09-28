@@ -100,18 +100,6 @@
 
                                 <select name="sub_name[]" class="form-control" id="sub_name" style="width:420px;">
                                     <option value="">Select Subject</option>
-
-                                    <!-- <?php
-                                       // $b = $subject;
-
-                                       // foreach ($subject as $k => $subject) { ?>
-
-                                                    <option value="<?= $subject->id ?>">
-                                                        <?php //echo $subject->sub_name.'(' .$subject->sub_name_hindi .')'; ?>
-                                                    </option>
-
-                                                    <?php //}
-                                    ?> -->
                                 </select>
                             </div>
                         </div>
@@ -131,7 +119,9 @@
                                     
                                 $subject as $k => $subjects) { if($subjects->exam_id==$_COOKIE['exam_id']){ ?> <option value="<?php echo $subjects->id; ?>" ><?php echo $subjects->sub_name."(".$subjects->sub_name_hindi.")"; ?></option> <?php }} ?> </select > </div ></div > <div class="class="" style="margin-left: 20px; "> <div class="form-group"><label for="name" class="col-sm- control-label">No. of Candidate<i style="color: #ff0000; font-size: 12px;">*</i></label> <input type="number" name="no_candidate[]" min=1 style="width: 140px; " class="form - control" required placeholder="No.of Candidate"/></div></div><div class="" style="margin-left: 20px;"> <div class="form-group"><label for="name" class="col-sm - control - label">Exam Date<i style="color: #ff0000; font-size: 12px;">*</i></label> <input type="date" name="date_exam[]" class="form-control abc " id="date_exam1" style="width: 150px;" placeholder="Number of Candidate" required/></div></div><div class=""  style="margin-left:20px;" > <div class="form-group"> <label for="name" class="col-sm- control-label">Exam Shift <i style="color:#ff0000; font-size:12px;">*</i></label><br> <select class="form-control" name="shft_exam[]" style="width:140px;" class="" id="shft_exam" required> <option value="">Select</option> <option value="Morning">Morning</option> <option value="Evening">Evening</option> </select> </div></div ><div class="" style="margin-left:20px;"> <div class="form-group"><label for="name" class="col-sm- control-label">Exam Time <i style="color:#ff0000; font-size:12px;">*</i></label> <input type="text" style="width:90%;" name="time_exam[]" class="form-control" id="time_exam" placeholder="Exam Time" required/></div></div><a class="btn btn-danger remove_button" style="height:40px ; margin-top:30px; margin-left:7px; padding:12px; text-align:center; color:white; font-weight:bolder;"> - </a> </div ></div ></div >';
                             $(addButton).click(function () {
+                            
                                 var id = $('select[name=exam_name]').val();
+                        
                                 if(id){
                                     if (x < maxField) {
                                         x++;

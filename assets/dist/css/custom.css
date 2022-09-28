@@ -88,6 +88,9 @@ select {
     color: #373250;
     box-shadow: none !important;
 }
+.btn-admin:hover i {
+    color: #373250;
+}
 .btn-sec {
     border-color: #fff;
     background-color: #567670;
