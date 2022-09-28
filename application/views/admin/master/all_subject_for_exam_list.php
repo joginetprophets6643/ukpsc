@@ -7,19 +7,19 @@
     <!-- For Messages -->
     <?php $this->load->view('admin/includes/_messages.php') ?>
     <div class="card">
-      <div class="card-header">
+      <div class="card-header border-0">
         <div class="d-inline-block">
           <!-- <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; <?php //echo trans('establishment_type') ?> List</h3> -->
           <h3 class="card-title"><i class="fa fa-list"></i> <?php echo $title?> &nbsp;(विषय सूची)</h3>
         </div>
           <div class="d-inline-block float-right">
-            <a href="<?php echo base_url('admin/master/addSubjectNew/' . urlencrypt($id))?>" class="btn btn-success">Add Subject &nbsp;(विषय जोड़ें)</a>
+            <a href="<?php echo base_url('admin/master/addSubjectNew/' . urlencrypt($id))?>" class="btn btn-admin">Add Subject &nbsp;(विषय जोड़ें)</a>
         </div>
       </div>
     </div>
     <div class="card">
       <div class="card-body table-responsive">
-        <table id="na_datatable" class="table table-bordered table-striped" width="100%">
+        <table id="na_datatable" class="table table-bordered table-striped" width="100%"  style="border-collapse: collapse !important;">
           <thead>
             <tr>
               <th>#</th>

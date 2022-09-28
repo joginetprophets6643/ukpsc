@@ -7,7 +7,7 @@
                     <h3 class="card-title"><i class="fa fa-plus"></i>&nbsp; Edit Exam&nbsp;(परीक्षा संपादित करें)</h3>
                 </div>
                 <div class="d-inline-block float-right">
-                    <a href="<?= base_url('admin/master/exam_list'); ?>" class="btn btn-success"><i class="fa fa-list"></i>&nbsp; Exam List&nbsp;(परीक्षा सूची)</a>
+                    <a href="<?= base_url('admin/master/exam_list'); ?>" class="btn btn-admin"><i class="fa fa-list"></i>&nbsp; Exam List&nbsp;(परीक्षा सूची)</a>
                 </div>
             </div>
             <div class="card-body">
@@ -35,8 +35,6 @@
                             <input type="text"style="text-transform: capitalize;" name="advertise_name" class="form-control" id="advertise_name" placeholder="Advertisement Number/Number" value="<?php echo $admin['advertise_name'];?>" >
                         </div>
                     </div>
-                </div>
-                <div class="row">    
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="name" class="col-sm- control-label">No of Candidates&nbsp;(उम्मीदवारों की संख्या)<i style="color:#ff0000; font-size:12px;">*</i></label>
@@ -49,13 +47,25 @@
                             <input type="date" value="<?php echo $admin['start_date_exam'];?>" name="start_date_exam" class="form-control date_disable" id="start_date_exam" placeholder=""  >
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <div class="form-group">
                             <label for="name" class="col-sm- control-label">End Date&nbsp;(अंतिम तिथि)<i style="color:#ff0000; font-size:12px;">*</i></label>
                             <input type="date" value="<?php echo $admin['end_date_exam'];?>" name="end_date_exam" class="form-control date_disable" id="end_date_exam" placeholder="">
                         </div>
-                    </div>           
-                </div> 
+                    </div> 
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <div class="form-group mb-0" >
+                                <input type="button" onclick="window.history.go(-1)" class="btn btn-sec mr-4" value="Back&nbsp;(पीछे)"></input>
+                            </div>
+        
+                            <div class="form-group mb-0">
+                                <input type="submit" name="submit" value="Update&nbsp;(नवीनतम बनाना)" class="btn btn-primary">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
                 <!-- <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -71,18 +81,7 @@
                     </div>                   
                 </div> -->
                 <div class="row">
-                    <div class="col-12">
-                        <div class="d-flex justify-content-end">
-                            <div class="form-group" >
-                                <input type="button" onclick="window.history.go(-1)" class="btn btn-primary mr-4" value="Back&nbsp;(पीछे)"></input>
-                            </div>
-        
-                            <div class="form-group">
-                                <input type="submit" name="submit" value="Update&nbsp;(नवीनतम बनाना)" class="btn btn-info pull-right">
-                            </div>
-
-                        </div>
-                    </div>
+                    
                 </div>
                 <!-- <div class="row">
                     <div class="col-md-12">

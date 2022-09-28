@@ -93,14 +93,14 @@ select {
 }
 .btn-sec {
     border-color: #fff;
-    background-color: #567670;
+    background-color: #384e4a;
     color: #fff;
 }
 .btn-sec:hover,
 .btn-sec:focus {
-    border-color: #567670 !important;
+    border-color: #384e4a !important;
     background-color: #fff !important;
-    color: #567670;
+    color: #384e4a;
     box-shadow: none !important;
 }
 .hs-pass a {

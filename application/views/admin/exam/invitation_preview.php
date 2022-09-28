@@ -35,7 +35,8 @@
     
 </head>
 <body>
-    <div class="container-fluid" style="padding-left: 15rem; margin-bottom: 5rem;">
+    <div class="content-wrapper" style="">
+        
             <div class="row">
                 <div class="col-12 mt-5">   
                     <p style="text-align: center;"><b><?= $admin['subjectline'] ?></b></p>
@@ -53,30 +54,31 @@
             </div>
             <div class="row">
                 <div class="col-12">
-
-                    <table style="width:90%; margin-left: 5rem; border: 1px solid black; font-weight: normal !important; text-decoration:none;">
-                        <tbody>
-                            <tr>
-                                <th style="width:8%; padding:5px;  border: 1px solid black; ">S.No:</th>
-                                <th style="width:20%; padding:5px;  border: 1px solid black;">Subject Name</th>
-                                <!-- <th style="width:20%; padding:10px;  border: 1px solid black;">No. of Candidates</th> -->
-                                <th style="width:8%; padding:5px;  border: 1px solid black;">Exam Date</th>
-                                <th style="width:20%; padding:5px;  border: 1px solid black;">Exam Shift</th>
-                                <th style="width:20%; padding:5px;  border: 1px solid black;">Exam Time</th>
-                            </tr>
-                            <?php for($i=0; $i<count($sub_name);$i++) {  $a= $i+1 ;  ?>
-                            <tr>
-                                <th style="width:8%; padding:5px; font-weight: normal !important; border: 1px solid black;"> <?php echo $a; ?> </th>
-                                <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo get_subject_name($sub_name[$i]) ?></th>
-                                <!-- <th style="width:20%; padding:10px;  border: 1px solid black;"><?php //echo $no_candidate[$i] ?></th> -->
-                                <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $date_exam[$i] ?></th>
-                                <th style="width:8%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $shft_exam[$i] ?></th>
-                                <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $time_exam[$i] ?></th>
-        
-                            </tr>
-                        <?php } ?>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table style="width:90%; margin-left: 5rem; border: 1px solid black; font-weight: normal !important; text-decoration:none;">
+                            <tbody>
+                                <tr>
+                                    <th style="width:8%; padding:5px;  border: 1px solid black; ">S.No:</th>
+                                    <th style="width:20%; padding:5px;  border: 1px solid black;">Subject Name</th>
+                                    <!-- <th style="width:20%; padding:10px;  border: 1px solid black;">No. of Candidates</th> -->
+                                    <th style="width:8%; padding:5px;  border: 1px solid black;">Exam Date</th>
+                                    <th style="width:20%; padding:5px;  border: 1px solid black;">Exam Shift</th>
+                                    <th style="width:20%; padding:5px;  border: 1px solid black;">Exam Time</th>
+                                </tr>
+                                <?php for($i=0; $i<count($sub_name);$i++) {  $a= $i+1 ;  ?>
+                                <tr>
+                                    <th style="width:8%; padding:5px; font-weight: normal !important; border: 1px solid black;"> <?php echo $a; ?> </th>
+                                    <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo get_subject_name($sub_name[$i]) ?></th>
+                                    <!-- <th style="width:20%; padding:10px;  border: 1px solid black;"><?php //echo $no_candidate[$i] ?></th> -->
+                                    <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $date_exam[$i] ?></th>
+                                    <th style="width:8%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $shft_exam[$i] ?></th>
+                                    <th style="width:20%; padding:5px;  font-weight: normal !important; border: 1px solid black;"><?php echo $time_exam[$i] ?></th>
+            
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
     </div>
