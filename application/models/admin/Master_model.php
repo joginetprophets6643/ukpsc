@@ -38,7 +38,7 @@ class Master_model extends CI_Model {
     public function get_exam(){
     
         $admin_id = $this->session->userdata('admin_id');
-        $query = $this->db->query("SELECT * from ci_exam_master where created_by = $admin_id and status = 1");
+        $query = $this->db->query("SELECT * from ci_exam_master where created_by = $admin_id and status = 1 ORDER BY `ci_exam_master`.`id` DESC");
         return $query->result();
 
     }

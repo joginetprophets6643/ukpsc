@@ -156,8 +156,9 @@ $(document).ready(function() {
     });
 
     $(wrapper).on('click', '.remove_button', function(e){
+       
         e.preventDefault();
-        $(this).parent('div').remove(); //Remove field html
+        $(this).parent('div').parent('div').remove(); //Remove field html
         x--; //Decrement field counter
     });
 

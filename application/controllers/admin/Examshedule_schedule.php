@@ -415,8 +415,7 @@ class Examshedule_schedule extends MY_Controller {
         $grade_name = '';
         $records['data'] = $this->Exam_model->get_all_registration_data($state_name, $city_name, $grade_name);
         $data = [];
-        // echo '<pre>'; print_r($records['data']);
-        // die;
+       
         $i = 0;
 
         foreach ($records['data'] as $row) {
@@ -426,6 +425,7 @@ class Examshedule_schedule extends MY_Controller {
                 
                 $invt_recieved = isset($invitationStatus['invt_recieved'])?$invitationStatus['invt_recieved']:0;
                 $invite_sent = isset($invitationStatus['invite_sent'])?$invitationStatus['invite_sent']:0;
+                
                 if($invt_recieved==0 && $invite_sent==1)
                 {
                     $action =   'Pending';
