@@ -71,7 +71,7 @@
                <?php }else {?>
 
                   <a href="<?= base_url("admin/examshedule_schedule/create_invt_add/" . urlencrypt($row['id'])); ?>" title="Create Letter">                  
-                     Create Latter
+                     Create Letter
                   </a>
 
                <?php } ?>   

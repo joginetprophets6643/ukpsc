@@ -90,7 +90,7 @@
                     <div class="row"> -->
                         <div class="form-group has-feedback col-md-2">
                             <label>City<br />शहर<span>*</span></label>
-                            <select class="city" name="city[]" id="city" class="form-control">
+                            <select class="citymain" name="city[]" id="city" class="form-control">
                                 <option value=""> Select City</option>
                             </select>
                         </div>
@@ -260,7 +260,6 @@ $(document).ready(function() {
 function getval(sel,id){
     // alert(sel.value);
     var district_id = sel.value;
-    
     if (district_id != '') {
 
         $.ajax({
@@ -269,7 +268,7 @@ function getval(sel,id){
             dataType: 'html',
             data: {'district_id': district_id, 'csfr_token_name': csfr_token_value},
             success: function (data) {
-                $('#city'+id+'').html(data);
+                $('#city'+id).html(data);
             }
         });
     } else {

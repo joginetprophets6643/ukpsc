@@ -1628,7 +1628,7 @@ class Examshedule_schedule extends MY_Controller {
     public function create_letter_list_data() {
 
         $data['info'] = $this->Exam_model->get_all_invites();
-
+       
         $this->load->view('admin/exam/create_letter_list', $data);
     }
      public function create_invt_add() {
