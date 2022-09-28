@@ -59,7 +59,7 @@
 
                             </div>
                         </div>
-                        <div class=" col-md-2">
+                        <div class="col-md-2">
                             <div class="form-group has-feedback">
                                 <label>District<br />जिला<span>*</span></label>
                                 <select class="state form-control" name="state[]" id="state">
@@ -77,9 +77,9 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="form-group has-feedback">
+                            <div class="form-group has-feedback ">
                                 <label>City<br />शहर<span>*</span></label>
-                                <select class="city form-control" name="city[]" id="city">
+                                <select class="citymain form-control" name="city[]" id="city">
                                     <option value=""> Select City</option>
                                 </select>
                             </div>
@@ -108,22 +108,19 @@
                             <a class="btn btn-admin add-more" style="margin-top: 56px;height:32px; padding: 5px 10px; text-align: center; color: white; text-overflow: initial; font-weight: 500;"><i class="fa fa-plus"></i></a>
                         </div>
                         <div class="after-add-more field_wrapper  col-md-12">
-                        </div>    
-                        <!-- </div> 
-                        <div class="row"> -->
-                            <div class="col-md-12">
-                                <div class="d-flex">
-                                    <div class="form-group mb-0">
-                                        <input type="button" style="margin-top:25px; " onclick="window.history.go(-1)" class="btn btn-sec" value="Back"></input>
-                                    </div>
-                                
-                                    <div class="form-group mb-0" style="margin-left:25px;">
-                                        <input type="submit" name="submit" style="margin-top:25px;" value="Add Candidates" class="btn btn-primary">
-                                    </div>
-
+                        </div>
+                        <div class="col-md-12">
+                            <div class="d-flex">
+                                <div class="form-group mb-0">
+                                    <input type="button" style="margin-top:25px; " onclick="window.history.go(-1)" class="btn btn-sec" value="Back"></input>
                                 </div>
+                            
+                                <div class="form-group mb-0" style="margin-left:25px;">
+                                    <input type="submit" name="submit" style="margin-top:25px;" value="Add Candidates" class="btn btn-primary">
+                                </div>
+
                             </div>
-                        <!-- </div> -->
+                        </div>
                     </div>
                 </div>
                 <?php echo form_close(); ?>
@@ -239,7 +236,6 @@ $(document).ready(function() {
 function getval(sel,id){
     // alert(sel.value);
     var district_id = sel.value;
-    
     if (district_id != '') {
 
         $.ajax({
@@ -248,7 +244,7 @@ function getval(sel,id){
             dataType: 'html',
             data: {'district_id': district_id, 'csfr_token_name': csfr_token_value},
             success: function (data) {
-                $('#city'+id+'').html(data);
+                $('#city'+id).html(data);
             }
         });
     } else {

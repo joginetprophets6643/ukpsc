@@ -19,6 +19,7 @@
 .btn.btn-success,
 .btn.btn-warning {
     padding: 3px 5px;
+    margin-right: 3px;
 }
 .btn i {
     font-size: 15px;
