@@ -45,7 +45,7 @@
                                     <br />परीक्षा का नाम
                                 </h6>
                                     <br/>
-                                <h2 class="text-bold" style="font-size: 30px"><?php echo get_exam_name($admin['exam_name']); ?></h2>
+                                <h2 class="text-bold" style="font-size: 30px; color: #373250;"><?php echo get_exam_name($admin['exam_name']); ?></h2>
 
                             </div>
 
@@ -55,26 +55,26 @@
                             <?php //echo '<pre>'; print_r($value);?>
                             <div class="form-group has-feedback col-md-3">
                                 <label>District<br />जिला</label>
-                                <p><?php echo get_district_name($value['state_array']); ?></p>
-                                <!-- <input type="text" readonly id="state" name="state" class="form-control" maxlength="4" value="<?php  ?>" placeholder=""> -->
+                                <!-- <p><?php echo get_district_name($value['state_array']); ?></p> -->
+                                <input type="text" readonly id="state" name="state" class="form-control" maxlength="4" value="<?php echo get_district_name($value['state_array']); ?>" placeholder="">
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="name" class="col-sm- control-label">District Code<br />जिला कोड</label>
-                                    <p><?php echo $value['district_code_array']; ?></p>
-                                    <!-- <input type="text" id="district_code" readonly name="district_code[]" class="form-control" maxlength="4" value="<?php echo $value['district_code_array']; ?>" placeholder=""> -->
+                                    <!-- <p><?php echo $value['district_code_array']; ?></p> -->
+                                    <input type="text" id="district_code" readonly name="district_code[]" class="form-control" maxlength="4" value="<?php echo $value['district_code_array']; ?>" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group has-feedback col-md-2">
                                 <label>City<br />शहर</label>
-                                <p><?php echo get_subcity_name($value['city_array']); ?></p>
-                                <!-- <input type="text" readonly id="state" name="state" class="form-control" maxlength="4" value="<?php echo get_subcity_name($value['city_array']); ?>" placeholder=""> -->
+                                <!-- <p><?php echo get_subcity_name($value['city_array']); ?></p> -->
+                                <input type="text" readonly id="state" name="state" class="form-control" maxlength="4" value="<?php echo get_subcity_name($value['city_array']); ?>" placeholder="">
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="name" class="col-sm- control-label">City Code<br />शहर कोड</label>
-                                    <p><?php echo $value['city_code_array']; ?></p>
-                                    <!-- <input type="text" id="city_code" readonly name="city_code[]" class="form-control" maxlength="4" value="<?php echo $value['city_code_array']; ?>" placeholder=""> -->
+                                    <!-- <p><?php echo $value['city_code_array']; ?></p> -->
+                                    <input type="text" id="city_code" readonly name="city_code[]" class="form-control" maxlength="4" value="<?php echo $value['city_code_array']; ?>" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -82,8 +82,8 @@
                                     <label for="name" class="col-sm- control-label">Number of Candidates<br />संबंधित की संख्या
                                         <span>*</span>
                                     </label>
-                                    <p><?php echo $value['number_of_can_array'];  ?></p>
-                                    <!-- <input type="number" id="number_of_can" min=1 name="number_of_can[]" class="form-control" maxlength="4" value="<?php echo $value['number_of_can_array']; ?>" placeholder=""> -->
+                                    <!-- <p><?php echo $value['number_of_can_array'];  ?></p> -->
+                                    <input type="number" readonly id="number_of_can" min=1 name="number_of_can[]" class="form-control" maxlength="4" value="<?php echo $value['number_of_can_array']; ?>" placeholder="">
                                 </div>
                             </div>
                         <?php } ?>
@@ -115,11 +115,9 @@
                                 <input type="number" id="number_of_can" min=1 name="number_of_can" class="form-control" maxlength="4" value="<?php //echo $admin['number_of_can']; ?>" placeholder="">
                             </div>
                         </div> -->
-                        <div class="row">
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="button" onclick="window.history.go(-1)" class="btn btn-primary" value="Back"></input>
+                        <div class="col-md-12 mt-4">
+                            <div class="form-group mb-0">
+                                <input type="button" onclick="window.history.go(-1)" class="btn btn-sec" value="Back"></input>
                                 <!-- <input type="submit" name="submit" style="margin-top:25px; margin-left: 15px;" value="Update " class="btn btn-primary pull-center"> -->
                             </div>
                         </div>
