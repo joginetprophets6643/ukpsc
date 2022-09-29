@@ -55,11 +55,11 @@
                             </h4>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <h6 class="text-center text-bold">
                                 <?= trans('written_examination') ?>
                             </h6>
-                        </div>
+                        </div> -->
                         <div class="col-12">
                             <p style="text-align: center;"><b>
                                     <?= trans('exam_schedule_vew') ?>

@@ -41,7 +41,8 @@ select:focus {
 }
 input,
 select {
-
+    font-size: 17px !important;
+    padding: 3px 10px !important;
 }
 .form-group label {
     font-size: 1rem;
@@ -237,4 +238,34 @@ table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:a
 }
 .page-link:focus {
     box-shadow: none;
+}
+.btn-success {
+    background-color: #006400;
+    border-color: #006400;
+}
+.btn-success:hover {
+    background-color: #008000;
+    border-color: #008000;
+}
+.btn-success:focus,
+.btn-danger:focus,
+.btn-warning:focus {
+   box-shadow: none !important;
+}
+.btn-danger {
+    background-color: #d00000;
+    border-color: #d00000;
+}
+.btn-danger:hover {
+    background-color: #F32424;
+    border-color: #F32424;
+}
+.btn-warning {
+    color: #000;
+    background-color: #ffe600;
+    border-color: #ffc107;
+}
+.btn-warning:hover {
+    background-color: #ffc107;
+    border-color: #ffc107;
 }
