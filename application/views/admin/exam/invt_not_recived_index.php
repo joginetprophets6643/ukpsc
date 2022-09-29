@@ -45,7 +45,7 @@
                 <?php echo form_open("/",'class="filterdata"') ?>    
 
                 <div class="row">
-                  
+                   <input type="text" hidden id="exam_new_id" value="<?php echo $id ?>">
                     <?php 
 
                     if (in_array($_SESSION['admin_role_id'], array(1,2,3,4,5,6))){?>
@@ -272,24 +272,20 @@
                     // }
 
             var district_id = $('#district').val();
-            console.log("district",district_id);
-                //   return false;
             var state_id = $('#state').val();
             var grade = $('#grade').val();
             var district_id =  $('#district').val();;
-            // console.log("district_id",district_id);
-            // return false;
+    
                 if (state_id != '') {
                 console.log("state_id asfeasfd",state_id);
-                // return false;
-            
+                var exam_new_id =  $('#exam_new_id').val();
+               
                     $.ajax({
                     type: "GET", 
                     url: base_url+'admin/Examshedule_schedule/consent_notrecieved_search',
                     dataType: 'html',
-                    data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade, 'csfr_token_name':csfr_token_value },
+                    data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade,'exam_new_id':exam_new_id, 'csfr_token_name':csfr_token_value },
                     success: function(data) {
-                        console.log("data 31",data);
                         $('#consent_not_recieved_by_user_list').html(data);
                              // New Logic For Count Students on the basis of Distrcit Id  -- Jogi
                        $.ajax({
@@ -320,15 +316,15 @@
           var state_id = $('#state').val();
           var grade = $('#grade').val();
           var district_id = $(this).val();
-          // console.log("grade",grade);
-          // return false;
+          var exam_new_id =  $('#exam_new_id').val();
+               
             if (district_id != '') {
            
                 $.ajax({
                    type: "GET", 
                    url: base_url+'admin/Examshedule_schedule/consent_notrecieved_search',
                    dataType: 'html',
-                   data: { 'district_id' : district_id, 'state_id':state_id, 'grade':grade, 'csfr_token_name':csfr_token_value },
+                   data: { 'district_id' : district_id, 'state_id':state_id, 'grade':grade,'exam_new_id':exam_new_id, 'csfr_token_name':csfr_token_value },
                    success: function(data) {
                       
                        $('#consent_not_recieved_by_user_list').html(data);
@@ -347,6 +343,7 @@
           var grade = $(this).val();
           var state_id = $('#state').val();
           var district_id = $('#district').val();
+          var exam_new_id =  $('#exam_new_id').val();
             if (grade != '') {
               // console.log("grade_id",grade_id);
               // return false;
@@ -355,7 +352,7 @@
                    type: "GET", 
                    url: base_url+'admin/Examshedule_schedule/consent_notrecieved_search',
                    dataType: 'html',
-                   data: { 'district_id' : district_id, 'state_id':state_id, 'grade' : grade, 'csfr_token_name':csfr_token_value },
+                   data: { 'district_id' : district_id, 'state_id':state_id, 'grade' : grade, 'exam_new_id':exam_new_id,'csfr_token_name':csfr_token_value },
                    success: function(data) {
                       //  console.log("data",data);
                        $('#consent_not_recieved_by_user_list').html(data);
@@ -391,21 +388,6 @@
 
             });
 
-        // var url = "<?php echo base_url('admin/examshedule_schedule/send_invitation_user_all/')?>"
-        //     $.ajax({
-        //         url: url,
-        //         type:'get',
-        //         dataType: 'text',
-        //         data : {data:hrefs,'send_consent_id':send_consent_id},
-        //             success:function(result){
-        //                 alert("success, Sent Sucessfully");
-        //                 $(':checkbox.send_email_ids').each(function() {
-        //                 // alert(this.checked)
-        //                 this.checked = false;     
-        //             });
-        //         } 
-
-        //     });  
 
     });
 

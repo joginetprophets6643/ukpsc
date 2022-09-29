@@ -45,7 +45,7 @@
                 <?php echo form_open("/",'class="filterdata"') ?>    
 
                 <div class="row">
-                  
+                <input type="text" id="exam_new_id" hidden value="<?php echo $id ?>">
                     <?php 
 
                     if (in_array($_SESSION['admin_role_id'], array(1,2,3,4,5,6))){?>
@@ -281,14 +281,12 @@ var table = $('#consent_recieved_list').DataTable({
             // console.log("district_id",district_id);
             // return false;
                 if (state_id != '') {
-                console.log("state_id asfeasfd",state_id);
-                // return false;
-            
+                    var exam_new_id =  $('#exam_new_id').val();
                     $.ajax({
                     type: "GET", 
                     url: base_url+'admin/Examshedule_schedule/consent_recieved_search',
                     dataType: 'html',
-                    data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade, 'csfr_token_name':csfr_token_value },
+                    data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade,'exam_new_id':exam_new_id, 'csfr_token_name':csfr_token_value },
                     success: function(data) {
                         console.log("data 31",data);
                         $('#consent_recieved_list').html(data);
@@ -306,15 +304,14 @@ var table = $('#consent_recieved_list').DataTable({
           var state_id = $('#state').val();
           var grade = $('#grade').val();
           var district_id = $(this).val();
-          // console.log("grade",grade);
-          // return false;
+          var exam_new_id =  $('#exam_new_id').val();
             if (district_id != '') {
            
                 $.ajax({
                    type: "GET", 
                    url: base_url+'admin/Examshedule_schedule/consent_recieved_search',
                    dataType: 'html',
-                   data: { 'district_id' : district_id, 'state_id':state_id, 'grade':grade, 'csfr_token_name':csfr_token_value },
+                   data: { 'district_id' : district_id, 'state_id':state_id, 'grade':grade,'exam_new_id':exam_new_id, 'csfr_token_name':csfr_token_value },
                    success: function(data) {
                       
                        $('#consent_recieved_list').html(data);
@@ -331,6 +328,7 @@ var table = $('#consent_recieved_list').DataTable({
           var grade = $(this).val();
           var state_id = $('#state').val();
           var district_id = $('#district').val();
+          var exam_new_id =  $('#exam_new_id').val();
             if (grade != '') {
               // console.log("grade_id",grade_id);
               // return false;
@@ -339,7 +337,7 @@ var table = $('#consent_recieved_list').DataTable({
                    type: "GET", 
                    url: base_url+'admin/Examshedule_schedule/consent_recieved_search',
                    dataType: 'html',
-                   data: { 'district_id' : district_id, 'state_id':state_id, 'grade' : grade, 'csfr_token_name':csfr_token_value },
+                   data: { 'district_id' : district_id, 'state_id':state_id, 'grade' : grade,'exam_new_id':exam_new_id, 'csfr_token_name':csfr_token_value },
                    success: function(data) {
                       //  console.log("data",data);
                        $('#consent_recieved_list').html(data);

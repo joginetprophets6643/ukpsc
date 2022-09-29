@@ -1456,26 +1456,49 @@ public function get_deactivation_data($id) {
         return $query->result_array();
     }
      public function get_consent_recved_data($state_name, $city_name, $grade_name,$ref_id) {
-        
-        // $this->db->select('*');
-        // $this->db->from('ci_exam_registration');
-        // // $this->db->where('invt_recieved', '1');
-        // $this->db->where('invt_recieved', '0');
-        // $this->db->order_by(' id', 'asc');
-        // // echo $this->db->last_query();
-        // $query = $this->db->get();
-        // return $query->result_array();
+        $this->db->from('ci_exam_according_to_school');
 
+        if ($city_name != '' && $state_name != '' ) {
 
-        // echo 123;exit;
-        // $this->db->select('*');
-        // $this->db->from('ci_exam_registration');
-        // $this->db->where('invt_recieved', '0');
-        // $this->db->order_by(' id', 'asc');
-        // // echo $this->db->last_query();
-        // $query = $this->db->get();
-        // return $query->result_array();
+            $this->db->where('ci_exam_according_to_school.district', $state_name);
+            $this->db->where('ci_exam_according_to_school.city', $city_name);
+        }
 
+        if ($state_name != '' || $state_name = '') {
+            
+            $this->db->where('ci_exam_according_to_school.district', $state_name);
+        }
+        if ($grade_name != '') {
+
+            $this->db->where('ci_exam_according_to_school.ranking_admin', $grade_name);
+        }
+        $admin_role_id = $this->session->userdata('admin_role_id');
+        if ($admin_role_id == 6) {
+            $this->db->where('ci_exam_according_to_school.created_by',
+                    $this->session->userdata('admin_id'));
+        }
+
+        $filterData = $this->session->userdata('filter_keyword');
+
+        // $this->db->where('status','1');
+        $this->db->where('ref_id', $ref_id);
+        $this->db->where('invt_recieved', '1');
+        $this->db->order_by('ci_exam_according_to_school.id', 'desc');
+		// echo $this->db->last_query();
+        $query = $this->db->get();
+
+        $module = array();
+       
+        $num_rows_count = $query->num_rows();
+        if ($query->num_rows() > 0) {
+            $module = $query->result_array();
+            
+        }
+        $module = array($num_rows_count,$module);
+      
+        return $module;
+    }   
+     public function get_consent_recved_databakup29_09_2022($state_name, $city_name, $grade_name,$ref_id) {
         $this->db->from('ci_exam_registration');
 
         if ($city_name != '' && $state_name != '' ) {
@@ -1553,14 +1576,47 @@ public function get_deactivation_data($id) {
     }   
     
     public function get_consent_not_recved_data($state_name, $city_name, $grade_name,$ref_id) {
-        // echo 123;exit;
-        // $this->db->select('*');
-        // $this->db->from('ci_exam_registration');
-        // $this->db->where('invt_recieved', '0');
-        // $this->db->order_by(' id', 'asc');
-        // // echo $this->db->last_query();
-        // $query = $this->db->get();
-        // return $query->result_array();
+
+        $this->db->from('ci_exam_according_to_school');
+
+        if ($city_name != '' && $state_name != '' ) {
+
+            $this->db->where('ci_exam_according_to_school.district', $state_name);
+            $this->db->where('ci_exam_according_to_school.city', $city_name);
+        }
+
+        if ($state_name != '' || $state_name = '') {
+            
+            $this->db->where('ci_exam_according_to_school.district', $state_name);
+        }
+        
+        
+        if ($grade_name != '') {
+
+            $this->db->where('ci_exam_according_to_school.ranking_admin', $grade_name);
+        }
+        $admin_role_id = $this->session->userdata('admin_role_id');
+        if ($admin_role_id == 6) {
+            $this->db->where('ci_exam_according_to_school.created_by',
+                    $this->session->userdata('admin_id'));
+        }
+
+        $filterData = $this->session->userdata('filter_keyword');
+        $this->db->where('invt_recieved IS NULL');
+        $this->db->where('ref_id', $ref_id);
+        $this->db->order_by('ci_exam_according_to_school.id', 'desc');
+        $query = $this->db->get();
+        $module = array();
+        
+        if ($query->num_rows() > 0) {
+            $module = $query->result_array();
+        }
+        
+        $num_rows_count = $query->num_rows();
+        $module = array($num_rows_count,$module);
+        return $module;
+    }
+    public function get_consent_not_recved_databackup29_09_2022($state_name, $city_name, $grade_name,$ref_id) {
 
         $this->db->from('ci_exam_registration');
 
@@ -1730,6 +1786,7 @@ public function get_deactivation_data($id) {
         $this->db->from('ci_exam_invitation');
         $this->db->where('invt_recieved','1');
         $this->db->where('created_by',$admin_id);
+        $this->db->order_by('id','desc');
         $q = $this->db->get()->result_array();
         return $q;
     }

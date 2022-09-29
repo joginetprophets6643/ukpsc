@@ -2,7 +2,7 @@
 
 <div class="datalist">
 
-   <table id="na_datatable" class="table table-bordered table-hover" style="overflow: auto; 
+   <table id="na_datatable" class="table table-bordered table-hover" style="overflow: auto; border-collapse: collapse !important; 
 
     ">
 
@@ -102,7 +102,7 @@
 
             <?php  if ($admin_role_id == 6 )  { ?>
 
-            <a href="<?= base_url("admin/consent_letter/edit_consent/" . $row['id']); ?>" title="Edit" class="btn btn-warning btn-xs mr5" >
+            <a href="<?= base_url("admin/consent_letter/edit_consent/" . $row['id']); ?>" title="Edit" class="btn btn-warning btn-xs" >
 
             <i class="fa fa-edit"></i>
 
@@ -132,7 +132,7 @@
              </a>  -->
             <?php if($row['speedpost'] != ''){ ?>
               <!-- <a href="<?php //echo base_url("admin/examshedule_schedule/invitation_preview/" . urlencrypt($row['id'])); ?>" title="Preview"  class="btn btn-warning btn-xs  mr5"> -->
-               <a href="<?= base_url("admin/examshedule_schedule/consent_letter_preview/" . urlencrypt($row['id'])); ?>" title="consent letter preview"  class="btn btn-warning btn-xs  mr5">
+               <a href="<?= base_url("admin/examshedule_schedule/consent_letter_preview/" . urlencrypt($row['id'])); ?>" title="consent letter preview"  class="btn btn-warning btn-xs">
                   <i class="fa fa-eye"></i>
                </a>
             <?php }?>
@@ -140,8 +140,8 @@
                   <i class="fa fa-trash"></i>
                </a>  -->
                <?php if($row['speedpost'] != ''){ ?>
-                  <a href="<?= base_url("admin/examshedule_schedule/date_sheet_edit/" . urlencrypt($row['id'])); ?>" title="Edit" class="btn btn-danger btn-xs mr5">
-                     Edit
+                  <a href="<?= base_url("admin/examshedule_schedule/date_sheet_edit/" . urlencrypt($row['id'])); ?>" title="Edit" class="btn btn-success btn-xs">
+                  <i class="fa fa-pencil-square-o"></i>
                   </a>
                <?php }?>
           

@@ -1,6 +1,6 @@
 <!-- DataTables -->
 
-<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css"> 
+<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css">
 
 <!-- Content Wrapper. Contains page content -->
 
@@ -8,7 +8,7 @@
 
     <section class="content">
 
-         <!-- For Messages -->
+        <!-- For Messages -->
 
         <?php $this->load->view('admin/includes/_messages.php') ?>
 
@@ -18,25 +18,25 @@
 
                 <div class="d-inline-block">
 
-                  <h3 class="card-title">
+                    <h3 class="card-title">
 
-                    <i class="fa fa-list"></i>
+                        <i class="fa fa-list"></i>
 
-                    Consent List for Sending Invitations&nbsp;(आमंत्रण भेजने के लिए सहमति सूची)
+                        Consent List for Sending Invitations&nbsp;(आमंत्रण भेजने के लिए सहमति सूची)
 
-                  </h3>
+                    </h3>
 
-                    
 
-              </div>
 
-           
+                </div>
 
-              <div class="d-inline-block float-right">
 
-                
 
-              </div>
+                <div class="d-inline-block float-right">
+
+
+
+                </div>
 
             </div>
 
@@ -171,18 +171,18 @@
                             <th>End Date of exam Details</th>
                             <th width="120"><?= trans('action') ?></th>
                         </tr>
-                      </thead>
-                      <!-- <div style="margin-left:63%;padding: 0 0 20px 10px;"> -->
-                      <!-- <span id="total_candidate_display" style="display:none;" class="total_candidate_display" name="total_candidate_display"></span>
+                    </thead>
+                    <!-- <div style="margin-left:63%;padding: 0 0 20px 10px;"> -->
+                    <!-- <span id="total_candidate_display" style="display:none;" class="total_candidate_display" name="total_candidate_display"></span>
                       <input type="hidden" id="send_consent_id" name="send_consent_id" value="<?= $this->uri->segment(4);?>"> -->
-                      <!-- </div> -->
-                      <!-- <div id="allcheckids" style="margin-left:50%;padding: 0 0 20px 10px;">
+                    <!-- </div> -->
+                    <!-- <div id="allcheckids" style="margin-left:50%;padding: 0 0 20px 10px;">
                           <input  type="button" class="select_all_count btn btn-success" id="select-all1" value="Select All(सभी चुनें)"> 
                           <input  type="button"  class="btn btn-success" id="select_all" onclick="return confirm('Are you sure want to send all invitation?\nक्या आप वाकई सभी आमंत्रण भेजना चाहते हैं?')" value="Send to All(सभी को भेजो)"> 
                           <input  type="button"class=" btn btn-success" id="select_single_count" onclick="return confirm('Are you sure want to send select user invitation?\nक्या आप वाकई चुनिंदा उपयोगकर्ता आमंत्रण भेजना चाहते हैं?')" value="Send to Selected(चयनित को भेजें)">
                           <input  type="button" class="select_all_uncheck btn btn-success" id="select-all1" value="Uncheck(अनचेक)"> 
                       </div> -->
-                  </table>
+                </table>
             </div>
         </div>
 
@@ -222,7 +222,6 @@
 
 
 <script>
-
 var table = $('#send_invitation_list').DataTable({
     "processing": true,
     "serverSide": false,
@@ -230,12 +229,42 @@ var table = $('#send_invitation_list').DataTable({
     "order": [
         [0, 'asc']
     ],
-    "columnDefs": [{"targets": 0,"name": "id",'searchable': true,'orderable': true},
-        {"targets": 1,"name": "school_name",'searchable': true,'orderable': true},
-        {"targets": 2,"name": "district",'searchable': true,'orderable': true},
-        {"targets": 3,"name": "city",'searchable': true,'orderable': true},
-        {"targets": 4,"name": "principal_name",'searchable': true,'orderable': true},
-        {"targets": 5,"name": "created_at",'searchable': true,'orderable': true},
+    "columnDefs": [{
+            "targets": 0,
+            "name": "id",
+            'searchable': true,
+            'orderable': true
+        },
+        {
+            "targets": 1,
+            "name": "school_name",
+            'searchable': true,
+            'orderable': true
+        },
+        {
+            "targets": 2,
+            "name": "district",
+            'searchable': true,
+            'orderable': true
+        },
+        {
+            "targets": 3,
+            "name": "city",
+            'searchable': true,
+            'orderable': true
+        },
+        {
+            "targets": 4,
+            "name": "principal_name",
+            'searchable': true,
+            'orderable': true
+        },
+        {
+            "targets": 5,
+            "name": "created_at",
+            'searchable': true,
+            'orderable': true
+        },
     ]
 });
 
@@ -297,74 +326,76 @@ var table = $('#send_invitation_list').DataTable({
 
 
 
-    // $(function() {
+// $(function() {
 
-        // $('.dd_state').change( function() {
+// $('.dd_state').change( function() {
 
-            // var state_id = $(this).val();
-
-
-
-            // if (state_id != '') {
-
-           
-
-                // $.ajax({
-
-                   // type: "POST", 
-
-                   // url: base_url+'admin/location/get_city_by_state_id',
-
-                   // dataType: 'html',
-
-                   // data: { 'state_id' : state_id, 'csfr_token_name':csfr_token_value },
-
-                   // success: function(data) {
-
-                       // console.log(data);
-
-                       // $('#district_filter').html( data );
-
-                   // }
-
-                // });
-
-            // }
-
-            // else {
-
-               // $('#state').val('').hide();
+// var state_id = $(this).val();
 
 
 
-            // }
+// if (state_id != '') {
 
-        // });
 
-    // });
-	 $(document).ready(function () {
 
-         $(function () {
-            $('.dd_state').change(function () {
-                var district_id = $(this).val();
-                if (district_id != '') {
-                    $('#othstate').val('').hide();
+// $.ajax({
 
-                    $.ajax({
-                        type: "POST",
-                        url: base_url + 'admin/location/get_city_by_state_id',
-                        dataType: 'html',
-                        data: {'district_id': district_id, 'csfr_token_name': csfr_token_value},
-                        success: function (data) {
-                            $('#city').html(data);
-                        }
-                    });
-                } else {
-                    $('#state').val('').hide();
-                    $('#othstate').show();
-                }
-            });
+// type: "POST", 
+
+// url: base_url+'admin/location/get_city_by_state_id',
+
+// dataType: 'html',
+
+// data: { 'state_id' : state_id, 'csfr_token_name':csfr_token_value },
+
+// success: function(data) {
+
+// console.log(data);
+
+// $('#district_filter').html( data );
+
+// }
+
+// });
+
+// }
+
+// else {
+
+// $('#state').val('').hide();
+
+
+
+// }
+
+// });
+
+// });
+$(document).ready(function() {
+
+    $(function() {
+        $('.dd_state').change(function() {
+            var district_id = $(this).val();
+            if (district_id != '') {
+                $('#othstate').val('').hide();
+
+                $.ajax({
+                    type: "POST",
+                    url: base_url + 'admin/location/get_city_by_state_id',
+                    dataType: 'html',
+                    data: {
+                        'district_id': district_id,
+                        'csfr_token_name': csfr_token_value
+                    },
+                    success: function(data) {
+                        $('#city').html(data);
+                    }
+                });
+            } else {
+                $('#state').val('').hide();
+                $('#othstate').show();
+            }
         });
     });
-
+});
 </script>

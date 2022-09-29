@@ -35,9 +35,11 @@
 
                             <div class="form-group">
 
-                                <label for="name" class="col-sm- control-label">Exam Name<span>*</span><br/>(परीक्षा का नाम)<span>*</span></label>
-                    
-                                <input type="text" id="exam_name" name="exam_name" readonly class="form-control" placeholder="subject line" value="<?= $exam[0]['subjectline']?>">
+                                <label for="name" class="col-sm- control-label">Exam Name<span>*</span><br />(परीक्षा का
+                                    नाम)<span>*</span></label>
+
+                                <input type="text" id="exam_name" name="exam_name" readonly class="form-control"
+                                    placeholder="subject line" value="<?= $exam[0]['subjectline']?>">
 
                                 <!-- <select name="exam_name" class="form-control" id="exam_name">
 
@@ -66,16 +68,20 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="name" class="col-sm- control-label">Start Date of exam <span>*</span><br/>(परीक्षा शुरू होने की तिथि)<span>*</span></label>
+                                <label for="name" class="col-sm- control-label">Start Date of exam
+                                    <span>*</span><br />(परीक्षा शुरू होने की तिथि)<span>*</span></label>
                                 <!-- <input type="date" name="startdate" id="startdate" readonly class="form-control" placeholder="Subject" > -->
-                                <input type="text" name="startdate" id="startdate" readonly class="form-control" placeholder="Subject" value="<?= $exam[0]['startdate']?>">
+                                <input type="text" name="startdate" id="startdate" readonly class="form-control"
+                                    placeholder="Subject" value="<?= $exam[0]['startdate']?>">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="name" class="col-sm- control-label">End Date of exam <span>*</span><br/>(परीक्षा की समाप्ति तिथि)<span>*</span></label>
+                                <label for="name" class="col-sm- control-label">End Date of exam
+                                    <span>*</span><br />(परीक्षा की समाप्ति तिथि)<span>*</span></label>
                                 <!-- <input type="date" id="end_date" name="enddate" readonly class="form-control" placeholder="Subject"> -->
-                                <input type="text" id="end_date" name="enddate" readonly class="form-control" placeholder="Subject"  value="<?= $exam[0]['enddate']?>">
+                                <input type="text" id="end_date" name="enddate" readonly class="form-control"
+                                    placeholder="Subject" value="<?= $exam[0]['enddate']?>">
                             </div>
                         </div>
                     </div>
@@ -83,8 +89,11 @@
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label for="name" class="col-sm- control-label">Enter Letter/Email/Speed Post Number<span>*</span><br/>(पत्र/ईमेल/स्पीड पोस्ट नंबर दर्ज करें)<span>*</span></label>
-                                <input type="text" id="speed_post" name="speedpost" class="form-control" placeholder="Enter Letter/Email/Speed Post Number(पत्र/ईमेल/स्पीड पोस्ट नंबर दर्ज करें)">
+                                <label for="name" class="col-sm- control-label">Enter Letter/Email/Speed Post
+                                    Number<span>*</span><br />(पत्र/ईमेल/स्पीड पोस्ट नंबर दर्ज
+                                    करें)<span>*</span></label>
+                                <input type="text" id="speed_post" name="speedpost" class="form-control"
+                                    placeholder="Enter Letter/Email/Speed Post Number(पत्र/ईमेल/स्पीड पोस्ट नंबर दर्ज करें)">
                             </div>
 
                         </div>
@@ -94,22 +103,27 @@
 
                             <div class="form-group">
 
-                                <label for="name" class="col-sm- control-label">Enter Subject Line of Letter<span>*</span><br/>(पत्र की विषय पंक्ति दर्ज करें)<span>*</span></label>
+                                <label for="name" class="col-sm- control-label">Enter Subject Line of
+                                    Letter<span>*</span><br />(पत्र की विषय पंक्ति दर्ज करें)<span>*</span></label>
 
-                                <input type="text" name="subjectline" id="subjectline" class="form-control" placeholder="Enter Subject Line of Letter(पत्र की विषय पंक्ति दर्ज करें)">
+                                <input type="text" name="subjectline" id="subjectline" class="form-control"
+                                    placeholder="Enter Subject Line of Letter(पत्र की विषय पंक्ति दर्ज करें)">
 
                             </div>
 
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-md-6">
 
                             <div class="form-group">
 
-                                <label for="name" class="col-sm- control-label">Enter Your Name, Designation And Mobile number<span>*</span><br/>(अपना नाम, पदनाम और मोबाइल नंबर दर्ज करें)<span>*</span></label>
-                                <textarea id="name_designation_mobile" name="name_designation_mobile" rows="8" cols="85" placeholder="Enter Your Name, Designation And Mobile number(अपना नाम, पदनाम और मोबाइल नंबर दर्ज करें)"></textarea>
+                                <label for="name" class="col-sm- control-label">Enter Your Name, Designation And Mobile
+                                    number<span>*</span><br />(अपना नाम, पदनाम और मोबाइल नंबर दर्ज
+                                    करें)<span>*</span></label>
+                                <textarea id="name_designation_mobile" name="name_designation_mobile" rows="8" cols="85"
+                                    placeholder="Enter Your Name, Designation And Mobile number(अपना नाम, पदनाम और मोबाइल नंबर दर्ज करें)"></textarea>
                                 <!-- <input type="text" name="name_designation_mobile" id="name_designation_mobile" class="form-control" placeholder="Enter Subject Line of Letter(पत्र की विषय पंक्ति दर्ज करें)"> -->
 
                             </div>
@@ -293,7 +307,7 @@
 
                             <div class="form-group change">
 
-                                <label for=""><br/></label><br />
+                                <label for=""><br /></label><br />
 
                                 <a class="btn btn-success add-more"
                                     style="margin-top: 0px;height:40px; padding: 10px; text-align: center; color: white; text-overflow: initial; font-weight: bold;">+
@@ -319,14 +333,16 @@
                     <div class="form-group">
                         <div class="col-md-3">
                             <!-- <input type="submit" name="submit" value="Update Admin" class="btn btn-primary pull-right"> -->
-                            <input type="button" onclick="window.history.go(-1)" class="btn btn-primary" value="Back"></input>
+                            <input type="button" onclick="window.history.go(-1)" class="btn btn-primary"
+                                value="Back"></input>
                         </div>
                     </div>
 
                     <div class="form-group">
 
                         <div class="col-md-6">
-                            <input type="hidden" name="user_id" class="form-control" id="user_id" value="<?= $exam[0]['id']?>">
+                            <input type="hidden" name="user_id" class="form-control" id="user_id"
+                                value="<?= $exam[0]['id']?>">
                             <input type="submit" name="submit" value="Create " class="btn btn-primary pull-center">
 
                         </div>
@@ -364,7 +380,7 @@ $(document).ready(function() {
             return false;
 
         }
-        
+
         if ($("#startdate").val() === "") {
 
             alert("Please fill 'Start Date'\n(कृपया 'आरंभ तिथि' भरें");
@@ -372,7 +388,7 @@ $(document).ready(function() {
             return false;
 
         }
-        
+
         if ($("#end_date").val() === "") {
 
             alert("Please fill 'End Date'\n(कृपया 'समाप्ति तिथि' भरें");
@@ -380,15 +396,16 @@ $(document).ready(function() {
             return false;
 
         }
-        
+
         if ($("#speed_post").val() === "") {
 
-            alert("Please fill 'Enter Letter/Email/Speed Post Number'\n(कृपया 'पत्र/ईमेल/स्पीड पोस्ट नंबर' भरें");
+            alert(
+                "Please fill 'Enter Letter/Email/Speed Post Number'\n(कृपया 'पत्र/ईमेल/स्पीड पोस्ट नंबर' भरें");
             $("#speed_post").focus();
             return false;
 
         }
-        
+
         if ($("#subjectline").val() === "") {
 
             alert("Please fill 'Enter Subject Line of Letter'\n(कृपया 'पत्र की विषय पंक्ति' भरें");
@@ -396,7 +413,7 @@ $(document).ready(function() {
             return false;
 
         }
-        
+
         // if ($("#name_designation_mobile").val() === "") {
 
         //     alert("Please fill 'Enter Your Name, Designation And Mobile number'\n(कृपया 'अपना नाम, पदनाम और मोबाइल नंबर दर्ज करें' भरें");
@@ -405,9 +422,9 @@ $(document).ready(function() {
 
         // }
 
-        if($("#name_designation_mobile").val().trim().length < 1)
-        {
-            alert("Please fill 'Enter Your Name, Designation And Mobile number'\n(कृपया 'अपना नाम, पदनाम और मोबाइल नंबर दर्ज करें' भरें");
+        if ($("#name_designation_mobile").val().trim().length < 1) {
+            alert(
+                "Please fill 'Enter Your Name, Designation And Mobile number'\n(कृपया 'अपना नाम, पदनाम और मोबाइल नंबर दर्ज करें' भरें");
             $("#name_designation_mobile").focus();
             return false;
         }
@@ -421,8 +438,8 @@ $(document).ready(function() {
         //     return false;
 
         // }
-        
-        
+
+
 
         // if ($("#no_candidate").val() === "") {
 
@@ -514,9 +531,9 @@ $("#exam_name").change(function() {
         }
     });
 });
-    // $('document').ready(function() {
-    //     $('textarea').each(function() {
-    //         $(this).val($(this).val().trim());
-    //     });
-    // });
+// $('document').ready(function() {
+//     $('textarea').each(function() {
+//         $(this).val($(this).val().trim());
+//     });
+// });
 </script>
