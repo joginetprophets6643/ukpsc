@@ -161,7 +161,7 @@ public function consent_recieved(){
         $admin_id = $this->session->userdata['admin_id'];
        
     if ($this->input->post('submit')) {
-
+        
         $data = [
             'school_registration_number' => $this->test_input($this->input->post('school_registration')),
             'address' => $this->test_input($this->input->post('address')),
@@ -174,12 +174,49 @@ public function consent_recieved(){
             'exam_name' => $this->input->post('exam_name'),                
             ];
 
-            // echo '<pre>';echo 'ab me yha hu';print_r($data);exit;
             $data = $this->security->xss_clean($data);
         
 
             $result = $this->Certificate_model->add_examination_register($data);
-            // echo '<pre>';print_r($result); die();
+            // New 28-09-2022
+            $ref_id = $this->input->post('ci_exam_registrationid');
+            $this->db->select('*');
+            $this->db->from('ci_exam_registration');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $q= $this->db->get();
+            $school_Id =  $q->row_array();
+            $school_Id = $school_Id['id'];
+            
+            $this->db->select('*');
+            $this->db->from('ci_exam_according_to_school');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $this->db->where('ref_id',$ref_id);
+            $d= $this->db->get();
+            $exam_school =  $d->row_array();
+       
+            $exschool_ref_id = isset($exam_school['ref_id']) ?  $exam_school['ref_id'] :0;
+            $exschool_school_id = isset($exam_school['school_id']) ?  $exam_school['school_id'] :0;
+  
+            $dataForExamSchool = [
+                'school_registration_number' => $this->test_input($this->input->post('school_registration')),
+                'address' => $this->test_input($this->input->post('address')),
+                'admin_id' => $this->session->userdata('admin_id'),
+                'school_name' => $this->input->post('school_name'),
+                'landmark' => $this->input->post('landmark'),
+                'district' => $this->input->post('district'),
+                'city' => $this->input->post('city'),
+                'ref_id' => $this->input->post('ci_exam_registrationid'),                
+                'exam_name' => $this->input->post('exam_name'),                
+                'school_id' => $school_Id,                
+                ];
+  
+            if (($school_Id==$exschool_school_id)&&($ref_id==$exschool_ref_id)) {
+                $this->Certificate_model->editNewDataForExam($dataForExamSchool);
+                
+            } else {
+                $this->Certificate_model->addNewDataForExam($dataForExamSchool);
+            }
+            
             if ($result) {
                 // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
                 $ci_exam_registrationid = $this->input->post('ci_exam_registrationid');
@@ -227,6 +264,40 @@ public function consent_recieved(){
                 // $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
 
+            // New 28-09-2022
+            $ref_id = $this->input->post('ci_exam_registrationid1');
+            $this->db->select('*');
+            $this->db->from('ci_exam_registration');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $q= $this->db->get();
+            $school_Id =  $q->row_array();
+            $school_Id = $school_Id['id'];
+            
+            $this->db->select('*');
+            $this->db->from('ci_exam_according_to_school');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $this->db->where('ref_id',$ref_id);
+            $d= $this->db->get();
+            $exam_school =  $d->row_array();
+            $exschool_ref_id = isset($exam_school['ref_id']) ?  $exam_school['ref_id'] :0;
+            $exschool_school_id = isset($exam_school['school_id']) ?  $exam_school['school_id'] :0;
+
+            $dataForExamSchool = [
+                'principal_name' => $this->input->post('principal_name'),
+                'pri_mobile' => $this->input->post('pri_mobile'),
+                'email' => $this->input->post('email'),
+                'whats_num' => $this->input->post('whats_num'),
+                'ref_id' => $this->input->post('ci_exam_registrationid1'),               
+                'school_id' => $school_Id,                
+                ];
+
+            if (($school_Id==$exschool_school_id)&&($ref_id==$exschool_ref_id)) {
+                $this->Certificate_model->editNewDataForExam($dataForExamSchool);  
+            } else {
+                $this->Certificate_model->addNewDataForExam($dataForExamSchool);
+            }
+            //end New 28-09-2022
+
                 if ($result) {
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
                     // redirect(base_url('admin/consent_active/consent_add_2'));
@@ -267,6 +338,44 @@ public function consent_recieved(){
                 $data = $this->security->xss_clean($data);
                 // $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
+
+            // New 28-09-2022
+            $ref_id = $this->input->post('ci_exam_registrationid2');
+            $this->db->select('*');
+            $this->db->from('ci_exam_registration');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $q= $this->db->get();
+            $school_Id =  $q->row_array();
+            $school_Id = $school_Id['id'];
+            
+            $this->db->select('*');
+            $this->db->from('ci_exam_according_to_school');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $this->db->where('ref_id',$ref_id);
+            $d= $this->db->get();
+            $exam_school =  $d->row_array();
+            $exschool_ref_id = isset($exam_school['ref_id']) ?  $exam_school['ref_id'] :0;
+            $exschool_school_id = isset($exam_school['school_id']) ?  $exam_school['school_id'] :0;
+
+            $dataForExamSchool = [
+                'super_name' => $this->input->post('super_name'),
+                'super_design' => $this->input->post('super_design'),
+                'super_mobile' => $this->input->post('super_mobile'),
+                'super_email' => $this->input->post('super_email'),
+                'super_whatspp' => $this->input->post('super_whatspp'),
+                'ref_id' => $ref_id,               
+                'school_id' => $school_Id,                
+                ];
+
+            if (($school_Id==$exschool_school_id)&&($ref_id==$exschool_ref_id)) {
+                $this->Certificate_model->editNewDataForExam($dataForExamSchool);  
+               
+            } else {
+                $this->Certificate_model->addNewDataForExam($dataForExamSchool);
+               
+            }
+            //end New 28-09-2022
+
                 if ($result) {
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
                     // redirect(base_url('admin/consent_active/consent_add_3'));
@@ -315,9 +424,53 @@ public function consent_recieved(){
                 'ref_id' => $this->input->post('ci_exam_registrationid3'),
                 ];
               
-                $data = $this->security->xss_clean($data);
+            $data = $this->security->xss_clean($data);
                 // $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
-                $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
+            $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
+                            // New 28-09-2022
+            $ref_id = $this->input->post('ci_exam_registrationid3');
+            $this->db->select('*');
+            $this->db->from('ci_exam_registration');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $q= $this->db->get();
+            $school_Id =  $q->row_array();
+            $school_Id = $school_Id['id'];
+            
+            $this->db->select('*');
+            $this->db->from('ci_exam_according_to_school');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $this->db->where('ref_id',$ref_id);
+            $d= $this->db->get();
+            $exam_school =  $d->row_array();
+            $exschool_ref_id = isset($exam_school['ref_id']) ?  $exam_school['ref_id'] :0;
+            $exschool_school_id = isset($exam_school['school_id']) ?  $exam_school['school_id'] :0;
+
+            $dataForExamSchool = [
+                'no_room' => $this->input->post('no_room'),
+                'no_sheet' => $this->input->post('no_sheet'),
+                'max_allocate_candidate' => $this->input->post('max_allocate_candidate'),
+                'furniture_avail' => $this->input->post('furniture_avail'),
+                'elec_avail' => $this->input->post('elec_avail'),
+                'gen_avai' => $this->input->post('gen_avai'),
+                'wash_rrom' => $this->input->post('wash_rrom'),
+                'clock_room' => $this->input->post('clock_room'),
+                'vehicle_avail' => $this->input->post('vehicle_avail'),
+                'staff_suffi' => $this->input->post('staff_suffi'),
+                'ukpsc_exxma' => $this->input->post('ukpsc_exxma'),
+                'debar' => $this->input->post('debar'),
+                'bras_Seal' => $this->input->post('bras_Seal'),
+                'remark_if' => $this->input->post('remark_if'),
+                'ref_id' => $ref_id,               
+                'school_id' => $school_Id,                
+                ];
+
+            if (($school_Id==$exschool_school_id)&&($ref_id==$exschool_ref_id)) {
+                $this->Certificate_model->editNewDataForExam($dataForExamSchool);  
+            } else {
+                $this->Certificate_model->addNewDataForExam($dataForExamSchool);  
+            }
+            //end New 28-09-2022
+
                 // $result = true;
                 if ($result) {
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
@@ -359,6 +512,43 @@ public function consent_recieved(){
                 $data = $this->security->xss_clean($data);
                 // $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
+
+            // New 28-09-2022
+            $ref_id = $this->input->post('ci_exam_registrationid4');
+            $this->db->select('*');
+            $this->db->from('ci_exam_registration');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $q= $this->db->get();
+            $school_Id =  $q->row_array();
+            $school_Id = $school_Id['id'];
+            
+            $this->db->select('*');
+            $this->db->from('ci_exam_according_to_school');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $this->db->where('ref_id',$ref_id);
+            $d= $this->db->get();
+            $exam_school =  $d->row_array();
+            $exschool_ref_id = isset($exam_school['ref_id']) ?  $exam_school['ref_id'] :0;
+            $exschool_school_id = isset($exam_school['school_id']) ?  $exam_school['school_id'] :0;
+
+            $dataForExamSchool = [
+                'acc_holder_name' => $this->input->post('acc_holder_name'),
+                'ban_name' => $this->input->post('ban_name'),
+                'branch_name' => $this->input->post('branch_name'),
+                'ifsc' => $this->input->post('ifsc'),
+                'acc_num' => $this->input->post('acc_num'),
+                'acc_num_con' => $this->input->post('acc_num_con'),
+                'ref_id' => $ref_id,               
+                'school_id' => $school_Id,                
+                ];
+
+            if (($school_Id==$exschool_school_id)&&($ref_id==$exschool_ref_id)) {
+                $this->Certificate_model->editNewDataForExam($dataForExamSchool);  
+            } else {
+                $this->Certificate_model->addNewDataForExam($dataForExamSchool);  
+            }
+            //end New 28-09-2022
+
                 if ($result) {
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
                     $ci_exam_registrationid4 = $this->input->post('ci_exam_registrationid4'); 
@@ -565,6 +755,48 @@ public function consent_recieved(){
                 // print_r($data); die();
                 // $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
+                
+            // New 28-09-2022
+            $ref_id = $this->input->post('ci_exam_registrationid5');
+            $this->db->select('*');
+            $this->db->from('ci_exam_registration');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $q= $this->db->get();
+            $school_Id =  $q->row_array();
+            $school_Id = $school_Id['id'];
+            
+            $this->db->select('*');
+            $this->db->from('ci_exam_according_to_school');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $this->db->where('ref_id',$ref_id);
+            $d= $this->db->get();
+            $exam_school =  $d->row_array();
+            $exschool_ref_id = isset($exam_school['ref_id']) ?  $exam_school['ref_id'] :0;
+            $exschool_school_id = isset($exam_school['school_id']) ?  $exam_school['school_id'] :0;
+
+            $dataForExamSchool = [
+                'fileName1' => $fileName6,
+                'fileName2' => $fileName2,
+                'fileName3' => $fileName3,
+                'fileName4' => $fileName4,
+                'fileName5' => $fileName5,
+                'fileName6' => $fileName6,
+                'examincation_id' => $examincation_ids,
+                'exmin_ceter_option' => $exmin_ceter_option,
+                'file_movement' => $file_movement,
+                'created_at' => date('d-m-Y : h:m:s'),
+                'created_by' => $this->session->userdata('admin_id'), 
+                'ref_id' => $ref_id,               
+                'school_id' => $school_Id,                
+                ];
+
+            if (($school_Id==$exschool_school_id)&&($ref_id==$exschool_ref_id)) {
+                $this->Certificate_model->editNewDataForExam($dataForExamSchool);  
+            } else {
+                $this->Certificate_model->addNewDataForExam($dataForExamSchool); 
+            }
+            //end New 28-09-2022
+
                 if ($result) {
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
                     // redirect(base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($info['id'])));
@@ -619,7 +851,8 @@ public function consent_recieved(){
                     'created_at' => date('d-m-Y : h:m:s'),
                     'created_by' => $this->session->userdata('admin_id'),                                     
                     ];
-                
+                // print_r($data);
+                // die();
                 $data = $this->security->xss_clean($data);
                 // $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
 
@@ -649,6 +882,46 @@ public function consent_recieved(){
                 $this->db->where(['school_id' => $school_Id])->update('ci_registration_invitation', $dataForNewTable);
                 $this->db->where(['ref_id' => $this->input->post('ci_exam_fileupload6')])->update('ci_registration_invitation', $dataForNewTable);
                 $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
+
+
+                 // New 28-09-2022
+            $ref_id = $this->input->post('ci_exam_fileupload6');
+            $this->db->select('*');
+            $this->db->from('ci_exam_registration');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $q= $this->db->get();
+            $school_Id =  $q->row_array();
+            $school_Id = $school_Id['id'];
+            
+            $this->db->select('*');
+            $this->db->from('ci_exam_according_to_school');
+            $this->db->where('admin_id',$this->session->userdata('admin_id'));
+            $this->db->where('ref_id',$ref_id);
+            $d= $this->db->get();
+            $exam_school =  $d->row_array();
+            $exschool_ref_id = isset($exam_school['ref_id']) ?  $exam_school['ref_id'] :0;
+            $exschool_school_id = isset($exam_school['school_id']) ?  $exam_school['school_id'] :0;
+
+            $dataForExamSchool = [
+                'consents_signstamp_file' => $from_upload_file,
+                'consents_signstamp_status' => 1,
+                'created_at' => date('d-m-Y : h:m:s'),
+                'created_by' => $this->session->userdata('admin_id'), 
+                'invite_sent' => '1',
+                'invt_recieved' => '1', 
+                'ref_id' => $ref_id,               
+                'school_id' => $school_Id,                
+                ];
+            //   echo $school_Id."==".$exschool_school_id."@@".$ref_id."==".$exschool_ref_id;
+            if (($school_Id==$exschool_school_id)&&($ref_id==$exschool_ref_id)) {
+             
+                $this->Certificate_model->editNewDataForExam($dataForExamSchool);  
+            } else {
+                // echo 'else'.$school_Id;
+                // die();
+                $this->Certificate_model->addNewDataForExam($dataForExamSchool); 
+            }
+            //end New 28-09-2022
                 if ($result) {
                     $data['fileupload'] = 'fileupload';
                     $this->session->set_flashdata('consent_recievedsuss', 'Request for "Consent Letter" has been add successfully! ("सहमति पत्र" के लिए अनुरोध सफलतापूर्वक जोड़ दिया गया है!)');

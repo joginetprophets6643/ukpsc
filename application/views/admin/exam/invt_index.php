@@ -548,7 +548,7 @@ var table = $('#send_invitation_list').DataTable({
 
     $('#select_single_count').click(function(event) {
 
-        if($('input[name="send_email_ids"]:checked').length > 2){
+        if($('input[name="send_email_ids"]:checked').length > 0){
             var hrefs = new Array();
             var send_consent_id = $("#send_consent_id").val();
             
@@ -575,9 +575,9 @@ var table = $('#send_invitation_list').DataTable({
                         success:function(result){
                             alert("success, Sent Sucessfully");
                             $(':checkbox.send_email_ids').each(function() {
-                            // alert(this.checked)
                             this.checked = false;     
                         });
+                        window.location.reload();  
                     }
                 });
         }else{
