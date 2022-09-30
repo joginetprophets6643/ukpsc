@@ -1,6 +1,27 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css">
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
 
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <section class="content">
@@ -194,6 +215,7 @@
             </div>
         </div>
     </section>
+    <div class="loader d-none"></div>
 </div>
 
 
@@ -387,22 +409,12 @@ var table = $('#send_invitation_list').DataTable({
     $('#select_all').click(function(event) {  
        console.log($('input[name="send_email_ids"]:checked').length);
         if($('input[name="send_email_ids"]:checked').length > 0){
-            // alert(123456);
-            // return false;
+            $('.loader').removeClass('d-none');
             var send_consent_id = $("#send_consent_id").val()
-            // console.log("send_consent_id",send_consent_id);
-            // console.log('send_email_ids i am',$('input[name="send_email_ids"]:checked').length);
-            // return false;
-
             var hrefs = new Array();
-            // alert(this.checked).attr('rel');
-            // Iterate each checkbox
-            // $("input:checkbox.myClass");
                 $(':checkbox.send_email_ids').each(function() {
-                // alert(this.checked)
                     this.checked = true;     
                     var r= $(this).attr('rel'); 
-                    
                     if(r != undefined){   
                         hrefs.push(r);       
                     }       
@@ -415,17 +427,21 @@ var table = $('#send_invitation_list').DataTable({
                         dataType: 'text',
                         data : {data:hrefs,'send_consent_id':send_consent_id},
                             success:function(result){
+                                if(resul){
+                                $('.loader').addClass('d-none');
                                 alert("success, Sent Sucessfully");
                                 $(':checkbox.send_email_ids').each(function() {
                                 // alert(this.checked)
                                 this.checked = false;     
                             });
+                            window.location.reload();
+                        }
                         } 
 
                     });  
         }else{
 
-            alert('Please click on send at least two checkbox\n(कृपया कम से कम दो चेकबॉक्स भेजें पर क्लिक करें)');
+            alert('Please click on send at least one  checkbox\n(कृपया कम से कम दो चेकबॉक्स भेजें पर क्लिक करें)');
             $("#allcheckids").focus();
             return false;
 
@@ -529,8 +545,8 @@ var table = $('#send_invitation_list').DataTable({
 
 
     function single_send_invitations(id){
-       
-        var send_consent_id = $("#send_consent_id").val()
+        $('.loader').removeClass('d-none');
+        var send_consent_id = $("#send_consent_id").val();
         var url = "<?php echo base_url('admin/examshedule_schedule/send_invitation_user_all/')?>"
             $.ajax({
                 url: url,
@@ -538,10 +554,14 @@ var table = $('#send_invitation_list').DataTable({
                 dataType: 'text',
                 data : {id:id,'send_consent_id':send_consent_id},
                 success:function(result){
-            
+                    if(result)
+                    {
+                    $('.loader').addClass('d-none');
                     alert("success, Sent Sucessfully");
                     this.checked = false; 
-                    window.location.reload();    
+                    window.location.reload(); 
+                    }
+                   
                 }
             });
     }
@@ -549,23 +569,18 @@ var table = $('#send_invitation_list').DataTable({
     $('#select_single_count').click(function(event) {
 
         if($('input[name="send_email_ids"]:checked').length > 0){
+            $('.loader').removeClass('d-none');
             var hrefs = new Array();
             var send_consent_id = $("#send_consent_id").val();
             
             
             $('input[name="send_email_ids"]:checked').each(function() {
-                
-                // console.log($(this).attr('rel'));
                 var r= $(this).attr('rel'); 
                 if(r != 'undefined'){               
                     hrefs.push(r);             
                 }
 
             });
-            // console.log('send_email_ids i am',$('input[name="send_email_ids"]:checked').serialize());
-            // console.log('send_email_ids i am',$('input[name="send_email_ids"]:checked').length > 0);
-            // console.log('send_email_ids i am',$('input[name="send_email_ids"]:checked').length);
-            // return false;
             var url = "<?php echo base_url('admin/examshedule_schedule/send_invitation_user_all/')?>"
                 $.ajax({
                     url: url,
@@ -573,15 +588,18 @@ var table = $('#send_invitation_list').DataTable({
                     dataType: 'text',
                     data : {data:hrefs,'send_consent_id':send_consent_id},
                         success:function(result){
+                            if(result){
+                            $('.loader').addClass('d-none');
                             alert("success, Sent Sucessfully");
                             $(':checkbox.send_email_ids').each(function() {
                             this.checked = false;     
                         });
-                        window.location.reload();  
+                        window.location.reload();
+                    }  
                     }
                 });
         }else{
-            alert('Please click on send at least two checkbox\n(कृपया कम से कम दो चेकबॉक्स भेजें पर क्लिक करें)');
+            alert('Please click on send at least one checkbox\n(कृपया कम से कम दो चेकबॉक्स भेजें पर क्लिक करें)');
             $("#allcheckids").focus();
             return false;
         }

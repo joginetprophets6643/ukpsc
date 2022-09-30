@@ -70,10 +70,6 @@ class Consent_active extends MY_Controller
        
         $data["info"] = $get_full_data;
 
-        // $data["info"] = $this->Certificate_model->get_all_active_consent();
-        
-        // echo '<pre>';print_r($data['info']);die;
-
 
         $this->load->view("admin/consent_active/consent_list_recieved", $data);
 
@@ -251,10 +247,10 @@ public function consent_recieved(){
     if ($this->input->post('submit')) {
 
                 $data = [
-                'principal_name' => $this->input->post('principal_name'),
-                'pri_mobile' => $this->input->post('pri_mobile'),
-                'email' => $this->input->post('email'),
-                'whats_num' => $this->input->post('whats_num'),
+                // 'principal_name' => $this->input->post('principal_name'),
+                // 'pri_mobile' => $this->input->post('pri_mobile'),
+                // 'email' => $this->input->post('email'),
+                // 'whats_num' => $this->input->post('whats_num'),
                 'ref_id' => $this->input->post('ci_exam_registrationid1'),
                 ];
                 
@@ -290,7 +286,7 @@ public function consent_recieved(){
                 'ref_id' => $this->input->post('ci_exam_registrationid1'),               
                 'school_id' => $school_Id,                
                 ];
-
+          
             if (($school_Id==$exschool_school_id)&&($ref_id==$exschool_ref_id)) {
                 $this->Certificate_model->editNewDataForExam($dataForExamSchool);  
             } else {
@@ -326,11 +322,11 @@ public function consent_recieved(){
     if ($this->input->post('submit')) {
 
                 $data = [
-                'super_name' => $this->input->post('super_name'),
-                'super_design' => $this->input->post('super_design'),
-                'super_mobile' => $this->input->post('super_mobile'),
-                'super_email' => $this->input->post('super_email'),
-                'super_whatspp' => $this->input->post('super_whatspp'),
+                // 'super_name' => $this->input->post('super_name'),
+                // 'super_design' => $this->input->post('super_design'),
+                // 'super_mobile' => $this->input->post('super_mobile'),
+                // 'super_email' => $this->input->post('super_email'),
+                // 'super_whatspp' => $this->input->post('super_whatspp'),
                 'ref_id' => $this->input->post('ci_exam_registrationid2'),                   
                 ];
                 
@@ -407,20 +403,20 @@ public function consent_recieved(){
     if ($this->input->post('submit')) {
 
                 $data = [
-                'no_room' => $this->input->post('no_room'),
-                'no_sheet' => $this->input->post('no_sheet'),
-                'max_allocate_candidate' => $this->input->post('max_allocate_candidate'),
-                'furniture_avail' => $this->input->post('furniture_avail'),
-                'elec_avail' => $this->input->post('elec_avail'),
-                'gen_avai' => $this->input->post('gen_avai'),
-                'wash_rrom' => $this->input->post('wash_rrom'),
-                'clock_room' => $this->input->post('clock_room'),
-                'vehicle_avail' => $this->input->post('vehicle_avail'),
-                'staff_suffi' => $this->input->post('staff_suffi'),
-                'ukpsc_exxma' => $this->input->post('ukpsc_exxma'),
-                'debar' => $this->input->post('debar'),
-                'bras_Seal' => $this->input->post('bras_Seal'),
-                'remark_if' => $this->input->post('remark_if'),
+                // 'no_room' => $this->input->post('no_room'),
+                // 'no_sheet' => $this->input->post('no_sheet'),
+                // 'max_allocate_candidate' => $this->input->post('max_allocate_candidate'),
+                // 'furniture_avail' => $this->input->post('furniture_avail'),
+                // 'elec_avail' => $this->input->post('elec_avail'),
+                // 'gen_avai' => $this->input->post('gen_avai'),
+                // 'wash_rrom' => $this->input->post('wash_rrom'),
+                // 'clock_room' => $this->input->post('clock_room'),
+                // 'vehicle_avail' => $this->input->post('vehicle_avail'),
+                // 'staff_suffi' => $this->input->post('staff_suffi'),
+                // 'ukpsc_exxma' => $this->input->post('ukpsc_exxma'),
+                // 'debar' => $this->input->post('debar'),
+                // 'bras_Seal' => $this->input->post('bras_Seal'),
+                // 'remark_if' => $this->input->post('remark_if'),
                 'ref_id' => $this->input->post('ci_exam_registrationid3'),
                 ];
               
@@ -500,12 +496,12 @@ public function consent_recieved(){
     if ($this->input->post('submit')) {
 
                 $data = [
-                'acc_holder_name' => $this->input->post('acc_holder_name'),
-                'ban_name' => $this->input->post('ban_name'),
-                'branch_name' => $this->input->post('branch_name'),
-                'ifsc' => $this->input->post('ifsc'),
-                'acc_num' => $this->input->post('acc_num'),
-                'acc_num_con' => $this->input->post('acc_num_con'),
+                // 'acc_holder_name' => $this->input->post('acc_holder_name'),
+                // 'ban_name' => $this->input->post('ban_name'),
+                // 'branch_name' => $this->input->post('branch_name'),
+                // 'ifsc' => $this->input->post('ifsc'),
+                // 'acc_num' => $this->input->post('acc_num'),
+                // 'acc_num_con' => $this->input->post('acc_num_con'),
                 'ref_id' => $this->input->post('ci_exam_registrationid4'),
                 ];
                 
