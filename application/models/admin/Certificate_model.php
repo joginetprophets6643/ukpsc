@@ -353,7 +353,7 @@ class Certificate_model extends CI_Model {
     
         // $query = $this->db->query("SELECT cie.id as cieid, cie.speedpost as ciespeedpost, cie.subjectline as ciesubjectline, cie.startdate as ciestartdate, cie.enddate as cieenddate, cir.admin_id as ciradminid , cir.consents_signstamp_status as circonsents_signstamp_status  FROM `ci_exam_invitation` as cie left JOIN `ci_exam_registration` as cir ON cie.`id` = cir.`ref_id` where cir.`invite_sent` = '1' and cie.id=$ref_id and cir.admin_id=$admin_id");
 
-        $query = $this->db->query("SELECT DISTINCT cri.ref_id as cieid, cri.speedpost as ciespeedpost, cri.exam_name as ciesubjectline, cri.startdate as ciestartdate, cri.enddate as cieenddate, cir.admin_id as ciradminid , cri.consents_signstamp_status as circonsents_signstamp_status FROM `ci_exam_invitation` as cie left JOIN `ci_exam_registration` as cir ON cie.`id` = cir.`ref_id` LEFT JOIN ci_registration_invitation as cri ON cri.school_id = cir.id where cri.`invite_sent` = '1' and cir.admin_id=$admin_id and cir.id=$school_id");
+        $query = $this->db->query("SELECT DISTINCT cri.ref_id as cieid, cri.speedpost as ciespeedpost, cri.exam_name as ciesubjectline, cri.startdate as ciestartdate, cri.enddate as cieenddate, cir.admin_id as ciradminid , cri.consents_signstamp_status as circonsents_signstamp_status FROM `ci_exam_invitation` as cie left JOIN `ci_exam_registration` as cir ON cie.`id` = cir.`ref_id` LEFT JOIN ci_registration_invitation as cri ON cri.school_id = cir.id where cri.`invite_sent` = '1' and cir.admin_id=$admin_id and cir.id=$school_id ORDER BY cri.ref_id DESC");
         return $query->result_array();
     }
 	 public function get_examination_form($examinationid) {
