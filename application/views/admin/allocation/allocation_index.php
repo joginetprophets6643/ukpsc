@@ -1,6 +1,6 @@
 <!-- DataTables -->
 
-<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css"> 
+<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css">
 
 <!-- Content Wrapper. Contains page content -->
 
@@ -8,7 +8,7 @@
 
     <section class="content">
 
-         <!-- For Messages -->
+        <!-- For Messages -->
 
         <?php $this->load->view('admin/includes/_messages.php') ?>
 
@@ -18,32 +18,32 @@
 
                 <div class="d-inline-block">
 
-                  <h3 class="card-title">
+                    <h3 class="card-title">
 
-                    <i class="fa fa-list"></i>
+                        <i class="fa fa-list"></i>
 
-                    Allocation for Exam Centre
+                        Allocation for Exam Centre
 
 
-                  </h3>
+                    </h3>
 
-                    
 
-              </div>
 
-           
+                </div>
 
-              <div class="d-inline-block float-right">
 
-                
 
-              </div>
+                <div class="d-inline-block float-right">
+
+
+
+                </div>
 
             </div>
 
             <div class="card-body">
 
-                <?php echo form_open("/",'class="filterdata"') ?>    
+                <?php echo form_open("/",'class="filterdata"') ?>
 
                 <div class="row">
 
@@ -55,13 +55,13 @@
 
                         <div class="form-group">
 
-                            <select name="state" class="form-control dd_state" onchange="filter_data()" >
+                            <select name="state" class="form-control dd_state" onchange="filter_data()">
 
                                 <option value="">Select State</option>
 
                                 <?php foreach($states as $state):?>
 
-                                    <option value="<?=$state->id?>"><?=$state->name?></option>
+                                <option value="<?=$state->id?>"><?=$state->name?></option>
 
                                 <?php endforeach;?>
 
@@ -83,7 +83,7 @@
 
                         <div class="form-group">
 
-                            <select name="district" id="district_filter" class="form-control" onchange="filter_data()" >
+                            <select name="district" id="district_filter" class="form-control" onchange="filter_data()">
 
                                 <option value="">Select District</option>
 
@@ -107,17 +107,17 @@
 
                     </div>
 
-                     <?php } ?>
+                    <?php } ?>
 
                     <div class="col-md-2">
 
                         <div class="form-group">
 
-                            <select name="status" class="form-control" onchange="filter_data()" >
+                            <select name="status" class="form-control" onchange="filter_data()">
 
                                 <option value=""><?= trans('all_status') ?></option>
 
-                                
+
 
                                 <?php foreach(ALLOWED_FILE_MOVEMENT_ROLE_ID[1] as $k=>$v):
 
@@ -129,11 +129,11 @@
 
 
 
-                                    <option value="<?=$k?>"><?=$v?></option>
+                                <option value="<?=$k?>"><?=$v?></option>
 
                                 <?php endforeach;?>
 
-                                
+
 
                             </select>
 
@@ -145,7 +145,8 @@
 
                         <div class="form-group">
 
-                            <input type="text" name="keyword" class="form-control"  placeholder="<?= trans('search_from_here') ?>..." onkeyup="filter_data()" />
+                            <input type="text" name="keyword" class="form-control"
+                                placeholder="<?= trans('search_from_here') ?>..." onkeyup="filter_data()" />
 
                         </div>
 
@@ -153,9 +154,9 @@
 
                 </div>
 
-                <?php echo form_close(); ?> 
+                <?php echo form_close(); ?>
 
-            </div> 
+            </div>
 
         </div>
 
@@ -169,17 +170,17 @@
 
     <section class="content mt10">
 
-    	<div class="card">
+        <div class="card">
 
-    		<div class="card-body">
+            <div class="card-body">
 
-               <!-- Load Admin list (json request)-->
+                <!-- Load Admin list (json request)-->
 
-               <div class="data_container"></div>
+                <div class="data_container"></div>
 
-           </div>
+            </div>
 
-       </div>
+        </div>
 
     </section>
 
@@ -200,34 +201,30 @@
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 
 <script>
-
-  $(function () {
+$(function() {
 
     $("#example1").DataTable();
 
-  });
-
-
-
-</script> 
+});
+</script>
 
 
 
 <script>
-
 //------------------------------------------------------------------
 
 function filter_data()
 
 {
 
-$('.data_container').html('<div class="text-center"><img src="<?=base_url('assets/dist/img')?>/loading.png"/></div>');
+    $('.data_container').html(
+        '<div class="text-center"><img src="<?=base_url('assets/dist/img')?>/loading.png"/></div>');
 
-$.post('<?=base_url('admin/certificate/filterdata')?>',$('.filterdata').serialize(),function(){
+    $.post('<?=base_url('admin/certificate/filterdata')?>', $('.filterdata').serialize(), function() {
 
-	$('.data_container').load('<?=base_url('admin/allocation_admin/allocation_list_data')?>');
+        $('.data_container').load('<?=base_url('admin/allocation_admin/allocation_list_data/'.$id)?>');
 
-});
+    });
 
 }
 
@@ -237,9 +234,10 @@ function load_records()
 
 {
 
-$('.data_container').html('<div class="text-center"><img src="<?=base_url('assets/dist/img')?>/loading.png"/></div>');
+    $('.data_container').html(
+        '<div class="text-center"><img src="<?=base_url('assets/dist/img')?>/loading.png"/></div>');
 
-$('.data_container').load('<?=base_url('admin/allocation_admin/allocation_list_data')?>');
+    $('.data_container').load('<?=base_url('admin/allocation_admin/allocation_list_data/'.$id)?>');
 
 }
 
@@ -249,74 +247,74 @@ load_records();
 
 //---------------------------------------------------------------------
 
-$("body").on("change",".tgl_checkbox",function(){
+$("body").on("change", ".tgl_checkbox", function() {
 
-$.post('<?=base_url("admin/certificate/change_status")?>',
+    $.post('<?=base_url("admin/certificate/change_status")?>',
 
-{
+        {
 
-    '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
+            '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
 
-	id : $(this).data('id'),
+            id: $(this).data('id'),
 
-	status : $(this).is(':checked')==true?1:0
+            status: $(this).is(':checked') == true ? 1 : 0
 
-},
+        },
 
-function(data){
+        function(data) {
 
-	$.notify("Status Changed Successfully", "success");
-
-});
-
-});
-
-
-
-    $(function() {
-
-        $('.dd_state').change( function() {
-
-            var state_id = $(this).val();
-
-
-
-            if (state_id != '') {
-
-           
-
-                $.ajax({
-
-                   type: "POST", 
-
-                   url: base_url+'admin/location/get_city_by_state_id',
-
-                   dataType: 'html',
-
-                   data: { 'state_id' : state_id, 'csfr_token_name':csfr_token_value },
-
-                   success: function(data) {
-
-                       console.log(data);
-
-                       $('#district_filter').html( data );
-
-                   }
-
-                });
-
-            }
-
-            else {
-
-               $('#state').val('').hide();
-
-
-
-            }
+            $.notify("Status Changed Successfully", "success");
 
         });
 
+});
+
+
+
+$(function() {
+
+    $('.dd_state').change(function() {
+
+        var state_id = $(this).val();
+
+
+
+        if (state_id != '') {
+
+
+
+            $.ajax({
+
+                type: "POST",
+
+                url: base_url + 'admin/location/get_city_by_state_id',
+
+                dataType: 'html',
+
+                data: {
+                    'state_id': state_id,
+                    'csfr_token_name': csfr_token_value
+                },
+
+                success: function(data) {
+
+                    console.log(data);
+
+                    $('#district_filter').html(data);
+
+                }
+
+            });
+
+        } else {
+
+            $('#state').val('').hide();
+
+
+
+        }
+
     });
 
+});
 </script>

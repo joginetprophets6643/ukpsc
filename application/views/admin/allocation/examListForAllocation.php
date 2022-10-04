@@ -14,7 +14,7 @@
 
         <div class="card">
 
-            <div class="card-header">
+            <div class="card-body">
 
                 <div class="d-inline-block">
 
@@ -22,7 +22,7 @@
 
                         <i class="fa fa-list"></i>
 
-                        Consent List for Sending Invitations&nbsp;(आमंत्रण भेजने के लिए सहमति सूची)
+                        <?php echo $title ;?>&nbsp;(आमंत्रण भेजने के लिए सहमति सूची)
 
                     </h3>
 
@@ -161,7 +161,7 @@
 
         <div class="card">
             <div class="card-body table-responsive">
-                <table id="send_invitation_list" class="table table-bordered table-striped" style="border-collapse: collapse !important;">
+                <table id="na_datatable" class="table table-bordered table-striped" width="100%">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -169,10 +169,17 @@
                             <th>Total Candidates</th>
                             <th>Start Date of exam</th>
                             <th>End Date of exam Details</th>
-                            <th width="120"><?= trans('action') ?></th>
                         </tr>
                     </thead>
-              
+                     <?php  foreach ($data   as $key=> $d){?> 
+                        <tr>
+                            <td><?php echo $key+1;?></td>
+                            <td><a href="<?php echo site_url("admin/allocation_admin/allocation_list/".urlencrypt($d['id'])); ?>" class="btn btn-warning btn-xs mr5" ><?php echo $d['subjectline'];?></a></td>
+                            <td><?php echo $d['no_candidate'];?></td>
+                            <td><?php echo $d['startdate'];?></td>
+                            <td><?php echo $d['enddate'];?></td>
+                        </tr> 
+                        <?php }?>                  
                 </table>
             </div>
         </div>
@@ -182,211 +189,14 @@
     <!-- /.content -->
 
 </div>
-
-
-
-
-
-
-
 <!-- DataTables -->
 
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
 
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
-
-
-
-
-<!-- <script>
-
-  $(function () {
-
-    $("#example1").DataTable();
-
-  });
-
-
-
-</script>  -->
-
-
-
 <script>
-var table = $('#send_invitation_list').DataTable({
-    "processing": true,
-    "serverSide": false,
-    "ajax": "<?=base_url('admin/Examshedule_schedule/invitation_sent_list_data')?>",
-    "order": [
-        [0, 'asc']
-    ],
-    "columnDefs": [{
-            "targets": 0,
-            "name": "id",
-            'searchable': true,
-            'orderable': true
-        },
-        {
-            "targets": 1,
-            "name": "school_name",
-            'searchable': true,
-            'orderable': true
-        },
-        {
-            "targets": 2,
-            "name": "district",
-            'searchable': true,
-            'orderable': true
-        },
-        {
-            "targets": 3,
-            "name": "city",
-            'searchable': true,
-            'orderable': true
-        },
-        {
-            "targets": 4,
-            "name": "principal_name",
-            'searchable': true,
-            'orderable': true
-        },
-        {
-            "targets": 5,
-            "name": "created_at",
-            'searchable': true,
-            'orderable': true
-        },
-    ]
-});
-
-//------------------------------------------------------------------
-
-// function filter_data()
-
-// {
-
-// $('.data_container').html('<div class="text-center"><img src="<?=base_url('assets/dist/img')?>/loading.png"/></div>');
-
-// $.post('<?=base_url('admin/certificate/filterdata')?>',$('.filterdata').serialize(),function(){
-
-// 	$('.data_container').load('<?=base_url('admin/examshedule_schedule/invitation_sent_list_data')?>');
-
-// });
-
-// }
-
-// //------------------------------------------------------------------
-
-// function load_records()
-
-// {
-
-// $('.data_container').html('<div class="text-center"><img src="<?=base_url('assets/dist/img')?>/loading.png"/></div>');
-
-// $('.data_container').load('<?=base_url('admin/examshedule_schedule/invitation_sent_list_data')?>');
-
-// }
-
-// load_records();
-
-
-
-// //---------------------------------------------------------------------
-
-// $("body").on("change",".tgl_checkbox",function(){
-
-// $.post('<?=base_url("admin/certificate/change_status")?>',
-
-// {
-
-//     '<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>',
-
-// 	id : $(this).data('id'),
-
-// 	status : $(this).is(':checked')==true?1:0
-
-// },
-
-// function(data){
-
-// 	$.notify("Status Changed Successfully", "success");
-
-// });
-
-// });
-
-
-
-// $(function() {
-
-// $('.dd_state').change( function() {
-
-// var state_id = $(this).val();
-
-
-
-// if (state_id != '') {
-
-
-
-// $.ajax({
-
-// type: "POST", 
-
-// url: base_url+'admin/location/get_city_by_state_id',
-
-// dataType: 'html',
-
-// data: { 'state_id' : state_id, 'csfr_token_name':csfr_token_value },
-
-// success: function(data) {
-
-// console.log(data);
-
-// $('#district_filter').html( data );
-
-// }
-
-// });
-
-// }
-
-// else {
-
-// $('#state').val('').hide();
-
-
-
-// }
-
-// });
-
-// });
-$(document).ready(function() {
-
-    $(function() {
-        $('.dd_state').change(function() {
-            var district_id = $(this).val();
-            if (district_id != '') {
-                $('#othstate').val('').hide();
-
-                $.ajax({
-                    type: "POST",
-                    url: base_url + 'admin/location/get_city_by_state_id',
-                    dataType: 'html',
-                    data: {
-                        'district_id': district_id,
-                        'csfr_token_name': csfr_token_value
-                    },
-                    success: function(data) {
-                        $('#city').html(data);
-                    }
-                });
-            } else {
-                $('#state').val('').hide();
-                $('#othstate').show();
-            }
-        });
-    });
-});
+    var table = $('#na_datatable').DataTable( {
+    "processing": true,
+    "serverSide": false, 
+  });
 </script>

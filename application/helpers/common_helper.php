@@ -417,3 +417,26 @@ function reply_exam_sheduled($id) {
     return $ci->db->get_where('ci_exam_invitation', array('id' => $id))->row_array();
 }
 
+
+function getCandidateNumbers($school_id,$exam_id)
+{
+    $ci = & get_instance();
+    $q = $ci->db->select('candidate_array')->where('school_id',$school_id)->where('exam_id ', $exam_id)
+         ->get('ci_allocation_table')->row_array();
+    $candidateValues = isset($q['candidate_array'])?explode(",",$q['candidate_array']):[];
+    return $candidateValues;
+}
+
+function getCenterCode($school_id,$exam_id)
+{
+    $ci = & get_instance();
+    $q = $ci->db->select('exam_center_code')->where('school_id',$school_id)->where('exam_id ', $exam_id)
+         ->get('ci_allocation_table')->row_array();
+    $exam_center_code = isset($q['exam_center_code'])?$q['exam_center_code']:'';
+    return $exam_center_code;
+}
+
+function get_exam_name_new($id) {
+    $ci = & get_instance();
+    return @$ci->db->get_where('ci_exam_invitation', array('id' => $id))->row_array()['subjectline'];
+}
