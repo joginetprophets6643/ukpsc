@@ -2,13 +2,18 @@
 <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css">
 <style>
 .loader {
-  border: 16px solid #f3f3f3;
+  border: 16px solid #e0e0e0;
   border-radius: 50%;
-  border-top: 16px solid #3498db;
+  border-top: 16px solid #373250;
+  border-bottom: 16px solid #373250;
   width: 120px;
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, 50%)
 }
 
 /* Safari */
@@ -28,7 +33,7 @@
         <!-- For Messages -->
         <?php $this->load->view('admin/includes/_messages.php') ?>
         <div class="card">
-            <div class="card-header">
+            <div class="card-header border-0">
                 <div class="d-inline-block">
                     <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; Consent List for Sending
                         Invitations&nbsp;(आमंत्रण भेजने के लिए सहमति सूची)</h3>
@@ -43,29 +48,11 @@
         </div>
         <div class="card">
 
-            <div class="card-body">
-                 <?php echo $examName;?>
-                <!-- <div class="d-inline-block">
+            <div class="card-header">
+                <h3 class="card-title" style="color: #373250;">
+                    <?php echo $examName;?>
 
-                  <h3 class="card-title">
-
-                    <i class="fa fa-list"></i>
-
-                    Consent List for Sending Invitations
-
-                  </h3>
-
-                    
-
-              </div> -->
-
-           
-
-              <div class="d-inline-block float-right">
-
-                
-
-              </div>
+                </h3>
 
             </div>
 
@@ -79,73 +66,40 @@
 
                     if (in_array($_SESSION['admin_role_id'], array(1,2,3,4,5,6))){?>
 
-                    <div class="col-md-3">
-                    <label>District&nbsp;ज़िला</label>
+                    <div class="col-md-4">
                         <div class="form-group">
-
+                            <label>District <br> (ज़िला)</label>
                             <!-- <select name="state" class="form-control dd_state" onchange="filter_data()" > -->
                             <select id="state" name="state" class="form-control dd_state">
-
                                 <option value="">Select District</option>
-
                                 <?php foreach($states as $state):?>
-
                                     <option value="<?=$state->id?>"><?=$state->name?></option>
-
                                 <?php endforeach;?>
-
                             </select>
-
                         </div>
-
                     </div>
-
                     <?php }
-
                     if (in_array($_SESSION['admin_role_id'], array(1,2,3,4,5,6))){
 
                         
 
                              ?>
 
-                    <div class="col-md-3">
-                        <label>City&nbsp;शहर</label>
+                    <div class="col-md-4">
                         <div class="form-group">
+                            <label>City <br> (शहर)</label>
                             <select name="district" id="district" class="form-control">
                                 <option value=""> Select City</option>
                             </select>
-                            <!-- <select name="district" id="city" class="form-control" onchange="filter_data()" > -->
-                            <!-- <select name="district" id="district" class="form-control" >
-
-                                <option value="">Select City</option>
-
-                                <?php 
-
-                                // if(isset($districts) and count($districts ) >0){
-
-                                //     foreach($districts as $k=> $district){
-
-                                //     echo  '<option value="'.$district['id'].'">'.$district['subcityname'].'</option>';
-
-                                //      }
-
-                                // }?>
-
-                                ?>
-
-                            </select> -->
-
                         </div>
 
                     </div>
 
                      <?php } ?>
 
-                    <div class="col-md-2">
-                    <label>Grade&nbsp;श्रेणी</label>
+                    <div class="col-md-4">
                         <div class="form-group">
-
-                            <!-- <select name="status" class="form-control" onchange="filter_data()" > -->
+                            <label>Grade <br> (श्रेणी)</label>
                             <select id="grade"  name="status" class="form-control">
 
                                 <option value="">Select Grade</option>
@@ -184,38 +138,67 @@
 
         </div>
         <div class="card">
-            <div class="card-body table-responsive">
-                <div id="countInDistrict" class="d-none">Total Applicants in District : <span id="districtCounts"></span></div>
-                <div id="schoolCount" class="d-none">Total No. of Applicants Selected in School : <span id="schoolWiseCounts"></span></div>
-                <table id="send_invitation_list" class="table table-bordered table-striped" width="100%">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>School Name </th>
-                            <th>District</th>
-                            <th>City</th>
-                            <th>Principal Details</th>
-                            <th>Grade</th>
-                            <th width="120">Max No of Applicant</th>
-                            <th width="120"><?= trans('action') ?></th>
-                        </tr>
-                      </thead>
-                      <!-- <div style="margin-left:63%;padding: 0 0 20px 10px;"> -->
-                      <span id="total_candidate_display" style="display:none;" class="total_candidate_display" name="total_candidate_display"></span>
-                      <input type="hidden" id="send_consent_id" name="send_consent_id" value="<?= $this->uri->segment(4);?>">
-                      <!-- </div> -->
-                      <div id="allcheckids" style="margin-left:50%;padding: 0 0 20px 10px;">
-                          <input  type="button" class="select_all_count btn btn-success" id="select-all1" value="Select All(सभी चुनें)"> 
-                          <input  type="button"  class="btn btn-success" id="select_all" onclick="return confirm('Are you sure want to send all invitation?\nक्या आप वाकई सभी आमंत्रण भेजना चाहते हैं?')" value="Send to All(सभी को भेजो)"> 
-                          <input  type="button"class=" btn btn-success" id="select_single_count" onclick="return confirm('Are you sure want to send select user invitation?\nक्या आप वाकई चुनिंदा उपयोगकर्ता आमंत्रण भेजना चाहते हैं?')" value="Send to Selected(चयनित को भेजें)">
-                          <input  type="button" class="select_all_uncheck btn btn-success" id="select-all1" value="Uncheck(अनचेक)"> 
-                          <!-- <label style="font-weight:bold;" for="car"></label> -->
-                      </div>
-                  </table>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex my-2">
+                            <div id="countInDistrict" class="d-none mr-5">
+                               <h4 class="text-bold" style="font-size: 17px; color: #373250;">
+                                Total Applicants in District : 
+                                <span style="color: #e14658;" id="districtCounts"></span>
+                               </h4> 
+                            </div>
+                            <div id="schoolCount" class="d-none">
+                                <h4 class="text-bold" style="font-size: 17px; color: #373250;">
+                                    Total No. of Applicants Selected in School :  
+                                    <span style="color: #e14658;" id="schoolWiseCounts"></span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="hidden" id="send_consent_id" name="send_consent_id" value="<?= $this->uri->segment(4);?>">
+                        <!-- </div> -->
+                        <div id="allcheckids" class="mb-5" style="">
+                            <div class="d-flex justify-centent-between align-items-center">
+                                <div class="check-option">
+                                    <input  type="button" class="select_all_count btn btn-success" id="select-all1" value="Select All (सभी चुनें)"> 
+                                    <input  type="button" class="select_all_uncheck btn btn-success" id="select-all1" value="Uncheck (अनचेक)"> 
+                                </div>
+                                <div class="send-option">
+                                    <input  type="button"  class="btn btn-success" id="select_all" onclick="return confirm('Are you sure want to send all invitation?\nक्या आप वाकई सभी आमंत्रण भेजना चाहते हैं?')" value="Send to All (सभी को भेजो)"> 
+                                    <input  type="button" class="btn btn-success" id="select_single_count" onclick="return confirm('Are you sure want to send select user invitation?\nक्या आप वाकई चुनिंदा उपयोगकर्ता आमंत्रण भेजना चाहते हैं?')" value="Send to Selected (चयनित को भेजें)">
+                                </div>
+                            </div>
+                            <!-- <label style="font-weight:bold;" for="car"></label> -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table id="send_invitation_list" class="table table-bordered table-striped" style="border-collapse: collapse !important;">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>School Name </th>
+                                <th>District</th>
+                                <th>City</th>
+                                <th>Principal Details</th>
+                                <th>Grade</th>
+                                <th width="120">Max No of Applicant</th>
+                                <th width="120"><?= trans('action') ?></th>
+                            </tr>
+                        </thead>
+                        <!-- <div style="margin-left:63%;padding: 0 0 20px 10px;"> -->
+                        <!-- <span id="total_candidate_display" style="display:none;" class="total_candidate_display" name="total_candidate_display"></span> -->
+                        
+                    </table>
+                </div>
+                <div class="loader d-none"></div>
+                
             </div>
         </div>
     </section>
-    <div class="loader d-none"></div>
 </div>
 
 
@@ -245,10 +228,10 @@ $(document).ready(function() {
 
     $(function() {
         $('#state').change( function() {
-          // var grade = $('#grade').val();
-        //   console.log('grade',grade);
-          // return false;
-              var district_id = $(this).val();
+            // var grade = $('#grade').val();
+            //   console.log('grade',grade);
+            // return false;
+            var district_id = $(this).val();
             //   console.log();
               
               // return false;
@@ -302,6 +285,7 @@ $(document).ready(function() {
                             success: function(data) {
                                 $('#countInDistrict').removeClass("d-none");
                                 $('#districtCounts').html(data);
+                                
                                 $('#schoolCount').addClass("d-none");
                                 $('#schoolWiseCounts').html('');
                                

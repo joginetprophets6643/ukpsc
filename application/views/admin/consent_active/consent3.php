@@ -28,11 +28,11 @@
    
     <div class="form">
       <div class="left-side">
-        <div class="left-heading">
+        <!-- <div class="left-heading">
           <h3></h3>
-        </div>
+        </div> -->
         <div class="steps-content">
-          <h3>Step <span class="step-number">4</span></h3>
+          <h3 class="mb-0">Step <span class="step-number">4</span></h3>
           <!--<p class="step-number-content active">Enter your School/College Information.</p>
           <p class="step-number-content d-none">Enter your School/College Principal Deatils</p>
           <p class="step-number-content d-none">Enter your School/College Centre Superintendent Details</p>
@@ -65,30 +65,30 @@
           </div>
           <span style="color:red">*</span><label>Marked fields are mandatory (चिह्नित फ़ील्ड अनिवार्य हैं)</label>
 		  <div class="input-text">
-			   <div class="input-div">
+			   <div class="form-group">
 			   <label>Total Number of room<i style="color:#ff0000; font-size:12px;">*</i><br>कक्षा की कुल संख्या<i style="color:#ff0000; font-size:12px;">*</i></label> 
-				  <input type="text" name="no_room" maxlength="2" value="<?php if ($user['no_room'] != " ") {
+				  <input class="form-control" type="text" name="no_room" maxlength="2" value="<?php if ($user['no_room'] != " ") {
                                     echo $user['no_room'];
                                 } ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="no_room" >
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				<label>Number of seats for candidates in each room.<i style="color:#ff0000; font-size:12px;">*</i><br>प्रत्येक कक्ष में अभ्यर्थियों के बैठने की संख्या<i style="color:#ff0000; font-size:12px;">*</i></label>
-				  <input type="text"  name="no_sheet" maxlength="2" value="<?php if ($user['no_sheet'] != " ") {
+				  <input class="form-control" type="text"  name="no_sheet" maxlength="2" value="<?php if ($user['no_sheet'] != " ") {
                                     echo $user['no_sheet'];
                                 } ?>"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="no_sheet"  >
 				  
 				</div>
 
-                <div class="input-div">
+                <div class="form-group">
                 <label>Maximum number of candidates can be allocated in the center.<i style="color:#ff0000; font-size:12px;">*</i><br>केन्द्र में आबंटित किये जा सकने वाले अधिकतम् अभ्यर्थियों की संख्या<i style="color:#ff0000; font-size:12px;">*</i></label>
-                  <input type="text" maxlength="4" value="<?php if ($user['max_allocate_candidate'] != " ") {
+                  <input class="form-control" type="text" maxlength="4" value="<?php if ($user['max_allocate_candidate'] != " ") {
                                     echo $user['max_allocate_candidate'];
                                 } ?>"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="max_allocate_candidate" id="max_allocate_candidate"  >
                   
                 </div>
 				
          
-			   <div class="input-div">
+			   <div class="form-group">
 				     <label for="Address1">Is there sufficient furniture in the rooms for the candidates?<i style="color:#ff0000; font-size:12px;">*</i><br>क्या अभ्यर्थियों हेतु कक्षों में फर्नीचर पर्याप्त है? <i style="color:#ff0000; font-size:12px;">*</i></label>
                                      <select class="form-control" name="furniture_avail"  maxlength="60" placeholder="Is Furniture available?"  id="furniture_avail">
                                         <option value=""  >Select</option>
@@ -97,7 +97,7 @@
                                      </select>
 				 
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				 <label for="Address2">Is proper lighting facility is available in rooms? <i style="color:#ff0000; font-size:12px;">*</i><br>क्या कक्षों में विद्युत की समुचित व्यवस्था है?<i style="color:#ff0000; font-size:12px;">*</i></label>
                             <select class="form-control" name="elec_avail" maxlength="60" placeholder="Is Electricity available?" id="elec_avail">
                                 <option value=""  >Select</option>
@@ -107,7 +107,7 @@
 				</div>
 				
          
-			   <div class="input-div">
+			   <div class="form-group">
 				 <label for="City" >Does School/College have a Generator facility?<i style="color:#ff0000; font-size:12px;">*</i><br>क्या विद्यालय/केन्द्र में जनरेटर उपलब्ध है?<i style="color:#ff0000; font-size:12px;">*</i> </label>
                             <select class="form-control" name="gen_avai" maxlength="60" placeholder="Is Electricity available?" id="gen_avai">
                                 <option value=""  >Select</option>
@@ -115,7 +115,7 @@
                                 <option value="No"<?php if($user['gen_avai'] == 'No'){ echo "selected";} ?>>No (नहीं)</option>
                             </select> 
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				   <label for="Address1">Does school have separate washroom facilities for girls and boys?<i style="color:#ff0000; font-size:12px;">*</i><br>क्या विद्यालय/केन्द्र में पुरूष व महिला अभ्यर्थियों के लिए अलग-अलग प्रसाधन की समुचित व्यवस्था है?<i style="color:#ff0000; font-size:12px;">*</i></label>
                             <select class="form-control" name="wash_rrom" maxlength="60" placeholder="Is Electricity available?" id="wash_rrom">
                                 <option value=""  >Select</option>
@@ -125,7 +125,7 @@
 				</div>
 				
           
-			   <div class="input-div">
+			   <div class="form-group">
 				 <label for="Address2">Does School have a cloakroom facility for keeping valuables of candidates?<i style="color:#ff0000; font-size:12px;">*</i><br>क्या विद्यालय/केन्द्र में अभ्यर्थियों के कीमती सामान रखने के लिए स्कूल में क्लोकरूम की सुविधा है?<i style="color:#ff0000; font-size:12px;">*</i></label>
                             <select class="form-control" name="clock_room" maxlength="60" placeholder="Is Electricity available?" id="clock_room">
                                 <option value=""  >Select</option>
@@ -133,7 +133,7 @@
                                 <option value="No"<?php if($user['clock_room'] == 'No'){ echo "selected";} ?>>No (नहीं)</option>
                             </select>
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				  <label for="City" >Does School have a proper parking facility?<i style="color:#ff0000; font-size:12px;">*</i><br>क्या विद्यालय/केन्द्र में अभ्यर्थियों हेतु वाहन पार्किंग की व्यवस्था है?<i style="color:#ff0000; font-size:12px;">*</i></label>
                             <select class="form-control" name="vehicle_avail" maxlength="60" placeholder="Is Electricity available?" id="vehicle_avail">
                                 <option value=""  >Select</option>
@@ -142,7 +142,7 @@
                             </select>
 				</div>
 			
-			   <div class="input-div">
+			   <div class="form-group">
 				 <label for="Address1">Does School have sufficient number of invigilators and staff for exam conduction.<i style="color:#ff0000; font-size:12px;">*</i><br>क्या परीक्षा संचालन के लिए अन्तरीक्षक व स्टाफ पर्याप्त संख्या में उपलब्ध हैं?<i style="color:#ff0000; font-size:12px;">*</i></label>
                             <select class="form-control" name="staff_suffi" maxlength="60" placeholder="Is Electricity available?" id="staff_suffi">
                                 <option value=""  >Select</option>
@@ -150,7 +150,7 @@
                                 <option value="No"<?php if($user['staff_suffi'] == 'No'){ echo "selected";} ?>>No (नहीं)</option>
                             </select>
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				  <label for="Address2">Does the school conduct any examination by Uttarakhand public service commission? <i style="color:#ff0000; font-size:12px;">*</i><br>क्या विद्यालय/केन्द्र में पूर्व में उत्तराखण्ड लोक सेवा आयोग की कोई परीक्षा हुई है?<i style="color:#ff0000; font-size:12px;">*</i></label>
                             <select class="form-control" name="ukpsc_exxma" maxlength="60" placeholder="Is Electricity available?" id="ukpsc_exxma">
                                 <option  value="" >Select</option>
@@ -159,7 +159,7 @@
                             </select>
 				</div>
 			
-			   <div class="input-div">
+			   <div class="form-group">
 				  <!-- <label for="City" >Ever Debared (क्या कभी वंचित)</label> -->
 				  <label> Has school been debarred from any examination?<i style="color:#ff0000; font-size:12px;">*</i><br>क्या विद्यालय/केन्द्र कभी परीक्षाओं हेतु प्रतिवारित रहा है?<i style="color:#ff0000; font-size:12px;">*</i></label>
                           
@@ -170,7 +170,7 @@
                             </select>
                             
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				<label>Is principal/centre superintendent brass seal is available if not arrange the same as it is  for conducting the examination<i style="color:#ff0000; font-size:12px;">*</i> <br>(क्या प्रधानाचार्य/पर्यवेक्षक की ब्रास सील उपलब्ध है? यदि नही तो विभिन्न लिफाफों को सील्ड करने के लिए इसकी आवश्यकता होगी तथा परीक्षा आयोजन की दशा में इसे तैयार करा लिया जाए।) <i style="color:#ff0000; font-size:12px;">*</i></label>
 				 
                     <select class="form-control" name="bras_Seal" maxlength="60" placeholder="Is Electricity available?" id="bras_Seal">
@@ -180,19 +180,19 @@
                             </select>
 				  
 				</div>
-                <div class="input-div">
+                <div class="form-group">
                 <label>Remarks if any<br>(उक्त के अतिरिक्त अन्य विवरण जिसे आप उपलब्ध कराना उचित एंव आवश्यक समझे।) <i style="color:#ff0000; font-size:12px;">*</i></label>
-                    <textarea id="remark_if" name="remark_if" rows="4" cols="50"> <?php if ($user['no_sheet'] != " ") {echo $user['remark_if'];} ?></textarea>
+                    <textarea  class="form-control" id="remark_if" name="remark_if" rows="4" style="height: 100% !important;"> <?php if ($user['no_sheet'] != " ") {echo $user['remark_if'];} ?></textarea>
+                </div>
+                <div class="form-group mb-0">
+                  <?php $segment_value = $this->uri->segment(4);?>
+                  <input type="hidden" name="ci_exam_registrationid3" id="ci_exam_registrationid3" value="<?= $segment_value; ?>">
+                  <a  href="<?= base_url("admin/consent_active/consent_add_2/".$segment_value ); ?>"  class="btn btn-sec">Back</a>
+                                      
+                  <input type="submit" name="submit" id="submit" class="btn btn-primary next_button" value="Save and Next">
                 </div>
 			</div>
 			  
-          <div class="buttons button_space col-md-8">
-          <?php $segment_value = $this->uri->segment(4);?>
-            <input type="hidden" name="ci_exam_registrationid3" id="ci_exam_registrationid3" value="<?= $segment_value; ?>">
-            <a  href="<?= base_url("admin/consent_active/consent_add_2/".$segment_value ); ?>" style="width: 85%;"  class="btn btn-success ">Back</a>
-                                
-              <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat next_button" value="Save and Next">
-          </div>
 			  
 			  
            

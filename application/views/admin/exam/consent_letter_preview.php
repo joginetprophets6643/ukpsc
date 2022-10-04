@@ -31,73 +31,44 @@
 <body>
     <div class="content-wrapper">
         <section class="content">
-            <div class="card">
-                <div class="card-header">
+            <div class="card mt-4">
+                <div class="card-header bg-white">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="card-title">Letter List View</h3>
+                            <h2 class="card-title fw-bold">Letter List View</h2>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-6">
-                        <!-- <p style="margin-left: -30%;"><b><?= $admin['subjectline'] ?></b></p> -->
-                        <!-- <p style="margin-left: -20%;"><b>Uttarakhand Combined State Engineering Service Exam-2021</b></p> -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-        
-                    </div>
-                    <div class="col-6">
-                        <p><b>Exam Name:-</b>&nbsp;
-                            <?= $admin['subjectline'] ?>
-                        </p>
-                        <!-- <p style="margin-left: -10%;"><b><?php //echo trans('written_examination') ?></b></p> -->
-                        <!-- <p style="margin-left: -10%;"><b>Written Examination (Objective Type)</b></p> -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-        
-                    </div>
-                    <div class="col-6">
-                        <p><b>Speed Post:-</b>&nbsp;
-                            <?= $admin['speedpost'] ?>
-                        </p>
-                        <!-- <p style="margin-left: -10%;"><b><?php //echo trans('written_examination') ?></b></p> -->
-                        <!-- <p style="margin-left: -10%;"><b>Written Examination (Objective Type)</b></p> -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-6">
-                        <p><b>Start Date:-</b>&nbsp;
-                            <?= $admin['startdate'] ?>
-                        </p>
-                        <!-- <p style="margin-left: 3%;"><b><?php //echo trans('exam_schedule_vew') ?></b></p> -->
-                        <!-- <p style="margin-left: 3%;"><b>Exam Schedule</b></p> -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-6">
-                        <p><b>End Date:-</b>&nbsp;
-                            <?= $admin['enddate'] ?>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-6">
-                        <p><b>Signature:-</b>&nbsp;
-                            <?= $admin['name_designation_mobile'] ?>
-                        </p>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <th>Exam Name</th>
+                                            <td><?= $admin['subjectline'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Speed Post</th>
+                                            <td><?= $admin['speedpost'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Start Date</th>
+                                            <td><?= $admin['startdate'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>End Date</th>
+                                            <td><?= $admin['enddate'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Signature</th>
+                                            <td><?= $admin['name_designation_mobile'] ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

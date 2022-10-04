@@ -14,7 +14,7 @@
 
 <div class="datalist">
 
-<table id="example1" class="table table-bordered table-hover" style="overflow: auto; ">
+<table id="example1" class="table table-bordered table-hover" style="overflow: auto; border-collapse: collapse !important;">
    <thead>
       <tr style="text-align: center;">
          <th width="50">S.No.</th>
@@ -47,7 +47,7 @@
             <?= $row['ciespeedpost'] ?>
          </td>
          <td>
-            <h4 class="m0 mb5"> <?= $row['ciesubjectline'] ?></h4>
+            <span style="color: #E14658;"> <?= $row['ciesubjectline'] ?></span>
          </td>
          <td>
             <?= $row['ciestartdate']; ?>
@@ -65,7 +65,7 @@
            <a class="d-none" href="<?= base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($row['cieid'])); ?>" title="Reply"   class="btn btn-success">
             <i class="fa fa-reply"></i>
            </a>
-           <button type="button" class="btn btn-secondary" disabled>Applied</button>
+           <button type="button" class="btn btn-sec" disabled>Applied</button>
            <?php
                }   
             ?>
@@ -76,7 +76,7 @@
                ?>
                   <!-- <a href="<?= base_url("admin/consent_active/consent_add/" . $_SESSION['admin_id']).'/'.$row['id']; ?>" title="Apply" rel="<?php echo $row['id'] ?>" class="btn btn-warning btn-xs update_db apply-btn"> -->
             
-                  <a href="<?= base_url("admin/consent_active/consent_add/" . $_SESSION['admin_id']).'/'.$row['cieid']; ?>" title="Apply" rel="<?php echo $row['cieid'] ?>" class="btn btn-warning apply-btn">
+                  <a href="<?= base_url("admin/consent_active/consent_add/" . $_SESSION['admin_id']).'/'.$row['cieid']; ?>" title="Apply" rel="<?php echo $row['cieid'] ?>" class="btn btn-warning">
                      Apply  
                   </a>   
             <?php

@@ -1147,8 +1147,8 @@ class Examshedule_schedule extends MY_Controller {
                     $row['total_sum'] ? $row['total_sum'] : '',
                     $row['startdate']? $row['startdate'] : '',
                     $row['enddate']? $row['enddate'] : '',
-                    '<a href="' . base_url('admin/examshedule_schedule/consent_recieved_by_user_list/' . urlencrypt($row['id'])) .'?total_number='.$total_sum. '" title="Consent Recieved" class="btn btn-success consent_recieved btn-xs mr5"><i class="fa fa-eye"></i></a>
-                     <a href="' . base_url('admin/examshedule_schedule/consent_not_recieved_by_user_list/' . urlencrypt($row['id'])) .'?total_number='.$total_sum. '" title="Consent Not Recieved" class="btn btn-danger consent_not_recieved btn-xs mr5"><i class="fa fa-eye"></i></a>',
+                    '<a href="' . base_url('admin/examshedule_schedule/consent_recieved_by_user_list/' . urlencrypt($row['id'])) .'?total_number='.$total_sum. '" title="Consent Recieved" class="btn btn-success consent_recieved"><i class="fa fa-eye"></i></a>
+                     <a href="' . base_url('admin/examshedule_schedule/consent_not_recieved_by_user_list/' . urlencrypt($row['id'])) .'?total_number='.$total_sum. '" title="Consent Not Recieved" class="btn btn-danger consent_not_recieved"><i class="fa fa-eye"></i></a>',
                 ];
             // }
         }

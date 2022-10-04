@@ -14,7 +14,7 @@
 
         <div class="card">
 
-            <div class="card-body">
+            <div class="card-header">
 
                 <div class="d-inline-block">
 
@@ -161,7 +161,7 @@
 
         <div class="card">
             <div class="card-body table-responsive">
-                <table id="send_invitation_list" class="table table-bordered table-striped" width="100%">
+                <table id="send_invitation_list" class="table table-bordered table-striped" style="border-collapse: collapse !important;">
                     <thead>
                         <tr>
                             <th>#</th>

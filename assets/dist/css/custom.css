@@ -10,8 +10,15 @@
 .sidebar {
     height: calc(100% - 0.5rem);
 }
+.justify-centent-between {
+    justify-content: space-between !important;
+}
 .btn {
-    padding: 7px 10px;
+    padding: 7px 10px !important;
+    font-size: 17px !important;
+}
+.btn:focus {
+    box-shadow: none !important;
 }
 .btn.update,
 .btn.delete,
@@ -33,10 +40,12 @@
     overflow-x: hidden;
     background: linear-gradient(#e8e8e8 120px,white,#3a4a6bcc) !important;
 }
-input:focus,
-select:focus {
+input.form-control:focus,
+select:focus,
+textarea:focus,
+textarea:focus-visible {
     background-color: #f1f8ff !important;
-    border-color: #373250 !important;
+    border: 1px solid #373250 !important;
     box-shadow: none !important;
 }
 input,
@@ -50,11 +59,11 @@ select {
     padding: 0;
 }
 .form-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.2rem !important;
 }
 .btn-primary {
-    background-color: #E14658;
-    border-color: #E14658;
+    background-color: #E14658 !important;
+    border-color: #E14658 !important;
 }
 .btn-primary:hover,
 .btn-primary:focus, 
@@ -94,7 +103,7 @@ select {
     color: #373250;
 }
 .btn-sec {
-    border-color: #fff;
+    border-color: #384e4a;
     background-color: #384e4a;
     color: #fff;
 }
@@ -146,15 +155,31 @@ select {
     background-color: #E14658 !important;
 }
 .container .card .left-side {
-    background-color: #17a2b8 !important;
+    background-color: #567670 !important;
 }
 .progress-bar li::before {
-    background-color: #091583 !important;
+    background-color: #373250 !important;
 }
 .progress-bar li {
     margin-left: 32px !important;
     font-size: 14px;
     color: #d6d7d9 !important;
+}
+.progress-bar li::after {
+    left: -29px !important;
+    top: -82px !important;
+}
+.progress-bar li:first-child {
+    margin-top: 32px !important;
+}
+.progress-bar li.active {
+    color: #fff !important;
+    
+}
+.right-side h2 {
+    font-size: 24px;
+    color: #373250;
+    font-weight: 600;
 }
 .login-box-msg {
     font-size: 18px !important;
@@ -242,6 +267,7 @@ table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:a
 .btn-success {
     background-color: #006400;
     border-color: #006400;
+    color: #fff !important;
 }
 .btn-success:hover {
     background-color: #008000;
@@ -268,4 +294,10 @@ table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:a
 .btn-warning:hover {
     background-color: #ffc107;
     border-color: #ffc107;
+}
+textarea {
+    border-radius: 5px;
+    border: 1px solid #cbced4;
+    font-size: 17px !important;
+    padding: 3px 10px !important;
 }

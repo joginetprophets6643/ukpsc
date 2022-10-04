@@ -9,7 +9,7 @@
 class Dashboard extends My_Controller {
 
 
-
+ 
 
 
 
@@ -63,8 +63,6 @@ class Dashboard extends My_Controller {
          */
 
 	public function index(){
-
- 
 
 		$data['title'] = 'Dashboard';
 

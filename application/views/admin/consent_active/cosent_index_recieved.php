@@ -14,7 +14,7 @@
         
 
         <div class="card">
-            <div class="card-body">
+            <div class="card-header border-0">
                 <div class="d-inline-block">
                   <h3 class="card-title">
                     <i class="fa fa-list"></i>

@@ -19,11 +19,11 @@
    
     <div class="form">
       <div class="left-side">
-        <div class="left-heading">
+        <!-- <div class="left-heading">
           <h3></h3>
-        </div>
+        </div> -->
         <div class="steps-content">
-          <h3>Step <span class="step-number">3</span></h3>
+          <h3 class="mb-0">Step <span class="step-number">3</span></h3>
           <!--<p class="step-number-content active">Enter your School/College Information.</p>
           <p class="step-number-content d-none">Enter your School/College Principal Deatils</p>
           <p class="step-number-content d-none">Enter your School/College Centre Superintendent Details</p>
@@ -52,46 +52,47 @@
             <p>Enter your School/College/Institute Centre Superintendent Details</p>
           </div>
          <div class="input-text">
-            <div class="input-div">
-             <label for="mobile_no" class="col-sm- control-label">Centre Superintendent Name <i style="color:#ff0000; font-size:12px;">*</i><br>(केंद्र अधीक्षक का नाम)<i style="color:#ff0000; font-size:12px;">*</i></label>
-              <input type="text" name="super_name" value="<?php if ($user['super_name'] != "") {
+            <div class="form-group">
+              <label for="mobile_no" class="col-sm- control-label">Centre Superintendent Name <i style="color:#ff0000; font-size:12px;">*</i><br>(केंद्र अधीक्षक का नाम)<i style="color:#ff0000; font-size:12px;">*</i></label>
+              <input class="form-control" type="text" name="super_name" value="<?php if ($user['super_name'] != "") {
                                     echo $user['super_name'];
                                 } ?>" id="super_name" >
-              </div>
+            </div>
               
-               <div class="input-div">
+            <div class="form-group">
                 <label for="mobile_no" class="col-sm- control-label">Designation<i style="color:#ff0000; font-size:12px;">*</i><br> (पदनाम)<i style="color:#ff0000; font-size:12px;">*</i></label>
-              <input type="text" name="super_design" id="super_design"  value="<?php if ($user['super_design'] != " ") {
+              <input class="form-control" type="text" name="super_design" id="super_design"  value="<?php if ($user['super_design'] != " ") {
                                     echo $user['super_design'];
                                 } ?>" >
+            </div>
              
-            <div class="input-div">
-            <label >Mobile No.<i style="color:#ff0000; font-size:12px;">*</i><br> (मोबाइल नंबर)<i style="color:#ff0000; font-size:12px;">*</i></label>
-              <input type="text" name="super_mobile" maxlength="10" value="<?php if ($user['super_mobile'] != " ") {
+            <div class="form-group">
+              <label >Mobile No.<i style="color:#ff0000; font-size:12px;">*</i><br> (मोबाइल नंबर)<i style="color:#ff0000; font-size:12px;">*</i></label>
+              <input class="form-control" type="text" name="super_mobile" maxlength="10" value="<?php if ($user['super_mobile'] != " ") {
                                     echo $user['super_mobile'];
                                 } ?>" id="super_mobile" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
               </div>
           
-             <div class="input-div">
+             <div class="form-group">
              <label for="district" class="col-md-12 control-label">Email ID<i style="color:#ff0000; font-size:12px;">*</i><br> (ईमेल आईडी)<i style="color:#ff0000; font-size:12px;">*</i></label>
-              <input type="text" value="<?php if ($user['super_email'] != " ") {
+              <input class="form-control" type="text" value="<?php if ($user['super_email'] != " ") {
                                     echo $user['super_email'];
                                 } ?>"  name="super_email" id="super_email"  >
                </div>
          
-            <div class="input-div">
+            <div class="form-group">
             <label for="district" class="col-md-12 control-label">Whats App No.<i style="color:#ff0000; font-size:12px;">*</i><br> (व्हाट्सएप नंबर)<i style="color:#ff0000; font-size:12px;">*</i></label>
-              <input type="text" name="super_whatspp" maxlength="10"  value="<?php if ($user['super_whatspp'] != " ") {
+              <input class="form-control" type="text" name="super_whatspp" maxlength="10"  value="<?php if ($user['super_whatspp'] != " ") {
                                     echo $user['super_whatspp'];
                                 } ?>"  id="super_whatspp"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  >
               
             </div>
           </div>
-          <div class="buttons button_space col-md-8">
+          <div class="form-group mb-0">
           <?php $segment_value = $this->uri->segment(4);?>
             <input type="hidden" name="ci_exam_registrationid2" id="ci_exam_registrationid2" value="<?= $segment_value; ?>">
-           <a  href="<?= base_url("admin/consent_active/consent_add_1/".$segment_value); ?>" style="width: 85%;"   class="btn btn-success ">Back</a>
-              <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat next_button" value="Save and Next">
+           <a  href="<?= base_url("admin/consent_active/consent_add_1/".$segment_value); ?>"   class="btn btn-sec">Back</a>
+              <input type="submit" name="submit" id="submit" class="btn btn-primary next_button" value="Save and Next">
           </div>
         </div>
              <?php echo form_close(); ?>

@@ -37,7 +37,7 @@
 
         <div class="card">
 
-          <div class="card-body d-flex p-0">
+          <div class="card-header border-0 d-flex align-items-center p-0">
 
             <h3 class="card-title p-3">
 
@@ -50,7 +50,7 @@
 
               <li class="nav-item">
 
-                <a class="nav-link active" href="<?php echo base_url("admin/profile/consent_user") ?>" >View Consent</a>
+                <a class="btn btn-admin active" href="<?php echo base_url("admin/profile/consent_user") ?>" >View Consent</a>
               
 
               </li>

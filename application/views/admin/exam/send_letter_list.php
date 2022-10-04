@@ -2,15 +2,13 @@
 
 <div class="datalist">
 
-   <table id="na_datatable" class="table table-bordered table-hover" style="overflow: auto; 
-
-    ">
+   <table id="na_datatable" class="table table-bordered table-hover" style="overflow: auto; border-collapse: collapse !important;">
 
       <thead>
 
          <tr style="text-align: center;">
 
-            <th width="50">S.No.</th>
+            <th>S.No.</th>
 
             <!-- <th>Letter/Email/Speed Post Number</th> -->
 
@@ -25,7 +23,7 @@
 
 
 
-            <th width="120" ><?= trans('action') ?></th>
+            <th><?= trans('action') ?></th>
 
          </tr>
 
@@ -72,7 +70,7 @@
 
             <td>
 
-               <h4 class="m0 mb5"> <?= $row['subjectline'] ?></h4>
+               <span style="color: #e14658;"> <?= $row['subjectline'] ?></span>
               
 
                       
@@ -112,7 +110,7 @@
 
             <?php  if ($admin_role_id == 6 )  { ?>
 
-            <a href="<?= base_url("admin/consent_letter/edit_consent/" . $row['id']); ?>" title="Edit" class="btn btn-warning btn-xs mr5" >
+            <a href="<?= base_url("admin/consent_letter/edit_consent/" . $row['id']); ?>" title="Edit" class="btn btn-warning" >
 
             <i class="fa fa-edit"></i>
 
@@ -137,13 +135,13 @@
                <?php
                if($row['speedpost'] != ""){
                ?>
-                  <a href="<?= base_url("admin/examshedule_schedule/send_invitation/" . urlencrypt($row['id']).'?total_number='.$total_sum); ?>" title="Send invitations" class="btn btn-success btn-xs mr5"  >
+                  <a href="<?= base_url("admin/examshedule_schedule/send_invitation/" . urlencrypt($row['id']).'?total_number='.$total_sum); ?>" title="Send invitations" class="btn btn-success"  >
                      <i class="fa fa-paper-plane-o"></i>
                   </a>
                <?php
                }else{
                ?>
-                  <a href="#" onclick="not_crerate_letter()" title="Send invitations" class="btn btn-success btn-xs mr5"  >
+                  <a href="#" onclick="not_crerate_letter()" title="Send invitations" class="btn btn-success"  >
                      <i class="fa fa-paper-plane-o"></i>
                   </a>
                <?php
@@ -152,13 +150,13 @@
                <?php
                if($row['speedpost'] != ""){
                ?>
-                  <a href="<?= base_url("admin/examshedule_schedule/invitation_preview/" . urlencrypt($row['id'])); ?>" title="Preview"  class="btn btn-warning btn-xs  mr5">
+                  <a href="<?= base_url("admin/examshedule_schedule/invitation_preview/" . urlencrypt($row['id'])); ?>" title="Preview"  class="btn btn-warning">
                      <i class="fa fa-eye"></i>
                   </a>
                <?php
                }else{
                ?>
-                  <a href="#" onclick="not_crerate_letter()" title="Preview"  class="btn btn-warning btn-xs  mr5">
+                  <a href="#" onclick="not_crerate_letter()" title="Preview"  class="btn btn-warning">
                      <i class="fa fa-eye"></i>
                   </a>
                <?php

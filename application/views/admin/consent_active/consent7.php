@@ -28,11 +28,11 @@
    
     <div class="form">
       <div class="left-side">
-        <div class="left-heading">
+        <!-- <div class="left-heading">
           <h3></h3>
-        </div>
+        </div> -->
         <div class="steps-content">
-          <h3>Step <span class="step-number">6</span></h3>
+          <h3 class="mb-0">Step <span class="step-number">6</span></h3>
           <!--<p class="step-number-content active">Enter your School/College Information.</p>
           <p class="step-number-content d-none">Enter your School/College Principal Deatils</p>
           <p class="step-number-content d-none">Enter your School/College Centre Superintendent Details</p>
@@ -61,22 +61,22 @@
             <p>Enter your School/College Information.</p>
           </div>
           <div class="input-text">
-		  <div class="input-div">
+		  <div class="form-group">
              <label>School Registration No.  (स्कूल पंजीकरण संख्या)</label> 
               <input type="text" name="school_registration_number" id="school_registration_number" required require readonly  value="<?php echo $admin['school_registration_number'] ?>">
             </div>
-            <div class="input-div">
+            <div class="form-group">
               <label>School/College Name (स्कूल/कॉलेज का नाम)</label> 
               <input type="text"  name="school_name" id="school_name" required readonly value="<?php echo $admin['school_name'] ?>">
           </div>
-            <div class="input-div">
+            <div class="form-group">
                   <label>Address (स्कूल/कॉलेज का पता)</label>
                <input type="text" name="address" id="address" required readonly require value="<?php echo $admin['address'] ?>">
             
           </div>
          
          
-            <div class="input-div">
+            <div class="form-group">
                 <label>Landmark (लैंडमार्क)</label>
               <input type="text" name="landmark" id="landmark" required readonly require value="<?php echo $admin['landmark'] ?>">
               
@@ -84,11 +84,11 @@
            
          
 			         
-            <div class="input-div">
+            <div class="form-group">
               <label style="font-weight:bold;"> District:</label>
             <input type="text" required readonly require value="<?php echo $admin['district'] ?>">
             </div>
-            <div class="input-div">
+            <div class="form-group">
             <label style="font-weight:bold;"> City:</label>
             <input type="text" name="district" id="district" required readonly require value="<?php echo $admin['city'] ?>">
             </div>
@@ -109,24 +109,24 @@
             <p>Enter your School/College/Institute Principal Deatils</p>
           </div>
           <div class="input-text">
-            <div class="input-div">
+            <div class="form-group">
               
               <label>Principal Name (प्राचार्य का नाम)</label> 
               <input type="text" name="principal_name" id="principal_name" required readonly require  value="<?php echo $admin['principal_name'] ?>" >
           </div>
-            <div class="input-div">
+            <div class="form-group">
 
               <label>Mobile No. (मोबाइल नंबर)</label>
    <input type="text" name="pri_mobile" id="pri_mobile" required readonly value="<?php echo $admin['pri_mobile'] ?>" >
                </div>
           
-		     <div class="input-div">
+		     <div class="form-group">
               
               <label>Email ID (ईमेल आईडी)</label> 
                <input type="text" name="email" id="email" required readonly require value="<?php echo $admin['email'] ?>" >
           </div>
          
-            <div class="input-div">
+            <div class="form-group">
               
               <label>Whats App No. (व्हाट्सएप नंबर)</label> 
               <input type="text" name="whats_num" id="whats_num" required readonly require value="<?php echo $admin['whats_num'] ?>" >
@@ -147,24 +147,24 @@
             <p>Enter your School/College/Institute Centre Superintendent Details</p>
           </div>
          <div class="input-text">
-            <div class="input-div">
+            <div class="form-group">
               <input type="text" name="super_name" id="super_name" required require>
               <span>Centre Superintendent Name (केंद्र अधीक्षक का नाम)</span> </div>
 			  
-			   <div class="input-div">
+			   <div class="form-group">
 
               <input type="text" name="super_design" id="super_design" required>
               <span>Designation (पदनाम)</span> </div>
-            <div class="input-div">
+            <div class="form-group">
 
               <input type="text" name="super_mobile" id="super_mobile" required>
               <span>Mobile No. (मोबाइल नंबर)</span> </div>
           
-		     <div class="input-div">
+		     <div class="form-group">
               <input type="text"  name="super_email" id="super_email" required require>
               <span>Email ID (ईमेल आईडी)</span> </div>
          
-            <div class="input-div">
+            <div class="form-group">
               <input type="text" name="super_whatspp"  id="super_whatspp"  required require>
               <span>Whats App No. (व्हाट्सएप नंबर)</span> 
             </div>
@@ -180,17 +180,17 @@
             <p>Enter your School/College Infrastructure Details.</p>
           </div>
 		  <div class="input-text">
-			   <div class="input-div">
+			   <div class="form-group">
 				  <input type="text" name="no_room" required>
 				  <span>No. of Rooms (कमरों की कुल संख्या)</span> 
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				  <input type="text" name="no_sheet"  required>
 				  <span>No. of Sheet Rooms (शीट रूम की संख्या)</span>
 				</div>
 				
          
-			   <div class="input-div">
+			   <div class="form-group">
 				     <label for="Address1">Is there sufficient furniture in the rooms for the candidates?  </label>
                                      <select class="form-control" name="furniture_avail"  maxlength="60" placeholder="Is Furniture available?"  id="furniture_avail">
                                         <option >Select</option>
@@ -199,7 +199,7 @@
                                      </select>
 				 
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				 <label for="Address2">Is Electricity available?</label>
                             <select class="form-control" name="elec_avail" maxlength="60" placeholder="Is Electricity available?" id="elec_avail">
                                 <option >Select</option>
@@ -209,7 +209,7 @@
 				</div>
 				
          
-			   <div class="input-div">
+			   <div class="form-group">
 				 <label for="City" >Is Generator available?</label>
                             <select class="form-control" name="gen_avai" maxlength="60" placeholder="Is Electricity available?" id="gen_avai">
                                 <option >Select</option>
@@ -217,7 +217,7 @@
                                 <option value="No">No</option>
                             </select> 
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				   <label for="Address1">Is distinct washroom available for Boys and Girl?</label>
                             <select class="form-control" name="wash_rrom" maxlength="60" placeholder="Is Electricity available?" id="wash_rrom">
                                 <option >Select</option>
@@ -227,7 +227,7 @@
 				</div>
 				
           
-			   <div class="input-div">
+			   <div class="form-group">
 				 <label for="Address2">Is ClockRoom available?</label>
                             <select class="form-control" name="clock_room" maxlength="60" placeholder="Is Electricity available?" id="clock_room">
                                 <option >Select</option>
@@ -235,7 +235,7 @@
                                 <option value="No">No</option>
                             </select>
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				  <label for="City" >Is Vehicle Parking available?</label>
                             <select class="form-control" name="vehicle_avail" maxlength="60" placeholder="Is Electricity available?" id="vehicle_avail">
                                 <option >Select</option>
@@ -244,7 +244,7 @@
                             </select>
 				</div>
 			
-			   <div class="input-div">
+			   <div class="form-group">
 				 <label for="Address1">Is number of staff sufficient?<span style="color:red;font-weight:bold">*</span></label>
                             <select class="form-control" name="staff_suffi" maxlength="60" placeholder="Is Electricity available?" id="staff_suffi">
                                 <option >Select</option>
@@ -252,7 +252,7 @@
                                 <option value="No">No</option>
                             </select>
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				  <label for="Address2">Is any exam of UKPSC held?</label>
                             <select class="form-control" name="ukpsc_exxma" maxlength="60" placeholder="Is Electricity available?" id="ukpsc_exxma">
                                 <option >Select</option>
@@ -261,12 +261,12 @@
                             </select>
 				</div>
 			
-			   <div class="input-div">
+			   <div class="form-group">
 				  <!-- <label for="City" >Ever Debared (क्या कभी वंचित)</label> -->
                             <input class="form-control" id="debar" maxlength="60" placeholder="DEBAR"  name="debar" type="text" value="" >
                             <span>Ever Debared (क्या कभी वंचित)</span>
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				    <input class="form-control" name="bras_Seal"  maxlength="60" placeholder="Brass Seal"  id="bras_Seal"  type="text" value="" >
 				  <span>Brass Seal availablity? (पीतल सील उपलब्धता?)</span>
 				</div>
@@ -287,31 +287,31 @@
             <p>Add School Bank Details</p>
           </div>
           <div class="input-text1">
-			   <div class="input-div">
+			   <div class="form-group">
 				  <input class="form-control"  name="acc_holder_name" maxlength="60" id="acc_holder_name" type="text" value="" >
 				  <span>Account Holder Name </span> 
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				  <input class="form-control" name="ban_name"  maxlength="60"  id="ban_name"  type="text" value="" >
 				  <span>Bank Name</span>
 				</div>
 		  </div>
 		   <div class="input-text1">
-			   <div class="input-div">
+			   <div class="form-group">
 				   <input class="form-control"  name="branch_name" maxlength="60" id="branch_name" type="text" value="" >
 				  <span>Bank Branch Name</span> 
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				  <input class="form-control"  name="ifsc" maxlength="60"  id="ifsc" type="text" value="" >
 				  <span>Bank IFSC Code</span>
 				</div>
 		  </div>
 		   <div class="input-text1">
-			   <div class="input-div">
+			   <div class="form-group">
 				  <input class="form-control"  name="acc_num" maxlength="60"  id="acc_num" type="text" value="" >
 				  <span>Account Number</span> 
 				</div>
-                <div class="input-div">
+                <div class="form-group">
                   <input class="form-control"  name="acc_num_con" maxlength="60"  id="acc_num_con" type="text" value="" >
                   <span>Confirm Account Number</span> 
                 </div>
@@ -756,27 +756,27 @@ Confirm Account Number</label>
             <p>Add your School/College/Institute Images as per required filed</p>
           </div>
           <div class="input-text1">
-			   <div class="input-div">
+			   <div class="form-group">
 				     <input type="file"  class="form-control" name="fileName1" id="fileName1" data-file_detail="file_detail1" onchange="get_detail(this);" />  
 				  <span>Image Parking</span> 
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				  <input type="file"  class="form-control" name="fileName2" id="fileName2" data-file_detail="file_detail2" onchange="get_detail(this);" />
 				  <span>Image Classroom </span>
 				</div>
 		  </div>
 		   <div class="input-text1">
-			   <div class="input-div">
+			   <div class="form-group">
 				  <input type="file"  class="form-control" name="fileName3" id="fileName3" data-file_detail="file_detail3" onchange="get_detail(this);" />
 				  <span>Image Washroom </span> 
 				</div>
-				<div class="input-div">
+				<div class="form-group">
 				<input type="file"  class="form-control" name="fileName4" id="fileName4" data-file_detail="file_detail4" onchange="get_detail(this);" />
 				  <span>Image Main Gate </span>
 				</div>
 		  </div>
 		   <div class="input-text1">
-			   <div class="input-div">
+			   <div class="form-group">
 				  <input type="file"  class="form-control" name="fileName5" id="fileName5" data-file_detail="file_detail5" onchange="get_detail(this);" />
 				  <span>Image Locker</span> 
 				</div>

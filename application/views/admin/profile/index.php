@@ -7,7 +7,10 @@
         <div class="card card-default color-palette-bo">
             <div class="card-header">
                 <div class="d-inline-block">
-                    
+                    <h3 class="card-title">
+                        <i class="fa fa-user mr-1"></i>
+                        Profile
+                    </h3>
                 </div>
                 <div class="d-inline-block float-right">
                 </div>
@@ -109,10 +112,10 @@
 
                 </div>
 
-                <div class="form-group" style="text-align:center;">
-                    <div class="col-md-12">
+                <div class="form-group mb-0" style="text-align:center;">
+                    <div class="col-md-12 mt-4">
                         <!-- <input type="submit" name="submit" value="Update Admin" class="btn btn-primary pull-right"> -->
-                        <input type="button" onclick="window.history.go(-1)" class="btn btn-primary px-3 py-2"
+                        <input type="button" onclick="window.history.go(-1)" class="btn btn-sec"
                             value="Back"></input>
                     </div>
                 </div>

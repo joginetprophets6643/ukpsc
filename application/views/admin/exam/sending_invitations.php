@@ -82,7 +82,7 @@
                            <!-- <a href="<?php // echo base_url("admin/examshedule_schedule/send_invitation_user/" . $row[8]); ?>" title="Send Invitations" class="btn btn-success btn-xs mr5" >
                               <i class="fa fa-paper-plane-o"></i>
                            </a> -->
-                           <a onClick="single_send_invitations(<?php echo $row['id']; ?>)" title="Send Invitations" class="btn btn-success btn-xs mr5" >
+                           <a onClick="single_send_invitations(<?php echo $row['id']; ?>)" title="Send Invitations" class="btn btn-success" >
                               <i class="fa fa-paper-plane-o"></i>
                            </a>
                         <?php }  if ($admin_role_id == 5 )  { ?>

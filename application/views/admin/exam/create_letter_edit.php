@@ -12,29 +12,17 @@
 
                 </div>
 
-                <div class="d-inline-block float-right">
-
-
-                </div>
-
             </div>
 
             <div class="card-body">
-
-
-
                 <?php echo validation_errors(); ?>
 
                 <?php echo form_open_multipart(base_url('admin/examshedule_schedule/date_sheet_update'), 'id="xin-form"  class="form-horizontal"'); ?>
 
-
-
                 <div class="after-add-more field_wrapper">
                     <div class="row">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-
+                        <div class="col-md-12">
+                            <div class="form-group mb-4">
                                 <label for="name" class="col-sm- control-label">Exam Name<span>*</span><br/>(परीक्षा का नाम)<span>*</span></label>
                     
                                 <input type="text" id="exam_name" name="exam_name" readonly class="form-control" placeholder="subject line" value="<?= $exam[0]['subjectline']?>">
@@ -57,42 +45,33 @@
                                     <?php //} ?>
 
                                 </select> -->
-
                             </div>
-
-
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
                                 <label for="name" class="col-sm- control-label">Start Date of exam <span>*</span><br/>(परीक्षा शुरू होने की तिथि)<span>*</span></label>
                                 <!-- <input type="date" name="startdate" id="startdate" readonly class="form-control" placeholder="Subject" > -->
                                 <input type="text" name="startdate" id="startdate" readonly class="form-control" placeholder="Subject" value="<?= $exam[0]['startdate']?>">
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
                                 <label for="name" class="col-sm- control-label">End Date of exam <span>*</span><br/>(परीक्षा की समाप्ति तिथि)<span>*</span></label>
                                 <!-- <input type="date" id="end_date" name="enddate" readonly class="form-control" placeholder="Subject"> -->
                                 <input type="text" id="end_date" name="enddate" readonly class="form-control" placeholder="Subject"  value="<?= $exam[0]['enddate']?>">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
 
-                            <div class="form-group">
+                            <div class="form-group mb-4">
                                 <label for="name" class="col-sm- control-label">Enter Letter/Email/Speed Post Number<span>*</span><br/>(पत्र/ईमेल/स्पीड पोस्ट नंबर दर्ज करें)<span>*</span></label>
                                 <input type="text" id="speed_post" name="speedpost" class="form-control" placeholder="Enter Letter/Email/Speed Post Number(पत्र/ईमेल/स्पीड पोस्ट नंबर दर्ज करें)" value="<?= $exam[0]['speedpost']?>">
                             </div>
 
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
 
-                            <div class="form-group">
+                            <div class="form-group mb-4">
 
                                 <label for="name" class="col-sm- control-label">Enter Subject Line of Letter<span>*</span><br/>(पत्र की विषय पंक्ति दर्ज करें)<span>*</span></label>
 
@@ -101,37 +80,23 @@
                             </div>
 
                         </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
 
-                            <div class="form-group">
+                            <div class="form-group mb-4">
 
-                                <label for="name" class="col-sm- control-label">Enter Your Name, Designation And Mobile number<span>*</span><br/>(अपना नाम, पदनाम और मोबाइल नंबर दर्ज करें)<span>*</span></label>
-                                <textarea id="name_designation_mobile" name="name_designation_mobile" rows="8" cols="85" placeholder="Enter Your Name, Designation And Mobile number(अपना नाम, पदनाम और मोबाइल नंबर दर्ज करें)"><?= $exam[0]['name_designation_mobile']?></textarea>
+                                <label for="name" class="col-sm- control-label">
+                                    Enter Your Name, Designation And Mobile number<span>*</span>
+                                    <br/>
+                                    (अपना नाम, पदनाम और मोबाइल नंबर दर्ज करें)<span>*</span>
+                                </label>
+                                <textarea class="form-control" id="name_designation_mobile" name="name_designation_mobile" rows="5" placeholder="Enter Your Name, Designation And Mobile number(अपना नाम, पदनाम और मोबाइल नंबर दर्ज करें)" style="height: auto !important;"><?= $exam[0]['name_designation_mobile']?></textarea>
                                 <!-- <input type="text" name="name_designation_mobile" id="name_designation_mobile" class="form-control" placeholder="Enter Subject Line of Letter(पत्र की विषय पंक्ति दर्ज करें)"> -->
-
                             </div>
-
                         </div>
                     </div>
-
-
-
-
-
-
-
                     <div class="row">
 
-                        <div class="col-md-1.5">
-
-
-
-                        </div>
-
-                        <div class="col-md-1.5" style="margin-left:20px;    margin-left: 5px;display: none;">
+                        <div class="col-md-12" style="margin-left:20px;    margin-left: 5px;display: none;">
 
                             <div class="form-group">
 
@@ -306,31 +271,20 @@
                     </div>
 
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-
-
-
-                    </div>
-                </div>
 
                 <div class="row">
-
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            <!-- <input type="submit" name="submit" value="Update Admin" class="btn btn-primary pull-right"> -->
-                            <input type="button" onclick="window.history.go(-1)" class="btn btn-primary" value="Back"></input>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-
-                        <div class="col-md-6">
-                            <input type="hidden" name="user_id" class="form-control" id="user_id" value="<?= $exam[0]['id']?>">
-                            <input type="submit" name="submit" value="Update " class="btn btn-primary pull-center">
+                    <div class="col-md-12">
+                        <div class="d-flex">
+                            <div class="form-group mb-0">
+                                <!-- <input type="submit" name="submit" value="Update Admin" class="btn btn-primary pull-right"> -->
+                                <input type="button" onclick="window.history.go(-1)" class="btn btn-sec mr-4" value="Back"></input>
+                            </div>
+                            <div class="form-group mb-0">
+                                <input type="hidden" name="user_id" class="form-control" id="user_id" value="<?= $exam[0]['id']?>">
+                                <input type="submit" name="submit" value="Update " class="btn btn-primary pull-center">
+                            </div>
 
                         </div>
-
                     </div>
                 </div>
 

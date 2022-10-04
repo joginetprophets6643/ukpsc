@@ -33,11 +33,11 @@
    
     <div class="form">
       <div class="left-side">
-        <div class="left-heading">
+        <!-- <div class="left-heading">
           <h3></h3>
-        </div>
+        </div> -->
         <div class="steps-content">
-          <h3>Step <span class="step-number">2</span></h3>
+          <h3 class="mb-0">Step <span class="step-number">2</span></h3>
           <!--<p class="step-number-content active">Enter your School/College Information.</p>
           <p class="step-number-content d-none">Enter your School/College Principal Deatils</p>
           <p class="step-number-content d-none">Enter your School/College Centre Superintendent Details</p>
@@ -65,39 +65,39 @@
             <p>Enter your School/College/Institute Principal Deatils</p>
           </div>
           <div class="input-text">
-            <div class="input-div">              
+            <div class="form-group">              
               <label>Principal Name (प्राचार्य का नाम)<i style="color:#ff0000; font-size:12px;">*</i></label>
-              <input type="text" name="principal_name"  id="principal_name" value="<?php echo $admin[0]['principal_name'] ?>" >
+              <input class="form-control" type="text" name="principal_name"  id="principal_name" value="<?php echo $admin[0]['principal_name'] ?>" >
           </div>
-            <div class="input-div">
+            <div class="form-group">
               <label>Mobile No. (मोबाइल नंबर)<i style="color:#ff0000; font-size:12px;">*</i></label>
-              <input type="text" name="pri_mobile" id="pri_mobile" maxlength="10" value="<?php echo $admin[0]['pri_mobile'] ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+              <input class="form-control" type="text" name="pri_mobile" id="pri_mobile" maxlength="10" value="<?php echo $admin[0]['pri_mobile'] ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
             </div>
           
-		     <div class="input-div">
+		     <div class="form-group">
               <label>Email ID (ईमेल आईडी)</label> 
-               <input type="text" name="email" id="email" class="color" required readonly value="<?php echo $admin[0]['email'] ?>" >
+               <input class="form-control" type="text" name="email" id="email" class="color" required readonly value="<?php echo $admin[0]['email'] ?>" >
           </div>
          
-            <div class="input-div">
+            <div class="form-group">
               
               <label>Whats App No. (व्हाट्सएप नंबर)<i style="color:#ff0000; font-size:12px;">*</i></label> 
-              <input type="text" name="whats_num" id="whats_num" maxlength="10" value="<?php echo $admin[0]['whats_num'] ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+              <input class="form-control" type="text" name="whats_num" id="whats_num" maxlength="10" value="<?php echo $admin[0]['whats_num'] ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 
             </div>
           </div>
-          <div class="buttons button_space col-md-4">
+          <div class="form-group mt-4">
           <?php 
             $segment_value = $this->uri->segment(4);
             $admin_id = $this->session->userdata['admin_id'];
             // echo '<pre>';
             // print_r($admin);
           ?>
-            <input type="hidden" name="ci_exam_registrationid1" id="ci_exam_registrationid1" value="<?= $segment_value; ?>">
+            <input class="form-control" type="hidden" name="ci_exam_registrationid1" id="ci_exam_registrationid1" value="<?= $segment_value; ?>">
             <!-- <input type="hidden" name="ref_id" id="ref_id" value="<?= $segment_value ?>"> -->
-             <a  href="<?= base_url("admin/consent_active/consent_add/".$admin_id.'/'.$segment_value); ?>" style="width: 85%x;" title="Download Form"  class="btn btn-success ">Back</a>
+            <a  href="<?= base_url("admin/consent_active/consent_add/".$admin_id.'/'.$segment_value); ?>" title="Download Form"  class="btn btn-sec">Back</a>
              
-             <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat next_button" value="Save and Next">
+             <input type="submit" name="submit" id="submit" class="btn btn-primary next_button" value="Save and Next">
           </div>
         </div>
          <?php echo form_close(); ?>

@@ -39,11 +39,11 @@
                         <div class="card">
                             <div class="form">
                                 <div class="left-side">
-                                    <div class="left-heading">
+                                    <!-- <div class="left-heading">
                                         <h3></h3>
-                                    </div>
+                                    </div> -->
                                     <div class="steps-content">
-                                        <h3>Step <span class="step-number">6</span></h3>
+                                        <h3 class="mb-0">Step <span class="step-number">6</span></h3>
                                         <!--<p class="step-number-content active">Enter your School/College Information.</p>
                                             <p class="step-number-content d-none">Enter your School/College Principal Deatils</p>
                                             <p class="step-number-content d-none">Enter your School/College Centre Superintendent Details</p>
@@ -64,10 +64,10 @@
 								 <div class="main active">
 								 
                                 <!-- <div class="input-text1">
-                                    <div class="input-div">                                    
+                                    <div class="form-group">                                    
                                         <a  href="<?= base_url("admin/consent_active/consent_add_4/" ); ?>" style="width: 85%;"  id="dwn"  class="btn btn-success ">Back</a>                                    
                                     </div>
-                                    <div class="input-div">                                    
+                                    <div class="form-group">                                    
                                         <a target="_blank" href="<?= base_url("admin/consent_active/down_form/" . $admin['admin_id']); ?>" style="width: 85%;" title="Download Form"  onclick="return confirm('Download form ?')" class="btn btn-success ">Preview and Download Form</a>                                    
                                     </div>
 								</div> -->
@@ -81,10 +81,10 @@
                                         
                                         <div class="col-md-8">
                                              <div id="input-text down_form_up">
-											  <div class="input-div">
+											  <div class="form-group">
                                        
                                                                             </div> 
-																			 <div class="input-div">
+																			 <div class="form-group">
                                        
                                       </div> 
                                          </div>
@@ -130,31 +130,31 @@
                                             <p>Add your School/College/Institute Images as per required filed</p>
                                         </div>
                                         <div class="input-text1">
-                                            <div class="input-div">
+                                            <div class="form-group">
                                                 <input type="file"  class="form-control" name="fileName1" id="fileName1" data-file_detail="file_detail1" onchange="get_detail(this);" />  
                                                 <span>Parking Image <i style="color:#ff0000; font-size:12px;">*</i> </span>
                                             </div>
-                                            <div class="input-div">
+                                            <div class="form-group">
                                                 <input type="file"  class="form-control" name="fileName2" id="fileName2" data-file_detail="file_detail2" onchange="get_detail(this);" />
                                                 <span>Classroom Image  <i style="color:#ff0000; font-size:12px;">*</i></span>
                                             </div>
                                         </div>
                                         <div class="input-text1">
-                                            <div class="input-div">
+                                            <div class="form-group">
                                                 <input type="file"  class="form-control" name="fileName3" id="fileName3" data-file_detail="file_detail3" onchange="get_detail(this);" />
                                                 <span>Washroom Image  <i style="color:#ff0000; font-size:12px;">*</i></span> 
                                             </div>
-                                            <div class="input-div">
+                                            <div class="form-group">
                                                 <input type="file"  class="form-control" name="fileName4" id="fileName4" data-file_detail="file_detail4" onchange="get_detail(this);" />
                                                 <span>Main Gate Image  <i style="color:#ff0000; font-size:12px;">*</i></span>
                                             </div>
                                         </div>
                                         <div class="input-text1">
-                                            <div class="input-div">
+                                            <div class="form-group">
                                                 <input type="file"  class="form-control" name="fileName5" id="fileName5" data-file_detail="file_detail5" onchange="get_detail(this);" />
                                                 <span>Locker Image <i style="color:#ff0000; font-size:12px;">*</i></span> 
                                             </div>
-                                            <div class="input-div">
+                                            <div class="form-group">
                                                 <input type="file"  class="form-control" name="fileName6" id="fileName6" data-file_detail="file_detail5" onchange="get_detail(this);" />
                                                 <span>Main Gate image<i style="color:#ff0000; font-size:12px;">*</i></span> 
                                             </div>
@@ -209,10 +209,10 @@
                                         <div class="input-text1">
                                             <?php $segment_value = $this->uri->segment(4);?>
                                             <input type="hidden" name="ci_exam_registrationid5" id="ci_exam_registrationid5" value="<?= $segment_value; ?>">
-                                            <div class="input-div">                                    
+                                            <div class="form-group">                                    
                                                 <a  href="<?= base_url("admin/consent_active/consent_add_4/".$segment_value ); ?>" style="width: 85%;"  id="dwn"  class="btn btn-success ">Back</a>                                    
                                             </div>
-                                            <div class="input-div">  
+                                            <div class="form-group">  
                                             <!-- <a id="form_submit_validation" target="_blank" href="<?= base_url("admin/consent_active/down_form/" . $admin['admin_id']); ?>" style="width: 85%;" title="Download Form" class="btn btn-success">Preview and Download Form</a>                                      -->
                                             <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat next_button" value="Preview and Download Form">
                                             <!-- <a target="_blank" href="<?= base_url("admin/consent_active/down_form/" . $admin['admin_id']); ?>" title="Preview and Submit"> <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat next_button" value="Preview and Submit"></a>                                     -->
@@ -239,7 +239,7 @@
                                         <!-- <p>Add your School/College/Institute Images as per required filed</p> -->
                                     </div>
                                     <div class="input-text1">
-                                        <div class="input-div">
+                                        <div class="form-group">
                                             <input type="file"  class="form-control" name="from_upload_file" id="from_upload_file" data-file_detail="file_detail1" onchange="get_detail(this);" />  
                                             <!-- <span>Upload File (दस्तावेज अपलोड करें) <i style="color:#ff0000; font-size:12px;">*</i> </span> -->
                                         </div>                                        
