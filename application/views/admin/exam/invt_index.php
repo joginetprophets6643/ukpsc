@@ -427,7 +427,7 @@ var table = $('#send_invitation_list').DataTable({
                         dataType: 'text',
                         data : {data:hrefs,'send_consent_id':send_consent_id},
                             success:function(result){
-                                if(resul){
+                                if(result){
                                 $('.loader').addClass('d-none');
                                 alert("success, Sent Sucessfully");
                                 $(':checkbox.send_email_ids').each(function() {
