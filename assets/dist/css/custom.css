@@ -14,7 +14,7 @@
     justify-content: space-between !important;
 }
 .btn {
-    padding: 7px 10px !important;
+    padding: 3px 6px !important;
     font-size: 17px !important;
 }
 .btn:focus {
@@ -90,7 +90,7 @@ select {
     border-color: #fff;
     background-color: #373250;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
 }
 .btn-admin:hover,
 .btn-admin:focus {
@@ -242,7 +242,7 @@ select {
 .table-bordered,
 .table-bordered th,
 .table-bordered td {
-    border: 1px solid #373250;
+    border: 1px solid #373250 !important;
 }
 table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:after {
     color: #567670;
