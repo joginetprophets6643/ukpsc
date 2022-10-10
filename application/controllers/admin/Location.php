@@ -514,32 +514,26 @@ class Location extends MY_Controller {
 
     function get_city_by_state_id() {
 
-         // print_r($_SESSION['admin_role_id']); die();
         $district_id = $this->input->post('district_id');
-        // $query = $this->db->query("SELECT * from ci_cities where id = $district_id");
-        // $query = $this->db->query("SELECT * from ci_cities c INNER JOIN ci_sub_cities cs where cs.cities_id = $district_id");
         $query = $this->db->query("SELECT * from ci_cities c INNER JOIN ci_sub_cities cs ON c.id = cs.cities_id where cs.cities_id = $district_id and cs.status = 1");
         $query->result();
-        // $arr = [];
-         
-        // foreach ($query->result() as $key=>$r) {
-        //     $arr[$r->id] = $r->subcityname;
-        // }
-        // echo json_encode($arr);
-
-
-
-
-
         $options = '<option value="">' .'Select City'. '</option>';
-        // $options = '';
-
         foreach ($query->result() as $r) {
-            // $options .= '<option value="' . $r->id . '">' . $r->city . '</option>';
             $options .= '<option value="' . $r->id . '">' . $r->subcityname . '</option>';
         }
         echo $options;
-        // exit;
+    }
+    function get_city_by_state_idForAllcationState() {
+
+        $district_id = $_GET['state_id'];
+
+        $query = $this->db->query("SELECT * from ci_cities c INNER JOIN ci_sub_cities cs ON c.id = cs.cities_id where cs.cities_id = $district_id and cs.status = 1");
+        $query->result();
+        $options = '<option value="">' .'Select City'. '</option>';
+        foreach ($query->result() as $r) {
+            $options .= '<option value="' . $r->id . '">' . $r->subcityname . '</option>';
+        }
+        echo $options;
     }
 
     function get_city_by_state_id1() {

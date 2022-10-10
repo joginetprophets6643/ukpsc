@@ -276,29 +276,19 @@ function(data){
     $(function() {
 
         $('.dd_state').change( function() {
-
             var state_id = $(this).val();
-
-
-
             if (state_id != '') {
-
-           
-
                 $.ajax({
 
-                   type: "POST", 
+                   type: "GET", 
 
-                   url: base_url+'admin/location/get_city_by_state_id',
+                   url: base_url+'admin/location/get_city_by_state_idForAllcationState',
 
                    dataType: 'html',
 
                    data: { 'state_id' : state_id, 'csfr_token_name':csfr_token_value },
 
                    success: function(data) {
-
-                       console.log(data);
-
                        $('#district_filter').html( data );
 
                    }

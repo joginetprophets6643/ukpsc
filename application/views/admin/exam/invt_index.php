@@ -262,11 +262,8 @@ $(document).ready(function() {
           var state_id = $('#state').val();
           var grade = $('#grade').val();
           var district_id =  $('#district').val();;
-          // console.log("district_id",district_id);
-          // return false;
+         
             if (state_id != '') {
-              console.log("state_id asfeasfd",state_id);
-              // return false;
            
                 $.ajax({
                    type: "GET", 
@@ -302,7 +299,6 @@ $(document).ready(function() {
         });
         
         $('#district').change( function() {
-
           var state_id = $('#state').val();
           var grade = $('#grade').val();
           var district_id = $(this).val();
@@ -433,6 +429,7 @@ var table = $('#send_invitation_list').DataTable({
 
     });
 
+    
     $('.select_all_count').click(function(event) { 
         
         var hrefs = new Array();

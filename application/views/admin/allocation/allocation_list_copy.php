@@ -1,12 +1,12 @@
 <div class="datalist">
     <div class="row">
-
-   
+    <?= isset($info[0]['exam_name'])?get_exam_name_new($info[0]['exam_name']):"No Exam Name" ?>
     <!-- <?php// echo form_open_multipart(base_url('admin/allocation_admin/save'), 'id="xin-form"  class="form-horizontal"'); ?> -->
         <table id="allocationTable" class="table table-bordered table-hover" style="border-collapse: collapse !important;">
             <thead>
                 <tr>
                     <th>S.No.</th>
+                    <th>ids</th>
                     <th>Examination Center Name</th>
                     <th>Consent recieved</th>
                     <th>Examination Center code</th>
@@ -26,77 +26,7 @@
                 
             
             </thead>
-            <tbody>
 
-                <?php
-         
-            $i = 1;
-            foreach ($info as $row):
-                $admin_role_id = $this->session->userdata('admin_role_id');
-                $admin_id = $this->session->userdata('admin_id');
-                if (($admin_role_id != 6) && ((in_array($row['file_movement'], array(1))) )) {
-                    continue;
-              }   
-       
-      ?>
-              
-                <tr>
-
-                    <td>
-                        <?= $i ?>
-                    </td>
-
-                    <td>
-                        <?php echo $row['school_name'] ?>
-                        <input hidden type="text" id="school_id_new<?php echo $i?>" name="school_id_new<?php echo $i?>" value="<?php echo $row['school_id']?>">
-                    </td>
-                    <td>
-                        <?php echo $row['max_allocate_candidate'] ?>
-                    </td>
-                    <?php $getCenterCode = getCenterCode( $row['school_id'],$row['id']); 
-                    
-                    ?>
-                    <td>
-                        <input type="text" onkeypress="return onlyNumberKey(event)" id="exam_center_code<?php echo $i?>" name="exam_center_code" value="<?php echo isset($getCenterCode)?$getCenterCode:''?>">
-                    </td>
-
-                    <input hidden  type="text" id="candidate_value_count<?php echo $i?>" value="<?php echo count($no_candidate)?>">
-                    <input hidden type="text" id="admin_id<?php echo $i?>" name="admin_id" value="<?php echo $row['admin_id']?>">
-                   
-                    <input hidden type="text" id="exam_id" name="exam_id" value="<?php echo $row['id']?>">
-                    
-                    <?php $candidateNo = getCandidateNumbers( $row['school_id'],$row['id']); ?>
-
-                    <?php foreach ($no_candidate as $key => $value) { 
-                        ?>
-                    <td>
-                        <input type="text" onkeypress="return onlyNumberKey(event)" id="candidate_value_school_id_new<?php echo $i.$key?>" value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
-                    </td>
-                     <?php } ?>
-                    <td>
-                        <?php  if ($admin_role_id == 6 )  { ?>
-
-                        </a>
-                        <?php }  if ($admin_role_id == 5 )  { ?>
-                     
-                            <button class="btn btn-success" onclick="formdataSubmit(<?php echo $i; ?>)"> Submit</button>
-
-                        <?php }
-            if ($admin_role_id == 5 ) { ?>
-
-                                <?php }
-                    ?>
-
-                </td>
-                </tr>
-             
-
-                <?php
-            $i++;
-            endforeach;
-            ?>
-               <!-- <?php //echo form_close(); ?> -->
-            </tbody>
         </table>
        
     </div>
@@ -111,10 +41,23 @@
 
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
-var table = $('#na_datatable').DataTable({
+var table = $('#allocationTable').DataTable({
     "processing": true,
     "serverSide": false,
-});
+    "ajax": "<?=base_url('admin/Allocation_admin/allocation_list_datacopy/48')?>",
+    "order": [
+        [0, 'asc']
+    ],
+        "columnDefs": [{"targets": 0,"name": "id",'searchable': true,'orderable': true},
+            {"targets": 1,"name": "school_name", 'searchable': true,'orderable': true },
+            {"targets": 2,"name": "district",'searchable': true,'orderable': true},
+            {"targets": 3,"name": "city",'searchable': true,'orderable': true},
+            {"targets": 4,"name": "principal_name",'searchable': true,'orderable': true},
+            {"targets": 5,"name": "ranking_admin",'searchable': true,'orderable': true},
+            {"targets": 6,"name": "max_allocate_candidate",'max_allocate_candidate': true,'orderable': true},
+            {"targets": 7,"name": "created_at",'searchable': true,'orderable': true},
+        ]
+    });
 </script>
 <script>
 function myfunction(id) {
@@ -175,15 +118,6 @@ function formdataSubmit(id)
             return false;
         return true;
     }
-
-
-
-
-
-
-
-
-    
 </script>
 <style type="text/css">
 .permanent_info {
