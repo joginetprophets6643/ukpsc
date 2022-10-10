@@ -113,7 +113,7 @@
 
                         <div class="form-group">
 
-                            <select name="status" id="grade" class="form-control">
+                            <select name="status" class="form-control">
 
                                 <option value=""><?= trans('all_status') ?></option>
 
@@ -141,7 +141,7 @@
 
                     </div>
 
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
 
                         <div class="form-group">
 
@@ -150,7 +150,7 @@
 
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -173,7 +173,6 @@
         <div class="card">
 
             <div class="card-body">
-                
 
                 <!-- Load Admin list (json request)-->
 
@@ -223,7 +222,7 @@ function filter_data()
 
     $.post('<?=base_url('admin/certificate/filterdata')?>', $('.filterdata').serialize(), function() {
 
-        $('.data_container').load('<?=base_url('admin/allocation_admin/allocation_list_data/'.$id)?>');
+        $('.data_container').load('<?=base_url('admin/allocation_admin/allocation_list_data_send_to_user_list/'.$id)?>');
 
     });
 
@@ -238,12 +237,11 @@ function load_records()
     $('.data_container').html(
         '<div class="text-center"><img src="<?=base_url('assets/dist/img')?>/loading.png"/></div>');
 
-    $('.data_container').load('<?=base_url('admin/allocation_admin/allocation_list_data/'.$id)?>');
+    $('.data_container').load('<?=base_url('admin/allocation_admin/allocation_list_data_send_to_user_list/'.$id)?>');
 
 }
 
 load_records();
-
 
 
 
@@ -275,109 +273,110 @@ $("body").on("change", ".tgl_checkbox", function() {
 
 $(function() {
 
-    $('.dd_state').change(function() {
-        var state_id = $(this).val();
-        var exam_id = $('#exam_id_new').val();
-        var grade = $('#grade').val();
-          
-        if (state_id != '') {
-            // $('#allocationTable').html('');
+$('.dd_state').change(function() {
+    var state_id = $(this).val();
+    var exam_id = $('#exam_id_new').val();
+    var grade = $('#grade').val();
+      
+    if (state_id != '') {
+        // $('#allocationTablesend').html('');
+        $.ajax({
+            type: "GET",
+            url: base_url + 'admin/location/get_city_by_state_idForAllcationState',
+            dataType: 'html',
+            data: {
+                'state_id': state_id,
+                'csfr_token_name': csfr_token_value
+            },
+            success: function(data) {
+                $('#district_filter').html(data);
+                var district_id = $('#district_filter').val();
+                    $.ajax({
+                        type: "GET",
+                        url: base_url + 'admin/Allocation_admin/allocationDatatoUserOnChange',
+                        // url: base_url + 'admin/Allocation_admin/allocation_list_datacopy1',
+                        dataType: 'html',
+                        data: {
+                            'state_id': state_id,
+                            'exam_id':exam_id,
+                            'district_id':district_id,
+                            'grade_id':grade,
+                            // 'unselectbutton':'ok'
+                            'csfr_token_name': csfr_token_value
+                        },
+                        success: function(data1) {
+                            $('#allocationTablesend').html(data1);
+                        }
+                        });
+            }
+
+        });
+
+    } else {
+
+        $('#state').val('').hide();
+
+
+
+    }
+
+});
+
+// Districts tablesorter    tablesorter
+
+$('#district_filter').change( function() {
+      var state_id = $('#state_id').val();
+      var exam_id = $('#exam_id_new').val();
+      var grade = $('#grade').val();
+      var district_id = $(this).val();
+        if (district_id != '') {
+       
             $.ajax({
-                type: "GET",
-                url: base_url + 'admin/location/get_city_by_state_idForAllcationState',
-                dataType: 'html',
-                data: {
-                    'state_id': state_id,
-                    'csfr_token_name': csfr_token_value
-                },
-                success: function(data) {
-                    $('#district_filter').html(data);
-                    var district_id = $('#district_filter').val();
-                        $.ajax({
-                            type: "GET",
-                            url: base_url + 'admin/Allocation_admin/newChanges',
-                            // url: base_url + 'admin/Allocation_admin/allocation_list_datacopy1',
-                            dataType: 'html',
-                            data: {
-                                'state_id': state_id,
-                                'exam_id':exam_id,
-                                'district_id':district_id,
-                                'grade_id':grade,
-                                'csfr_token_name': csfr_token_value
-                            },
-                            success: function(data1) {
-                                $('#allocationTable').html(data1);
-                            }
-                            });
-                }
-
-            });
-
-        } else {
-
-            $('#state').val('').hide();
-
-
+                    type: "GET",
+                    url: base_url + 'admin/Allocation_admin/allocationDatatoUserOnChange',
+                    dataType: 'html',
+                    data: {
+                        'state_id': state_id,
+                        'exam_id':exam_id,
+                        'district_id':district_id,
+                        'grade_id':grade,
+                        'csfr_token_name': csfr_token_value
+                    },
+                    success: function(data1) {
+                        $('#allocationTablesend').html(data1);
+                    }
+                    });
+        }
+        else {
+            location.reload();
 
         }
-
     });
 
-    // Districts tablesorter    tablesorter
-
-    $('#district_filter').change( function() {
-          var state_id = $('#state_id').val();
-          var exam_id = $('#exam_id_new').val();
-          var grade = $('#grade').val();
-          var district_id = $(this).val();
-            if (district_id != '') {
-           
-                $.ajax({
-                        type: "GET",
-                        url: base_url + 'admin/Allocation_admin/newChanges',
-                        dataType: 'html',
-                        data: {
-                            'state_id': state_id,
-                            'exam_id':exam_id,
-                            'district_id':district_id,
-                            'grade_id':grade,
-                            'csfr_token_name': csfr_token_value
-                        },
-                        success: function(data1) {
-                            $('#allocationTable').html(data1);
-                        }
-                        });
-            }
-            else {
-                location.reload();
-
-            }
-        });
 
 
-
-        $('#grade').change( function() {
-          var grade = $(this).val();
-          var state_id = $('.dd_state').val();
-          var district_id = $('#district_filter').val();
-          var exam_id = $('#exam_id_new').val();
-                $.ajax({
-                        type: "GET",
-                        url: base_url + 'admin/Allocation_admin/newChanges',
-                        dataType: 'html',
-                        data: {
-                            'state_id': state_id,
-                            'exam_id':exam_id,
-                            'grade_id':grade,
-                            'district_id':district_id,
-                            'csfr_token_name': csfr_token_value
-                        },
-                        success: function(data1) {
-                            $('#allocationTable').html(data1);
-                        }
-                        });
-       
-        });
+    $('#grade').change( function() {
+      var grade = $(this).val();
+      var state_id = $('.dd_state').val();
+      var district_id = $('#district_filter').val();
+      var exam_id = $('#exam_id_new').val();
+            $.ajax({
+                    type: "GET",
+                    url: base_url + 'admin/Allocation_admin/allocationDatatoUserOnChange',
+                    dataType: 'html',
+                    data: {
+                        'state_id': state_id,
+                        'exam_id':exam_id,
+                        'grade_id':grade,
+                        'district_id':district_id,
+                        'csfr_token_name': csfr_token_value
+                    },
+                    success: function(data1) {
+                        $('#allocationTablesend').html(data1);
+                    }
+                    });
+   
+    });
 
 });
 </script>

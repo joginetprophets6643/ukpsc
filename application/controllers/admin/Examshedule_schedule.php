@@ -252,7 +252,6 @@ class Examshedule_schedule extends MY_Controller {
         
         $examid = $this->uri->segment(4);
         $data['states'] = $this->location_model->get_states();
-         
         $data['title'] = 'Invitation and Schedule List';
         $data['exam_id'] = urldecrypt($examid);
         $this->db->from('ci_exam_invitation');
@@ -261,9 +260,7 @@ class Examshedule_schedule extends MY_Controller {
         $examName = $query->row_array();
         $data['examName'] = $examName['subjectline'];
         $this->load->view('admin/includes/_header', $data);
-        
         $this->load->view('admin/exam/invt_index', $data);
-
         $this->load->view('admin/includes/_footer', $data);
     }
 
