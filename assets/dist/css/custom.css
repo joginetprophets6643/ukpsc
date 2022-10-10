@@ -301,3 +301,6 @@ textarea {
     font-size: 17px !important;
     padding: 3px 10px !important;
 }
+.container .card .right-side {
+    width: 70% !important;
+}

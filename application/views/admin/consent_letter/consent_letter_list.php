@@ -3,14 +3,13 @@
 
 <!-- <div class="datalist"> -->
    <div class="row">
-   <table id="consent_list" class="table table-bordered table-hover" style="overflow: auto; width: inherit;
-    ">
+   <table id="consent_list" class="table table-bordered table-striped table-hover" style="overflow: auto; border-collapse: collapse !important;">
       <thead>
          <tr>
             <th width="50">S.No.</th>
             <th>School Registration No.  </th>
             <th>School Name  </th>
-            <th>Address  </th>
+            <th>School Address  </th>
 
             <!-- <th>District</th>
             <th>City</th> -->
@@ -60,12 +59,11 @@
                   <?= $row['city']; ?>
                </td> -->
                <td>
-                  <h4 class="m0 mb5">
-                     <?php echo $row['principal_name']; ?>
-                  </h4>
+                  <?= $row['principal_name']; ?>
+                  <br>
                
                   <small class="text-muted">
-                  <?php echo $row['pri_mobile'] . ' ' . $row['email']. ' ' .'WhatsApp Number -'.$row['whats_num']; ?>
+                  <?php echo 'Mobile No. - '. $row['pri_mobile'] . ' <br> ' . 'Email - ' . $row['email']. ' <br> ' .'WhatsApp Number -'.$row['whats_num']; ?>
                   </small>
                </td>
             <!--   <td>
@@ -130,11 +128,11 @@
                <?php }
                if ($admin_role_id == 5 ) { ?>
                <a href="<?= base_url("admin/consent_active/send_mail/" . $row['id']) ?>" onclick="myfunction()" title="Send Email" class="btn btn-success">
-               <i class="fa fa-paper-plane" style="font-size: 13px;"></i>
+               <i class="fa fa-paper-plane"></i>
                </a>
                <?php }
                ?>
-               <a href="<?= base_url("admin/consent_letter/preview_form/" . urlencrypt($row['id'])); ?>" title="Download Form"  onclick="return confirm('Download form ?')" class="btn btn-warning"><i class="fa fa-eye"></i></a>
+               <a href="<?= base_url("admin/consent_letter/preview_form/" . urlencrypt($row['id'])); ?>" title="Download Form"  onclick="return confirm('Download form ?')" class="btn btn-sec"><i class="fa fa-eye"></i></a>
                </td>
             </tr>
          <?php

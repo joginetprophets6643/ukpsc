@@ -14,31 +14,17 @@
 <div class="card card-default color-palette-bo">
   <div class="card-header">
     <div class="d-inline-block">
-      <h3 class="card-title"> <i class="fa fa-pencil"></i> Registration for UKPSC exam Centre (यूके0पी0एस0सी0 परीक्षा केंद्र के लिए पंजीकरण) </h3>
+      <h3 class="card-title"> <i class="fa fa-pencil"></i> Registration for UKPSC Exam Centre (यूके0पी0एस0सी0 परीक्षा केंद्र के लिए पंजीकरण) </h3>
     </div>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="http://localhost/uk/assets/dist/css/cerrs.css">
-    <style>
-
-</style>
-</head>
-<body className='snippet-body'>
+    </div>
+    <div class="card-body">
 <div class="container">
   <div class="card">
    
     <div class="form">
       <div class="left-side">
-        <div class="left-heading">
-          <h3></h3>
-        </div>
         <div class="steps-content">
           <h3>Step <span class="step-number">5</span></h3>
-          <!--<p class="step-number-content active">Enter your School/College Information.</p>
-          <p class="step-number-content d-none">Enter your School/College Principal Deatils</p>
-          <p class="step-number-content d-none">Enter your School/College Centre Superintendent Details</p>
-          <p class="step-number-content d-none">Enter your School/College Centre Infrastructure Details.</p>
-		  <p class="step-number-content d-none">Add Bank Details</p>
-		  <p class="step-number-content d-none">Add your School/College Images as per required filed</p>-->
 		   
         </div>
         <ul class="progress-bar">
@@ -58,17 +44,17 @@
 		  <div class="main active">
           <div class="text">
             <h2>Bank Details</h2>
-            <p>Add School Bank Details</p>
+            <p class="mt-0">Add School Bank Details</p>
           </div>
-          <div class="input-text1">
-			   <div class="input-div">
+          <div class="row">
+			   <div class="form-group col-md-6">
 			   <label for="Address1">Account Holder Name<br>खाता धारक का नाम</label>
 				  <input class="form-control" value="<?php if (isset($user['acc_holder_name'])) {
                                     echo $user['acc_holder_name'];
                                 } ?>" name="acc_holder_name" maxlength="60" id="acc_holder_name" type="text" value="" >
 				
 				</div>
-				<div class="input-div">
+				<div class="form-group col-md-6">
 				<label for="Address2">
 Bank Name<br>बैंक का नाम</label>
 				  <input class="form-control" value="<?php if (isset($user['ban_name'])) {
@@ -77,8 +63,8 @@ Bank Name<br>बैंक का नाम</label>
 				
 				</div>
 		  </div>
-		   <div class="input-text1">
-			   <div class="input-div">
+		   <div class="row">
+			   <div class="form-group col-md-6">
 			    <label for="Address2">
 Bank Branch Name<br>बैंक शाखा का नाम</label>
 				   <input class="form-control" value="<?php if (isset($user['branch_name'])) {
@@ -86,7 +72,7 @@ Bank Branch Name<br>बैंक शाखा का नाम</label>
                                 } ?>"  name="branch_name" maxlength="60" id="branch_name" type="text" value="" >
 				  
 				</div>
-				<div class="input-div">
+				<div class="form-group col-md-6">
 				  <label for="Address1">
 Bank IFSC Code<br>बैंक IFSC कोड</label>
 				  <input class="form-control" value="<?php if (isset($user['ifsc'])) {
@@ -95,8 +81,8 @@ Bank IFSC Code<br>बैंक IFSC कोड</label>
 
 				</div>
 		  </div>
-		   <div class="input-text1">
-			   <div class="input-div">
+		   <div class="row">
+			   <div class="form-group col-md-6">
 			      <label for="Address2">
 Account Number<br>खाता संख्या</label>
 				  <input class="form-control" value="<?php if (isset($user['acc_num'])) {
@@ -104,7 +90,7 @@ Account Number<br>खाता संख्या</label>
                                 } ?>"  name="acc_num" maxlength="60" minlength="8"  id="acc_num" type="text" value="" >
 				  
 				</div>
-                <div class="input-div">
+                <div class="form-group col-md-6">
 				 <label for="Address2">
 Confirm Account Number<br>
 खाता संख्या की पुष्टि करें</label>
@@ -117,10 +103,10 @@ Confirm Account Number<br>
 		  </div>
 
 		  
-          <div class="buttons button_space col-md-8">
-          <a  href="<?= base_url("admin/step4/" ); ?>" style="width: 85%" class="btn btn-success ">Back</a>
+          <div class="">
+          <a  href="<?= base_url("admin/step4/" ); ?>" class="btn btn-sec">Back</a>
        
-              <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat next_button" value="Submit">
+              <input type="submit" name="submit" id="submit" class="btn btn-primary next_button" value="Submit">
           </div>
         </div>
           <?php echo form_close(); ?>
@@ -131,6 +117,9 @@ Confirm Account Number<br>
       </div>
     </div>
   </div>
+</div>
+</div>
+                              </section>
 </div>
      <?php echo form_close(); ?>  
 <script type='text/javascript' src='#'></script>

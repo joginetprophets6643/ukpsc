@@ -14,15 +14,10 @@
 <div class="card card-default color-palette-bo">
   <div class="card-header">
     <div class="d-inline-block">
-      <h3 class="card-title"> <i class="fa fa-pencil"></i> Registration for UKPSC exam Centre (यूके0पी0एस0सी0 परीक्षा केंद्र के लिए पंजीकरण) </h3>
+      <h3 class="card-title"> <i class="fa fa-pencil"></i> Registration for UKPSC Exam Centre (यूके0पी0एस0सी0 परीक्षा केंद्र के लिए पंजीकरण) </h3>
     </div>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="http://localhost/uk/assets/dist/css/cerrs.css">
-    <style>
-
-</style>
-</head>
-<body className='snippet-body'>
+    </div>
+    <div class="card-body">
 <div class="container">
   <div class="card">
    
@@ -60,27 +55,27 @@
     <?php echo form_open_multipart(base_url('admin/step4'), 'id="xin-form" class="form-horizontal" '); ?> 
         <div class="main active">
           <div class="text">
-            <h2>School/College Infrastructure Details स्कूल/कॉलेज के बुनियादी ढांचे का विवरण</h2> 
-            <p>Enter your School/College Infrastructure Details.</p>
+            <h2>School/College Infrastructure Details (स्कूल/कॉलेज के बुनियादी ढांचे का विवरण)</h2> 
+            <p class="mt-0">Enter your School/College Infrastructure Details</p>
           </div>
-          <span style="color:red">*</span><label>Marked fields are mandatory (चिह्नित फ़ील्ड अनिवार्य हैं)</label>
+          <span class="mr-1" style="color:red">*</span><label>Marked fields are mandatory (चिह्नित फ़ील्ड अनिवार्य हैं)</label>
 		  <div class="input-text">
-			   <div class="input-div">
-			   <label>Total Number of room<br>कक्षा की कुल संख्या</label> <span style="color:red">*</span>
+			   <div class="form-group">
+			   <label>Total Number of room<span class="ml-1" style="color:red;">*</span><br>कक्षा की कुल संख्या<span class="ml-1" style="color:red;">*</span></label> 
 				  <input type="text"  name="no_room" maxlength="2" value="<?php if (isset($user['no_room'])) {
                                     echo $user['no_room'];
                                 } ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="no_room" >
 				</div>
-				<div class="input-div">
-				<label>Number of seats for candidates in each room.<br>प्रत्येक कक्ष में अभ्यर्थियों के बैठने की संख्या</label><span style="color:red">*</span>
+				<div class="form-group">
+				<label>Number of seats for candidates in each room<span class="ml-1" style="color:red;">*</span><br>प्रत्येक कक्ष में अभ्यर्थियों के बैठने की संख्या<span class="ml-1" style="color:red;">*</span></label>
 				  <input type="text"  name="no_sheet" maxlength="2" value="<?php if (isset($user['no_sheet'])) {
                                     echo $user['no_sheet'];
                                 } ?>"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="no_sheet"  >
 				  
 				</div>
 
-                <div class="input-div">
-                <label>Maximum number of candidates can be allocated in the center.<br>केन्द्र में आबंटित किये जा सकने वाले अधिकतम् अभ्यर्थियों की संख्या</label><span style="color:red">*</span>
+                <div class="form-group">
+                <label>Maximum number of candidates can be allocated in the center<span class="ml-1" style="color:red;">*</span><br>केन्द्र में आबंटित किये जा सकने वाले अधिकतम् अभ्यर्थियों की संख्या<span class="ml-1" style="color:red;">*</span></label>
                   <input type="text" maxlength="3" value="<?php if (isset($user['max_allocate_candidate'])) {
                                     echo $user['max_allocate_candidate'];
                                 } ?>"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="max_allocate_candidate" id="max_allocate_candidate"  >
@@ -88,8 +83,8 @@
                 </div>
 				
          
-			   <div class="input-div">
-				     <label for="Address1">Is there sufficient furniture in the rooms for the candidates?<br>क्या अभ्यर्थियों हेतु कक्षों में फर्नीचर पर्याप्त है? </label><span style="color:red">*</span>
+			   <div class="form-group">
+				     <label for="Address1">Is there sufficient furniture in the rooms for the candidates?<span class="ml-1" style="color:red;">*</span><br>क्या अभ्यर्थियों हेतु कक्षों में फर्नीचर पर्याप्त है?<span class="ml-1" style="color:red;">*</span> </label>
                                      <select class="form-control" name="furniture_avail"  maxlength="60" placeholder="Is Furniture available?"  id="furniture_avail">
                                         <option value=""  >Select</option>
                                          <option value="Yes" <?php if(isset($user['furniture_avail'])){if($user['furniture_avail'] == 'Yes'){ echo "selected";} }?>>Yes (हाँ)</option>
@@ -97,8 +92,8 @@
                                      </select>
 				 
 				</div>
-				<div class="input-div">
-				 <label for="Address2">Is proper lighting facility is available in rooms? <br>क्या कक्षों में विद्युत की समुचित व्यवस्था है?</label><span style="color:red">*</span>
+				<div class="form-group">
+				 <label for="Address2">Is proper lighting facility is available in rooms?<span class="ml-1" style="color:red;">*</span> <br>क्या कक्षों में विद्युत की समुचित व्यवस्था है?<span class="ml-1" style="color:red;">*</span></label>
                             <select class="form-control" name="elec_avail" maxlength="60" placeholder="Is Electricity available?" id="elec_avail">
                                 <option value=""  >Select</option>
                                 <option value="Yes" <?php if(isset($user['elec_avail'])){if($user['elec_avail'] == 'Yes'){ echo "selected";}} ?>>Yes (हाँ)</option>
@@ -107,16 +102,16 @@
 				</div>
 				
          
-			   <div class="input-div">
-				 <label for="City" >Does School/College have a Generator facility?<br>क्या विद्यालय/केन्द्र में जनरेटर उपलब्ध है? </label><span style="color:red">*</span>
+			   <div class="form-group">
+				 <label for="City" >Does School/College have a Generator facility?<span class="ml-1" style="color:red;">*</span><br>क्या विद्यालय/केन्द्र में जनरेटर उपलब्ध है?<span class="ml-1" style="color:red;">*</span> </label>
                             <select class="form-control" name="gen_avai" maxlength="60" placeholder="Is Electricity available?" id="gen_avai">
                                 <option value=""  >Select</option>
                                 <option value="Yes"<?php if(isset($user['gen_avai'])){if($user['gen_avai'] == 'Yes'){ echo "selected";}} ?>>Yes (हाँ)</option>
                                 <option value="No"<?php if(isset($user['gen_avai'])){if($user['gen_avai'] == 'No'){ echo "selected";}} ?>>No (नहीं)</option>
                             </select> 
 				</div>
-				<div class="input-div">
-				   <label for="Address1">Does school have separate washroom facilities for girls and boys?<br>क्या विद्यालय/केन्द्र में पुरूष व महिला अभ्यर्थियों के लिए अलग-अलग प्रसाधन की समुचित व्यवस्था है?</label><span style="color:red">*</span>
+				<div class="form-group">
+				   <label for="Address1">Does school have separate washroom facilities for girls and boys?<span class="ml-1" style="color:red;">*</span><br>क्या विद्यालय/केन्द्र में पुरूष व महिला अभ्यर्थियों के लिए अलग-अलग प्रसाधन की समुचित व्यवस्था है?<span class="ml-1" style="color:red;">*</span></label>
                             <select class="form-control" name="wash_rrom" maxlength="60" placeholder="Is Electricity available?" id="wash_rrom">
                                 <option value=""  >Select</option>
                                 <option value="Yes"<?php if(isset($user['wash_rrom'])){if($user['wash_rrom'] == 'Yes'){ echo "selected";}} ?>>Yes (हाँ)</option>
@@ -125,16 +120,16 @@
 				</div>
 				
           
-			   <div class="input-div">
-				 <label for="Address2">Does School have a cloakroom facility for keeping valuables of candidates?<br>क्या विद्यालय/केन्द्र में अभ्यर्थियों के कीमती सामान रखने के लिए स्कूल में क्लोकरूम की सुविधा है?</label><span style="color:red">*</span>
+			   <div class="form-group">
+				 <label for="Address2">Does School have a cloakroom facility for keeping valuables of candidates?<span class="ml-1" style="color:red;">*</span><br>क्या विद्यालय/केन्द्र में अभ्यर्थियों के कीमती सामान रखने के लिए स्कूल में क्लोकरूम की सुविधा है?<span class="ml-1" style="color:red;">*</span></label>
                             <select class="form-control" name="clock_room" maxlength="60" placeholder="Is Electricity available?" id="clock_room">
                                 <option value=""  >Select</option>
                                 <option value="Yes"<?php if(isset($user['clock_room'])){if($user['clock_room'] == 'Yes'){ echo "selected";}} ?>>Yes (हाँ)</option>
                                 <option value="No"<?php if(isset($user['clock_room'])){if($user['clock_room'] == 'No'){ echo "selected";}} ?>>No (नहीं)</option>
                             </select>
 				</div>
-				<div class="input-div">
-				  <label for="City" >Does School have a proper parking facility?<br>क्या विद्यालय/केन्द्र में अभ्यर्थियों हेतु वाहन पार्किंग की व्यवस्था है?</label><span style="color:red">*</span>
+				<div class="form-group">
+				  <label for="City" >Does School have a proper parking facility?<span class="ml-1" style="color:red;">*</span><br>क्या विद्यालय/केन्द्र में अभ्यर्थियों हेतु वाहन पार्किंग की व्यवस्था है?<span class="ml-1" style="color:red;">*</span></label>
                             <select class="form-control" name="vehicle_avail" maxlength="60" placeholder="Is Electricity available?" id="vehicle_avail">
                                 <option value=""  >Select</option>
                                 <option value="Yes"<?php if(isset($user['vehicle_avail'])){if($user['vehicle_avail'] == 'Yes'){ echo "selected";}} ?>>Yes (हाँ)</option>
@@ -142,16 +137,16 @@
                             </select>
 				</div>
 			
-			   <div class="input-div">
-				 <label for="Address1">Does School have sufficient number of invigilators and staff for exam conduction.<br>क्या परीक्षा संचालन के लिए अन्तरीक्षक व स्टाफ पर्याप्त संख्या में उपलब्ध हैं?</label><span style="color:red">*</span>
+			   <div class="form-group">
+				 <label for="Address1">Does School have sufficient number of invigilators and staff for exam conduction?<span class="ml-1" style="color:red;">*</span><br>क्या परीक्षा संचालन के लिए अन्तरीक्षक व स्टाफ पर्याप्त संख्या में उपलब्ध हैं?<span class="ml-1" style="color:red;">*</span></label>
                             <select class="form-control" name="staff_suffi" maxlength="60" placeholder="Is Electricity available?" id="staff_suffi">
                                 <option value=""  >Select</option>
                                 <option value="Yes"<?php if(isset($user['staff_suffi'])){if($user['staff_suffi'] == 'Yes'){ echo "selected";}} ?>>Yes (हाँ)</option>
                                 <option value="No"<?php if(isset($user['staff_suffi'])){if($user['staff_suffi'] == 'No'){ echo "selected";}} ?>>No (नहीं)</option>
                             </select>
 				</div>
-				<div class="input-div">
-				  <label for="Address2">Does the school conduct any examination by Uttarakhand public service commission? <br>क्या विद्यालय/केन्द्र में पूर्व में उत्तराखण्ड लोक सेवा आयोग की कोई परीक्षा हुई है?</label><span style="color:red">*</span>
+				<div class="form-group">
+				  <label for="Address2">Does the school conduct any examination by Uttarakhand public service commission?<span class="ml-1" style="color:red;">*</span> <br>क्या विद्यालय/केन्द्र में पूर्व में उत्तराखण्ड लोक सेवा आयोग की कोई परीक्षा हुई है?<span class="ml-1" style="color:red;">*</span></label>
                             <select class="form-control" name="ukpsc_exxma" maxlength="60" placeholder="Is Electricity available?" id="ukpsc_exxma">
                                 <option  value="" >Select</option>
                                 <option value="Yes"<?php if(isset($user['ukpsc_exxma'])){if($user['ukpsc_exxma'] == 'Yes'){ echo "selected";}} ?>>Yes (हाँ)</option>
@@ -159,9 +154,9 @@
                             </select>
 				</div>
 			
-			   <div class="input-div">
+			   <div class="form-group">
 				  <!-- <label for="City" >Ever Debared (क्या कभी वंचित)</label> -->
-				  <label> Has school been debarred from any examination?<br>क्या विद्यालय/केन्द्र कभी परीक्षाओं हेतु प्रतिवारित रहा है?</label><span style="color:red">*</span>
+				  <label> Has school been debarred from any examination?<span class="ml-1" style="color:red;">*</span><br>क्या विद्यालय/केन्द्र कभी परीक्षाओं हेतु प्रतिवारित रहा है?<span class="ml-1" style="color:red;">*</span></label>
                           
                                <select class="form-control" name="debar" maxlength="60" placeholder="Is Electricity available?" id="debar">
                                 <option value=""  >Select</option>
@@ -170,8 +165,8 @@
                             </select>
                             
 				</div>
-				<div class="input-div">
-				<label>Is principal/centre superintendent brass seal is available if not arrange the same as it is  for conducting the examination <br>(क्या प्रधानाचार्य/पर्यवेक्षक की ब्रास सील उपलब्ध है? यदि नही तो विभिन्न लिफाफों को सील्ड करने के लिए इसकी आवश्यकता होगी तथा परीक्षा आयोजन की दशा में इसे तैयार करा लिया जाए।) </label><span style="color:red">*</span>
+				<div class="form-group">
+				<label>Is principal/centre superintendent brass seal is available if not arrange the same as it is  for conducting the examination?<span class="ml-1" style="color:red;">*</span> <br>(क्या प्रधानाचार्य/पर्यवेक्षक की ब्रास सील उपलब्ध है? यदि नही तो विभिन्न लिफाफों को सील्ड करने के लिए इसकी आवश्यकता होगी तथा परीक्षा आयोजन की दशा में इसे तैयार करा लिया जाए?)<span class="ml-1" style="color:red;">*</span> </label>
 				 
                     <select class="form-control" name="bras_Seal" maxlength="60" placeholder="Is Electricity available?" id="bras_Seal">
                                 <option value="" >Select</option> value="" 
@@ -180,10 +175,10 @@
                             </select>
 				  
 				</div>
-                <div class="input-div">
+                <div class="form-group">
                 <label>Remarks if any <br>(उक्त के अतिरिक्त अन्य विवरण जिसे आप उपलब्ध कराना उचित एंव आवश्यक समझे।) </label>
                  
-                    <textarea id="remark_if"   name="remark_if" rows="4" cols="50">
+                    <textarea id="remark_if" class="form-control" rows="4"   name="remark_if" style="height: 100% !important;">
 <?php if (isset($user['remark_if'])) {
                                     echo $user['remark_if'];
                                 } ?>
@@ -192,10 +187,10 @@
                 </div>
 			</div>
 			  
-          <div class="buttons button_space col-md-8">
-            <a  href="<?= base_url("admin/step3/" ); ?>" style="width: 85%;"  class="btn btn-success ">Back</a>
+          <div class="">
+            <a  href="<?= base_url("admin/step3/" ); ?>"  class="btn btn-sec">Back</a>
        
-              <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat next_button" value="Save and Next">
+              <input type="submit" name="submit" id="submit" class="btn btn-primary next_button" value="Save and Next">
           </div>
 			  
 			  
@@ -209,6 +204,9 @@
       </div>
     </div>
   </div>
+</div>
+  </div>
+</section>
 </div>
      <?php echo form_close(); ?>  
 <script type='text/javascript' src='#'></script>

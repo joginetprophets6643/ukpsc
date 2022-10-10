@@ -16,13 +16,8 @@
   <div class="d-inline-block">
    <h3 class="card-title"> <i class="fa fa-pencil"></i> Update Details for - <span style="font-weight:bold;"> <?php echo $user['exam_name']; ?> </span> </h3>
   </div>
-  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="http://localhost/uk/assets/dist/css/cerrs.css">
-  <style>
-
-</style>
-</head>
-<body className='snippet-body'>
+  </div>
+  <div class="card-body">
 <div class="container">
 <div class="card">
  
@@ -127,6 +122,9 @@
   </div>
 </div>
 </div>
+</div>
+</section>
+      </div>
    <?php echo form_close(); ?>  
 <script type='text/javascript' src='#'></script>
 <script type='text/javascript' src='#'></script>

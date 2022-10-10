@@ -294,7 +294,7 @@
                 <div class="form-group" style="text-align:center;">
                     <div class="col-md-12">
                         <!-- <input type="submit" name="submit" value="Update Admin" class="btn btn-primary pull-right"> -->
-                        <input type="button" onclick="window.history.go(-1)" class="btn btn-primary px-3 py-2"
+                        <input type="button" onclick="window.history.go(-1)" class="btn btn-sec px-3 py-2"
                             value="Back"></input>
                     </div>
                 </div>

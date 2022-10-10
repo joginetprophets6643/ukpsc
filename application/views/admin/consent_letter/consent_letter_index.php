@@ -7,7 +7,7 @@
          <!-- For Messages -->
         <?php $this->load->view('admin/includes/_messages.php') ?>
         <div class="card">
-            <div class="card-body">
+            <div class="card-header border-0">
                 <div class="d-inline-block">
                   <h3 class="card-title">
                     <i class="fa fa-list"></i>
@@ -26,14 +26,14 @@
         </div>
     </section>
 
-    <section class="content">
+    <section class="content d-none">
 
          <!-- For Messages -->
 
         <?php $this->load->view('admin/includes/_messages.php') ?>
 
         <div class="card">
-            <div class="card-body d-none">
+            <div class="card-body">
 
                 <?php echo form_open("/",'class="filterdata"') ?>    
 

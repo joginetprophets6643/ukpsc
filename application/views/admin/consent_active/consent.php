@@ -26,15 +26,8 @@
               <?= $exam_name[0]['subjectline']; ?>
             </span> </h3>
         </div>
-        <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
-          rel='stylesheet'>
-        <link rel="stylesheet" href="http://localhost/uk/assets/dist/css/cerrs.css">
-        <style>
-
-        </style>
-        </head>
-
-        <body className='snippet-body'>
+</div>
+<div class="card-body">
           <div class="container">
             <div class="card">
 
@@ -132,6 +125,9 @@
               </div>
             </div>
           </div>
+      </div>
+      </div>
+</section>
       </div>
 
       <script type='text/javascript' src='#'></script>
