@@ -37,11 +37,6 @@ class Allocation_Model extends CI_Model {
 
     }
      public function get_data_for_allocationforFilters($ref_id,$district,$city_name,$grade_name) {
-        // echo "exam_id=".$ref_id."dis=".$district."city=".$city_name."grd=".$grade_name;
-        // if(!empty($district) && empty($city_name) && empty($grade_name))
-        // {
-        // echo 1;
-        // die();
           $this->db->select('*');
           $this->db->from('ci_exam_according_to_school');
           $this->db->join('ci_exam_invitation', 'ci_exam_invitation.id = ci_exam_according_to_school.ref_id');
@@ -59,40 +54,59 @@ class Allocation_Model extends CI_Model {
 
             $this->db->where('ci_exam_according_to_school.ranking_admin', $grade_name);
           }
-        // }else if(!empty($district) && !empty($city_name) && empty($grade_name)){
-        //   echo 2;
-        //   die();
-          
-        // }else if(!empty($district) && !empty($city_name) && !empty($grade_name)){
-        //   echo 3;
-        //   die();
-          
-        // }else if(!empty($district) && empty($city_name) && !empty($grade_name)){
-        //   echo 4;
-        //   die();
-        // } 
-        
-        
-        
-        
         $this->db->order_by('ci_exam_according_to_school.admin_id', 'asc');
         $query = $this->db->get();
-        // print_r($this->db->last_query());
-     
         return $query->result_array();
 
     }
 
-      public function get_data_for_allocation_user() {
+      public function get_data_for_allocation_user($exam_id) {
+
+        $admin_id = $this->session->userdata('admin_id');
+        // echo $admin_id;die();
+        //  $ref_ids = $this->db->select('exam_id');
+        //  $this->db->from('ci_allocation_table');
+        //  $this->db->where('ci_allocation_table.admin_id', $admin_id);
+        //  $this->db->where('ci_allocation_table.status', 1);
+        //  $this->db->order_by('ci_allocation_table.id', 'asc');
+        //  $ref_idsData = $this->db->get();
+        //  $ref_idsData = $ref_idsData->result_array();
+        //  $exam_ids = [];
+        //  foreach ($ref_idsData as $exam_id) {    
+        //  $exam_ids[] = $exam_id['exam_id'];
+        //  }
+        //  $exam_ids = count($exam_ids)>0?$exam_ids:[];
 
         $this->db->select('*');
-        $this->db->from('ci_invite_return');
-        // $this->db->join('ci_invite_return', 'ci_invite_return.ref_id = ci_exam_registration.ref_id');
-        // $this->db->join('ci_exam_invitation', 'ci_exam_invitation.id = ci_exam_registration.ref_id');
-        // $this->db->join('ci_invite_return','ci_invite_return.id =ci_exam_invitation.created_by');
-        // $this->db->where('ci_exam_invitation.created_by',
-        // $this->session->userdata('admin_id'));
-        // $this->db->order_by('ci_exam_registration.admin_id', 'asc');
+        $this->db->from('ci_exam_according_to_school');
+        $this->db->join('ci_exam_invitation', 'ci_exam_invitation.id = ci_exam_according_to_school.ref_id');
+        $this->db->where('ci_exam_according_to_school.consents_signstamp_status', 1);
+        $this->db->where('ci_exam_according_to_school.admin_id', $admin_id);
+        $this->db->where_in('ci_exam_according_to_school.ref_id', $exam_id);
+        $this->db->order_by('ci_exam_according_to_school.id', 'asc');
+        $query = $this->db->get();
+        return $query->result_array();
+
+    }
+      public function allocationConsentRecievedByUser($admin_id) {
+         $ref_ids = $this->db->select('exam_id');
+         $this->db->from('ci_allocation_table');
+         $this->db->where('ci_allocation_table.admin_id', $admin_id);
+         $this->db->where('ci_allocation_table.status', 1);
+         $this->db->order_by('ci_allocation_table.id', 'asc');
+         $ref_idsData = $this->db->get();
+         $ref_idsData = $ref_idsData->result_array();
+         $exam_ids = [];
+         foreach ($ref_idsData as $exam_id) {    
+         $exam_ids[] = $exam_id['exam_id'];
+         }
+         $exam_ids = count($exam_ids)>0?$exam_ids:[];
+
+
+        $this->db->select('*');
+        $this->db->from('ci_exam_invitation');
+        $this->db->where_in('ci_exam_invitation.id',$exam_ids);
+        $this->db->order_by('ci_exam_invitation.id', 'asc');
         $query = $this->db->get();
         return $query->result_array();
 

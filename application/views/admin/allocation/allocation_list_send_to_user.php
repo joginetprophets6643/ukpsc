@@ -50,7 +50,6 @@
                     </div>
                 </div>
                 <?php } ?>
-                <!-- <label style="font-weight:bold;" for="car"></label> -->
             </div>
         </div>
         <div class="col-md-12">
