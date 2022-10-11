@@ -117,13 +117,13 @@
 
                <td>
                <?php  if ($admin_role_id == 6 )  { ?>
-               <a href="<?= base_url("admin/consent_letter/consent_add_2/" . $row['id']); ?>" title="Edit" class="btn btn-warning" >
+               <!-- <a href="<?= base_url("admin/consent_letter/consent_add_2/" . $row['id']); ?>" title="Edit" class="btn btn-warning" >
                <i class="fa fa-edit"></i>
-               </a> 
+               </a>  -->
             <?php }  if ($admin_role_id == 5 )  { ?>
-               <a href="<?= base_url("admin/consent_letter/add_remark_concent/" . $row['id']); ?>" title="Add Action" class="btn btn-warning">
+               <!-- <a href="<?= base_url("admin/consent_letter/add_remark_concent/" . $row['id']); ?>" title="Add Action" class="btn btn-warning">
                <i class="fa fa-edit"></i>
-               </a>
+               </a> -->
 
                <?php }
                if ($admin_role_id == 5 ) { ?>

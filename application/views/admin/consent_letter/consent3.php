@@ -62,13 +62,13 @@
 		  <div class="input-text">
 			   <div class="form-group">
 			   <label>Total Number of room<span class="ml-1" style="color:red;">*</span><br>कक्षा की कुल संख्या<span class="ml-1" style="color:red;">*</span></label> 
-				  <input type="text"  name="no_room" maxlength="2" value="<?php if (isset($user['no_room'])) {
+				  <input type="text"  name="no_room" maxlength="2" class="form-control" value="<?php if (isset($user['no_room'])) {
                                     echo $user['no_room'];
                                 } ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="no_room" >
 				</div>
 				<div class="form-group">
 				<label>Number of seats for candidates in each room<span class="ml-1" style="color:red;">*</span><br>प्रत्येक कक्ष में अभ्यर्थियों के बैठने की संख्या<span class="ml-1" style="color:red;">*</span></label>
-				  <input type="text"  name="no_sheet" maxlength="2" value="<?php if (isset($user['no_sheet'])) {
+				  <input type="text"  name="no_sheet" maxlength="2" class="form-control" value="<?php if (isset($user['no_sheet'])) {
                                     echo $user['no_sheet'];
                                 } ?>"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="no_sheet"  >
 				  
@@ -76,7 +76,7 @@
 
                 <div class="form-group">
                 <label>Maximum number of candidates can be allocated in the center<span class="ml-1" style="color:red;">*</span><br>केन्द्र में आबंटित किये जा सकने वाले अधिकतम् अभ्यर्थियों की संख्या<span class="ml-1" style="color:red;">*</span></label>
-                  <input type="text" maxlength="3" value="<?php if (isset($user['max_allocate_candidate'])) {
+                  <input type="text" maxlength="3" class="form-control" value="<?php if (isset($user['max_allocate_candidate'])) {
                                     echo $user['max_allocate_candidate'];
                                 } ?>"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="max_allocate_candidate" id="max_allocate_candidate"  >
                   

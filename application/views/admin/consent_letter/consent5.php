@@ -55,7 +55,7 @@
                                         </div>
                                         <div class="col-md-6">
 
-                                            <a target="_blank" href="<?= base_url(" admin/consent_letter/down_form/" .
+                                            <a target="_blank" href="<?= base_url("admin/consent_letter/down_form/" .
                                                 $admin['admin_id']); ?>" title="Download Form"
                                                 onclick="return confirm('Download form ?')" class="btn btn-primary w-100
                                                 ">Preview and Download Form</a>
@@ -92,7 +92,7 @@
                                     }
 
                                 </script>
-                                <div class="main active" id="upload_from" style="display:block;">
+                                <div class="main active" id="upload_from" style="display:none;">
                                     <div class="text">
                                         <h2>Upload Images (तश्वीरें अपलोड करो)</h2>
                                         <p class="mt-0">Add your School/College/Institute Images as per required filed</p>
