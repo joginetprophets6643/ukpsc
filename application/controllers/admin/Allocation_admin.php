@@ -272,5 +272,35 @@ class Allocation_admin extends MY_Controller {
             // $this->load->view('admin/allocation/allocation_list', $data);
             $this->load->view('admin/allocation/allocation_list_send_to_user', $data);
         }
+
+        public function allocation_master() {
+            // echo 'here';
+            $data['title'] = 'Exam List for Allocation Master';
+            $data['data'] = $this->Allocation_Model->get_all_recived_invites();
+            $this->load->view('admin/includes/_header', $data);
+            $this->load->view('admin/allocation/allocationMasterForExamList', $data);
+            $this->load->view('admin/includes/_footer', $data);
+        }
+
+        public function school_list_exam_for_allocation($exam_id){
+            $exam_id = urldecrypt($exam_id);
+     
+            $data['info'] = $this->Allocation_Model->getSchoolListForAllocationExam($exam_id);
+            //  print_r($data); die();
+             foreach ($data['info'] as $key => $d) {
+                 $data[$key]['exam_date_new'] = explode(",",$d['exam_date']);
+                 $data[$key]['exam_shift_new'] = explode(",",$d['exam_shift']);
+                 $data[$key]['present_candidate_new'] = explode(",",$d['present_candidate']);
+                 $data[$key]['absent_candidate_new'] = explode(",",$d['absent_candidate']);
+                //  $data[$key]['centerCode'] = getCenterCode( $d['school_id'],$exam_id); 
+                //  $data[$key]['examination_center_name'] = getCenterCode( $d['school_id']); 
+             }
+             $data['title'] = 'Allocation Matser List';
+            $this->load->view('admin/includes/_header', $data);
+            $this->load->view('admin/allocation/markAttendanceListForExamination', $data);
+            $this->load->view('admin/includes/_footer', $data);
+            // print_r($data); die();
+
+        }
     
 }

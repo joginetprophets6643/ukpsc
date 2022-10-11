@@ -687,3 +687,5 @@ $lang['send_email'] = "Send Email ";
 $lang['view_heading_display'] = "Uttarakhand Combined State Engineering Service Exam-2021";
 $lang['written_examination'] = "Written Examination (Objective Type)";
 $lang['exam_schedule_vew'] = "Exam Schedule";
+$lang['mark_attendance'] = "Mark Attendance";
+$lang['allocation_master'] = "Allocation Master";

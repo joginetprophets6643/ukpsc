@@ -63,20 +63,6 @@ class Allocation_Model extends CI_Model {
       public function get_data_for_allocation_user($exam_id) {
 
         $admin_id = $this->session->userdata('admin_id');
-        // echo $admin_id;die();
-        //  $ref_ids = $this->db->select('exam_id');
-        //  $this->db->from('ci_allocation_table');
-        //  $this->db->where('ci_allocation_table.admin_id', $admin_id);
-        //  $this->db->where('ci_allocation_table.status', 1);
-        //  $this->db->order_by('ci_allocation_table.id', 'asc');
-        //  $ref_idsData = $this->db->get();
-        //  $ref_idsData = $ref_idsData->result_array();
-        //  $exam_ids = [];
-        //  foreach ($ref_idsData as $exam_id) {    
-        //  $exam_ids[] = $exam_id['exam_id'];
-        //  }
-        //  $exam_ids = count($exam_ids)>0?$exam_ids:[];
-
         $this->db->select('*');
         $this->db->from('ci_exam_according_to_school');
         $this->db->join('ci_exam_invitation', 'ci_exam_invitation.id = ci_exam_according_to_school.ref_id');
@@ -148,6 +134,18 @@ class Allocation_Model extends CI_Model {
     }
  
   }
+  public function markAttendanceAllocationInsert($data){
+    $this->db->where('school_id ', $data['school_id']);
+    $this->db->where('exam_id ', $data['exam_id']);
+    $this->db->where('admin_id ', $data['admin_id']);
+    $this->db->insert(' ci_mark_attendance_allocation', $data);
+  }
+  public function markAttendanceAllocationUpdate($data){
+    $this->db->where('school_id ', $data['school_id']);
+    $this->db->where('exam_id ', $data['exam_id']);
+    $this->db->where('admin_id ', $data['admin_id']);
+    $this->db->update('ci_mark_attendance_allocation', $data);
+  }
 
   function get_city_by_state_id() {
 
@@ -212,5 +210,15 @@ public function sendAllocationForUser($school_ids,$exam_id){
   }
   return '201';
   
+}
+
+public function getSchoolListForAllocationExam($exam_id) {
+  $this->db->select('*');
+  $this->db->from('ci_mark_attendance_allocation');
+  $this->db->where('ci_mark_attendance_allocation.exam_id', $exam_id);
+  $this->db->order_by('ci_mark_attendance_allocation.id', 'asc');
+  $query = $this->db->get();
+  return $query->result_array();
+
 }
 }
