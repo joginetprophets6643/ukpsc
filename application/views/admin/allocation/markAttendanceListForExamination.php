@@ -20,23 +20,11 @@
                 <div class="d-inline-block">
 
                     <h3 class="card-title mt-0">
-
                         <i class="fa fa-list"></i>
-
-                        <?php echo $title ;?>&nbsp;(आवंटन मास्टर सूची)
-
+                        <?php echo $title ." of ". $exam_name;?>
                     </h3>
-
-
-
                 </div>
-
-
-
                 <div class="d-inline-block float-right">
-
-
-
                 </div>
 
             </div>
@@ -159,8 +147,9 @@
     <!-- Main content -->
 
     <section class="content mt10">
-
+       
         <div class="card">
+            
             <div class="card-body table-responsive">
                 <table id="na_datatable" class="table table-bordered table-striped" style="border-collapse: collapse !important;">
                     <thead>
@@ -168,7 +157,11 @@
                             <th>#</th>
                             <th>Examination Center</th>
                             <th>Center Code</th>
-                            <th>Examination Attendance</th>
+                            <th>Date</th>
+                            <th>Shift</th>
+                            <th>Present</th>
+                            <th>Absent</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                      <?php foreach ($info   as $key=> $d){?> 
@@ -176,30 +169,11 @@
                             <td><?php echo $key+1;?></td>
                             <td><?php echo $d['examination_center_name'];?></td>
                             <td><?php echo $d['centerCode'];?></td>
-                            <td><?php foreach(explode(",",$d['exam_date']) as $key1=>$d1){?>
-                                <table class="table table-bordered myTable">
-                                    <tbody>
-                                        <tr>
-                                            <th>Exam Date</th>
-                                            <td><?php echo $d1; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Exam Shift</th>
-                                            <td><?php echo explode(",",$d['exam_shift'])[$key1]; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Present Candidate</th>
-                                            <td><?php echo explode(",",$d['present_candidate'])[$key1]; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Absent Candidate</th>
-                                            <td><?php echo explode(",",$d['absent_candidate'])[$key1]; ?></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <hr>
-
-                           <?php } ?></td>
+                            <td><?php echo $d['exam_date'];?></td>
+                            <td><?php echo $d['exam_shift'];?></td>
+                            <td><?php echo $d['present_candidate'];?></td>
+                            <td><?php echo $d['absent_candidate'];?></td>
+                            <td><?php echo $d['total_candidates'];?></td>
                         </tr> 
                         <?php }?>                  
                 </table>

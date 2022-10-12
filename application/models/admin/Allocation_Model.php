@@ -144,6 +144,8 @@ class Allocation_Model extends CI_Model {
     $this->db->where('school_id ', $data['school_id']);
     $this->db->where('exam_id ', $data['exam_id']);
     $this->db->where('admin_id ', $data['admin_id']);
+    $this->db->where('exam_date ', $data['exam_date']);
+    $this->db->where('exam_shift ', $data['exam_shift']);
     $this->db->update('ci_mark_attendance_allocation', $data);
   }
 
@@ -216,7 +218,7 @@ public function getSchoolListForAllocationExam($exam_id) {
   $this->db->select('*');
   $this->db->from('ci_mark_attendance_allocation');
   $this->db->where('ci_mark_attendance_allocation.exam_id', $exam_id);
-  $this->db->order_by('ci_mark_attendance_allocation.id', 'asc');
+  $this->db->order_by('ci_mark_attendance_allocation.exam_date', 'asc');
   $query = $this->db->get();
   return $query->result_array();
 

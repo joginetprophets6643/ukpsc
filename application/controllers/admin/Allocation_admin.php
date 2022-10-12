@@ -284,24 +284,17 @@ class Allocation_admin extends MY_Controller {
 
         public function school_list_exam_for_allocation($exam_id){
             $exam_id = urldecrypt($exam_id);
-     
+
             $data['info'] = $this->Allocation_Model->getSchoolListForAllocationExam($exam_id);
-            //  print_r($data); die();
              foreach ($data['info'] as $key => $d) {
-                 $data['info'][$key]['exam_date_new'] = explode(",",$d['exam_date']);
-                 $data['info'][$key]['exam_shift_new'] = explode(",",$d['exam_shift']);
-                 $data['info'][$key]['present_candidate_new'] = explode(",",$d['present_candidate']);
-                 $data['info'][$key]['absent_candidate_new'] = explode(",",$d['absent_candidate']);
                  $data['info'][$key]['centerCode'] = getCenterCode( $d['school_id'],$exam_id); 
                  $data['info'][$key]['examination_center_name'] = getSchoolName( $d['school_id']); 
              }
-            // print_r($data['info']);  
-            // die();  
-             $data['title'] = 'Allocation Master List';
+            $data['exam_name'] = get_exam_name_new( $exam_id);
+            $data['title'] = 'Allocation Master List';
             $this->load->view('admin/includes/_header', $data);
             $this->load->view('admin/allocation/markAttendanceListForExamination', $data);
             $this->load->view('admin/includes/_footer', $data);
-            // print_r($data); die();
 
         }
     
