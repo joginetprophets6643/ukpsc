@@ -31,13 +31,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name" class="col-sm- control-label">Exam Date&nbsp;(परीक्षा तिथि)<i style="color:#ff0000; font-size:12px;">*</i></label>
-                            <input type="text" name="exam_date" value="<?php echo $date_exam[$key]?>"  class="form-control" id="exam_date" placeholder="Enter a Date"  >
+                            <input type="text" readonly name="exam_date" value="<?php echo $date_exam[$key]?>"  class="form-control" id="exam_date" placeholder="Enter a Date"  >
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name" class="col-sm- control-label">Exam Shift&nbsp;(परीक्षा शिफ्ट)<i style="color:#ff0000; font-size:12px;">*</i></label>
-                            <input type="text" name="exam_shift" value="<?php echo $shft_exam[$key]?>" class="form-control" id="exam_shift" placeholder="Enter a Shift ">
+                            <input type="text" readonly name="exam_shift" value="<?php echo $shft_exam[$key]?>" class="form-control" id="exam_shift" placeholder="Enter a Shift ">
 
                         </div>
                     </div>

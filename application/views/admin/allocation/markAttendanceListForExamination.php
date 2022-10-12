@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css">
 
+
 <!-- Content Wrapper. Contains page content -->
 
 <div class="content-wrapper">
@@ -14,15 +15,15 @@
 
         <div class="card">
 
-            <div class="card-body">
+            <div class="card-header border-0">
 
                 <div class="d-inline-block">
 
-                    <h3 class="card-title">
+                    <h3 class="card-title mt-0">
 
                         <i class="fa fa-list"></i>
 
-                        <?php echo $title ;?>&nbsp;(आमंत्रण भेजने के लिए सहमति सूची)
+                        <?php echo $title ;?>&nbsp;(आवंटन मास्टर सूची)
 
                     </h3>
 
@@ -161,25 +162,42 @@
 
         <div class="card">
             <div class="card-body table-responsive">
-                <table id="na_datatable" class="table table-bordered table-striped" width="100%">
+                <table id="na_datatable" class="table table-bordered table-striped" style="border-collapse: collapse !important;">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Examination Center</th>
                             <th>Center Code</th>
-                            <th>Total Candidates</th>
+                            <th>Examination Attendance</th>
                         </tr>
                     </thead>
                      <?php foreach ($info   as $key=> $d){?> 
                         <tr>
                             <td><?php echo $key+1;?></td>
-                            <td><?php echo $d['school_id'];?></td>
-                            <td><?php echo $d['school_id'];?></td>
+                            <td><?php echo $d['examination_center_name'];?></td>
+                            <td><?php echo $d['centerCode'];?></td>
                             <td><?php foreach(explode(",",$d['exam_date']) as $key1=>$d1){?>
-                               <h5>Exam Date:<?php echo $d1; ?></h5>
-                               <h5>Exam Shift:<?php echo explode(",",$d['exam_shift'])[$key1]; ?></h5>
-                               <h5>Present Candidate:<?php echo explode(",",$d['present_candidate'])[$key1]; ?></h5>
-                               <h5>Absent Candidate:<?php echo explode(",",$d['absent_candidate'])[$key1]; ?></h5>
+                                <table class="table table-bordered myTable">
+                                    <tbody>
+                                        <tr>
+                                            <th>Exam Date</th>
+                                            <td><?php echo $d1; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Exam Shift</th>
+                                            <td><?php echo explode(",",$d['exam_shift'])[$key1]; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Present Candidate</th>
+                                            <td><?php echo explode(",",$d['present_candidate'])[$key1]; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Absent Candidate</th>
+                                            <td><?php echo explode(",",$d['absent_candidate'])[$key1]; ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
 
                            <?php } ?></td>
                         </tr> 

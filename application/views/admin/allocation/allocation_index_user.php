@@ -14,15 +14,15 @@
 
         <div class="card">
 
-            <div class="card-body">
+            <div class="card-header border-0">
 
                 <div class="d-inline-block">
 
-                  <h3 class="card-title">
+                  <h3 class="card-title mt-0">
 
                     <i class="fa fa-list"></i>
 
-                    Center Allocated 
+                    Center Allocated (केंद्र आवंटित)
 
 
                   </h3>

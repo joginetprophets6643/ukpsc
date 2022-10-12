@@ -435,6 +435,14 @@ function getCenterCode($school_id,$exam_id)
     $exam_center_code = isset($q['exam_center_code'])?$q['exam_center_code']:'';
     return $exam_center_code;
 }
+function getSchoolName($school_id)
+{
+    $ci = & get_instance();
+    $q = $ci->db->select('school_name')->where('id',$school_id)
+         ->get('ci_exam_registration')->row_array();
+    $exam_center_code = isset($q['school_name'])?$q['school_name']:'';
+    return $exam_center_code;
+}
 
 function get_exam_name_new($id) {
     $ci = & get_instance();

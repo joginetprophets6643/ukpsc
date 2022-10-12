@@ -14,7 +14,7 @@
 
         <div class="card">
 
-            <div class="card-body">
+            <div class="card-header">
 
                 <div class="d-inline-block">
 
@@ -30,14 +30,6 @@
 
               </div>
 
-           
-
-              <div class="d-inline-block float-right">
-
-                
-
-              </div>
-
             </div>
 
             <div class="card-body">
@@ -50,7 +42,7 @@
 
                     if (in_array($_SESSION['admin_role_id'], array(1,2,3,4,5,6))){?>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                     <label>District&nbsp;ज़िला</label>
                         <div class="form-group">
 
@@ -79,7 +71,7 @@
 
                              ?>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label>City&nbsp;शहर</label>
                         <div class="form-group">
                             <select name="district" id="district" class="form-control">
@@ -112,7 +104,7 @@
 
                      <?php } ?>
 
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                     <label>Grade&nbsp;श्रेणी</label>
                         <div class="form-group">
 
@@ -167,7 +159,7 @@
     
     <div class="card">
             <div class="card-body table-responsive">
-                <table id="consent_recieved_list" class="table table-bordered table-striped" width="100%">
+                <table id="consent_recieved_list" class="table table-bordered table-striped"  style="border-collapse: collapse !important;">
                     <thead>
                         <tr>
                             <th>#</th>

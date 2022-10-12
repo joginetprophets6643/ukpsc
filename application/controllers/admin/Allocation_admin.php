@@ -288,14 +288,16 @@ class Allocation_admin extends MY_Controller {
             $data['info'] = $this->Allocation_Model->getSchoolListForAllocationExam($exam_id);
             //  print_r($data); die();
              foreach ($data['info'] as $key => $d) {
-                 $data[$key]['exam_date_new'] = explode(",",$d['exam_date']);
-                 $data[$key]['exam_shift_new'] = explode(",",$d['exam_shift']);
-                 $data[$key]['present_candidate_new'] = explode(",",$d['present_candidate']);
-                 $data[$key]['absent_candidate_new'] = explode(",",$d['absent_candidate']);
-                //  $data[$key]['centerCode'] = getCenterCode( $d['school_id'],$exam_id); 
-                //  $data[$key]['examination_center_name'] = getCenterCode( $d['school_id']); 
+                 $data['info'][$key]['exam_date_new'] = explode(",",$d['exam_date']);
+                 $data['info'][$key]['exam_shift_new'] = explode(",",$d['exam_shift']);
+                 $data['info'][$key]['present_candidate_new'] = explode(",",$d['present_candidate']);
+                 $data['info'][$key]['absent_candidate_new'] = explode(",",$d['absent_candidate']);
+                 $data['info'][$key]['centerCode'] = getCenterCode( $d['school_id'],$exam_id); 
+                 $data['info'][$key]['examination_center_name'] = getSchoolName( $d['school_id']); 
              }
-             $data['title'] = 'Allocation Matser List';
+            // print_r($data['info']);  
+            // die();  
+             $data['title'] = 'Allocation Master List';
             $this->load->view('admin/includes/_header', $data);
             $this->load->view('admin/allocation/markAttendanceListForExamination', $data);
             $this->load->view('admin/includes/_footer', $data);

@@ -14,7 +14,7 @@
 
         <div class="card">
 
-            <div class="card-body">
+            <div class="card-header">
 
                 <div class="d-inline-block">
 
@@ -22,18 +22,10 @@
 
                         <i class="fa fa-list"></i>
 
-                        Allocation for Exam Centre
+                        Allocation for Exam Centre (परीक्षा केंद्र के लिए आवंटन)
 
 
                     </h3>
-
-
-
-                </div>
-
-
-
-                <div class="d-inline-block float-right">
 
 
 
@@ -51,9 +43,9 @@
 
                     if (in_array($_SESSION['admin_role_id'], array(1,2,3,4,5,6))){?>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
 
-                        <div class="form-group">
+                        <div class="form-group" style="margin-bottom: 0 !important;">
 
                             <select name="state" id="state_id" class="form-control dd_state">
 
@@ -79,9 +71,9 @@
 
                              ?>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
 
-                        <div class="form-group">
+                        <div class="form-group"  style="margin-bottom: 0 !important;">
 
                             <select name="district" id="district_filter" class="form-control">
 
@@ -109,9 +101,9 @@
 
                     <?php } ?>
 
-                    <div class="col-md-2">
+                    <div class="col-md-4">
 
-                        <div class="form-group">
+                        <div class="form-group" style="margin-bottom: 0 !important;">
 
                             <select name="status" class="form-control">
 

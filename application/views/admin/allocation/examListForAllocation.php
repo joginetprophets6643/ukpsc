@@ -14,11 +14,11 @@
 
         <div class="card">
 
-            <div class="card-body">
+            <div class="card-header border-0">
 
                 <div class="d-inline-block">
 
-                    <h3 class="card-title">
+                    <h3 class="card-title mt-0">
 
                         <i class="fa fa-list"></i>
 
@@ -161,7 +161,7 @@
 
         <div class="card">
             <div class="card-body table-responsive">
-                <table id="na_datatable" class="table table-bordered table-striped" width="100%">
+                <table id="na_datatable" class="table table-bordered table-striped"  style="border-collapse: collapse !important;">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -174,7 +174,7 @@
                      <?php  foreach ($data   as $key=> $d){?> 
                         <tr>
                             <td><?php echo $key+1;?></td>
-                            <td><a href="<?php echo site_url("admin/allocation_admin/allocation_list/".urlencrypt($d['id'])); ?>" class="btn btn-warning btn-xs mr5" ><?php echo $d['subjectline'];?></a></td>
+                            <td><a href="<?php echo site_url("admin/allocation_admin/allocation_list/".urlencrypt($d['id'])); ?>" class="btn btn-sec" ><?php echo $d['subjectline'];?></a></td>
                             <td><?php echo $d['no_candidate'];?></td>
                             <td><?php echo $d['startdate'];?></td>
                             <td><?php echo $d['enddate'];?></td>

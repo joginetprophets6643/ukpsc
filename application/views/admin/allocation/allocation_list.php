@@ -57,7 +57,7 @@
                     
                     ?>
                     <td>
-                        <input type="text" onkeypress="return onlyNumberKey(event)" id="exam_center_code<?php echo $i?>" name="exam_center_code" value="<?php echo isset($getCenterCode)?$getCenterCode:''?>">
+                        <input type="text" class="form-control" onkeypress="return onlyNumberKey(event)" id="exam_center_code<?php echo $i?>" name="exam_center_code" value="<?php echo isset($getCenterCode)?$getCenterCode:''?>">
                     </td>
 
                     <input hidden  type="text" id="candidate_value_count<?php echo $i?>" value="<?php echo count($no_candidate)?>">
@@ -70,7 +70,7 @@
                     <?php foreach ($no_candidate as $key => $value) { 
                         ?>
                     <td>
-                        <input type="text" onkeypress="return onlyNumberKey(event)" id="candidate_value_school_id_new<?php echo $i.$key?>" value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
+                        <input type="text" class="form-control" onkeypress="return onlyNumberKey(event)" id="candidate_value_school_id_new<?php echo $i.$key?>" value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
                     </td>
                      <?php } ?>
                     <td>
@@ -79,7 +79,7 @@
                         </a>
                         <?php }  if ($admin_role_id == 5 )  { ?>
                      
-                            <button class="btn btn-success" onclick="formdataSubmit(<?php echo $i; ?>)"> Submit</button>
+                            <button class="btn btn-admin" onclick="formdataSubmit(<?php echo $i; ?>)"> Submit</button>
 
                         <?php }
             if ($admin_role_id == 5 ) { ?>

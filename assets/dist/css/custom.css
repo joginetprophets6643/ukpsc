@@ -304,3 +304,16 @@ textarea {
 .container .card .right-side {
     width: 70% !important;
 }
+
+.myTable tbody tr:nth-of-type(odd) {
+    background-color: #fff !important;
+
+}
+.myTable tbody tr th {
+    color: #373250 !important;
+
+}
+.myTable tbody tr td {
+    color: #e14658 !important;
+
+}
