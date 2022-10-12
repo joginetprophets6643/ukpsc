@@ -50,7 +50,7 @@
 
               <div class="icon">
 
-                <i class="ion ion-person-add"></i>
+                <i class="fa fa-users text-white"></i>
 
               </div>
 
@@ -98,7 +98,7 @@
 
               <div class="icon">
 
-                <i class="ion ion-stats-bars"></i>
+                <i class="fa fa-book text-white"></i>
 
               </div>
 
@@ -124,7 +124,7 @@
 
               <div class="icon">
 
-                <i class="ion ion-pie-graph"></i>
+                <i class="fa fa-globe text-white"></i>
 
               </div>
 
