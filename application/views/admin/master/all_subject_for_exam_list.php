@@ -32,7 +32,7 @@
           </thead>
           <?php foreach ($subjectList as $key => $value) {?>
               <tr>
-              <td><?php echo $value['id'] ?></td>
+              <td><?php echo $key+1 ?></td>
               <td><?php echo $value['sub_name'] ?></td>
               <td><?php echo $value['sub_name_hindi'] ?></td>
               <td><?php echo $value['sub_code'] ?></td>

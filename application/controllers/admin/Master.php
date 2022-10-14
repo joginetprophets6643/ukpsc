@@ -134,6 +134,7 @@ class Master extends MY_Controller
       public function datatable_json_exam(){
 
         $array = array('created_by' => $this->session->userdata('admin_id'));
+        
         $records['data'] = $this->db
             ->select('*')
             ->from('ci_exam_master')
@@ -520,9 +521,6 @@ class Master extends MY_Controller
     public function invitation_list_data() {
 
         $data['info'] = $this->Exam_model->get_all_invites();
-
-        // echo '<pre>';print_r($data);exit;
-
         $this->load->view('admin/exam/invitation_list', $data);
     }
 
@@ -554,13 +552,18 @@ class Master extends MY_Controller
         // $this->rbac->check_operation_access();
         
         if ($this->input->post()) {
-
             $sub_name = $this->input->post('sub_name') ? implode(',', $this->input->post('sub_name')) : "";
             //$exam_name = $this->input->post('exam_name') ? implode(',', $this->input->post('exam_name')) : "";
             $no_candidate = $this->input->post('no_candidate') ? implode(',', $this->input->post('no_candidate')) : "";
             $shft_exam = $this->input->post('shft_exam') ? implode(',', $this->input->post('shft_exam')) : "";
             $date_exam = $this->input->post('date_exam') ? implode(',', $this->input->post('date_exam')) : "";
             $time_exam = $this->input->post('time_exam') ? implode(',', $this->input->post('time_exam')) : "";
+
+            $this->db->select('*');
+            $this->db->from('ci_exam_invitation');
+            $this->db->where('id',$id);
+            $q= $this->db->get();
+
             if($this->input->post('subjectline') == ''){
 
                 $subjectline = $this->input->post('exam_name');

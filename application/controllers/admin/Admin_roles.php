@@ -167,7 +167,6 @@ class Admin_roles extends MY_Controller
 	function access($id=""){
 
 
-
 		$this->rbac->check_operation_access(); // check opration permission
 
 
@@ -196,7 +195,7 @@ class Admin_roles extends MY_Controller
 	//-----------------------------------------------------------
 
 	function set_access(){   
-
+        
 		$this->admin_roles->set_access();
 
 	}

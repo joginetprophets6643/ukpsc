@@ -50,36 +50,25 @@ $cur_tab = $this->uri->segment(2) == '' ? 'dashboard' : $this->uri->segment(2); 
                 <?php
 
                 $menu = get_sidebar_menu();
-                // echo '<pre>';print_r($menu);die;
+             
                 foreach ($menu as $nav):
 
 
 
                     $sub_menu = get_sidebar_sub_menu($nav['module_id']);
                     
-
+                 
                     $has_submenu = count($sub_menu) > 0 ? true : false;
 
                     ?>
 
-                    <?php if ($this->rbac->check_module_permission($nav['controller_name'])): ?> 
-
-
-
+                    <?php  if ($this->rbac->check_module_permission($nav['controller_name'])): ?> 
                         <li id="<?= $nav['controller_name'] ?>" class="nav-item <?= $has_submenu ? 'has-treeview' : '' ?> has-treeview">
-
-
-
                             <a href="<?= base_url('admin/' . $nav['controller_name']) ?>" class="nav-link">
-
                                 <i class="nav-icon fa <?= $nav['fa_icon'] ?>"></i>
-
                                 <p>
-
                                     <?= trans($nav['module_name']) ?>
-
                                     <?= $has_submenu ? '<i class="right fa fa-angle-left"></i>' : '' ?>
-
                                 </p>
 
                             </a>

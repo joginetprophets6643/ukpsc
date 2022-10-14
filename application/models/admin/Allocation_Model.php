@@ -81,20 +81,27 @@ class Allocation_Model extends CI_Model {
          $this->db->where('ci_allocation_table.status', 1);
          $this->db->order_by('ci_allocation_table.id', 'asc');
          $ref_idsData = $this->db->get();
+  
          $ref_idsData = $ref_idsData->result_array();
+        
          $exam_ids = [];
          foreach ($ref_idsData as $exam_id) {    
          $exam_ids[] = $exam_id['exam_id'];
          }
          $exam_ids = count($exam_ids)>0?$exam_ids:[];
-
-
-        $this->db->select('*');
-        $this->db->from('ci_exam_invitation');
-        $this->db->where_in('ci_exam_invitation.id',$exam_ids);
-        $this->db->order_by('ci_exam_invitation.id', 'asc');
-        $query = $this->db->get();
-        return $query->result_array();
+        if(count($exam_ids)>0)
+        {
+          $this->db->select('*');
+          $this->db->from('ci_exam_invitation');
+          $this->db->where_in('ci_exam_invitation.id',$exam_ids);
+          $this->db->order_by('ci_exam_invitation.id', 'asc');
+          $query = $this->db->get();
+          $data = $query->result_array();
+        }
+        else{
+          $data =[];
+        }
+        return $data;
 
     }
 

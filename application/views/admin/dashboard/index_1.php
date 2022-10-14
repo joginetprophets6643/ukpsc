@@ -36,7 +36,7 @@
 
         <div class="row">
 
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6" style="display:none;">
 
             <div class="small-box bg-warning">
 
@@ -84,7 +84,7 @@
 
           </div>
 
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6" style="display:none;">
 
             <div class="small-box bg-success">
 

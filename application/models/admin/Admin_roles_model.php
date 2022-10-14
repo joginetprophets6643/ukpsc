@@ -141,11 +141,10 @@ class Admin_roles_model extends CI_Model{
 	function set_access()
 
 	{
-
+       
 		if($this->input->post('status')==1)
 
 		{
-
 			$this->db->set('admin_role_id',urldecrypt($this->input->post('admin_role_id')) );
 
 			$this->db->set('module',$this->input->post('module'));
@@ -177,7 +176,7 @@ class Admin_roles_model extends CI_Model{
 	function get_access($admin_role_id)
 
 	{
-
+       
 		$this->db->from('module_access');
 
 		$this->db->where('admin_role_id',$admin_role_id);

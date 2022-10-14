@@ -66,9 +66,9 @@ class Consent_active extends MY_Controller
             
             $get_full_data = $this->Certificate_model->get_all_data_consent($ref_id);
         }
-
+      
        
-        $data["info"] = $get_full_data;
+        $data["info"] = isset($get_full_data)?$get_full_data:'';
 
 
         $this->load->view("admin/consent_active/consent_list_recieved", $data);

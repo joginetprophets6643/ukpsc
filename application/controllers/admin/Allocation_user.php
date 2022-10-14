@@ -45,7 +45,9 @@ class Allocation_user extends MY_Controller {
 
     public function allocation_list_data_user() {
     $admin_id = $this->session->userdata('admin_id'); 
+   
     $data['info'] = $this->Allocation_Model->allocationConsentRecievedByUser($admin_id);
+ 
     $this->load->view('admin/allocation/allocation_list_exam_recieved_by_user', $data);
     }  
     public function allocation_data_recieve_by_user($exam_id) {
@@ -62,6 +64,7 @@ class Allocation_user extends MY_Controller {
     public function mark_attendance(){
         $admin_id = $this->session->userdata('admin_id'); 
         $data['info'] = $this->Allocation_Model->allocationConsentRecievedByUser($admin_id);
+     
         $this->load->view('admin/includes/_header', $data);
         $this->load->view('admin/allocation/exam_recieved_for_mark_attendance', $data);
         $this->load->view('admin/includes/_footer', $data);

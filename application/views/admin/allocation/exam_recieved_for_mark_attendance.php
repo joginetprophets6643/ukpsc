@@ -19,7 +19,9 @@
             </tr>
         </thead>
             <tbody>
-                <?php foreach ($info as $key => $value) {?>
+                <?php 
+                if(count($info)>0){
+                  foreach ($info as $key => $value) {?>
                 <tr>
                     <td><?php echo $key+1 ?></td>
                     <td> <a href="<?= base_url("admin/allocation_user/mark_attendance_allocation/" . urlencrypt($value['id']))?>" title="View" class="btn btn-warning"><?php echo $value['subjectline']; ?></a></td>
@@ -27,7 +29,10 @@
                     <td><?php echo $value['startdate']; ?></td>
                     <td><?php echo $value['enddate']; ?></td>
                 </tr>
-                <?php }?>
+                <?php }
+                }
+           
+                ?>
             </tbody>
 
     </table>
@@ -44,6 +49,17 @@
 
 </div>
 </div>
+<script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
+
+<script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
+<script>
+$(document).ready(function() {
+var table = $('#example1').DataTable({
+    "processing": true,
+    "serverSide": false,
+});
+});
+</script>
 <style type="text/css">
 .permanent_info {
     margin-bottom: 05px;

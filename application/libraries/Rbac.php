@@ -9,13 +9,13 @@ class RBAC
 	function __construct()
 
 	{
-
+     
 		$this->obj =& get_instance();
 
 		$this->obj->module_access = $this->obj->session->userdata('module_access');
-
+    
 		$this->obj->is_supper = $this->obj->session->userdata('is_supper');
-
+	
 	}
 
 
@@ -29,9 +29,9 @@ class RBAC
 		$this->obj->db->from('module_access');
 
 		$this->obj->db->where('admin_role_id',$this->obj->session->userdata('admin_role_id'));
-
+      
 		$query=$this->obj->db->get();
-
+        
 		$data=array();
 
 		foreach($query->result_array() as $v)
@@ -41,8 +41,6 @@ class RBAC
 			$data[$v['module']][$v['operation']] = '';
 
 		}
-
-	
 
 		$this->obj->session->set_userdata('module_access',$data);
 
@@ -61,7 +59,7 @@ class RBAC
 	{
 
 		if($this->obj->is_supper){
-
+            
 			return 1;
 
 		}
@@ -87,17 +85,36 @@ class RBAC
 	function check_module_permission($module) // $module is controller name
 
 	{
-
+		
 		$access = false;
 
 		
-
+     
 		if($this->obj->is_supper){
+        
+			// return true;
+			if(isset($this->obj->module_access[$module]))
+			{
+				foreach($this->obj->module_access[$module] as $key => $value){
 
-			return true;
+					if($key == 'access') {
+	  
+						$access = true;
+	  
+					}
+	  
+				  }
+				  if($access)
+
+				return 1;
+
+			else 
+
+			 	return 0;
+			}
 		}		
 		elseif(isset($this->obj->module_access[$module])){
-
+           
 			foreach($this->obj->module_access[$module] as $key => $value){
 
 			  if($key == 'access') {
@@ -160,13 +177,6 @@ class RBAC
 
 	{
 
-//            echo  $operation;
-
-//            echo "###<pre>";
-
-//            print_r($this->obj->module_access);
-
-//            echo "###</pre>";
 
                 if($this->obj->is_supper){
 

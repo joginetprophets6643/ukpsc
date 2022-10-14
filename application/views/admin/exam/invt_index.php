@@ -340,18 +340,30 @@ $(document).ready(function() {
           var grade = $(this).val();
           var state_id = $('#state').val();
           var district_id = $('#district').val();
+          alert(grade);
             if (grade != '') {
-              // console.log("grade_id",grade_id);
-              // return false;
-           
                 $.ajax({
                    type: "GET", 
                    url: base_url+'admin/Examshedule_schedule/inv_list_data_for_mail',
                    dataType: 'html',
                    data: { 'district_id' : district_id, 'state_id':state_id, 'grade' : grade, 'csfr_token_name':csfr_token_value },
                    success: function(data) {
-                      //  console.log("data",data);
                        $('#send_invitation_list').html(data);
+
+                       $.ajax({
+                            type: "GET", 
+                            url: base_url+'admin/Examshedule_schedule/getGradeWiseCount',
+                            // dataType: 'html',
+                            data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade, 'csfr_token_name':csfr_token_value },
+                            success: function(data) {
+                                $('#countInDistrict').removeClass("d-none");
+                                $('#districtCounts').html(data);
+                                $('#schoolCount').addClass("d-none");
+                                $('#schoolWiseCounts').html('');
+                               
+                            }
+
+                            });
                    }
                 });
             }

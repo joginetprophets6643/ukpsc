@@ -271,6 +271,38 @@ class Exam_model extends CI_Model {
             return $data;
     
     }
+
+    public function getGradeCount($district_name,$city_name, $grade_name)
+    {
+     
+            $this->db->select_sum('ci_exam_registration.max_allocate_candidate');
+            $this->db->from('ci_exam_registration');
+            if($district_name)
+            {
+                $this->db->where('ci_exam_registration.district',$district_name);
+            }
+            if($city_name)
+            {
+                $this->db->where('ci_exam_registration.city',$city_name);
+            }
+            if($grade_name) {
+                $this->db->where('ci_exam_registration.ranking_admin',$grade_name);
+            }
+            $this->db->order_by('max_allocate_candidate desc');
+            $query = $this->db->get();
+            $data = $query->result_array();
+            
+            if(isset($data[0]['max_allocate_candidate']))
+            {
+                $data = $data[0]['max_allocate_candidate'];
+            }
+            else
+            {
+                $data = 0;
+            }
+            return $data;
+    
+    }
     // END NEW LOGIC FOR COUNTS
 
    

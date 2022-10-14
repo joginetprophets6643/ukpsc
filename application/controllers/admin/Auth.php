@@ -181,12 +181,11 @@ class Auth extends MY_Controller {
 							'is_admin_login' => TRUE
 						);		
 						
-				
+				//   print_r($admin_data); die();
 						$this->session->set_userdata($admin_data);
 						$this->rbac->set_access_in_session(); // set access in session
 						$admin_id = $this->session->userdata['admin_id'];
 						$admin_role_id = $this->session->userdata['admin_role_id'];
-						
 						if($admin_role_id == 6){
                         $data = $this->db->select('*')->from('ci_exam_registration')->where('admin_id',$admin_id)->get()->result_array();
                         $match = count($data);
@@ -196,12 +195,11 @@ class Auth extends MY_Controller {
                         	redirect(base_url('admin/step1'), 'refresh');
                         }
                     }else if($admin_role_id == 5){
-						
-                    	// redirect(base_url('admin/dashboard'), 'refresh');
-                    	 redirect(base_url('admin/consent_letter/consent_list'), 'refresh');
+                    	redirect(base_url('admin/dashboard'), 'refresh');
+                    	//  redirect(base_url('admin/consent_letter/consent_list'), 'refresh');
                     	 
                     }else{
-						
+					
                     	redirect(base_url('admin/dashboard'), 'refresh');
                     } 
 						}

@@ -280,6 +280,20 @@ class Examshedule_schedule extends MY_Controller {
 
         }
     }
+    public function getGradeWiseCount()
+    {
+     
+            $id = $_GET['state_id'];
+            $state_name = get_district_name($id);
+            $district_id = $_GET['district_id'];
+            $city_name = get_subcity_name($district_id);
+            $grade_name = $_GET['grade'];
+            $gradeOfStudents = $this->Exam_model->getGradeCount($state_name,$city_name, $grade_name);
+            echo $gradeOfStudents;
+            exit;
+
+        
+    }
     public function totalCountSchoolWise()
     {
         if(isset($_GET['school_ids']))
@@ -783,25 +797,37 @@ class Examshedule_schedule extends MY_Controller {
                     'invt_recieved' => '0'
                 ];
 
-                
-                $dataForNewTable = [
-                    'school_id' =>$id,
-                    'exam_name' => $data['exam'][0]['subjectline'],
-                    'speedpost'=>$data['exam'][0]['speedpost'],
-                    'startdate'=>$data['exam'][0]['startdate'],
-                    'enddate'=>$data['exam'][0]['enddate'],
-                    'name_designation_mobile'=>$data['exam'][0]['name_designation_mobile'],
-                    'ref_id' => $new_id,
-                    'invite_sent' => '1',
-                    'invt_recieved' => '0',
-                    'consents_signstamp_status'=>'0'
-                ];
+                $this->db->from('ci_registration_invitation');
+                $this->db->where('ci_registration_invitation.school_id', $id);
+                $this->db->where('ci_registration_invitation.ref_id', $new_id);
+                $queryNew = $this->db->get();
+                if ($queryNew->num_rows()== 0) {
+                    
+                    $dataForNewTable = [
+                        'school_id' =>$id,
+                        'exam_name' => $data['exam'][0]['subjectline'],
+                        'speedpost'=>$data['exam'][0]['speedpost'],
+                        'startdate'=>$data['exam'][0]['startdate'],
+                        'enddate'=>$data['exam'][0]['enddate'],
+                        'name_designation_mobile'=>$data['exam'][0]['name_designation_mobile'],
+                        'ref_id' => $new_id,
+                        'invite_sent' => '1',
+                        'invt_recieved' => '0',
+                        'consents_signstamp_status'=>'0'
+                    ];
+                    $this->db->insert('ci_registration_invitation', $dataForNewTable);
+                    
+                }
+
+               
+
+
                 $arrForInvitation = [
                     'invite_sent' => '1',
                     'invt_recieved' => '0'
                 ];
                  $this->db->where(['id' => $new_id])->update('ci_exam_invitation', $arrForInvitation);
-                $this->db->insert('ci_registration_invitation', $dataForNewTable);
+               
                 
                 $this->db->where(['id' => $id])->update('ci_exam_registration', $arr);
                
@@ -894,7 +920,12 @@ class Examshedule_schedule extends MY_Controller {
                 'invite_sent' => '1',
                 'invt_recieved' => '0'
             ];
-
+            $this->db->from('ci_registration_invitation');
+            $this->db->where('ci_registration_invitation.school_id', $id);
+            $this->db->where('ci_registration_invitation.ref_id', $new_id);
+            $queryNew = $this->db->get();
+            if ($queryNew->num_rows()== 0) {
+                
             $dataForNewTable = [
                 'school_id' =>$id,
                 'exam_name' => $data['exam'][0]['subjectline'],
@@ -907,8 +938,9 @@ class Examshedule_schedule extends MY_Controller {
                 'invt_recieved' => '0',
                 'consents_signstamp_status'=>'0'
             ];
-
             $this->db->insert('ci_registration_invitation', $dataForNewTable);
+        }
+
 
             $this->db->where(['id' => $id])->update('ci_exam_registration', $arr);
 
@@ -1543,6 +1575,7 @@ class Examshedule_schedule extends MY_Controller {
     public function create_letter_list_data() {
 
         $data['info'] = $this->Exam_model->get_all_invites();
+        
         $this->load->view('admin/exam/create_letter_list', $data);
     }
      public function create_invt_add() {

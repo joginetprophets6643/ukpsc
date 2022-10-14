@@ -29,13 +29,8 @@
    <tbody>
       <?php
          $i = 1;
-         // echo '<pre>';print_r($info['row']);
-         // echo '<pre>';print_r($row); 
-         // echo '<pre>'; print_r(array_merge($info,$row));
-         // die();
+       if(isset($info) && $info!=""){
          foreach ($info as $row):
-            // echo '<pre>';
-            // print_r($row); die();
          $admin_role_id = $this->session->userdata('admin_role_id');
          $admin_id = $this->session->userdata('admin_id'); 
       ?>
@@ -112,6 +107,7 @@
          $i++;
 
          endforeach;
+      }
 
          ?>
 

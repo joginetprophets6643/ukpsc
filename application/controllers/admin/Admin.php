@@ -15,14 +15,9 @@ class Admin extends MY_Controller
         auth_check(); // check login auth
 
         $this->rbac->check_module_access();
-
-
-
 		$this->load->model('admin/admin_model', 'admin');
-
 		$this->load->model('admin/Activity_model', 'activity_model');
-
-                                        $this->load->model('admin/location_model', 'location_model');
+        $this->load->model('admin/location_model', 'location_model');
 
     }
 
@@ -31,7 +26,6 @@ class Admin extends MY_Controller
 	//-----------------------------------------------------		
 
 	function index($type=''){
-
 
 
 		$this->session->set_userdata('filter_type',$type);
@@ -113,22 +107,19 @@ class Admin extends MY_Controller
             
 
 		$this->rbac->check_operation_access(); // check opration permission
-
-                $data['js_file'] = 'admin.js';
-
-		$data['admin_roles']=$this->admin->get_admin_roles();
-$data['states']
-                 = $this->location_model->get_states();
+		$data['js_file'] = 'admin.js';
+		$data['admin_roles'] =$this->admin->get_admin_roles();
+		$data['states'] = $this->location_model->get_states();
 
 		if($this->input->post('submit')){
 
-                                $this->form_validation->set_rules('role', 'Role', 'trim|required');
+                $this->form_validation->set_rules('role', 'Role', 'trim|required');
 
 				$this->form_validation->set_rules('username', 'Username', 'trim|alpha_numeric|is_unique[ci_admin.username]|required');
 
 				$this->form_validation->set_rules('firstname', 'Firstname', 'trim|required');
 
-                                $this->form_validation->set_rules('middlename', 'Middlename', 'trim');
+                $this->form_validation->set_rules('middlename', 'Middlename', 'trim');
 
 				$this->form_validation->set_rules('lastname', 'Lastname', 'trim|required');
 
@@ -136,24 +127,19 @@ $data['states']
 
 				$this->form_validation->set_rules('mobile_no', 'Number', 'trim|required');
 
-                                $this->form_validation->set_rules('phone_no', 'Number', 'trim');
+				$this->form_validation->set_rules('phone_no', 'Number', 'trim');
 
-                                $this->form_validation->set_rules('idproof', 'ID Proof', 'trim|required');
+				$this->form_validation->set_rules('idproof', 'ID Proof', 'trim|required');
 
-                                $this->form_validation->set_rules('state', 'State', 'trim|required');
+				$this->form_validation->set_rules('state', 'State', 'trim|required');
 
-                                //$this->form_validation->set_rules('district', 'District', 'trim|required');
+				//$this->form_validation->set_rules('district', 'District', 'trim|required');
 
-                                $this->form_validation->set_rules('designation', 'Designation', 'trim|required');
+				$this->form_validation->set_rules('designation', 'Designation', 'trim|required');
 
-                                $this->form_validation->set_rules('status', 'Status', 'required');
+				$this->form_validation->set_rules('status', 'Status', 'required');
 
 				$this->form_validation->set_rules('password', 'Password', 'trim|required');
-
-				
-
-                                
-
 				if ($this->form_validation->run() == FALSE) {
 
 					$data = array(
@@ -170,49 +156,49 @@ $data['states']
 
 				else{
 
-                                    $data = array(
+						$data = array(
 
-                                        'admin_role_id' => $this->input->post('role'),
+							'admin_role_id' => $this->input->post('role'),
 
-                                        'firstname' => $this->input->post('firstname'),
+							'firstname' => $this->input->post('firstname'),
 
-                                        'middlename' => $this->input->post('middlename'),
+							'middlename' => $this->input->post('middlename'),
 
-                                        'lastname' => $this->input->post('lastname'),
+							'lastname' => $this->input->post('lastname'),
 
-                                        'username' => $this->input->post('username'),
+							'username' => $this->input->post('username'),
 
-                                        'email' => $this->input->post('email'),
+							'email' => $this->input->post('email'),
 
-                                        'phone_no' => $this->input->post('phone_no'),
+							'phone_no' => $this->input->post('phone_no'),
 
-                                        'mobile_no' => $this->input->post('mobile_no'),
+							'mobile_no' => $this->input->post('mobile_no'),
 
-                                        'idproof' => $this->input->post('idproof'),
+							'idproof' => $this->input->post('idproof'),
 
-                                        'idproof_no' => $this->input->post('idproof_no'),
+							'idproof_no' => $this->input->post('idproof_no'),
 
-                                        'designation' => $this->input->post('designation'),
+							'designation' => $this->input->post('designation'),
 
-                                        'state_id' => $this->input->post('state'),
+							'state_id' => $this->input->post('state'),
 
-                                        'district_id' => $this->input->post('district'),
+							'district_id' => $this->input->post('district'),
 
-                                        'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
+							'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
 
-                                        'is_active' => $this->input->post('status'),
+							'is_active' => $this->input->post('status'),
 
-                                        'token' => md5(rand(0,1000)),    
+							'token' => md5(rand(0,1000)),    
 
-                                        'last_ip' => $this->input->ip_address(),
+							'last_ip' => $this->input->ip_address(),
 
-                                        'created_at' => date('Y-m-d h:m:s'),
+							'created_at' => date('Y-m-d h:m:s'),
 
-                                        'updated_at' => date('Y-m-d h:m:s'),
+							'updated_at' => date('Y-m-d h:m:s'),
 
-                                    );
+						);
 
-                                        $data = $this->security->xss_clean($data);
+                $data = $this->security->xss_clean($data);
 
                                         //print_r($data); die;
 
@@ -252,7 +238,7 @@ $data['states']
 
 						if($email){
 
-                                                    $this->session->set_flashdata('success', 'User Account has been made and account details has been send to user email.');	
+                        $this->session->set_flashdata('success', 'User Account has been made and account details has been send to user email.');	
 
                                                     //redirect(base_url('admin/auth/login'));
 
@@ -517,4 +503,3 @@ $data['states']
 
 
 ?>
-

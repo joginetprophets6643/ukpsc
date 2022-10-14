@@ -8,7 +8,7 @@ class Dashboard_model extends CI_Model {
 
     public function get_all_users() {
 
-        return $this->db->count_all('ci_admin');
+        return $this->db->count_all('ci_exam_registration');
 
     }
 
@@ -16,9 +16,19 @@ class Dashboard_model extends CI_Model {
 
     public function get_active_users() {
 
-        $this->db->where('is_active', 1);
+        
+		$admin_id = $this->session->userdata('admin_id');  
+        $array = array('ci_subject.created_by' => $admin_id);
+        $count = $this->db->select('*')
+                               ->from('ci_subject')
+                               ->join('ci_exam_master', 'ci_exam_master.id = ci_subject.exam_id')
+                               ->where($array)
+                               ->order_by("ci_subject.id", "desc")->get()->result_array();
+                               return count($count);
+        // print_r(count($count));  die();
+        // $this->db->where('is_active', 1);
 
-        return $this->db->count_all_results('ci_users');
+        // return $this->db->count_all_results('ci_users');
 
     }
 
@@ -26,9 +36,19 @@ class Dashboard_model extends CI_Model {
 
     public function get_deactive_users() {
 
-        $this->db->where('is_active', 0);
+        // $this->db->where('is_active', 0);
 
-        return $this->db->count_all_results('ci_users');
+        // return $this->db->count_all_results('ci_users');
+        $array = array('created_by' => $this->session->userdata('admin_id'));
+        
+        $count = $this->db
+            ->select('*')
+            ->from('ci_exam_master')
+            ->where($array)
+            ->order_by('id','desc')
+            ->get()
+            ->result_array();
+            return count($count);
 
     }
 
