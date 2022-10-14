@@ -273,7 +273,7 @@ class Allocation_admin extends MY_Controller {
             $this->load->view('admin/allocation/allocation_list_send_to_user', $data);
         }
 
-        public function allocation_master() {
+        public function attendance_master() {
             // echo 'here';
             $data['title'] = 'Exam List for Allocation Master';
             $data['data'] = $this->Allocation_Model->get_all_recived_invites();

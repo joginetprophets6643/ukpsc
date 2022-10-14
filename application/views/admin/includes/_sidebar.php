@@ -50,7 +50,6 @@ $cur_tab = $this->uri->segment(2) == '' ? 'dashboard' : $this->uri->segment(2); 
                 <?php
 
                 $menu = get_sidebar_menu();
-             
                 foreach ($menu as $nav):
 
 
@@ -131,6 +130,20 @@ $cur_tab = $this->uri->segment(2) == '' ? 'dashboard' : $this->uri->segment(2); 
                 endforeach;
 
                 ?>
+               <?php $admin_role_id = $this->session->userdata['admin_role_id'];
+                if($admin_role_id==5){
+               ?>
+                <li class="nav-item  has-treeview">
+                    <a href="<?= base_url('admin/allocation_admin/attendance_master') ?>" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>
+                            Attendance Master                                                                   
+                        </p>
+
+                    </a>
+                    
+                </li>
+                <?php } ?>
 
             </ul>
 
