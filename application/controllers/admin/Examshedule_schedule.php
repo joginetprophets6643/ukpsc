@@ -828,8 +828,15 @@ class Examshedule_schedule extends MY_Controller {
                 ];
                  $this->db->where(['id' => $new_id])->update('ci_exam_invitation', $arrForInvitation);
                
-                
-                $this->db->where(['id' => $id])->update('ci_exam_registration', $arr);
+                 $this->db->where(['id' => $id])->update('ci_exam_registration', $arr);
+
+                $newDataForconsent = [
+                    'ref_id' => $new_id,
+                    'exam_name' => $data['exam'][0]['subjectline'],
+                    'invite_sent' => '1',
+                    'invt_recieved' => '0',
+                ];
+                $this->db->where(['school_id' => $id])->update('ci_exam_according_to_school', $newDataForconsent);
                
             }
 
@@ -947,6 +954,14 @@ class Examshedule_schedule extends MY_Controller {
             $this->db->where(['id' => $new_id])->update('ci_exam_invitation', $arrForInvitation);
        
             
+           $newDataForconsent = [
+                'ref_id' => $new_id,
+                'exam_name' => $data['exam'][0]['subjectline'],
+                'invite_sent' => '1',
+                'invt_recieved' => '0',
+            ];
+            $this->db->where(['school_id' => $id])->update('ci_exam_according_to_school', $newDataForconsent);
+
             $data['user_data'] = $this->Exam_model->get_all_invites_ids($id); 
 
             echo '<pre>';
@@ -987,6 +1002,135 @@ class Examshedule_schedule extends MY_Controller {
         
         // exit;
         
+        
+
+    }
+    public function send_invitation_user_all_not_recieved_consent() {
+
+        $ids = $this->input->get('data');
+     
+        $send_consent_id = $this->input->get('send_consent_id');
+        
+        $new_id = urldecrypt($send_consent_id); 
+       
+        $data['exam'] = $this->Exam_model->get_invites_byid($new_id);
+        echo '<pre>';
+        echo '<br/>';
+        echo $data['exam'][0]['subjectline'];
+        echo '<br/>';
+        echo $data['exam'][0]['speedpost'];
+        echo '<br/>';
+        echo $data['exam'][0]['startdate'];
+        echo '<br/>';
+        echo $data['exam'][0]['enddate'];
+        echo '<br/>';
+        echo $data['exam'][0]['name_designation_mobile'];
+        echo '<br/>';
+        
+        if(!empty($ids)){
+            $i = 0;
+            foreach ($ids as $id) {
+
+                $data[$i] = $this->Exam_model->get_all_invites_ids($id);  
+
+                foreach($data[$i] as $email => $value){
+                    $emails[$i] = $value['email'];
+                    $emails[$i] = $value['principal_name'];
+                }
+
+                $i++;
+            }
+        
+            $i = 0;
+            foreach ($ids as $id) {
+
+                $data['user_data'][$i] = $this->Exam_model->get_all_invites_ids($id); 
+                $i++;
+            }
+
+
+        
+            foreach($data['user_data'] as $value){
+                foreach($value as $singledata){
+                    echo '<pre>';
+                    echo $singledata['school_name'];
+                    echo '<br/>';
+                    echo $singledata['address'];
+                    echo '<br/>';
+                    echo $singledata['landmark'];
+                    echo '<br/>';
+                    echo $singledata['principal_name'];
+                    echo '<br/>';
+                    echo $singledata['pri_mobile'];
+                    echo '<br/>';
+                    echo $singledata['email'];
+                    echo '<br/>';
+
+                }
+            }
+            $this->load->helper('email_helper');
+
+            $mail_data = array(
+                'fullname' => 'jogi'.' '.'-'.'send notifyWith   testing',
+                'email' => 'jogi.amu@gmail.com',
+                'verification_link' => base_url('admin/auth/verify').'/'.md5(rand(0,1000))
+            );
+
+            // $to = $data['email'];
+            $to = 'jugendra.singh@netprophetsglobal.com';
+
+            $email = $this->mailer->mail_template($to,'exam-schedule',$mail_data);
+            
+
+                if($email){
+                    $this->session->set_flashdata('success', 'Email send');	
+                    $this->load->view('admin/exam/send_letter_list_index', $data);
+                }	
+                else{
+                    echo 'Email Error';
+                }
+            // exit;
+
+        
+        
+        }else{
+            
+            $id = $this->input->get('id');
+            $data['user_data'] = $this->Exam_model->get_all_invites_ids($id); 
+
+            echo '<pre>';
+            // print_r($data['user_data'][0]);
+            echo '<br/>';
+            echo $school_name = $data['user_data'][0]['school_name'];
+            echo '<br/>';
+            echo $address = $data['user_data'][0]['address'];
+            echo '<br/>';
+            echo $landmark = $data['user_data'][0]['landmark'];
+            echo '<br/>';
+            echo $principal_name = $data['user_data'][0]['principal_name'];
+            echo '<br/>';
+            echo $pri_mobile = $data['user_data'][0]['pri_mobile'];
+            echo '<br/>';
+            echo $user_email = $data['user_data'][0]['email'];
+            echo '<br/>';
+
+            //sending welcome email to user
+            $this->load->helper('email_helper');
+
+            $mail_data = array(
+                'fullname' => 'jogi'.' '.'-'.'send notifyWith   testing',
+                'email' => 'jogi.amu@gmail.com',
+                'verification_link' => base_url('admin/auth/verify').'/'.md5(rand(0,1000))
+            );
+
+            // $to = $data['email'];
+            $to = 'jugendra.singh@netprophetsglobal.com';
+
+            $email = $this->mailer->mail_template($to,'exam-schedule',$mail_data);
+
+            // exit;
+        }
+    
         
 
     }
@@ -1153,7 +1297,7 @@ class Examshedule_schedule extends MY_Controller {
         $state_name = $city_name = $grade_name = "";
         $records['data'] = $this->Exam_model->get_all_recived_invites($state_name,$city_name,$grade_name);
         $data = [];
-        // echo '<pre>'; print_r($records['data']);
+        // echo 'ujjwal'; print_r($records['data']);
         // die;
         $i = 0;
 
@@ -1488,6 +1632,9 @@ class Examshedule_schedule extends MY_Controller {
 
                 $row['principal_name'] = '<h4 class="m0 mb5">'.$row['principal_name'] .'</h4>'.'<small class="text-muted">'.$row['pri_mobile'].'</small><br/>'.'<small class="text-muted">'.$row['email'].'</small>';
                 $row['max_allocate_candidate'] = '<input style="height: 1px;width: 1px;" type="checkbox" id="a" id="sum_value" name="sum_value" class="checkbox-item sum" rel="'.$row['max_allocate_candidate'].'"> '.$row['max_allocate_candidate'].'';
+                $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
+                 <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
+
                 $data[] = [
                     ++$i,
 
@@ -1497,7 +1644,7 @@ class Examshedule_schedule extends MY_Controller {
                     $row['principal_name']? $row['principal_name'] : '',
                     $row['ranking_admin']? $row['ranking_admin'] : '',
                     $row['max_allocate_candidate']? $row['max_allocate_candidate'] : '',
-                    'Not Recieved',
+                    $action,
                 ];
             }
         }

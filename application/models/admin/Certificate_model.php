@@ -126,7 +126,8 @@ class Certificate_model extends CI_Model {
         $this->db->update('ci_exam_registration', $data);
         return true;
     }
-    
+// this is for sent consent check data
+
     public function add_edit_step_update($data, $admin_id) {
 
         $id = $this->session->userdata('admin_id');
@@ -495,11 +496,6 @@ public function get_all_recieved_consent() {
 
     public function addNewDataForExam($data) {
         
-        // $ref_id = $data['ref_id'];
-        // $admin_id = $this->session->userdata('admin_id');
-        // $this->db->where('admin_id', $admin_id);
-        // $this->db->where('ref_id', $ref_id);
-        // $this->db->update('ci_exam_registration', $data);
         $this->db->insert('ci_exam_according_to_school', $data);
         return true;
     }
@@ -514,4 +510,10 @@ public function get_all_recieved_consent() {
         return true;
     }
 
+    public function editforconsentData($data, $admin_id) {
+        $this->db->where('admin_id', $admin_id);
+        $this->db->update('ci_exam_according_to_school', $data);
+        return true;
+    }
+    
 }

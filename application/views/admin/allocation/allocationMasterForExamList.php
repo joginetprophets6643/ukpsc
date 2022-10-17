@@ -171,6 +171,7 @@
                             <th>End Date of exam Details</th>
                         </tr>
                     </thead>
+                    <tbody>
                      <?php  foreach ($data   as $key=> $d){?> 
                         <tr>
                             <td><?php echo $key+1;?></td>
@@ -179,7 +180,8 @@
                             <td><?php echo $d['startdate'];?></td>
                             <td><?php echo $d['enddate'];?></td>
                         </tr> 
-                        <?php }?>                  
+                        <?php }?>  
+                    </tbody>                
                 </table>
             </div>
         </div>

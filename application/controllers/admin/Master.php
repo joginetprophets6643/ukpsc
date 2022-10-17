@@ -559,10 +559,10 @@ class Master extends MY_Controller
             $date_exam = $this->input->post('date_exam') ? implode(',', $this->input->post('date_exam')) : "";
             $time_exam = $this->input->post('time_exam') ? implode(',', $this->input->post('time_exam')) : "";
 
-            $this->db->select('*');
-            $this->db->from('ci_exam_invitation');
-            $this->db->where('id',$id);
-            $q= $this->db->get();
+            // $this->db->select('*');
+            // $this->db->from('ci_exam_invitation');
+            // $this->db->where('id',$id);
+            // $q= $this->db->get();
 
             if($this->input->post('subjectline') == ''){
 

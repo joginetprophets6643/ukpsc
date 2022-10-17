@@ -134,11 +134,35 @@ public function consent_add() {
                     'city' => $this->input->post('city'),
                 ];
                 
-                $data = $this->security->xss_clean($data);
-                // print_r($data1); die();
 
-                $result = $this->Certificate_model->add_register_data($data);
+           
+
+                $data = $this->security->xss_clean($data);
+                $result = true;
+                $checkData = $this->admin_model->get_user_detail_reg($this->session->userdata('admin_id'));
+                if(count($checkData) > 0){
+                 $result = true;
+                }
+                else{
+                 
+                    $result = $this->Certificate_model->add_register_data($data);
+                    
+                    $userData = $this->admin_model->get_user_detail_reg($this->session->userdata('admin_id'));
+                    $dataNew = [
+                        'school_registration_number' => $this->test_input($this->input->post('school_registration')),
+                        'address' => $this->test_input($this->input->post('address')),
+                        'admin_id' => $this->session->userdata('admin_id'),
+                        'school_name' => $this->input->post('school_name'),
+                        'landmark' => $this->input->post('landmark'),
+                        'district' => $this->input->post('district'),
+                        'city' => $this->input->post('city'),
+                        'school_id' => $userData['id'],
+                    ];
+                    $this->Certificate_model->addNewDataForExam($dataNew);
+                }
+            
                 if ($result) {
+                   
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
                     redirect(base_url('admin/step2'));
          
@@ -168,8 +192,7 @@ public function consent_add_1() {
                 ];
                 
                 $data = $this->security->xss_clean($data);
-                
-
+                $this->Certificate_model->editforconsentData($data,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
 
                 if ($result) {
@@ -204,6 +227,7 @@ public function consent_add_1() {
                 ];
                 
                 $data = $this->security->xss_clean($data);
+                $this->Certificate_model->editforconsentData($data,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 if ($result) {
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
@@ -248,6 +272,7 @@ public function consent_add_1() {
                 ];
                
                 $data = $this->security->xss_clean($data);
+                $this->Certificate_model->editforconsentData($data,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 if ($result) {
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
@@ -282,6 +307,7 @@ public function consent_add_1() {
                 ];
                 
                 $data = $this->security->xss_clean($data);
+                $this->Certificate_model->editforconsentData($data,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 if ($result) {
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
@@ -467,9 +493,22 @@ public function consent_add_1() {
                     'created_at' => date('d-m-Y : h:m:s'),
                     'created_by' => $this->session->userdata('admin_id'),                                     
                 ];
+                $data2 = [
+                    'fileName1' => $fileName6,
+                    'fileName2' => $fileName2,
+                    'fileName3' => $fileName3,
+                    'fileName4' => $fileName4,
+                    'fileName5' => $fileName5,
+                    'fileName6' => $fileName6,
+                    'file_movement' => $file_movement,
+                    'invt_recieved' =>2,
+                    'created_at' => date('d-m-Y : h:m:s'),
+                    'created_by' => $this->session->userdata('admin_id'),                                     
+                ];
                 
                 $data = $this->security->xss_clean($data);
                 // print_r($data); die();
+                $this->Certificate_model->editforconsentData($data2,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 if ($result) {
                     // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');

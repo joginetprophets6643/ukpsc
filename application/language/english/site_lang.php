@@ -20,12 +20,12 @@ $lang['invoice'] = "Invoice";
 
 $lang['dashboard'] = "Dashboard";
 $lang['consent_user'] = "Consent";
-$lang['allocation_send'] = "Update to User";
+$lang['allocation_send'] = "Update to Exam Center";
 $lang['allocation_user'] = "Allocation Recieved";
 $lang['allocation_user_list'] = "Allocated List";
 $lang['allocation_admin'] = "Allocation";
 
-$lang['allocation_list'] = "Allocate Consent";
+$lang['allocation_list'] = "Allocate Candidates";
 
 $lang['dashboard_v1'] = "Dashboard v1";
 

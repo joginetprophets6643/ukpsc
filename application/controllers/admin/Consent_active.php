@@ -875,8 +875,10 @@ public function consent_recieved(){
                 $q= $this->db->get();
                 $school_Id =  $q->row_array();
                 $school_Id = $school_Id['id'];
-                $this->db->where(['school_id' => $school_Id])->update('ci_registration_invitation', $dataForNewTable);
-                $this->db->where(['ref_id' => $this->input->post('ci_exam_fileupload6')])->update('ci_registration_invitation', $dataForNewTable);
+
+                $this->db->where(['school_id' => $school_Id]);
+                $this->db->where(['ref_id' => $this->input->post('ci_exam_fileupload6')]);
+                $this->db->update('ci_registration_invitation', $dataForNewTable);
                 $result = $this->Certificate_model->add_edit_step_update($data,$admin_id);
 
 
