@@ -143,6 +143,16 @@ $cur_tab = $this->uri->segment(2) == '' ? 'dashboard' : $this->uri->segment(2); 
                     </a>
                     
                 </li>
+                <li class="nav-item  has-treeview">
+                    <a href="<?= base_url('admin/allocation_admin/reports_list') ?>" class="nav-link">
+                        <i class="nav-icon fa fa-dashboard"></i>
+                        <p>
+                            Reports                                                                  
+                        </p>
+
+                    </a>
+                    
+                </li>
                 <?php } ?>
 
             </ul>

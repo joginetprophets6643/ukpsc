@@ -188,11 +188,19 @@
 <!-- DataTables -->
 
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
-
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
+
 <script>
-    var table = $('#na_datatable').DataTable( {
-    "processing": true,
-    "serverSide": false, 
-  });
+    $(document).ready(function() {
+    $('#na_datatable').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'excel'
+        ]
+    } );
+    $('.dt-buttons .dt-button span').html('Download Report');
+} );
 </script>

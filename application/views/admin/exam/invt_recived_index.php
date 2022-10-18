@@ -265,8 +265,6 @@ var table = $('#consent_recieved_list').DataTable({
                     }
 
             var district_id = $('#district').val();
-            console.log("district",district_id);
-                //   return false;
             var state_id = $('#state').val();
             var grade = $('#grade').val();
             var district_id =  $('#district').val();;
@@ -280,7 +278,6 @@ var table = $('#consent_recieved_list').DataTable({
                     dataType: 'html',
                     data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade,'exam_new_id':exam_new_id, 'csfr_token_name':csfr_token_value },
                     success: function(data) {
-                        console.log("data 31",data);
                         $('#consent_recieved_list').html(data);
                     }
                     });

@@ -1391,7 +1391,7 @@ class Examshedule_schedule extends MY_Controller {
                 }
 
                 $row['principal_name'] = '<h4 class="m0 mb5">'.$row['principal_name'] .'</h4>'.'<small class="text-muted">'.$row['pri_mobile'].'</small><br/>'.'<small class="text-muted">'.$row['email'].'</small>';
-                $row['max_allocate_candidate'] = '<input style="height: 1px;width: 1px;" type="checkbox" id="a" id="sum_value" name="sum_value" class="checkbox-item sum" rel="'.$row['max_allocate_candidate'].'"> '.$row['max_allocate_candidate'].'';
+                $row['max_allocate_candidate'] = '<input style="height: 1px;width: 1px;" hidden type="checkbox" id="a" id="sum_value" name="sum_value" class="checkbox-item sum" rel="'.$row['max_allocate_candidate'].'"> '.$row['max_allocate_candidate'].'';
                 $data[] = [
                     ++$i,
 

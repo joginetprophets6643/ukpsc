@@ -12,6 +12,7 @@ class Allocation_admin extends MY_Controller {
         $this->load->model('admin/location_model', 'location_model');
         $this->load->model('admin/Certificate_model', 'Certificate_model');
         $this->load->model('admin/Allocation_Model', 'Allocation_Model');
+        $this->load->model('admin/Exam_model', 'Exam_model');
         $this->load->helper('date');
     }
 
@@ -284,7 +285,6 @@ class Allocation_admin extends MY_Controller {
 
         public function school_list_exam_for_allocation($exam_id){
             $exam_id = urldecrypt($exam_id);
-
             $data['info'] = $this->Allocation_Model->getSchoolListForAllocationExam($exam_id);
              foreach ($data['info'] as $key => $d) {
                  $data['info'][$key]['centerCode'] = getCenterCode( $d['school_id'],$exam_id); 
@@ -297,5 +297,40 @@ class Allocation_admin extends MY_Controller {
             $this->load->view('admin/includes/_footer', $data);
 
         }
+        public function reports_list(){
+            $data['title'] = 'Download Reports';
+            $state_name = $city_name = $grade_name = '';
+            $data['data'] = $this->Exam_model->get_all_recived_invites($state_name,$city_name,$grade_name);
+           
+            $this->load->view('admin/includes/_header', $data);
+            $this->load->view('admin/report/index', $data);
+            $this->load->view('admin/includes/_footer', $data);
+        }
+
+        public function downreportbutton($id){
+            $id = urldecrypt($id);
+            $data['exam_name'] = get_exam_name_new( $id);
+            $data['id'] = $id;
+            $data['title'] = 'Download Reports button';
+            // Consent recieved Table
+            $state_name = $city_name = $grade_name = '';
+            $data['temp'][1] = $this->Exam_model->get_consent_recved_data($state_name, $city_name, $grade_name,$id);
+            $data['data']=$data['temp'][1];
+            // cosent_not_recved_data
+            $state_name = $city_name = $grade_name = '';
+            $data['notrecievetempdata'][1] = $this->Exam_model->get_consent_not_recved_data($state_name, $city_name, $grade_name,$id);
+            $data['notrecieveddata']=$data['notrecievetempdata'][1];
+            // attendence_master_report
+            $data['info'] = $this->Allocation_Model->getSchoolListForAllocationExam($id);
+            foreach ($data['info'] as $key => $d) {
+                $data['info'][$key]['centerCode'] = getCenterCode( $d['school_id'],$id); 
+                $data['info'][$key]['examination_center_name'] = getSchoolName( $d['school_id']); 
+            }
+
+            $this->load->view('admin/includes/_header', $data);
+            $this->load->view('admin/report/downloadreportbutton', $data);
+            $this->load->view('admin/includes/_footer', $data);
+        }
+
     
 }
