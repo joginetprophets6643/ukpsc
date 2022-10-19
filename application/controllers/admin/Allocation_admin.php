@@ -311,15 +311,47 @@ class Allocation_admin extends MY_Controller {
             $id = urldecrypt($id);
             $data['exam_name'] = get_exam_name_new( $id);
             $data['id'] = $id;
-            $data['title'] = 'Download Reports button';
+            $data['title'] = 'Download Report buttons for';
+
             // Consent recieved Table
             $state_name = $city_name = $grade_name = '';
             $data['temp'][1] = $this->Exam_model->get_consent_recved_data($state_name, $city_name, $grade_name,$id);
-            $data['data']=$data['temp'][1];
+            $data['data']=$data['temp'][1][1];
+            foreach ($data['data'] as $key => $value) {
+                $data['data'][$key]['centerCode'] = getCenterCode( $value['school_id'],$id)?getCenterCode( $value['school_id'],$id):'';
+                $data['data'][$key]['consent_allocation'] = getConsentAllocate_max($value['school_id'])?getConsentAllocate_max($value['school_id']):'';
+                $data['data'][$key]['candidateNo'] = getCandidateNumbers($value['school_id'],$id);
+
+            }
+            $records1['info'] = $this->Allocation_Model->get_data_for_allocation($id);
+            $date_exam_consent_recieve = isset($records1['info'][0]['date_exam']) ? explode(",",$records1['info'][0]['date_exam']) : [];
+            $shft_exam_consent_recieve = isset($records1['info'][0]['shft_exam']) ? explode(",",$records1['info'][0]['shft_exam']) : [];
+            $data['date_exam_consent_recieve'] = $date_exam_consent_recieve;
+            $data['shft_exam_consent_recieve'] = $shft_exam_consent_recieve;
+            $data['no_candidate'] = isset($records1['info'][0]['no_candidate']) ? explode(",",$records1['info'][0]['no_candidate']) : [];
+            $data['candidates'] = isset($records1['info'][0]['candidates']) ? explode(",",$records1['info'][0]['candidates']) : [];
+
             // cosent_not_recved_data
             $state_name = $city_name = $grade_name = '';
             $data['notrecievetempdata'][1] = $this->Exam_model->get_consent_not_recved_data($state_name, $city_name, $grade_name,$id);
-            $data['notrecieveddata']=$data['notrecievetempdata'][1];
+            $data['notrecieveddata']=$data['notrecievetempdata'][1][1];
+            foreach ($data['notrecieveddata'] as $key => $value) {
+                $data['notrecieveddata'][$key]['centerCode'] = getCenterCode( $value['school_id'],$id)?getCenterCode( $value['school_id'],$id):'';
+                $data['notrecieveddata'][$key]['consent_allocation'] = getConsentAllocate_max($value['school_id'])?getConsentAllocate_max($value['school_id']):'';
+                $data['notrecieveddata'][$key]['candidateNo'] = getCandidateNumbers($value['school_id'],$id);
+
+            }
+
+            $records2['info'] = $this->Allocation_Model->get_data_for_allocation($id);
+            $date_exam_consent_not_recieve = isset($records2['info'][0]['date_exam']) ? explode(",",$records2['info'][0]['date_exam']) : [];
+            $shft_exam_consent_not_recieve = isset($records2['info'][0]['shft_exam']) ? explode(",",$records2['info'][0]['shft_exam']) : [];
+            $data['date_exam_consent_not_recieve'] = $date_exam_consent_not_recieve;
+            $data['shft_exam_consent_not_recieve'] = $shft_exam_consent_not_recieve;
+            $data['no_candidate'] = isset($records1['info'][0]['no_candidate']) ? explode(",",$records1['info'][0]['no_candidate']) : [];
+            $data['candidates'] = isset($records1['info'][0]['candidates']) ? explode(",",$records1['info'][0]['candidates']) : [];
+
+
+
             // attendence_master_report
             $data['info'] = $this->Allocation_Model->getSchoolListForAllocationExam($id);
             foreach ($data['info'] as $key => $d) {

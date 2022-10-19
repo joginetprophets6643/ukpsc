@@ -443,6 +443,14 @@ function getSchoolName($school_id)
     $exam_center_code = isset($q['school_name'])?$q['school_name']:'';
     return $exam_center_code;
 }
+function getConsentAllocate_max($school_id)
+{
+    $ci = & get_instance();
+    $q = $ci->db->select('max_allocate_candidate')->where('id',$school_id)
+         ->get('ci_exam_registration')->row_array();
+    $exam_center_code = isset($q['max_allocate_candidate'])?$q['max_allocate_candidate']:'';
+    return $exam_center_code;
+}
 
 function get_exam_name_new($id) {
     $ci = & get_instance();

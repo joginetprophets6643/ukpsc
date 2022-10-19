@@ -2,6 +2,23 @@
 
 <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.css">
 
+<style>
+    button.dt-button.buttons-excel.buttons-html5 {
+        padding: 0.3rem 0.5rem;
+        background: #373250;
+        border: 1px solid #373250;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button.dt-button.buttons-excel.buttons-html5:focus,
+    button.dt-button.buttons-excel.buttons-html5:hover {
+        background: #e14658;
+        border: 1px solid #e14658;
+        outline: none;
+    }
+</style>
+
 
 <!-- Content Wrapper. Contains page content -->
 
@@ -188,9 +205,9 @@
 <!-- DataTables -->
 
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/jszip.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/buttons.html5.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 
 <script>
