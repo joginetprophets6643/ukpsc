@@ -140,11 +140,12 @@ public function consent_add() {
                 $data = $this->security->xss_clean($data);
                 $result = true;
                 $checkData = $this->admin_model->get_user_detail_reg($this->session->userdata('admin_id'));
-                if(count($checkData) > 0){
+                // print_r($checkData); die();
+                if(count((array)$checkData) > 0){
                  $result = true;
                 }
                 else{
-                 
+                  
                     $result = $this->Certificate_model->add_register_data($data);
                     
                     $userData = $this->admin_model->get_user_detail_reg($this->session->userdata('admin_id'));

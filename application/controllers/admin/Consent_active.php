@@ -110,6 +110,7 @@ public function consent_active_list()
 
 public function consent_recieved(){
     // $this->rbac->check_operation_access();
+
     $data["states"] = $this->location_model->get_states();
     if (isset($_SESSION["state_id"]) && $_SESSION["state_id"] != "") {
 

@@ -94,11 +94,17 @@ class Master extends MY_Controller
 
         $admin_id = $this->session->userdata('admin_id');  
         $array = array('ci_subject.created_by' => $admin_id);
+        // $records['data'] = $this->db->select('*')
+        //                        ->from('ci_subject')
+        //                        ->join('ci_exam_master', 'ci_exam_master.id = ci_subject.exam_id')
+        //                        ->where($array)
+        //                        ->order_by("ci_subject.id", "desc")->get()->result_array();
         $records['data'] = $this->db->select('*')
-                               ->from('ci_subject')
-                               ->join('ci_exam_master', 'ci_exam_master.id = ci_subject.exam_id')
+                               ->from('ci_exam_master')
+                               ->join('ci_subject', 'ci_subject.exam_id = ci_exam_master.id')
                                ->where($array)
                                ->order_by("ci_subject.id", "desc")->get()->result_array();
+       
         
         $data = [];
         $i = 0;
@@ -175,6 +181,7 @@ class Master extends MY_Controller
 
     public function que_list()
     {
+
         $this->rbac->check_operation_access();
         $data['title'] = '';
         $this->load->view('admin/includes/_header');
@@ -271,6 +278,7 @@ class Master extends MY_Controller
     }
     public function quetion_paper_del($id)
     {
+        // echo "here".urldecrypt($id);die();
         $this->rbac->check_operation_access();
 
         $this->db->delete('ci_subject', ['id' => urldecrypt($id)]);

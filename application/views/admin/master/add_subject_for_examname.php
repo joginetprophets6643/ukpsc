@@ -39,8 +39,8 @@
                         <div class="form-group">
                             <label for="name" class="col-sm- control-label">Exam Name&nbsp;(परीक्षा का नाम अंग्रेजी)<i
                                     style="color:#ff0000; font-size:12px;">*</i></label>
-                            <input type="text" style="text-transform: capitalize;" name="exam_name" value=<?php echo
-                                $exam_name ?> class="form-control" id="exam_name" placeholder="Exam Name" disabled>
+                            <input type="text" style="text-transform: capitalize;" name="exam_name" value="<?php echo
+                                $exam_name ?>" class="form-control" id="exam_name" placeholder="Exam Name" disabled>
                         </div>
                     </div>
                     <div class="col-md-4">

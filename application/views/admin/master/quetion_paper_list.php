@@ -10,7 +10,7 @@
       <div class="card-header border-0">
         <div class="d-inline-block">
           <!-- <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; <?php //echo trans('establishment_type') ?> List</h3> -->
-          <h3 class="card-title "><i class="fa fa-list"></i>&nbsp; Subject List&nbsp;(विषय सूची)</h3>
+          <h3 class="card-title "><i class="fa fa-list"></i>&nbsp; Subject List &nbsp;(विषय सूची)</h3>
         </div>
           <div class="float-right d-none">
           <?php if($this->rbac->check_operation_permission('quetion_paper_add')): ?>
