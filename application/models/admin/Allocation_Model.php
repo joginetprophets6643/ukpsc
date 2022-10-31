@@ -28,7 +28,8 @@ class Allocation_Model extends CI_Model {
         $this->db->select('*');
         $this->db->from('ci_exam_according_to_school');
         $this->db->join('ci_exam_invitation', 'ci_exam_invitation.id = ci_exam_according_to_school.ref_id');
-        $this->db->where('ci_exam_according_to_school.consents_signstamp_status', 1);
+        $this->db->where('ci_exam_according_to_school.invt_recieved', 1);
+        // $this->db->where('ci_exam_according_to_school.consents_signstamp_status', 1);
         $this->db->where('ci_exam_according_to_school.ref_id', $ref_id);
         $this->db->order_by('ci_exam_according_to_school.admin_id', 'asc');
         //End the queryProvisanal
@@ -61,14 +62,15 @@ class Allocation_Model extends CI_Model {
     }
 
       public function get_data_for_allocation_user($exam_id) {
-
         $admin_id = $this->session->userdata('admin_id');
+      
+        $exam_id = getExamIdStatusActive($admin_id,$exam_id);
         $this->db->select('*');
         $this->db->from('ci_exam_according_to_school');
         $this->db->join('ci_exam_invitation', 'ci_exam_invitation.id = ci_exam_according_to_school.ref_id');
         $this->db->where('ci_exam_according_to_school.consents_signstamp_status', 1);
         $this->db->where('ci_exam_according_to_school.admin_id', $admin_id);
-        $this->db->where_in('ci_exam_according_to_school.ref_id', $exam_id);
+        $this->db->where('ci_exam_according_to_school.ref_id', $exam_id);
         $this->db->order_by('ci_exam_according_to_school.id', 'asc');
         $query = $this->db->get();
         return $query->result_array();
@@ -132,7 +134,7 @@ class Allocation_Model extends CI_Model {
         'exam_center_code'=>$data['exam_center_code'],
         'admin_id'=>$data['admin_id'],
         'candidate_array'=>$data['candidate_array'],
-        'status'=>1
+        'status'=>0
     ];
     $this->db->where('school_id ', $data['school_id']);
     $this->db->where('exam_id ', $data['exam_id']);

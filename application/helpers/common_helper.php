@@ -435,6 +435,14 @@ function getCenterCode($school_id,$exam_id)
     $exam_center_code = isset($q['exam_center_code'])?$q['exam_center_code']:'';
     return $exam_center_code;
 }
+function getExamIdStatusActive($admin_id,$exam_id)
+{
+    $ci = & get_instance();
+    $q = $ci->db->select('exam_id')->where('admin_id',$admin_id)->where('exam_id ', $exam_id)->where('status',1)
+         ->get('ci_allocation_table')->row_array();
+    $exam_id = isset($q['exam_id'])?$q['exam_id']:0;
+    return $exam_id;
+}
 function getSchoolName($school_id)
 {
     $ci = & get_instance();

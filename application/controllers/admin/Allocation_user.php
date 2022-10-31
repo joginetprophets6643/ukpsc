@@ -52,7 +52,9 @@ class Allocation_user extends MY_Controller {
     }  
     public function allocation_data_recieve_by_user($exam_id) {
     $exam_id = urldecrypt($exam_id);
+ 
     $data['info'] = $this->Allocation_Model->get_data_for_allocation_user($exam_id);
+   
     $data['date_exam'] = isset($data['info'][0]['date_exam']) ? explode(",",$data['info'][0]['date_exam']) : [];
     $data['shft_exam'] = isset($data['info'][0]['shft_exam']) ? explode(",",$data['info'][0]['shft_exam']) : [];
     $data['no_candidate'] = isset($data['info'][0]['no_candidate']) ? explode(",",$data['info'][0]['no_candidate']) : [];

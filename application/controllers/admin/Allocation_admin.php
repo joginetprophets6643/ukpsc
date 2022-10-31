@@ -37,6 +37,7 @@ class Allocation_admin extends MY_Controller {
     $admin_id = $this->session->userdata('admin_id'); 
  
     $data['info'] = $this->Allocation_Model->get_data_for_allocation($id);
+   
     $data['date_exam'] = isset($data['info'][0]['date_exam']) ? explode(",",$data['info'][0]['date_exam']) : [];
     $data['shft_exam'] = isset($data['info'][0]['shft_exam']) ? explode(",",$data['info'][0]['shft_exam']) : [];
     $data['no_candidate'] = isset($data['info'][0]['no_candidate']) ? explode(",",$data['info'][0]['no_candidate']) : [];
@@ -172,7 +173,7 @@ class Allocation_admin extends MY_Controller {
             'exam_center_code'=>isset($_GET['exam_center_code'])?$_GET['exam_center_code']:0,
             'admin_id'=>isset($_GET['admin_id'])?$_GET['admin_id']:0,
             'candidate_array'=>isset($_GET['candidate_array'])?implode(",",$_GET['candidate_array']): "",
-            'status'=>1
+            'status'=>0
         ];
         $check = $this->Allocation_Model->insertForAllocation($data);
         echo $check;

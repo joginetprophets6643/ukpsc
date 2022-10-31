@@ -28,7 +28,7 @@
 <div class="datalist">
     <div class="row">
        
-        <!-- <?php// echo form_open_multipart(base_url('admin/allocation_admin/save'), 'id="xin-form"  class="form-horizontal"'); ?> -->
+        
         <div class="col-md-12">
             <!-- </div> -->
             <?php if ($hideselectbutton=='ok') { ?>
@@ -88,9 +88,9 @@
                 foreach ($info as $row):
                     $admin_role_id = $this->session->userdata('admin_role_id');
                     $admin_id = $this->session->userdata('admin_id');
-                    if (($admin_role_id != 6) && ((in_array($row['file_movement'], array(1))) )) {
-                        continue;
-                  }   
+                //     if (($admin_role_id != 6) && ((in_array($row['file_movement'], array(1))) )) {
+                //         continue;
+                //   }   
            
           ?>
 
@@ -177,7 +177,7 @@
 
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
-var table = $('#na_datatable').DataTable({
+var table = $('#allocationTablesend').DataTable({
     "processing": true,
     "serverSide": false,
 });

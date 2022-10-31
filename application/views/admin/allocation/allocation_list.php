@@ -1,12 +1,10 @@
 <div class="datalist">
-    <div class="row">
-
+    <div class="row"></div>
    
-    <!-- <?php// echo form_open_multipart(base_url('admin/allocation_admin/save'), 'id="xin-form"  class="form-horizontal"'); ?> -->
         <table id="allocationTable" class="table table-bordered table-hover" style="border-collapse: collapse !important;">
             <thead>
                 <tr>
-                    <th>S.No.</th>
+                    <th>S.No</th>
                     <th>Examination Center Name</th>
                     <th>Consent recieved</th>
                     <th>Examination Center code</th>
@@ -29,14 +27,14 @@
             <tbody>
 
                 <?php
-         
+             
             $i = 1;
             foreach ($info as $row):
                 $admin_role_id = $this->session->userdata('admin_role_id');
                 $admin_id = $this->session->userdata('admin_id');
-                if (($admin_role_id != 6) && ((in_array($row['file_movement'], array(1))) )) {
-                    continue;
-              }   
+              //   if (($admin_role_id != 6) && ((in_array($row['file_movement'], array(1))) )) {
+              //       continue;
+              // }   
        
       ?>
               
@@ -111,7 +109,7 @@
 
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
-var table = $('#na_datatable').DataTable({
+var table = $('#allocationTable').DataTable({
     "processing": true,
     "serverSide": false,
 });

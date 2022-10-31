@@ -52,7 +52,7 @@
                     <div class="card custom-card">
                         <div class="card-body">
                         <div class="table-responsive">
-                                <table class="table table-striped table-bordered" id="consentTable">
+                                <table class="table table-striped table-bordered d-none" id="consentTable">
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
@@ -150,6 +150,9 @@
                                              if ($row['invt_recieved']==1 && $row['invite_sent']==1) {
                                               echo 'Recieved';
                                             }
+                                            else{
+                                                echo 'test';
+                                            }
                                              ?>
                                            </td>
                                          
@@ -166,37 +169,106 @@
                     <div class="card bg-warning">
                         <div class="card-body">
                         <div class="table-responsive">
-                                <table class="table table-striped table-bordered d-none" id="consentNotRecieve">
+                        <table class="table table-striped table-bordered d-none" id="consentNotRecieve">
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
+                                            <th>School Registration Number</th>
                                             <th>Center Name</th>
+                                            <th>Examination Center Code</th>
+                                            <th>Address</th>
+                                            <th>Landmark</th>
                                             <th>District</th>
                                             <th>City</th>
                                             <th>Pricipal name</th>
                                             <th>Pricipal Mobile</th>
                                             <th>Pricipal Email</th>
+                                            <th>Whatsapp Number</th>
+                                            <th>Superintendent Name</th>
+                                            <th>Superintendent Mobile</th>
+                                            <th>Superintendent Email</th>
+                                            <th>Superintendent whatspp</th>
+                                            <th>Total Class Number</th>
+                                            <th>Class Sitting Capacity</th> 
+                                            <th>Max Num Student</th>
+                                            <th>Furniture Available</th>
+                                            <th>Electric Available</th>
+                                            <th>generator Available</th> 
+                                            <th>Wash Room</th>
+                                            <th>Clock Room</th> 
+                                            <th>Vehicle Available</th>
+                                            <th>Account Holder Name</th>
+                                            <th>Bank Name</th>
+                                            <th>Branch Name</th>
+                                            <th>Ifsc Code</th>
+                                            <th>Account Number</th>
+                                            <th>Account Number Confirm</th>
                                             <th>Grade</th>
-                                            <th>Max No Of Applicant</th>
+                                            <th>Consent</th>
+                                            <th>Allocation</th>
+                                            <?php foreach ($date_exam_consent_not_recieve as $key1 => $date) {?>
+                                                <th>
+                                                    <?php echo $date?>
+                                                    <br>
+                                                    (
+                                                    <?php echo $shft_exam_consent_not_recieve[$key1]?>)
+                                                </th>
+
+
+                                                <?php } ?>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($notrecieveddata[1] as $key=>$row){ ?> 
+                                        <?php foreach ($notrecieveddata as $key=>$row){ ?> 
                                         <tr>
                                            <td><?php echo $key+1?></td>
+                                           <td><?php echo $row['school_registration_number']?></td>
                                            <td><?php echo $row['school_name']?></td>
+                                           <td><?php echo $row['centerCode']?></td>
+                                           <td><?php echo $row['address']?></td>
+                                           <td><?php echo $row['landmark']?></td>
                                            <td><?php echo $row['district']?></td>
                                            <td><?php echo $row['city']?></td>
                                            <td><?php echo $row['principal_name']?></td>
                                            <td><?php echo $row['pri_mobile']?></td>
                                            <td><?php echo $row['email']?></td>
+                                           <td><?php echo $row['whats_num']?></td>
+                                           <td><?php echo $row['super_name']?></td>
+                                           <td><?php echo $row['super_mobile']?></td>
+                                           <td><?php echo $row['super_email']?></td>
+                                           <td><?php echo $row['super_whatspp']?></td>
+                                           <td><?php echo $row['total_class_number']?></td>
+                                           <td><?php echo $row['class_sitting_capacity']?></td>
+                                           <td><?php echo $row['max_num_student']?></td>
+                                           <td><?php echo $row['furniture_avail']?></td>
+                                           <td><?php echo $row['elec_avail']?></td>
+                                           <td><?php echo $row['gen_avai']?></td>
+                                           <td><?php echo $row['wash_rrom']?></td>
+                                           <td><?php echo $row['clock_room']?></td>
+                                           <td><?php echo $row['vehicle_avail']?></td>
+                                           <td><?php echo $row['acc_holder_name']?></td>
+                                           <td><?php echo $row['ban_name']?></td>
+                                           <td><?php echo $row['branch_name']?></td>
+                                           <td><?php echo $row['ifsc']?></td>
+                                           <td><?php echo $row['acc_num']?></td>
+                                           <td><?php echo $row['acc_num_con']?></td>
                                            <td><?php echo $row['ranking_admin']?></td>
+                                           <td><?php echo $row['consent_allocation']?></td>
                                            <td><?php echo $row['max_allocate_candidate']?></td>
+                                           <?php foreach ($row['candidateNo'] as $key1 => $v) { 
+                                                ?>
+                                            <td>
+                                            <?php echo isset($v)?$v:''?>
+                                            </td>
+                                            <?php } ?>
                                            <td>
                                             <?php 
                                              if ($row['invt_recieved']==0) {
                                               echo 'Pending';
+                                            }
+                                            else{
+                                                echo 'test';
                                             }
                                              ?>
                                            </td>
@@ -204,8 +276,7 @@
                                         </tr>
                                         <?php }?>
                                     </tbody>
-                                </table>
-                            </div>
+                                </table>                            </div>
                         </div>
                     </div>
 				</div>
@@ -251,9 +322,9 @@
 
 </div>
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/jszip.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/buttons.html5.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 
 <script>
