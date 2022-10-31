@@ -173,11 +173,9 @@
 </div>
 <!-- DataTables -->
 
-<script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
-
-<script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
 var table = $('#allocationTablesend').DataTable({
+    "retrieve": true,
     "processing": true,
     "serverSide": false,
 });

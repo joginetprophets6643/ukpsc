@@ -76,7 +76,7 @@
               
                   <div class="form-group">
                     <label for="district">WhatsApp No.<br> (व्हाट्सएप नंबर)</label>
-                    <input type="text" class="form-control" name="super_whatspp"  value="<?php if (isset($user['super_whatspp'])) {
+                    <input type="text" class="form-control" name="super_whatspp" maxlength="10" value="<?php if (isset($user['super_whatspp'])) {
                                           echo $user['super_whatspp'];
                                       } ?>"  id="super_whatspp"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  >
                     

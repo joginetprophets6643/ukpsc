@@ -18,7 +18,7 @@
                 <div class="d-inline-block">
                   <h3 class="card-title">
                     <i class="fa fa-list"></i>
-                    Consent List for Recieved
+                    Consent Recieved (सहमति प्राप्त)
                   </h3>
                 </div>
             </div>

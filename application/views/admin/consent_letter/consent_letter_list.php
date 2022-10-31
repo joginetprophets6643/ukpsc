@@ -2,7 +2,10 @@
 <?php //echo '<pre>';print_r($info);exit;?>
 
 <!-- <div class="datalist"> -->
+
    <div class="row">
+  <?php  if(!empty($info)){   ?>
+   
    <table id="consent_list" class="table table-bordered table-striped table-hover" style="overflow: auto; border-collapse: collapse !important;">
       <thead>
          <tr>
@@ -118,8 +121,8 @@
                <td>
                <?php  if ($admin_role_id == 6 )  { ?>
                <!-- <a href="<?= base_url("admin/consent_letter/consent_add_2/" . $row['id']); ?>" title="Edit" class="btn btn-warning" >
-               <i class="fa fa-edit"></i>
-               </a>  -->
+               <i class="fa fa-edit"></i> -->
+               </a> 
             <?php }  if ($admin_role_id == 5 )  { ?>
                <!-- <a href="<?= base_url("admin/consent_letter/add_remark_concent/" . $row['id']); ?>" title="Add Action" class="btn btn-warning">
                <i class="fa fa-edit"></i>
@@ -151,6 +154,9 @@
          
       </tbody>
    </table>
+   <?php } else{?><div> <a href="<?= base_url("admin/step1"); ?>" title="Edit" class="btn btn-warning" >
+               <i class="fa fa-edit"></i>
+               </a> </div><?php } ?>
 <!-- </div> -->
    <!-- Modal -->
    

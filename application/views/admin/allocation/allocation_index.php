@@ -194,16 +194,6 @@
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 
 <script>
-$(function() {
-
-    $("#example1").DataTable();
-
-});
-</script>
-
-
-
-<script>
 //------------------------------------------------------------------
 
 function filter_data()
@@ -271,7 +261,7 @@ $(function() {
         var state_id = $(this).val();
         var exam_id = $('#exam_id_new').val();
         var grade = $('#grade').val();
-          
+        
         if (state_id != '') {
             // $('#allocationTable').html('');
             $.ajax({
@@ -298,6 +288,7 @@ $(function() {
                                 'csfr_token_name': csfr_token_value
                             },
                             success: function(data1) {
+                                
                                 $('#allocationTable').html(data1);
                             }
                             });

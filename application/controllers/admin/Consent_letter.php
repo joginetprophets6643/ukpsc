@@ -34,6 +34,7 @@ class Consent_letter extends MY_Controller {
 
 
     public function cosent_list_data() {
+     
         if((isset($_GET['district_id'])) && (!isset($_GET['state_id']))){
         // if (isset($_GET['state_id'])){
             
@@ -75,11 +76,12 @@ class Consent_letter extends MY_Controller {
             $this->load->view('admin/consent_letter/consent_letter_list', $data);
 
         }else{
-
+          
             $state_name = '';
             $city_name = '';
             $grade_name = '';
             $data['info'] = $this->Certificate_model->get_all_concent_both($state_name, $city_name, $grade_name);
+
             $this->load->view('admin/consent_letter/consent_letter_list', $data);
         }
         // exit;

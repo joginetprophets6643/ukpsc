@@ -22,7 +22,7 @@
 
                     <i class="fa fa-list"></i>
 
-                    Center Allocated (केंद्र आवंटित)
+                    Examination Allocated (परीक्षा आवंटित)
 
 
                   </h3>
