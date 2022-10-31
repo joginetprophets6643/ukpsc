@@ -52,7 +52,7 @@
                     <div class="card custom-card">
                         <div class="card-body">
                         <div class="table-responsive">
-                               <table class="table table-striped table-bordered d-none" id="consentTable">
+                                <table class="table table-striped table-bordered d-none" id="consentTable">
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
@@ -139,31 +139,16 @@
                                            <td><?php echo $row['ranking_admin']?></td>
                                            <td><?php echo $row['consent_allocation']?></td>
                                            <td><?php echo $row['max_allocate_candidate']?></td>
-                                           <?php if(count($row['candidateNo']))
-                                           {
-                                           ?>
                                            <?php foreach ($row['candidateNo'] as $key1 => $v) { 
                                                 ?>
                                             <td>
                                             <?php echo isset($v)?$v:''?>
                                             </td>
-                                            <?php }}
-                                            else { ?>
-                                            <td>
-                                            
-                                            </td>
-                                            <?php
-                                            }
-                                             ?>
-
-
+                                            <?php } ?>
                                            <td>
                                             <?php 
                                              if ($row['invt_recieved']==1 && $row['invite_sent']==1) {
                                               echo 'Recieved';
-                                            }
-                                            else{
-                                                echo 'test';
                                             }
                                              ?>
                                            </td>
@@ -268,30 +253,16 @@
                                            <td><?php echo $row['ranking_admin']?></td>
                                            <td><?php echo $row['consent_allocation']?></td>
                                            <td><?php echo $row['max_allocate_candidate']?></td>
-                                        <?php if(count($row['candidateNo']))
-                                           {
-                                           ?>
                                            <?php foreach ($row['candidateNo'] as $key1 => $v) { 
                                                 ?>
                                             <td>
                                             <?php echo isset($v)?$v:''?>
                                             </td>
-                                            <?php }}
-                                            else { ?>
-                                            <td>
-                                            
-                                            </td>
-                                            <?php
-                                            }
-                                             ?>
-
+                                            <?php } ?>
                                            <td>
                                             <?php 
                                              if ($row['invt_recieved']==0) {
                                               echo 'Pending';
-                                            }
-                                            else{
-                                                echo 'test';
                                             }
                                              ?>
                                            </td>
