@@ -56,7 +56,7 @@ class Location_Model extends CI_Model
 	public function get_states()
 	{
 		
-	  $query = $this->db->query("SELECT * from ci_cities where status = 1");
+	  $query = $this->db->query("SELECT * from ci_cities where status = 1 ORDER BY `ci_cities`.`name` ASC");
 	//    echo 'here';
 	//    print_r($query->result());
   	  return $query->result();

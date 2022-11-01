@@ -18,7 +18,7 @@
         <div class="card_reg" style="border-color: #373250;" >
             <div class="register-logo" style="background-color:#373250; color:#fff; border-radius:20px 20px 0 0;">				
                 <div style="float:left; margin: 1% 0 0 1%; "><img style="width: 100px;" src="<?= base_url(); ?>assets/dist/img/ukpsc_logo.png" /></div>
-				<div style="float:right"> <p class="mb-4 head1 text-bold" style="background-color:#373250; margin: 8% 0 0 0%; ">Registration of School/College for UKPSC Exam Centre <br>यूके0पी0एस0सी0 परीक्षा केंद्र के लिए स्कूल/कॉलेज का पंजीकरण</p></div>
+				<div style="float:right"> <p class="mb-4 head1 text-bold" style="background-color:#373250; margin: 8% 0 0 0%; ">Registration of School/College for UKPSC Exam Centre <br>यू0के0पी0एस0सी0 परीक्षा केंद्र के लिए स्कूल/कॉलेज का पंजीकरण</p></div>
                 <!--<h2><a href="<?= base_url('admin'); ?>"><?= $this->general_settings['application_name']; ?></a></h2>-->
         </div>
             <div class="card-body register-card-body custom-register" style="border-radius: 0 0 20px 20px; background: #fff;">
@@ -43,12 +43,12 @@
 
                     <div class="form-group has-feedback col-md-6">
                         <label>School/College/University Registration No. <br>(स्कूल/कॉलेज/विश्वविद्यालय पंजीकरण संख्या)<span>*</span></label>
-                        <input type="text"  style="text-transform:capitalize;"  maxlength="12" name="school_registration" id="school_registration" value="<?php if (old('school_registration') != " ") {
+                        <input type="text"  style="text-transform:capitalize;"  minlength="40"  name="school_registration" id="school_registration" value="<?php if (old('school_registration') != " ") {
                                     echo old('school_registration');} ?>"  class="form-control" placeholder="" >
                     </div>
                     <div class="form-group has-feedback col-md-6">
                         <label>School/College/University Name <br>(स्कूल/कॉलेज/विश्वविद्यालय का नाम)<span>*</span></label>
-                        <input type="text" name="school_name" maxlength="100" style="text-transform:capitalize;"  id="school_name" value="<?php if (old('school_name') != " ") {
+                        <input type="text" name="school_name" maxlength="300" style="text-transform:capitalize;"  id="school_name" value="<?php if (old('school_name') != " ") {
                                     echo old('school_name');} ?>"  class="form-control" placeholder="" >
                     </div>
                     <div class="form-group has-feedback col-md-6">
@@ -200,6 +200,14 @@
 <script>
     $(document).ready(function () {
 
+
+            $('#pri_mobile_confirm').bind("cut copy paste",function(e) {
+                e.preventDefault();
+            });
+            $('#email_confirm').bind("cut copy paste",function(e) {
+                e.preventDefault();
+            });
+
             $("#Error_Message").show().delay(5000).queue(function(n) {
                 $(this).hide(); n();
             });
@@ -207,7 +215,6 @@
          $(function () {
             $('#district').change(function () {
                 var district_id = $(this).val();
-                console.log("district",district_id);
                 if (district_id != '') {
                     $('#othstate').val('').hide();
 
@@ -232,15 +239,26 @@
         createCaptcha();
         $("#xin-form")["submit"](function () {
             // d.preventDefault();
-           
-            if ($("#school_registration").val() == "") {
+
+            if ($("#school_registration").val() == "" ) {
                 alert("Please enter 'School/College/University Registration No.'\n कृपया 'स्कूल/कॉलेज/विश्वविद्यालय पंजीकरण संख्या' दर्ज करें।");
+                $("#school_registration").focus();
+                return false;
+            }
+            if($("#school_registration").val().length<=40){
+                alert("School registration number should be of minimum 40 digits.'\n स्कूल पंजीकरण संख्या कम से कम 40 अंकों की होनी चाहिए!");
                 $("#school_registration").focus();
                 return false;
             }
             
             if ($("#school_name").val() == "") {
                 alert("Please enter 'School/College/University Name' \n कृपया 'स्कूल/कॉलेज/विश्वविद्यालय' का नाम दर्ज करें");
+                $("#school_name").focus();
+                return false;
+            }
+           
+            if ($("#school_name").val().length >=300 ) {
+                alert("School name should be 300 characters' \n स्कॉल का नाम 300 अक्षरों का होना चाहिए!");
                 $("#school_name").focus();
                 return false;
             }
@@ -388,7 +406,7 @@
         //clear the contents of captcha div first 
         document.getElementById('captcha').innerHTML = "";
         var charsArray =
-                "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         var lengthOtp = 7;
         var captcha = [];
         for (var i = 0; i < lengthOtp; i++) {
@@ -420,7 +438,8 @@
             }
             else
             {var key=er.keyCode;
-            if(!((key==8)||(key==9)||(key==32)||(key==46)||(key>=65 && key<=90)))
+               
+            if(!((key==8)||(key==9)||(key==32)||(key==46)||(key==189)||(key==190)||(key>=65 && key<=90)))
                 {
                      er.preventDefault();
                      // alert("Please Enter Only Alphabets")

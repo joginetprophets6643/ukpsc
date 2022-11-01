@@ -154,15 +154,35 @@
          
       </tbody>
    </table>
-   <?php } else{?><div> <a href="<?= base_url("admin/step1"); ?>" title="Edit" class="btn btn-warning" >
-               <i class="fa fa-edit"></i>
-               </a> </div><?php } ?>
+   
 <!-- </div> -->
    <!-- Modal -->
    
        
       </div>
+      
       </div>
+      <?php } else{?>
+         <div class="col-lg-4 col-6">
+            <div class="small-box bg-warning" style="margin-bottom: 0 !important;">
+
+               <div class="d-flex justify-content-between p-3 align-items-center">
+                  <div class="inner">
+                     <h5 class="text-white mb-0 text-bold">Edit Registration Details</h5>
+                  </div>
+
+                  <div class="img-wrapper">
+                     <img src=" <?php echo base_url("assets/dist/img/people_2.png")?>" height="100" alt="">
+                  </div>
+               </div>
+               <a href="<?= base_url("admin/step1"); ?>" class="small-box-footer">
+               Edit your information <i class="fa fa-arrow-circle-right"></i>
+               </a>
+
+            </div>
+         </div> 
+      </div>
+   <?php } ?>
 
 <script>
    $(document).ready(function () {

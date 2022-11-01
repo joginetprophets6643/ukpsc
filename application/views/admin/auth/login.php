@@ -182,7 +182,7 @@
                                             <span class="mb-4" style="color: #c7c7c7;">Don't have a UKPSC ID? (यूकेपीएससी आईडी नहीं है?)</span>
                                             <a
                                                 href="<?= base_url('admin/auth/register'); ?>" class="text-center"
-                                                style="font-size: 16px;">Register Here! (यहां रजिस्टर करें!)
+                                                style="font-size: 19px; font-weight: 700; text-decoration: underline; color: #e14658;">Register Here! (यहां रजिस्टर करें!)
                                             </a>
                                         </label>
 
@@ -244,7 +244,7 @@
         //clear the contents of captcha div first 
         document.getElementById('captcha').innerHTML = "";
         var charsArray =
-            "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         var lengthOtp = 7;
         var captcha = [];
         for (var i = 0; i < lengthOtp; i++) {
