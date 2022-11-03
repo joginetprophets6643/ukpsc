@@ -1,6 +1,83 @@
-
+<style>
+   #example1excel_filter,
+   #example1excel_info,
+   #example1excel_paginate
+    {
+      display: none;
+   }
+</style>
 <div class="datalist">
-   <table id="example1" class="table table-bordered table-hover" style="overflow: auto;
+<table id="example1excel" class="table table-bordered table-hover d-none" style="overflow: auto;
+    ">
+      <thead>
+         <tr>
+            <th width="50">S.No.</th>
+            <th>School Registration No.  </th>
+            <th>School Name  </th>
+            <th>District</th>
+            <th>City</th>
+            <th>Principal Name</th>
+            <th>Principal Mobile</th>
+            <th>Principal Email</th>
+            <th width="120">Ranking</th>
+            <th width="120">Status</th>
+         </tr>
+      </thead>
+      <tbody>
+          
+         <?php
+         
+            $i = 1;
+            foreach ($info as $row):
+      
+                $admin_role_id = $this->session->userdata('admin_role_id');
+                $admin_id = $this->session->userdata('admin_id');
+                if (($admin_role_id != 6) && ((in_array($row['file_movement'], array(1))) )) {
+                    continue;
+              }
+              if($row['school_registration_number'] != '' && $row['school_name'] != '' && $row['district'] != ''){ 
+               ?>
+
+                  <tr>
+                     <td>
+                        <?= $i ?>
+                     </td>
+                     <td>
+                        <?= $row['school_registration_number'] ?>
+                     </td>
+                     <td>
+                        <?= $row['school_name'] ?>        
+                     </td>
+                     <td>
+                        <?= $row['district']; ?>
+                     </td>
+                     <td>
+                        <?= $row['city']; ?>
+                     </td>
+                     <td>
+                           <?= $row['principal_name']; ?>
+                     </td>
+                     <td>
+                        <?= $row['pri_mobile']; ?>
+                    </td>
+                     <td>
+                        <?= $row['email']; ?>
+                
+              </td>
+                     <td>
+                           <?= $row['ranking_admin']; ?>  
+                     </td>
+                     <td><?= $row['status_admin']; ?></td>
+            
+                  </tr>
+            <?php
+              }
+            $i++;
+            endforeach;
+            ?>
+      </tbody>
+   </table>
+   <table id="example1"  class="table table-bordered table-hover" style="overflow: auto;
     ">
       <thead>
          <tr>
@@ -47,12 +124,17 @@
                         <?= $row['city']; ?>
                      </td>
                      <td>
-                        <h4 class="m0 mb5">
+                        <span class="">
                            <?php echo $row['principal_name']; ?>
-                        </h4>
+                        </span>
+                        <br>
                      
                         <small class="text-muted">
-                        <?php echo $row['pri_mobile'] . ' ' . $row['email']; ?>
+                        <?php echo $row['pri_mobile']; ?>
+                        </small>
+                        <br>
+                        <small class="text-muted">
+                        <?php echo $row['email']; ?>
                         </small>
                      </td>
                   <!--   <td>
@@ -69,15 +151,14 @@
                <td>
                   <?php $admin_id = $this->session->userdata('admin_id'); ?>
                   <?php if($admin_id == 31){ ?>
-                     <select name="grade" id="grade" style="height:20px; width:150px;   " class="gra" rel="<?php echo $row['id']; ?>">        
+                     <select name="grade" id="grade" style="height:20px; width:150px;" class="gra form-control" rel="<?php echo $row['id']; ?>">        
                         <option value="">Select Grade</option>
                         <option value="A" <?php if($row['ranking_admin'] == 'A'){ echo "selected";}?> >A</option>
                         <option value="B" <?php if($row['ranking_admin'] == 'B'){ echo "selected";}?> >B</option>
                         <option value="C" <?php if($row['ranking_admin'] == 'C'){ echo "selected";}?>>C</option>
                         <option value="Reject"<?php if($row['ranking_admin'] == 'Reject'){ echo "selected";}?> >Reject</option>
                      </select>      
-                     </br>
-                     <select name="st_grade" id="st_grade" class="st_grade" rel="<?php echo $row['id']; ?>" style="margin-top:10px;height:20px;width:150px;" >        
+                     <select name="st_grade" id="st_grade" class="st_grade form-control" rel="<?php echo $row['id']; ?>" style="margin-top:10px;height:20px;width:150px;" >        
                            <option value="">Select Status</option>
                            <option value="Active" <?php if($row['status_admin'] == 'Active'){ echo "selected";}?> >Active</option>
                            <option value="Inactive" <?php if($row['status_admin'] == 'Inactive'){ echo "selected";}?>>Inactive</option>
@@ -98,6 +179,7 @@
             ?>
       </tbody>
    </table>
+
    <!-- Modal -->
       <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered " role="document">
@@ -177,6 +259,18 @@ $('.st_grade').on('change',function () {
 
 
 </script>
+<script>
+  $(document).ready(function() {
+     $('#example1').DataTable();
+     $('#example1excel').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'excel'
+            ]
+        } );
+      });
+
+</script> 
 <style type="text/css">
    .permanent_info{
       margin-bottom: 05px;

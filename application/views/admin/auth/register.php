@@ -43,7 +43,7 @@
 
                     <div class="form-group has-feedback col-md-6">
                         <label>School/College/University Registration No. <br>(स्कूल/कॉलेज/विश्वविद्यालय पंजीकरण संख्या)<span>*</span></label>
-                        <input type="text"  style="text-transform:capitalize;"  minlength="40"  name="school_registration" id="school_registration" value="<?php if (old('school_registration') != " ") {
+                        <input type="text"  style="text-transform:capitalize;"  maxlength="40"  name="school_registration" id="school_registration" value="<?php if (old('school_registration') != " ") {
                                     echo old('school_registration');} ?>"  class="form-control" placeholder="" >
                     </div>
                     <div class="form-group has-feedback col-md-6">
@@ -245,11 +245,11 @@
                 $("#school_registration").focus();
                 return false;
             }
-            if($("#school_registration").val().length<=40){
-                alert("School registration number should be of minimum 40 digits.'\n स्कूल पंजीकरण संख्या कम से कम 40 अंकों की होनी चाहिए!");
-                $("#school_registration").focus();
-                return false;
-            }
+            // if($("#school_registration").val().length<=40){
+            //     alert("School registration number should be of minimum 40 digits.'\n स्कूल पंजीकरण संख्या कम से कम 40 अंकों की होनी चाहिए!");
+            //     $("#school_registration").focus();
+            //     return false;
+            // }
             
             if ($("#school_name").val() == "") {
                 alert("Please enter 'School/College/University Name' \n कृपया 'स्कूल/कॉलेज/विश्वविद्यालय' का नाम दर्ज करें");

@@ -464,3 +464,53 @@ function get_exam_name_new($id) {
     $ci = & get_instance();
     return @$ci->db->get_where('ci_exam_invitation', array('id' => $id))->row_array()['subjectline'];
 }
+function sendSMS($mobile,$message,$template_id){
+    $phone=$mobile;
+    $user_message=$message;
+    $authKey = "1101498600000055523";
+    $mobileNumber = $phone;
+    $senderId = "UKPSCM";
+    $message = $user_message;
+    $route = "route=4";
+    $postData = array(
+        "username"=>'UKPSC',
+        "password"=>"123456",
+        "sender"=>'UKPSCM',
+        "pe_id"=>"1101498600000055523",
+        "reqid"=>"1",
+        "template_id"=>$template_id,
+        "format"=>"json",
+        'message'=>$message,
+        'to'=>$mobileNumber
+    );
+
+
+    /*API URL*/
+    $url="http://sms.holymarkindia.in/API/WebSMS/Http/v1.0a/index.php";
+    /* init the resource */
+    $ch = curl_init();
+    
+    curl_setopt_array($ch, array(
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => $postData,
+    CURLOPT_FOLLOWLOCATION => true
+    ));
+    /*Ignore SSL certificate verification*/
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+    /*get response*/
+    $output = curl_exec($ch);
+
+    /*Print error if any*/
+    if(curl_errno($ch))
+    {
+    echo 'error:' . curl_error($ch);
+    }
+    curl_close($ch);
+            echo "Message Sent Successfully !";
+    
+   
+}

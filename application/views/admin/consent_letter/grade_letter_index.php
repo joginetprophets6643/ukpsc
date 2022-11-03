@@ -6,11 +6,11 @@
          <!-- For Messages -->
         <?php $this->load->view('admin/includes/_messages.php') ?>
         <div class="card">
-            <div class="card-body">
+            <div class="card-header border-0">
                 <div class="d-inline-block">
                   <h3 class="card-title">
                     <i class="fa fa-list"></i>
-                    Consent Letter List
+                    Registered College/School Grading List.(पंजीकृत कॉलेज / स्कूल ग्रेडिंग सूची।)
                   </h3>
                     
               </div>
@@ -19,6 +19,7 @@
             <a style="display:none;" href="<?= base_url('admin/consent_letter/consent_add'); ?>" class="btn btn-success"> Apply for Consent Letter </a>
           <?php //endif; ?>
         </div>
+      
               
             </div>
            
@@ -42,13 +43,11 @@
 
 <!-- DataTables -->
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/jszip.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/buttons.html5.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable();
-  });
 
-</script> 
 
 <script>
 //------------------------------------------------------------------

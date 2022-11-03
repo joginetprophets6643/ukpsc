@@ -806,7 +806,7 @@ class Location extends MY_Controller {
 
          $data['info']= $this->location_model->get_all_towns();
 
-         // print_r($data['info']); die();
+        //  print_r($data['info']); die();
 
 
 

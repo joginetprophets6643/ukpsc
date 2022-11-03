@@ -2,11 +2,98 @@
 <?php //echo '<pre>';print_r($info);exit;?>
 
 <!-- <div class="datalist"> -->
-
+<style>
+   #consent_listexcel_filter,
+   #consent_listexcel_info,
+   #consent_listexcel_paginate
+    {
+      display: none;
+   }
+</style>
    <div class="row">
   <?php  if(!empty($info)){   ?>
-   
-   <table id="consent_list" class="table table-bordered table-striped table-hover" style="overflow: auto; border-collapse: collapse !important;">
+   <table id="consent_listexcel" class="table table-bordered table-striped table-hover d-none" style="overflow: auto; border-collapse: collapse !important;">
+      <thead>
+         <tr>
+            <th width="50">S.No.</th>
+            <th>School Registration No.  </th>
+            <th>School Name  </th>
+            <th>School Address  </th>
+            <th>District</th>
+            <th>City</th>
+            <th>Principal Name</th>
+            <th>Principal Mobile</th>
+            <th>Principal Email</th>
+            <th>Principal whatsup Number</th>
+            <th>Account Holder Name</th>
+            <th>Bank Name</th>
+            <th>Branch Name</th>
+            <th>IFSC Code</th>
+         </tr>
+      </thead>
+      <tbody>
+          
+         <?php
+            if(!empty($info)){   
+                  $i = 1;
+                  foreach ($info as $row):
+            
+                     $admin_role_id = $this->session->userdata('admin_role_id');
+                     $admin_id = $this->session->userdata('admin_id');
+                  //    if (($admin_role_id != 6) && ((in_array($row['file_movement'], array(1))) )) {
+                  //       continue;
+                  // }
+               if($row['school_registration_number'] != '' && $row['school_name'] != '' && $row['district'] != ''){      
+               // if(1==1){      
+         ?>
+
+            <tr>
+               <td>
+                  <?= $i ?>
+               </td>
+               <td>
+                  <?= $row['school_registration_number'] ?>
+               </td>
+               <td>
+                  <?= $row['school_name'] ?>        
+               </td>
+               <td>
+                  <?= $row['address'] ?>        
+               </td>
+               <td>
+                  <?= $row['district']; ?>
+               </td>
+               <td>
+                  <?= $row['city']; ?>
+               </td>
+               <td>
+                  <?= $row['principal_name']; ?>
+               </td>
+               <td><?=$row['pri_mobile']?></td>
+               <td><?=$row['email']?></td>
+               <td><?=$row['whats_num']?></td>
+               <td><?=$row['acc_holder_name']?></td>
+               <td><?=$row['ban_name']?></td>
+               <td><?=$row['branch_name']?></td>
+               <td><?=$row['ifsc']?></td>
+            </tr>
+         <?php
+         }
+            $i++;
+            endforeach;
+         }else{
+            ?>
+            <tr>
+               <td style="text-align: center;" colspan="11">No data available in table</td>               
+            </tr> 
+         <?php
+         }
+         ?>
+
+         
+      </tbody>
+   </table>
+   <table  id="consent_list" class="table table-bordered table-striped table-hover" style="overflow: auto; border-collapse: collapse !important;">
       <thead>
          <tr>
             <th width="50">S.No.</th>
@@ -155,6 +242,7 @@
       </tbody>
    </table>
    
+   
 <!-- </div> -->
    <!-- Modal -->
    
@@ -227,9 +315,18 @@
 });
 
 
+var table = $('#consent_listexcel').DataTable( {
+      // retrieve: true,
+      // paging: true, 
+      dom: 'Bfrtip',
+            buttons: [
+                'excel'
+            ]
+  });
 var table = $('#consent_list').DataTable( {
       retrieve: true,
       paging: true, 
+ 
   });
 
 </script>

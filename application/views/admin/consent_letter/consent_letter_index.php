@@ -11,7 +11,7 @@
                 <div class="d-inline-block">
                   <h3 class="card-title">
                     <i class="fa fa-list"></i>
-                    Consent Letter List&nbsp;सहमति पत्र सूची
+                    Registered College/School List.&nbsp;(पंजीकृत कॉलेज / स्कूल सूची |)
                   </h3>
                     
               </div>
@@ -167,6 +167,9 @@
 
 <!-- DataTables -->
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/jszip.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/buttons.html5.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
 $('document').ready(function()
