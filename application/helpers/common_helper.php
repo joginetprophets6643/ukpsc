@@ -464,6 +464,7 @@ function get_exam_name_new($id) {
     $ci = & get_instance();
     return @$ci->db->get_where('ci_exam_invitation', array('id' => $id))->row_array()['subjectline'];
 }
+
 function sendSMS($mobile,$message,$template_id){
     $phone=$mobile;
     $user_message=$message;
@@ -513,4 +514,46 @@ function sendSMS($mobile,$message,$template_id){
             echo "Message Sent Successfully !";
     
    
+}
+function sendEmail($email,$message,$template_id){
+    $postData = array(
+        "username"=>"UKPSC",
+        "api_password"=>"50ef9hkx4ota7pb53",
+        "sender"=>"ukpschdr@gmail.com",
+        "replyto"=>"ukpschdr@gmail.com",
+        "cright"=>"UKPSC",
+        "display"=>"UKPSC",
+        'subject'=>'Test Message',
+        'message'=>$message,
+        'to'=>$email
+    );
+
+
+    /*API URL*/
+    $url="http://hmiemail.in/pushemail.php";
+    /* init the resource */
+    $ch = curl_init();
+    
+    curl_setopt_array($ch, array(
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => $postData,
+    CURLOPT_FOLLOWLOCATION => true
+    ));
+    /*Ignore SSL certificate verification*/
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+    /*get response*/
+    $output = curl_exec($ch);
+
+    /*Print error if any*/
+    if(curl_errno($ch))
+    {
+    echo 'error:' . curl_error($ch);
+    }
+    curl_close($ch);
+            echo "Message Sent Successfully !";
+    
 }

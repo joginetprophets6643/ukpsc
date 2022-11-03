@@ -428,16 +428,25 @@ class Auth extends MY_Controller {
 						$to = $data['email'];
 
 						$email = $this->mailer->mail_template($to,'email-verification',$mail_data);
-						//SMS Template impletements 03-11-2022
+						// SMS Template impletements 03-11-2022
 						$message='Dear Applicant,%0a';
 						$message.='your registration is completed, kindly complete your application using your emailid or user id  and password.%0a';
 						$message.='Regards,%0a';
 						$message.='UKPSC';
 						$phone = $this->input->post('pri_mobile');
 						$template_id = "1007550202180261279";
-
                         sendSMS($phone,$message,$template_id);
-				       
+                       
+						// EMAIL Template impletements 03-11-2022
+
+						$message='Dear Applicant,<br>';
+						$message.='your registration is completed, kindly complete your application using your emailid or user id  and password.<br>';
+						$message.='Regards,<br>';
+						$message.='UKPSC';
+						$email = $data['email'];
+						$template_id = "1007550202180261279";
+                        sendEmail($email,$message,$template_id);
+
 						if($email){
 							$this->session->set_flashdata('registersuccess', 'Your account has been successfully created, please verify it by clicking the activation link that has been send to your email address and generate your new password to log in to UKPSC.');	
 							redirect(base_url('admin/auth/login'));
@@ -761,57 +770,12 @@ class Auth extends MY_Controller {
 			echo "1";
 			exit;
 		}
-		// public function sendSMS($mobile,$message,$template_id){
-		// 						$phone=$mobile;
-		// 						$user_message=$message;
-		// 						$authKey = "1101498600000055523";
-		// 						$mobileNumber = $phone;
-		// 						$senderId = "UKPSCM";
-		// 						$message = $user_message;
-		// 						$route = "route=4";
-		// 						$postData = array(
-		// 							"username"=>'UKPSC',
-		// 							"password"=>"123456",
-		// 							"sender"=>'UKPSCM',
-		// 							"pe_id"=>"1101498600000055523",
-		// 							"reqid"=>"1",
-		// 							"template_id"=>$template_id,
-		// 							"format"=>"json",
-		// 							'message'=>$message,
-		// 							'to'=>$mobileNumber
-		// 						);
-						
-	
-		// 						/*API URL*/
-		// 						$url="http://sms.holymarkindia.in/API/WebSMS/Http/v1.0a/index.php";
-		// 						/* init the resource */
-		// 						$ch = curl_init();
-								
-		// 						curl_setopt_array($ch, array(
-		// 						CURLOPT_URL => $url,
-		// 						CURLOPT_RETURNTRANSFER => true,
-		// 						CURLOPT_POST => true,
-		// 						CURLOPT_POSTFIELDS => $postData,
-		// 						CURLOPT_FOLLOWLOCATION => true
-		// 						));
-		// 						/*Ignore SSL certificate verification*/
-		// 						curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-		// 						curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-							
-		// 						/*get response*/
-		// 						$output = curl_exec($ch);
-							
-		// 						/*Print error if any*/
-		// 						if(curl_errno($ch))
-		// 						{
-		// 						echo 'error:' . curl_error($ch);
-		// 						}
-		// 						curl_close($ch);
-		// 								echo "Message Sent Successfully !";
-								
-							   
-		// }
-	}  // end class
+
+
+
+		
+
+			}  // end class
 
 
 
