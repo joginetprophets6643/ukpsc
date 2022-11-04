@@ -39,10 +39,10 @@
                                         <?php echo $value['speedpost']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $value['startdate']; ?>
+                                        <?php echo date("d-m-Y", strtotime($value['startdate'])); ?>
                                     </td>
                                     <td>
-                                        <?php echo $value['enddate']; ?>
+                                        <?php echo date("d-m-Y", strtotime( $value['enddate'])); ?>
                                     </td>
                                 </tr>
                                 <?php }

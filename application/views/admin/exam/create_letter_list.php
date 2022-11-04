@@ -89,13 +89,13 @@
 
             <td>
 
-               <?= $row['startdate']; ?>
+               <?=  date("d-m-Y", strtotime($row['startdate'])); ?>
 
             </td>
 
             <td>
 
-               <?= $row['enddate']; ?>
+               <?=  date("d-m-Y", strtotime($row['enddate'])); ?>
 
             </td>
             <td style="text-align:center;">

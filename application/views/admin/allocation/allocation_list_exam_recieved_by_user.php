@@ -35,8 +35,8 @@ table tbody td h4 {
                     <td><?php echo $key+1 ?></td>
                     <td> <a href="<?= base_url("admin/allocation_user/allocation_data_recieve_by_user/" . urlencrypt($value['id']))?>" title="View" class="btn btn-sec"><?php echo $value['subjectline']; ?></a></td>
                     <td><?php echo $value['speedpost']; ?></td>
-                    <td><?php echo $value['startdate']; ?></td>
-                    <td><?php echo $value['enddate']; ?></td>
+                    <td><?php echo  date("d-m-Y", strtotime($value['startdate'])); ?></td>
+                    <td><?php echo date("d-m-Y", strtotime($value['enddate'])); ?></td>
                 </tr>
                 <?php }
                 }

@@ -64,7 +64,7 @@
 
                         <?php foreach ($date_exam as $key1 => $date) {?>
                         <th>
-                            <?php echo $date?>
+                            <?php echo date("d-m-Y", strtotime($date)); ?>
                             <br>
                             (
                             <?php echo $shft_exam[$key1]?>)
