@@ -176,9 +176,9 @@
                         <tr>
                             <td><?php echo $key+1;?></td>
                             <td><a href="<?php echo site_url("admin/allocation_admin/school_list_exam_for_allocation/".urlencrypt($d['id'])); ?>" class="btn btn-sec" ><?php echo $d['subjectline'];?></a></td>
-                            <td><?php echo $d['no_candidate'];?></td>
-                            <td><?php echo $d['startdate'];?></td>
-                            <td><?php echo $d['enddate'];?></td>
+                            <td><?php echo $d['no_candidate'];?> </td>
+                            <td><?= date("d-m-Y", strtotime($d['startdate']));?></td>
+                            <td><?= date("d-m-Y", strtotime($d['enddate']));?></td>
                         </tr> 
                         <?php }?>  
                     </tbody>                

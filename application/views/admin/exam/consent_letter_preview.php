@@ -55,11 +55,11 @@
                                         </tr>
                                         <tr>
                                             <th>Start Date</th>
-                                            <td><?= $admin['startdate'] ?></td>
+                                            <td><?= date("d-m-Y", strtotime( $admin['startdate']));?></td>
                                         </tr>
                                         <tr>
                                             <th>End Date</th>
-                                            <td><?= $admin['enddate'] ?></td>
+                                            <td><?= date("d-m-Y", strtotime( $admin['enddate']));?></td>
                                         </tr>
                                         <tr>
                                             <th>Signature</th>

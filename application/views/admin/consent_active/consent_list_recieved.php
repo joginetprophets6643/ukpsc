@@ -45,10 +45,10 @@
             <span style="color: #E14658;"> <?= $row['ciesubjectline'] ?></span>
          </td>
          <td>
-            <?= $row['ciestartdate']; ?>
+            <?= date("d-m-Y", strtotime($row['ciestartdate']));?>
          </td>
          <td>
-            <?= $row['cieenddate']; ?>
+            <?= date("d-m-Y", strtotime($row['cieenddate']));?>
          </td>
          <td style="text-align:center;">
          <?php  if ($admin_role_id == 6 )  { ?>

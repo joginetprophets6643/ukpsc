@@ -51,14 +51,15 @@
                             <div class="form-group mb-4">
                                 <label for="name" class="col-sm- control-label">Start Date of exam <span>*</span><br/>(परीक्षा शुरू होने की तिथि)<span>*</span></label>
                                 <!-- <input type="date" name="startdate" id="startdate" readonly class="form-control" placeholder="Subject" > -->
-                                <input type="text" name="startdate" id="startdate" readonly class="form-control" placeholder="Subject" value="<?= $exam[0]['startdate']?>">
+                                <input type="text" name="startdate" id="startdate" readonly class="form-control" placeholder="Subject" value="<?= date("d-m-Y", strtotime( $exam[0]['startdate']));?>">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-4">
                                 <label for="name" class="col-sm- control-label">End Date of exam <span>*</span><br/>(परीक्षा की समाप्ति तिथि)<span>*</span></label>
                                 <!-- <input type="date" id="end_date" name="enddate" readonly class="form-control" placeholder="Subject"> -->
-                                <input type="text" id="end_date" name="enddate" readonly class="form-control" placeholder="Subject"  value="<?= $exam[0]['enddate']?>">
+                               
+                                <input type="text" id="end_date" name="enddate" readonly class="form-control" placeholder="Subject"  value="<?= date("d-m-Y", strtotime( $exam[0]['enddate']));?>">
                             </div>
                         </div>
                         <div class="col-md-6">

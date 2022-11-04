@@ -186,7 +186,7 @@
                             <td><?php echo $key+1;?></td>
                             <td><?php echo $d['examination_center_name'];?></td>
                             <td><?php echo $d['centerCode'];?></td>
-                            <td><?php echo $d['exam_date'];?></td>
+                            <td><?= date("d-m-Y", strtotime($d['exam_date']));?></td>
                             <td><?php echo $d['exam_shift'];?></td>
                             <td><?php echo $d['present_candidate'];?></td>
                             <td><?php echo $d['absent_candidate'];?></td>

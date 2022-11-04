@@ -62,13 +62,13 @@
 		  <div class="input-text">
 			   <div class="form-group">
 			   <label>Total Number of room<i style="color:#ff0000; font-size:12px;">*</i><br>कक्षा की कुल संख्या<i style="color:#ff0000; font-size:12px;">*</i></label> 
-				  <input class="form-control" type="text" name="no_room" maxlength="2" value="<?php if ($user['no_room'] != " ") {
+				  <input class="form-control" type="text" name="no_room" maxlength="4" value="<?php if ($user['no_room'] != " ") {
                                     echo $user['no_room'];
                                 } ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="no_room" >
 				</div>
 				<div class="form-group">
 				<label>Number of seats for candidates in each room.<i style="color:#ff0000; font-size:12px;">*</i><br>प्रत्येक कक्ष में अभ्यर्थियों के बैठने की संख्या<i style="color:#ff0000; font-size:12px;">*</i></label>
-				  <input class="form-control" type="text"  name="no_sheet" maxlength="2" value="<?php if ($user['no_sheet'] != " ") {
+				  <input class="form-control" type="text"  name="no_sheet" maxlength="4" value="<?php if ($user['no_sheet'] != " ") {
                                     echo $user['no_sheet'];
                                 } ?>"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="no_sheet"  >
 				  
