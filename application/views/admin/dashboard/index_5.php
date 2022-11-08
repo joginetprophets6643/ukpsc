@@ -8,7 +8,7 @@
 
           <div class="col-sm-6">
 
-            <h3 class="text-head mb-0"><?= trans('dashboard') ?> ( Exam Controller) </h3>
+            <h3 class="text-head mb-0"><?= trans('dashboard') ?> (SECTION) </h3>
 
           </div>
 

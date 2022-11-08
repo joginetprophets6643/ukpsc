@@ -23,7 +23,7 @@
 
                     <i class="fa fa-list"></i>
 
-                    Candidate Apllications List&nbsp;(उम्मीदवार आवेदन सूची)
+                    Candidate wise application (District wise)&nbsp;(उम्मीदवार वार आवेदन (जिलेवार))
 
                   </h3>
 

@@ -68,8 +68,7 @@
 
                                             <input type="checkbox" id="checkbox2" onchange="valueChanged()"
                                                 name="checkbox" value="">
-                                            <label for="checkbox2"> Ready to upload the form with sign and stamp and
-                                                images</label><br>
+                                            <label for="checkbox2"> Upload Downloaded Consent Form (Signed and Stamped)</label><br>
                                         </div>
                                     </div>
 

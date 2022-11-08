@@ -23,7 +23,7 @@
 
                     <i class="fa fa-list"></i>
 
-                    Create Exam List&nbsp;(परीक्षा सूची बनाएं)
+                    Exam Schedule&nbsp;(परीक्षा अनुसूची)
                     <!-- Create Exam Schedule -->
 
                   </h3>

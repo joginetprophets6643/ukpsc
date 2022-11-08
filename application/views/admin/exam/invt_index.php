@@ -35,8 +35,7 @@
         <div class="card">
             <div class="card-header border-0">
                 <div class="d-inline-block">
-                    <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; Consent List for Sending
-                        Invitations&nbsp;(आमंत्रण भेजने के लिए सहमति सूची)</h3>
+                    <h3 class="card-title"><i class="fa fa-list"></i>&nbsp;School/College Center List for sending Invitations&nbsp;(आमंत्रण भेजने के लिए स्कूल/कॉलेज केंद्र सूची)</h3>
                 </div>
                 <div class="d-inline-block float-right">
                     <?php if($this->rbac->check_operation_permission('quetion_paper_add')): ?>
@@ -144,7 +143,7 @@
                         <div class="d-flex my-2">
                             <div id="countInDistrict" class="d-none mr-5">
                                <h4 class="text-bold" style="font-size: 17px; color: #373250;">
-                                Total Applicants in District : 
+                               Total seats available in District : 
                                 <span style="color: #e14658;" id="districtCounts"></span>
                                </h4> 
                             </div>

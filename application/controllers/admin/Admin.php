@@ -109,6 +109,7 @@ class Admin extends MY_Controller
 		$this->rbac->check_operation_access(); // check opration permission
 		$data['js_file'] = 'admin.js';
 		$data['admin_roles'] =$this->admin->get_admin_roles();
+		
 		$data['states'] = $this->location_model->get_states();
 
 		if($this->input->post('submit')){

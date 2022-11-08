@@ -425,6 +425,7 @@ class Examshedule_schedule extends MY_Controller {
         $city_name = '';
         $grade_name = '';
         $records['data'] = $this->Exam_model->get_all_registration_data($state_name, $city_name, $grade_name);
+     
         $data = [];
        
         $i = 0;

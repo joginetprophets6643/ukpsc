@@ -216,7 +216,7 @@
 
                                     <div class="main active" id="from_upload_show">
                                         <div class="text ">
-                                            <h2>Upload Sign and Stamp Consent Form</h2>
+                                            <h2>Upload Downloaded Consent Form (Signed and Stamped)</h2>
                                             <!-- <p>Add your School/College/Institute Images as per required filed</p> -->
                                         </div>
                                         <div class="row">

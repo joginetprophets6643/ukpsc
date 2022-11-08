@@ -120,14 +120,14 @@ class Exam_model extends CI_Model {
 //                     $this->session->userdata('state_id'));
 // //            $this->db->where('ci_exam_registration.file_movement !=', 1);
 //         }
-        // if ($admin_role_id == 5) {
-        //     $this->db->where('ci_exam_registration.district',
-        //             $this->session->userdata('district_id'));
-        //    $this->db->where('ci_exam_registration.file_movement !=', 1);
-        // }
+        if ($admin_role_id == 5) {
+              $this->db->where('ci_exam_registration.fileName6 is  NOT NULL');
+        }
         if ($admin_role_id == 6) {
-            
+            $this->db->where('ci_exam_registration.fileName6 is  NOT NULL');
             $this->db->where('ci_exam_registration.created_by',$this->session->userdata('admin_id'));
+           
+            // $this->db->where('ci_exam_registration.fileName6 is  NOT NULL');
         }
 
         $filterData = $this->session->userdata('filter_keyword');
