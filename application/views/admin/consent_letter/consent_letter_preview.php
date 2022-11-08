@@ -379,7 +379,7 @@
             <hr>
             <div class="card-footer" align="center">
 
-                <a href="<?= base_url("admin/step6/" ); ?>" class="btn btn-ligh">Back</a>
+                <a href="<?= base_url("admin/profile/consent_user" ); ?>" class="btn btn-ligh">Back</a>
                 <input type="button" class="btn btn-ligh  Print_preview" value="Print"></input>
             </div>
         </div>

@@ -63,7 +63,7 @@
           <div class="small-box bg-info">
             <div class="d-flex justify-content-between p-3 align-items-center">
               <div class="inner">
-                <h5 class="text-white mb-0 text-bold">Consent Recieved</h5>
+                <h5 class="text-white mb-0 text-bold">Consent Recieved <?= $recieve_count?></h5>
               </div>
   
               <div class="img-wrapper">
@@ -82,7 +82,7 @@
             <div class="d-flex justify-content-between p-3 align-items-center">
               <div class="inner">
   
-                <h5 class="text-white mb-0 text-bold">Allocation Recieved</h5>
+                <h5 class="text-white mb-0 text-bold">Allocation Recieved <?=$allocation_recieved?></h5>
   
               </div>
   

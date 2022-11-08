@@ -69,8 +69,7 @@ class Consent_active extends MY_Controller
       
        
         $data["info"] = isset($get_full_data)?$get_full_data:'';
-
-
+   
         $this->load->view("admin/consent_active/consent_list_recieved", $data);
 
     }
