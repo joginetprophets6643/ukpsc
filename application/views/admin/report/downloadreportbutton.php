@@ -29,10 +29,10 @@
 
 
 <div class="content-wrapper">
-	
+  
 
-	<section class="content">
-		<div class="container-fluid">
+  <section class="content">
+    <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -45,10 +45,10 @@
                 </div>
                   
             </div>
-			<div class="row mt-4">
+      <div class="row mt-4">
            
                 <!-- 1 -->
-				<div class="col-md-4">
+        <div class="col-md-4">
                     <div class="card custom-card">
                         <div class="card-body">
                         <div class="table-responsive">
@@ -139,12 +139,19 @@
                                            <td><?php echo $row['ranking_admin']?></td>
                                            <td><?php echo $row['consent_allocation']?></td>
                                            <td><?php echo $row['max_allocate_candidate']?></td>
-                                           <?php foreach ($row['candidateNo'] as $key1 => $v) { 
+
+                                          <?php if(count($row['candidateNo'])>0){?>
+                                           <?php 
+                                           foreach ($row['candidateNo'] as $key1 => $v) { 
                                                 ?>
                                             <td>
                                             <?php echo isset($v)?$v:''?>
                                             </td>
                                             <?php } ?>
+                                            <?php } else{?>
+                                            	<td>N/A</td>
+                                            <?php }?>
+
                                            <td>
                                             <?php 
                                              if ($row['invt_recieved']==1 && $row['invite_sent']==1) {
@@ -160,13 +167,13 @@
                             </div>
                         </div>
                     </div>
-				</div>
+        </div>
                 <!-- 2 -->
-				<div class="col-md-4">
+        <div class="col-md-4">
                     <div class="card bg-warning">
                         <div class="card-body">
                         <div class="table-responsive">
-                        <table class="table table-striped table-bordered d-none" id="consentNotRecieve">
+                        <table class="table table-striped table-bordered d-none " id="consentNotRecieve">
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
@@ -253,12 +260,17 @@
                                            <td><?php echo $row['ranking_admin']?></td>
                                            <td><?php echo $row['consent_allocation']?></td>
                                            <td><?php echo $row['max_allocate_candidate']?></td>
-                                           <?php foreach ($row['candidateNo'] as $key1 => $v) { 
+                                            <?php if(count($row['candidateNo'])>0){?>
+                                           <?php 
+                                           foreach ($row['candidateNo'] as $key1 => $v) { 
                                                 ?>
                                             <td>
                                             <?php echo isset($v)?$v:''?>
                                             </td>
                                             <?php } ?>
+                                            <?php } else{?>
+                                            	<td>N/A</td>
+                                            <?php }?>
                                            <td>
                                             <?php 
                                              if ($row['invt_recieved']==0) {
@@ -273,9 +285,9 @@
                                 </table>                            </div>
                         </div>
                     </div>
-				</div>
+        </div>
                 <!-- 3 -->
-				<div class="col-md-4">
+        <div class="col-md-4">
                     <div class="card bg-info">
                         <div class="card-body">
                             <div class="table-responsive">
@@ -308,10 +320,10 @@
                             </div>
                         </div>
                     </div>
-				</div>
-			</div>
-		</div>
-	</section>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 </div>

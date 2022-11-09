@@ -123,8 +123,13 @@
         var pa = parseInt(present)+parseInt(absent);
         if(pa!=total)
         {
-          alert('Total Should be equal to Present Candidate and Absent Candidate');
-        }     
+          alert('Total Should be equal to total of Present Candidate and Absent Candidate');
+          $("#submit"). attr("disabled", true); 
+          
+        }
+        else{
+            $("#submit"). attr("disabled", false);
+        }    
 });
 
 </script>
