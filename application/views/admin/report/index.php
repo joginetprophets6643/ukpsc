@@ -20,7 +20,7 @@
                                         <?php foreach ($data as $key=>$row){ ?> 
                                         <tr>
                                            <td><?php echo $key+1?></td>
-                                           <td><a href="<?php echo site_url("admin/allocation_admin/downreportbutton/".urlencrypt($row['id'])); ?>" class="btn btn-sec" ><?php echo $row['subjectline'];?></a></td>
+                                           <td><a href="<?php echo site_url("admin/allocation_admin/downreportbutton/".urlencrypt($row['id'])); ?>" class="btn btn-sec" ><?php echo get_exam_name($row['exam_name']);?></a></td>
                                         </tr>
                                         <?php }?>
                                     </tbody>

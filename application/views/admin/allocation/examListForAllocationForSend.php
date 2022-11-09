@@ -174,7 +174,7 @@
                      <?php  foreach ($data   as $key=> $d){?> 
                         <tr>
                             <td><?php echo $key+1;?></td>
-                            <td><a href="<?php echo site_url("admin/allocation_admin/allocation_send_to_user/".urlencrypt($d['id'])); ?>" class="btn btn-sec" ><?php echo $d['subjectline'];?></a></td>
+                            <td><a href="<?php echo site_url("admin/allocation_admin/allocation_send_to_user/".urlencrypt($d['id'])."/".urlencrypt($d['exam_name'])); ?>" class="btn btn-sec" ><?php echo get_exam_name($d['exam_name']);?></a></td>
                             <td><?php echo $d['no_candidate'];?></td>
                             <td><?= date("d-m-Y", strtotime($d['startdate']));?></td>
                             <td><?= date("d-m-Y", strtotime($d['enddate']));?></td>

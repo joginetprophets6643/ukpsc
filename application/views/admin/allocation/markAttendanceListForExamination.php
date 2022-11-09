@@ -38,7 +38,7 @@
 
                     <h3 class="card-title mt-0">
                         <i class="fa fa-list"></i>
-                        <?php echo $title ." of ". $exam_name;?>
+                        <?php echo $title ."-". $exam_name;?>
                     </h3>
                 </div>
                 <div class="d-inline-block float-right">

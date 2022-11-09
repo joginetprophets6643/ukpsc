@@ -95,7 +95,7 @@
                                             <!-- <th style="width:20%; padding:10px;  border: 1px solid #373250;"><?php //echo $no_candidate[$i] ?></th> -->
                                             <td
                                                 style="width:20%; padding:10px;  font-weight: normal !important; border: 1px solid #373250;">
-                                                <?php echo $date_exam[$i] ?>
+                                                <?php echo date("d-m-Y", strtotime($date_exam[$i])); ?>
                                             </td>
                                             <td
                                                 style="width:8%; padding:10px;  font-weight: normal !important; border: 1px solid #373250;">

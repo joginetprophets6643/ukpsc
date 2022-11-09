@@ -23,10 +23,10 @@ class Allocation_admin extends MY_Controller {
         return $data;
     }
     /*Permanent Code Starts Here*/
-    public function allocation_list($id) {
+    public function allocation_list($id,$exam_id) {
         // $this->rbac->check_operation_access();
         $data['id'] = urldecrypt($id);
-        $data['exam_name'] = get_exam_name_new(urldecrypt($id));
+        $data['exam_name'] = get_exam_name(urldecrypt($exam_id));
         $data['states'] = $this->location_model->get_states();
         $data['title'] = 'Allocation  List';
         $this->load->view('admin/includes/_header', $data);
@@ -229,9 +229,10 @@ class Allocation_admin extends MY_Controller {
         $this->load->view('admin/allocation/examListForAllocationForSend', $data);
         $this->load->view('admin/includes/_footer', $data);
     }
-    public function allocation_send_to_user($id)
+    public function allocation_send_to_user($id,$exam_id)
     {
         $data['id'] = urldecrypt($id);
+        $data['exam_name'] = get_exam_name(urldecrypt($exam_id));
         $data['states'] = $this->location_model->get_states();
         $data['title'] = 'Allocation  List';
         $this->load->view('admin/includes/_header', $data);
@@ -288,14 +289,15 @@ class Allocation_admin extends MY_Controller {
             $this->load->view('admin/includes/_footer', $data);
         }
 
-        public function school_list_exam_for_allocation($exam_id){
+        public function school_list_exam_for_allocation($exam_id ,$newExamid){
             $exam_id = urldecrypt($exam_id);
+            $data['exam_name'] = get_exam_name(urldecrypt($newExamid));
             $data['info'] = $this->Allocation_Model->getSchoolListForAllocationExam($exam_id);
              foreach ($data['info'] as $key => $d) {
                  $data['info'][$key]['centerCode'] = getCenterCode( $d['school_id'],$exam_id); 
                  $data['info'][$key]['examination_center_name'] = getSchoolName( $d['school_id']); 
              }
-            $data['exam_name'] = get_exam_name_new( $exam_id);
+            // $data['exam_name'] = get_exam_name_new( $exam_id);
             $data['title'] = 'Allocation Master List';
             $this->load->view('admin/includes/_header', $data);
             $this->load->view('admin/allocation/markAttendanceListForExamination', $data);

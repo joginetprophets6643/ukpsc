@@ -22,7 +22,7 @@
 
                         <i class="fa fa-list"></i>
 
-                        Allocation for Exam Centre (परीक्षा केंद्र के लिए आवंटन)
+                        Allocation for Exam Centre (परीक्षा केंद्र के लिए आवंटन) - <?= $exam_name ?>
 
 
                     </h3>
