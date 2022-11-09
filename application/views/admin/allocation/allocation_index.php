@@ -22,7 +22,7 @@
 
                         <i class="fa fa-list"></i>
 
-                        Allocation for Exam Centre (परीक्षा केंद्र के लिए आवंटन)
+                        Exam Centre candidate allocation (परीक्षा केंद्र उम्मीदवार आवंटन) -<?=$exam_name?>
 
 
                     </h3>
@@ -186,11 +186,7 @@
 
 
 
-
-<!-- DataTables -->
-
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
-
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 
 <script>

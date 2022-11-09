@@ -1048,8 +1048,9 @@ public function consent_add_1() {
 
         $add = array('ranking_admin'=> $val);
 
-        // $result = $this->db->update('ci_exam_registration',$add)->where('id',$rel);
+     
         $result =  $this->db->where('id',$rel)->update('ci_exam_registration', $add);
+         $this->db->where('school_id',$rel)->update('ci_exam_according_to_school', $add);
         if($result){
             $this->session->set_flashdata('Sucess','Grade Updated Successfully');
         }

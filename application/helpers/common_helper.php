@@ -94,6 +94,10 @@ function get_exam_name($id) {
     $ci = & get_instance();
     return @$ci->db->get_where('ci_exam_master', array('id' => $id))->row_array()['exam_name'];
 }
+function get_exam_name_new($id) {
+    $ci = & get_instance();
+    return @$ci->db->get_where('ci_exam_invitation', array('id' => $id))->row_array()['subjectline'];
+}
 
 function get_auth_name($id) {
     $ci = & get_instance();
@@ -460,10 +464,7 @@ function getConsentAllocate_max($school_id)
     return $exam_center_code;
 }
 
-function get_exam_name_new($id) {
-    $ci = & get_instance();
-    return @$ci->db->get_where('ci_exam_invitation', array('id' => $id))->row_array()['subjectline'];
-}
+
 
 function sendSMS($mobile,$message,$template_id){
     $phone=$mobile;

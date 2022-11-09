@@ -11,7 +11,7 @@
                     
                     <?php foreach ($date_exam as $key1 => $date) {?>
                         <th>
-                            <?php echo $date?>
+                            <?php echo date('d-m-y', strtotime($date));$date?>
                             <br>
                             (<?php echo $shft_exam[$key1]?>)
                         </th>
@@ -103,9 +103,11 @@
 
 </div>
 </div>
+<!-- DataTables -->
+
+
 
 <script>
-
 var table = $('#allocationTable').DataTable({
     "retrieve": true,
     "processing": true,

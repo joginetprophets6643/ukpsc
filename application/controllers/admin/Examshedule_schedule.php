@@ -1354,7 +1354,7 @@ class Examshedule_schedule extends MY_Controller {
 
         $data['info'] = $this->Exam_model->get_consent_recved_data();
         
-        // print_r($data['info']); die();
+        print_r($data['info']); die();
         $this->load->view('admin/exam/consnt_recievd_list', $data);
     }
     
@@ -1369,7 +1369,7 @@ class Examshedule_schedule extends MY_Controller {
 
         $data = [];
         
-        // echo '<pre>'; print_r($records['data'][1][0]);
+        // echo '<pre>'; print_r($records['data'][1][1]);
         // die;
         
         $i = 0;
@@ -1552,7 +1552,7 @@ class Examshedule_schedule extends MY_Controller {
                     $row['principal_name']? $row['principal_name'] : '',
                     $row['pri_mobile']? $row['pri_mobile'] : '',
                     $row['ranking_admin']? $row['ranking_admin'] : '',
-                    $row['max_allocate_candidate']? $row['max_allocate_candidate'] : '',
+                    $row['max_allocate_candidate']? $row['max_allocate_candidatekkk'] : '',
                     $row['id']? $row['id'] : '',
                     '<a title="Edit"  class="update btn btn-sm btn-warning" href="' . base_url('admin/master/exam_edit/' . urlencrypt($row['ref_id'])) . '"> <i class="fa fa-pencil-square-o"></i></a>
                     <a title="Delete" class="delete btn btn-sm btn-danger" href="' .

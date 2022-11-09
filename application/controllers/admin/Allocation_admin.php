@@ -26,6 +26,7 @@ class Allocation_admin extends MY_Controller {
     public function allocation_list($id) {
         // $this->rbac->check_operation_access();
         $data['id'] = urldecrypt($id);
+        $data['exam_name'] = get_exam_name_new(urldecrypt($id));
         $data['states'] = $this->location_model->get_states();
         $data['title'] = 'Allocation  List';
         $this->load->view('admin/includes/_header', $data);
@@ -43,6 +44,8 @@ class Allocation_admin extends MY_Controller {
     $data['no_candidate'] = isset($data['info'][0]['no_candidate']) ? explode(",",$data['info'][0]['no_candidate']) : [];
     $data['candidates'] = isset($data['info'][0]['candidates']) ? explode(",",$data['info'][0   ]['candidates']) : [];
     $data['exam_id_new'] = $id;
+   
+
     $this->load->view('admin/allocation/allocation_list', $data);
     }  
     public function allocation_list_datacopy($id) {
