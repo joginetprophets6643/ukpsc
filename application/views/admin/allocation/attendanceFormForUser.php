@@ -43,17 +43,25 @@
                     </div>
                 </div> 
                 <div class="row">   
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name" class="col-sm- control-label">Total No of Candidates&nbsp;(उम्मीदवारों की कुल संख्या)<i style="color:#ff0000; font-size:12px;">*</i></label>
+                            <input type="text" disabled id ="totalcandidateCount" name="totalcandidateCount" value="<?php echo $candidateCount ?>" class="form-control" >
+                        </div>
+                    </div>    
+                </div> 
+                <div class="row">   
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name" class="col-sm- control-label">Present Candidate&nbsp;(वर्तमान उम्मीदवार)<i style="color:#ff0000; font-size:12px;">*</i></label>
-                            <input type="text" required name="present_candidate" value="<?php echo $present_candidate ?>" class="form-control"  placeholder="Present Candidates" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            <input type="text" required  name="present_candidate" id="present_candidate" value="<?php echo $present_candidate ?>" class="form-control change"  placeholder="Present Candidates" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </div>
                     </div>
                   
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name" class="col-sm- control-label">Absent Candidate&nbsp;(अनुपस्थित उम्मीदवार)<i style="color:#ff0000; font-size:12px;">*</i></label>
-                            <input type="text" required name="absent_candidate" value="<?php echo $absent_candidate ?>" class="form-control"  placeholder="Absent Candidates" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            <input type="text" required name="absent_candidate" id="absent_candidate" value="<?php echo $absent_candidate ?>" class="form-control change"  placeholder="Absent Candidates" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </div>
                     </div>
                    
@@ -106,4 +114,17 @@
         </div>
     </section> 
 </div>
+
 <script>
+    $(".change").keyup(function(){
+        var total = $('#totalcandidateCount').val();
+        var present = $('#present_candidate').val()==''?0:$('#present_candidate').val();
+        var absent = $('#absent_candidate').val()==''?0:$('#absent_candidate').val();
+        var pa = parseInt(present)+parseInt(absent);
+        if(pa!=total)
+        {
+          alert('Total Should be equal to Present Candidate and Absent Candidate');
+        }     
+});
+
+</script>

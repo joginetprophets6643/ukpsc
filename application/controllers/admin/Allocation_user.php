@@ -83,14 +83,18 @@ class Allocation_user extends MY_Controller {
         $this->load->view('admin/includes/_footer', $data);
     }
   
-    public function allocate_user_attendance($exam_id,$key) {
+    public function allocate_user_attendance($exam_id,$key,$newCandidateNo) {
     
         $exam_id = urldecrypt($exam_id);
+        $key = urldecrypt($key);
+        $newCandidateNo = urldecrypt($newCandidateNo);
+     
         $admin_id = $this->session->userdata('admin_id');
         $data['info'] = $this->Allocation_Model->get_data_for_allocation_user($exam_id);
         $data['date_exam'] = isset($data['info'][0]['date_exam']) ? explode(",",$data['info'][0]['date_exam']) : [];
         $data['shft_exam'] = isset($data['info'][0]['shft_exam']) ? explode(",",$data['info'][0]['shft_exam']) : [];
         $data['key'] = $key;
+        $data['candidateCount'] = $newCandidateNo;
         $data['exam_id'] = $exam_id;
         $data['admin_id'] = $admin_id;
         $data['school_id'] = $data['info'][0]['school_id'];

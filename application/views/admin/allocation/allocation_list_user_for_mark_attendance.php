@@ -19,7 +19,7 @@
         
                                 <?php foreach ($date_exam as $key1 => $date) {?>
                                 <th>
-                                    <?php echo $date?>
+                                    <?php echo date("d-m-Y", strtotime($date));?>
                                     <br>
                                     (
                                     <?php echo $shft_exam[$key1]?>)
@@ -73,7 +73,7 @@
                                 <?php foreach ($no_candidate as $key => $value) { 
                                     ?>
                                 <td>
-                                <a href="<?= base_url("admin/allocation_user/allocate_user_attendance/" . urlencrypt($row['id'])."/".$key)?>" class="btn btn-success"><?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?></a>
+                                <a href="<?= base_url("admin/allocation_user/allocate_user_attendance/" . urlencrypt($row['id'])."/".urlencrypt($key)."/".urlencrypt($candidateNo[$key]))?>" class="btn btn-success"><?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?></a>
                                 </td>
                                 <?php } ?>
                             </tr>
