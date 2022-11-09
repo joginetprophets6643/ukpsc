@@ -160,8 +160,8 @@ class Master extends MY_Controller
                 $row['exam_hindi_name'] ? $row['exam_hindi_name'] : '',
                 $row['advertise_name']? $row['advertise_name'] : '',
                 $row['no_of_cand']? $row['no_of_cand'] : '',
-                $row['start_date_exam']? $row['start_date_exam'] : '',
-                $row['end_date_exam']? $row['end_date_exam'] : '',
+                $row['start_date_exam']? date("d-m-Y", strtotime($row['start_date_exam'])): '',
+                $row['end_date_exam']?   date("d-m-Y", strtotime($row['end_date_exam'])) : '',
                 '<a title="Edit"  class="update btn btn-sm btn-success" href="' . base_url('admin/master/addSubjectNew/' . urlencrypt($row['id'])) . '"> <i class="fa fa-plus"></i></a>
                 <a title="Edit"  class="update btn btn-sm btn-warning" href="' . base_url('admin/master/view_all_subjectNew/' . urlencrypt($row['id'])) . '"> <i class="fa fa-eye"></i></a>',
                 '<a title="Edit"  class="update btn btn-sm btn-warning" href="' . base_url('admin/master/exam_edit/' . urlencrypt($row['id'])) . '"> <i class="fa fa-pencil-square-o"></i></a>

@@ -45,11 +45,12 @@
                     </td>
 
                     <td>
-                        <?php echo $row['school_name'] ?>
+                        <?php echo $row['school_name'].  '<br>'. '<small>'. $row['address'] .'</small>'  ?>
                         <input hidden type="text" id="school_id_new<?php echo $i?>" name="school_id_new<?php echo $i?>" value="<?php echo $row['school_id']?>">
                     </td>
                     <td>
                         <?php echo $row['max_allocate_candidate'] ?>
+                        <input hidden type="text" id="consent<?php echo $i?>" name="consent<?php echo $i?>" value="<?php echo $row['max_allocate_candidate']?>">
                     </td>
                     <?php $getCenterCode = getCenterCode( $row['school_id'],$row['id']); 
                     
@@ -137,6 +138,8 @@ $('#publish_permanent').click(function(event) {
 function formdataSubmit(id)
 {   
   var school_id = $('#school_id_new'+id).val();
+  var consentCount = $('#consent'+id).val();
+ 
   var exam_center_code = $('#exam_center_code'+id).val();
   var admin_id = $('#admin_id'+id).val();
   var exam_id = $('#exam_id').val();
@@ -144,7 +147,14 @@ function formdataSubmit(id)
   var candidate_array = [];
   for (let k = 0; k < candidate_value_count; k++) {
     var candi_count = $('#candidate_value_school_id_new'+id+k).val();
-    candidate_array.push(candi_count);   
+     if(consentCount>=candi_count){
+        candidate_array.push(candi_count); 
+     }
+     else{
+      alert('Allocation can not be greater than Consent Recieved');
+      return false;
+     }
+      
 }
     $.ajax({
                 type: "GET", 
