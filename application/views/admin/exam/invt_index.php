@@ -227,13 +227,7 @@ $(document).ready(function() {
 
     $(function() {
         $('#state').change( function() {
-            // var grade = $('#grade').val();
-            //   console.log('grade',grade);
-            // return false;
             var district_id = $(this).val();
-            //   console.log();
-              
-              // return false;
                 if (district_id != '') {
                     $('#othstate').val('').hide();
 
@@ -250,18 +244,10 @@ $(document).ready(function() {
                         }
                     });
                 } 
-                // else {
-                //     $('#state_id').val('').hide();
-                //     $('#othstate').show();
-                // }
-
-          // var district_id = $('#district').val();
-          // console.log("district",district_id);
-          // return false;
           var state_id = $('#state').val();
           var grade = $('#grade').val();
           var district_id =  $('#district').val();;
-         
+          
             if (state_id != '') {
            
                 $.ajax({
@@ -539,6 +525,7 @@ var table = $('#send_invitation_list').DataTable({
     function single_send_invitations(id){
         $('.loader').removeClass('d-none');
         var send_consent_id = $("#send_consent_id").val();
+
         var url = "<?php echo base_url('admin/examshedule_schedule/send_invitation_user_all/')?>"
             $.ajax({
                 url: url,
@@ -546,6 +533,28 @@ var table = $('#send_invitation_list').DataTable({
                 dataType: 'text',
                 data : {id:id,'send_consent_id':send_consent_id},
                 success:function(result){
+                    if(result)
+                    {
+                    $('.loader').addClass('d-none');
+                    alert("success, Sent Sucessfully");
+                    this.checked = false; 
+                    window.location.reload(); 
+                    }
+                   
+                }
+            });
+    }
+    function revokeConsentsInvitations(id){
+        $('.loader').removeClass('d-none');
+        var send_consent_id = $("#send_consent_id").val();
+        var url = "<?php echo base_url('admin/examshedule_schedule/revokeConsentsInvitations/')?>"
+            $.ajax({
+                url: url,
+                type:'get',
+                dataType: 'text',
+                data : {id:id,'send_consent_id':send_consent_id},
+                success:function(result){
+                  
                     if(result)
                     {
                     $('.loader').addClass('d-none');

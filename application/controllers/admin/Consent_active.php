@@ -951,7 +951,8 @@ public function consent_recieved(){
      
         $sub_name = $data["examination_form"][0]['sub_name'];
         $sub_name_array = explode(",",$sub_name);
-        
+     
+
         $date_exam = $data["examination_form"][0]['date_exam'];
         $date_exam_array = explode(",",$date_exam);
         
@@ -969,8 +970,9 @@ public function consent_recieved(){
 
         foreach ($sub_name_array as $k=>$value1){
             $subjectId = $sub_name_array[$k];
+
             $xs= $this->admin_model->get_sub_name($subjectId);  
-            $sub_info[$k]['id'] = $xs[0]['id'];
+            $sub_info[$k]['id'] = isset($xs[0]['id'])?$xs[0]['id']:0;
             $sub_info[$k]['date_exam'] = $date_exam_array[$k];            
             $sub_info[$k]['sub_name_english'] = $xs[0]['sub_name'];
             $sub_info[$k]['sub_name_hindi'] = $xs[0]['sub_name_hindi'];
@@ -982,52 +984,7 @@ public function consent_recieved(){
             // $sub_info[$k]['exmin_ceter_option_array'] = $exmin_ceter_option_array[$k];
             
         }
-        // $data["examination_form"] = $this->Certificate_model->get_examination_form($examinationid);
-        // // $sub_name = $data['info'][0]['sub_name'];
-        // $sub_name = $data['examination_form'][0]['sub_name'];
-        // $sub_name_array = explode(",",$sub_name);
-        // // echo '<pre>';print_r($data['examination_form']);die;
-        // // $sub_name_array = explode(",",$sub_name);
-        // // echo '<pre>';
-        // // print_r($data["examination_form"][0]);
-        // // print_r( $sub_name_array);
-        // // exit;
-        // $date_exam = $data['examination_form'][0]['date_exam'];
-        // $shft_exam = $data['examination_form'][0]['shft_exam'];
-        // $time_exam = $data['examination_form'][0]['time_exam'];
-        // $date_exam = $data['examination_form'][0]['date_exam'];
-        // $date_exam_array = explode(",",$date_exam);
-        // $shft_exam_array = explode(",",$shft_exam);
-        // $time_exam_array = explode(",",$time_exam);
 
-        // // $xs= $this->admin_model->get_sub_name($examinationid);  
-        // // echo '<pre>';
-        // // print_r($sub_info);
-        // // // print_r($xs);
-        // // die;
-        // foreach ($date_exam_array as $k=>$value1){
-
-        //     $sub_info[$k]['date'] = $value1;
-        //     $subjectId = $sub_name_array[$k];
-        //     $xs= $this->admin_model->get_sub_name($examinationid);  
-        //     $sub_info[$k]['id'] = $xs[0]['id'];
-        //     $sub_info[$k]['sub_name'] = $sub_name;
-        //     $sub_info[$k]['sub_name_english'] = $xs[0]['sub_name'];
-        //     $sub_info[$k]['sub_name_hindi'] = $xs[0]['sub_name_hindi'];
-        //     $sub_info[$k]['sub_code'] = $xs[0]['sub_code'];
-        //     $sub_info[$k]['shftexamshift'] = $shft_exam_array[$k];
-        //     $sub_info[$k]['timeexamshiftwise'] = $time_exam_array[$k];
-        //     // print_r();
-        //     // echo '<td>'.$date .' '.$subjectName[0]['sub_name'].'--'.$shftexamshift.'++++++++++'.$timeexamshiftwise.'</td>';
-        // }
-
-        
-        // echo '<pre>';
-        // // print_r($sub_info);
-        // // // print_r($xs);
-        // // die;
-        // print_r($data);
-        // die();
         $sub_info['sub_info'] = $sub_info;
         $this->load->view('admin/includes/_header',$sub_info);
         $this->load->view('admin/consent_active/consent5',$data);

@@ -355,8 +355,7 @@ class Certificate_model extends CI_Model {
         return $query->result_array();
     }
 	 public function get_examination_form($examinationid) {
-        // echo $examinationid;
-        // die;
+       
         $admin_id = $this->session->userdata('admin_id');
         $this->db->from('ci_exam_invitation');
         $this->db->where('invite_sent','1');

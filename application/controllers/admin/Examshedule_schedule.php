@@ -125,44 +125,7 @@ class Examshedule_schedule extends MY_Controller {
         }
     }
 
-    // public function invitation_add() {
-    //     // $this->rbac->check_operation_access();
-    //     if ($this->input->post()) {
-    //         $speedpost = $this->input->post('speedpost') ? implode(',', $this->input->post('speedpost')) : "";
-    //         $subjectline = $this->input->post('subjectline') ? implode(',', $this->input->post('subjectline')) : "";
-    //         $startdate = $this->input->post('startdate') ? implode(',', $this->input->post('startdate')) : "";
-    //         $enddate = $this->input->post('enddate') ? implode(',', $this->input->post('enddate')) : "";
-    //         $exam_name = $this->input->post('exam_name');
-    //         for ($i = 0; $i < count($exam_name); $i++) {
-    //             $data = array(
-    //                 'exam_name' => ucfirst($exam_name[$i]),
-    //                 'speedpost' =>  $speedpost,
-    //                 'subjectline' => $subjectline,
-    //                 'startdate' => $startdate ,
-    //                 'enddate' => $enddate,
-    //                 'sub_name' => $this->input->post('sub_name')[$i],
-    //                 'no_candidate' => $this->input->post('no_candidate')[$i],
-    //                 'shft_exam' => $this->input->post('shft_exam')[$i],
-    //                 'date_exam' => $this->input->post('date_exam')[$i],
-    //                 'time_exam' => $this->input->post('time_exam')[$i],
-    //                 'created_by' => $this->session->userdata('admin_id')[$i],
-    //                 // 'ip_address' => $this->input->ip_address(),
-    //                 'created_at' => date('d-m-Y : h:m:s'),
-    //                 'created_by' => $this->session->userdata('admin_id'),
-    //             );
-    //             $data = $this->security->xss_clean($data);
-    //             print_r($data); die();
-    //             $result = $this->Exam_model->add_invitation($data);
-    //         }
-    //         $this->session->set_flashdata('success', ' Add successfully!');
-    //         redirect(base_url('admin/examshedule_schedule/invt_list'), 'refresh');
-    //     } else {
-    //         $data['subject'] = $this->Master_model->get_subject();
-    //         $this->load->view('admin/includes/_header');
-    //         $this->load->view('admin/exam/invitation_add', $data);
-    //         $this->load->view('admin/includes/_footer');
-    //     }
-    // }
+
 
     public function invitation_add() {
 
@@ -238,15 +201,6 @@ class Examshedule_schedule extends MY_Controller {
         $this->load->view('admin/includes/_footer');
     }
 
-    // public function send_invitation($id){
-    // $data['id'] = ($id);
-    // $data['info'] = $this->Exam_model->get_all_registration_data();
-    // $data['states'] = $this->location_model->get_states();
-    // $this->load->view('admin/includes/_header');
-    // $this->load->view('admin/exam/invitation_user_list', $data);
-    // $this->load->view('admin/includes/_footer');
-    // }
-
 
     public function send_invitation() {
         
@@ -308,19 +262,12 @@ class Examshedule_schedule extends MY_Controller {
     // End Login Jogi..
     public function inv_list_data_for_mail() {
 
-        
-        // $data['info'] = $this->Exam_model->get_all_registration_data();
-    
-        // echo '<pre>'; print_r($data['info']);
-
-        // $this->load->view('admin/exam/invitation_user_list', $data);
         if((isset($_GET['district_id'])) && (!isset($_GET['state_id']))){
          
             $city_name = '';
             $grade_name = '';
             $id = $_GET['state_id'];
             $state_name = get_district_name($id); 
-            // echo 'if'.$state_name."==".$city_name."==".$grade_name; exit;
             $data['data'] = $this->Exam_model->get_all_search_registration_data($state_name, $city_name, $grade_name);
            
             
@@ -332,12 +279,7 @@ class Examshedule_schedule extends MY_Controller {
             $district_id = $_GET['district_id'];
             $city_name = get_subcity_name($district_id);
             $grade_name = $_GET['grade']; 
-            // echo 'elseif1'.$state_name."==".$city_name."==".$grade_name; exit;
             $data['data'] = $this->Exam_model->get_all_search_registration_data($state_name, $city_name, $grade_name);
-            
-           
-           
-            // $this->load->view('admin/consent_letter/consent_letter_list', $data);
             
         }else if(isset($_GET['grade_id'])){
            
@@ -346,23 +288,14 @@ class Examshedule_schedule extends MY_Controller {
             $district_id = $_GET['district_id'];
             $city_name = get_subcity_name($district_id);
             $grade_name = $_GET['grade'];
-            // $grade_name = get_subcity_name($id); 
-            // echo 'elseif2'.$state_name."==".$city_name."==".$grade_name; exit;
-            // echo $grade_name; exit;
             $data['data'] = $this->Exam_model->get_all_search_registration_data($state_name, $city_name, $grade_name);
-            
-            // echo '<pre>'; print_r($data); die();
-            // $this->load->view('admin/consent_letter/consent_letter_list', $data);
             
         }else{
           
             $state_name = '';
             $city_name = '';
             $grade_name = '';
-            // echo 'else'.$state_name."==".$city_name."==".$grade_name; exit;
             $data['data'] = $this->Exam_model->get_all_search_registration_data($state_name, $city_name, $grade_name);
-            
-            // $this->load->view('admin/consent_letter/consent_letter_list', $data);
         }    
 
 
@@ -411,23 +344,13 @@ class Examshedule_schedule extends MY_Controller {
 
 
     public function inv_all_data_for_mail($exam_id) {
-    //    echo $exam_id;
-    //    die;
+  
         $array = array('created_by' => $this->session->userdata('admin_id'));
-        // $records['data'] = $this->db
-        //     ->select('*')
-        //     ->from('ci_exam_master')
-        //     ->where($array)
-        //     ->order_by('id','desc')
-        //     ->get()
-        //     ->result_array();
         $state_name = '';
         $city_name = '';
         $grade_name = '';
         $records['data'] = $this->Exam_model->get_all_registration_data($state_name, $city_name, $grade_name);
-     
         $data = [];
-       
         $i = 0;
 
         foreach ($records['data'] as $row) {
@@ -443,7 +366,8 @@ class Examshedule_schedule extends MY_Controller {
                     $action =   'Pending';
                 }
                 elseif ($invt_recieved==1 && $invite_sent==1) {
-                    $action =   'Done';
+                    $action =   'Done  <br> <input type="checkbox" id="revoke" class="send_email_ids" name="revokeConsents" rel="'.$row['id'].'" value="'.$row['id'].'">
+                    <a title="Send Invitations" class="btn btn-warning btn-xs mr5" onClick="revokeConsentsInvitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
                 }
                 else{
                     $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
@@ -770,12 +694,10 @@ class Examshedule_schedule extends MY_Controller {
     public function send_invitation_user_all() {
 
         $ids = $this->input->get('data');
-     
         $send_consent_id = $this->input->get('send_consent_id');
-        
         $new_id = urldecrypt($send_consent_id); 
-       
         $data['exam'] = $this->Exam_model->get_invites_byid($new_id);
+      
         echo '<pre>';
         echo '<br/>';
         echo $data['exam'][0]['subjectline'];
@@ -928,6 +850,7 @@ class Examshedule_schedule extends MY_Controller {
                 'invite_sent' => '1',
                 'invt_recieved' => '0'
             ];
+          
             $this->db->from('ci_registration_invitation');
             $this->db->where('ci_registration_invitation.school_id', $id);
             $this->db->where('ci_registration_invitation.ref_id', $new_id);
@@ -1005,6 +928,41 @@ class Examshedule_schedule extends MY_Controller {
         
         
 
+    }
+
+    public function revokeConsentsInvitations()
+    {
+        $id = $this->input->get('id');
+        $send_consent_id = $this->input->get('send_consent_id');
+        $new_id = urldecrypt($send_consent_id); 
+        $data['exam'] = $this->Exam_model->get_invites_byid($new_id);
+        $arr = [
+            'exam_name' => $data['exam'][0]['subjectline'],
+            'ref_id' => $new_id,
+            'invite_sent' => '0',
+            'invt_recieved' => '0'
+        ];
+     
+        $arrForInvitation = [
+            'invite_sent' => '0',
+            'invt_recieved' => '0'
+        ];
+        $this->db->from('ci_registration_invitation');
+        $this->db->where('ci_registration_invitation.school_id', $id);
+        $this->db->where('ci_registration_invitation.ref_id', $new_id);
+        $this->db->delete('ci_registration_invitation');
+   
+        $this->db->where(['id' => $id])->update('ci_exam_registration', $arr);
+
+        $this->db->where(['id' => $new_id])->update('ci_exam_invitation', $arrForInvitation);
+       $newDataForconsent = [
+            'ref_id' => $new_id,
+            'exam_name' => $data['exam'][0]['subjectline'],
+            'invite_sent' => '0',
+            'invt_recieved' => '0',
+        ];
+        $this->db->where(['school_id' => $id])->update('ci_exam_according_to_school', $newDataForconsent);
+        // echo 'ok';
     }
     public function send_invitation_user_all_not_recieved_consent() {
 
