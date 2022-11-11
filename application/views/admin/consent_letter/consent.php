@@ -92,13 +92,11 @@
                       <label style="font-weight:bold;"> City (शहर)</label>
                     
                       <input type="text" name="city" id="district" class="form-control" required readonly require
-                        value="<?php echo get_city_name($admin['city']) ?>">
-
+                        value="<?php echo get_subcity_name($admin['city']) ?>">
+                        <!-- get_city_name -->
                     </div>
 
                     <div class="form-group mt-4 mb-0">
-                      <!-- <button class="next_button">Next Step</button> -->
-                      <!-- <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block btn-flat next_button" value="Submit And Next"> -->
                       <input type="submit" name="submit" id="submit"
                         class="btn btn-primary next_button" value="Save and Next">
 

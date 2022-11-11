@@ -366,7 +366,7 @@ class Examshedule_schedule extends MY_Controller {
                 
                 if($invt_recieved==0 && $invite_sent==1)
                 {
-                    $action =   '<img src="'.$pendingImage.'" height="34" alt="">';
+                    $action =   'Status: <img src="'.$pendingImage.'" height="34" alt="">';
                 }
                 elseif ($invt_recieved==1 && $invite_sent==1) {
                     $action =   'Status: <img src="'.$doneImage.'" alt=""> <br>
