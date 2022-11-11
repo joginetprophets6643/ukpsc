@@ -932,45 +932,23 @@ public function consent_recieved(){
         }
         else {
         $ref_id = $this->uri->segment(4);
-     
         $data['admin'] = $this->admin_model->get_user_detail($admin_id);
-        // $data['user'] = $this->admin_model->get_old_data($admin_id);
         $data['user'] = $this->admin_model->get_center_data($admin_id,$ref_id);    
         $data["info"] = $this->Certificate_model->get_all_active_consent();
-
         $examinationid = $this->uri->segment(4);
-
-        // $sub_name = $data['admin']['examincation_id'];
-        // $sub_name_array = explode(",",$sub_name);
-
-        //$examinationid = $this->uri->segment(5);
-     
         $data["examination_form"] = $this->Certificate_model->get_examination_form($examinationid);
-
-        // echo '<pre>';
-     
         $sub_name = $data["examination_form"][0]['sub_name'];
         $sub_name_array = explode(",",$sub_name);
-     
-
         $date_exam = $data["examination_form"][0]['date_exam'];
         $date_exam_array = explode(",",$date_exam);
-        
         $shft_exam = $data["examination_form"][0]['shft_exam'];
         $shft_exam_array = explode(",",$shft_exam);
-        
         $time_exam = $data["examination_form"][0]['time_exam'];
         $time_exam_array = explode(",",$time_exam);
-        
         $no_candidate = $data["examination_form"][0]['no_candidate'];
         $no_candidate_array = explode(",",$no_candidate);
-        
-        // $exmin_ceter_option = $data['admin']['exmin_ceter_option'];
-        // $exmin_ceter_option_array = explode(",",$exmin_ceter_option);
-
         foreach ($sub_name_array as $k=>$value1){
             $subjectId = $sub_name_array[$k];
-
             $xs= $this->admin_model->get_sub_name($subjectId);  
             $sub_info[$k]['id'] = isset($xs[0]['id'])?$xs[0]['id']:0;
             $sub_info[$k]['date_exam'] = $date_exam_array[$k];            
@@ -981,8 +959,6 @@ public function consent_recieved(){
             $sub_info[$k]['time_exam_array'] = $time_exam_array[$k];
             $sub_info[$k]['no_candidate_array'] = $no_candidate_array[$k];
             $sub_info[$k]['sub_name'] = $sub_name;
-            // $sub_info[$k]['exmin_ceter_option_array'] = $exmin_ceter_option_array[$k];
-            
         }
 
         $sub_info['sub_info'] = $sub_info;

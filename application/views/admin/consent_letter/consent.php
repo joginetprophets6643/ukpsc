@@ -90,7 +90,7 @@
 
                     <div class="form-group">
                       <label style="font-weight:bold;"> City (शहर)</label>
-
+                    
                       <input type="text" name="city" id="district" class="form-control" required readonly require
                         value="<?php echo get_city_name($admin['city']) ?>">
 

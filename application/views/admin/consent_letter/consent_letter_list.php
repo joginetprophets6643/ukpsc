@@ -381,3 +381,10 @@ var table = $('#consent_list').DataTable( {
    }
 
 </style>
+<script>
+    $('document').ready(function() {
+        // excel btn
+        $('.buttons-html5 span').html('Download Excel');
+
+    })
+</script>

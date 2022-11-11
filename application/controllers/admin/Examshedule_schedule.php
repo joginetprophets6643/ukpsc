@@ -357,17 +357,20 @@ class Examshedule_schedule extends MY_Controller {
             if($row['school_name'] != ''){
                 
                 $invitationStatus = $this->checkExamInvitationStatus($exam_id,$row['id']);
+                $doneImage =  base_url("assets/img/check.png");
+                $pendingImage =  base_url("assets/img/pending.png");
                 
+            
                 $invt_recieved = isset($invitationStatus['invt_recieved'])?$invitationStatus['invt_recieved']:0;
                 $invite_sent = isset($invitationStatus['invite_sent'])?$invitationStatus['invite_sent']:0;
                 
                 if($invt_recieved==0 && $invite_sent==1)
                 {
-                    $action =   'Pending';
+                    $action =   '<img src="'.$pendingImage.'" height="34" alt="">';
                 }
                 elseif ($invt_recieved==1 && $invite_sent==1) {
-                    $action =   'Done  <br> <input type="checkbox" id="revoke" class="send_email_ids" name="revokeConsents" rel="'.$row['id'].'" value="'.$row['id'].'">
-                    <a title="Send Invitations" class="btn btn-warning btn-xs mr5" onClick="revokeConsentsInvitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
+                    $action =   'Status: <img src="'.$doneImage.'" alt=""> <br>
+                    <a title="Send Invitations" class="btn btn-warning mt-2" onClick="revokeConsentsInvitations('.$row['id'].')"> Revoke Consent </a>';
                 }
                 else{
                     $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
