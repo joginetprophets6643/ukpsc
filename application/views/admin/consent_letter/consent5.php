@@ -68,7 +68,7 @@
 
                                             <input type="checkbox" id="checkbox2" onchange="valueChanged()"
                                                 name="checkbox" value="">
-                                            <label for="checkbox2"> Upload Downloaded Consent Form (Signed and Stamped)</label><br>
+                                            <label for="checkbox2"> Ready to upload the form with sign and stamp and images</label><br>
                                         </div>
                                     </div>
 
@@ -98,37 +98,37 @@
                                     </div>
                                     <div class="row mt-4">
                                         <div class="form-group col-md-6">
-                                            <label>Parking Image </label>
+                                            <label>Parking Image(JPG format Only)* </label>
                                             <input type="file" class="form-control" name="fileName1" id="fileName1"
                                                 data-file_detail="file_detail1" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                             
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Classroom Image </label>
+                                            <label>Classroom Image (JPG format Only)*</label>
                                             <input type="file" class="form-control" name="fileName2" id="fileName2"
                                                 data-file_detail="file_detail2" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label>Washroom Image </label>
+                                            <label>Washroom Image (JPG format Only)*</label>
                                             <input type="file" class="form-control" name="fileName3" id="fileName3"
                                                 data-file_detail="file_detail3" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Main Gate Image </label>
+                                            <label>Main Gate Image (JPG format Only)*</label>
                                             <input type="file" class="form-control" name="fileName4" id="fileName4"
                                                 data-file_detail="file_detail4" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label>Locker Image </label>
+                                            <label>Locker Image (JPG format Only)*</label>
                                             <input type="file" class="form-control" name="fileName5" id="fileName5"
                                                 data-file_detail="file_detail5" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Upload Sign and Stamp Consent Form</label>
+                                            <label>Upload Downloaded Consent Form (Signed and Stamped) (JPG format Only)*</label>
                                             <input type="file" class="form-control" name="fileName6" id="fileName6"
                                                 data-file_detail="file_detail5" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>

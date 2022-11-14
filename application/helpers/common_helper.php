@@ -172,27 +172,6 @@ function update_last_login($data, $username) {
     $ci->db->update('ci_admin', $data);
 }
 
-//function establishment_type_tree($parent_id = 0, $sub_mark = '',
-//         $selected_id = 0) {
-//     $ci = & get_instance();
-//     $condition = "parent_id =" . "'" . $parent_id . "'";
-//     $ci->db->select('*');
-//     $ci->db->from('ci_establishment_type');
-//     $ci->db->where($condition);
-//   $icd = $ci->db->get();
-//    $options = '';
-//    foreach ($icd->result() as $r) {
-//       if ($selected_id == $r->id)
-//           $is_selected = 'selected';
-//       else
-//           $is_selected = '';
-//
-//        echo $options = '<option value="' . $r->id . '" ' . $is_selected . '>' . $sub_mark . $r->name . '</option>';
-//       establishment_type_tree($r->id, $sub_mark . '   ---&nbsp;&nbsp;&nbsp;',
-//               $selected_id);
-//  }
-// }
-
 
 
 
@@ -206,32 +185,6 @@ function getDataHelper($condition='', $table_name = '') {
     return $icd;
 }
 
-//function establishment_type_tree($parent_id = 0, $sub_mark = '',$selected_id = 0 ) {
-//    $ci = & get_instance();
-//
-//    $condition = "parent_id = 0";
-//
-//    $table_name = 'ci_establishment_type';
-//    $optData = getDataHelper($condition, $table_name);
-//    $optionsHtml = '';
-//    /*print_r($optData);
-//    die();*/
-//    foreach ($optData as $options) {
-//        $optionsHtml .= '<optgroup label="' . $options->name . '">';
-//        $condition2 = "parent_id = ".$options->id;
-//        $optionData2 = getDataHelper($condition2, $table_name);
-//        foreach ($optionData2 as $option) {
-//            if($selected_id==$option->id )
-//                $is_selected='selected';
-//            else 
-//                $is_selected='';
-//            $optionsHtml .= '<option value="' . $option->id . '" '.$is_selected.'>' . $sub_mark . $option->name . '</option>';
-//        }
-//        $optionsHtml .= '</optgroup>';
-//    }
-//    echo $optionsHtml;
-//    
-//}
 
 function establishment_type_tree($parent_id = 0, $sub_mark = '',
         $selected_id = 0) {
