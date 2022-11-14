@@ -93,13 +93,6 @@ class Consent_letter extends MY_Controller {
        
     }
     
-    
-    // public function get_search_cities() {
-    //     $id = $_GET['state_id'];
-    //     $state_name = get_district_name($id); 
-    //     echo $state_name;exit;
-    // }
-
 
  public function grade_list() {
         $this->rbac->check_operation_access();
@@ -327,9 +320,7 @@ public function consent_add_1() {
         }
     }
        public function consent_add_5() {
-
         $admin_id = $this->session->userdata['admin_id'];
-    
          if (!empty($_FILES['fileName1']['name'])) {
 
                     $config['upload_path'] = 'uploads/consent_data/';
@@ -510,7 +501,32 @@ public function consent_add_1() {
                 ];
                 
                 $data = $this->security->xss_clean($data);
-                // print_r($data); die();
+
+                $admin_id = $this->session->userdata['admin_id'];
+                $this->db->select('*');
+                $this->db->where('admin_id', $admin_id);
+                $this->db->from('ci_admin');
+                 $query = $this->db->get();
+                $cData =  $query->result_array();
+
+                // Message for Mobile 
+                $messageP1='Dear Sir/Madam ,%0a';
+                $messageP1.='Registration of school/college for exam centre has been completed successfully.%0a';
+                $messageP1.='Regards,%0a';
+                $messageP1.='UKPSC, Haridwar';
+                // Message For Email Address 
+                $messageE1='Dear Sir/Madam ,<br>';
+                $messageE1.='Registration of school/college for exam centre has been completed successfully.<br>';
+                $messageE1.='Regards,<br>';
+                $messageE1.='UKPSC, Haridwar';
+                
+                $email = $cData[0]['email'];
+                $phone = $cData[0]['pri_mobile'];
+                $template_id = "1007539069098300497";
+                // EMAIL AND MESSAGE SEND UDING TEMPLETE
+                sendSMS($phone,$messageP1,$template_id);
+                sendEmail($email,$messageE1,$template_id);
+             
                 $this->Certificate_model->editforconsentData($data2,$admin_id);
                 $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 if ($result) {
@@ -532,12 +548,12 @@ public function consent_add_1() {
     public function consent_add_6() {
         $admin_id = $this->session->userdata['admin_id'];
     if ($this->input->post('submit')) {
-
+                
                 $data = [
                    'acc_holder_name' => $this->input->post('acc_holder_name'),
                     'ban_name' => $this->input->post('ban_name'),
                    ];
-                
+           
                 $data = $this->security->xss_clean($data);
                 $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
                 // if ($result) {

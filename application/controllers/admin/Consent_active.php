@@ -794,15 +794,7 @@ public function consent_recieved(){
             //end New 28-09-2022
 
                 if ($result) {
-                    // $this->session->set_flashdata('success', 'Request for "Consent Letter" has been add successfully!');
-                    // redirect(base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($info['id'])));
-                    // echo 'asdfg';
-                    // echo '<pre>';
-                    // print_r($result);
-                    // echo '<hr/>';
-                    // print_r($info['id']);
-                    // exit;
-                    //  redirect(base_url("admin/examshedule_schedule/invitation_reply/" . $info['id']));
+
                     $ci_exam_registrationid5 = $this->input->post('ci_exam_registrationid5'); 
                     redirect(base_url("admin/consent_active/down_form/" . $admin_id.'/'.$ci_exam_registrationid5));
                     //  redirect(base_url("admin/examshedule_schedule/invitation_reply/"));
@@ -838,8 +830,6 @@ public function consent_recieved(){
             }
 
             if ($this->input->post('submitupload')) {
-                // echo 'new table';
-                // die;
                 $data = [
                     'consents_signstamp_file' => $from_upload_file,
                     'consents_signstamp_status' => 1,
@@ -847,11 +837,9 @@ public function consent_recieved(){
                     'created_at' => date('d-m-Y : h:m:s'),
                     'created_by' => $this->session->userdata('admin_id'),                                     
                     ];
-                // print_r($data);
-                // die();
+              
                 $data = $this->security->xss_clean($data);
-                // $result = $this->Certificate_model->add_edit_step_data($data,$admin_id);
-
+              
                 $dataUpdate = array(
                     'invt_recieved' => '1'
                 );
@@ -910,17 +898,59 @@ public function consent_recieved(){
                 'ref_id' => $ref_id,               
                 'school_id' => $school_Id,                
                 ];
-            //   echo $school_Id."==".$exschool_school_id."@@".$ref_id."==".$exschool_ref_id;
+            
             if (($school_Id==$exschool_school_id)&&($ref_id==$exschool_ref_id)) {
              
                 $this->Certificate_model->editNewDataForExam($dataForExamSchool);  
             } else {
-                // echo 'else'.$school_Id;
-                // die();
+   
                 $this->Certificate_model->addNewDataForExam($dataForExamSchool); 
             }
             //end New 28-09-2022
                 if ($result) {
+                    
+                    // $data['user_data'] = $this->Exam_model->get_all_invites_ids($this->input->post('ci_exam_fileupload6')); 
+                    $this->db->select('*');
+                    $this->db->where('id', $this->input->post('ci_exam_fileupload6'));
+                    $this->db->from('ci_exam_invitation');
+                    $equery = $this->db->get();
+                    $eData =  $equery->result_array();
+
+            
+                    $this->db->select('*');
+                    $this->db->where('admin_id', $admin_id);
+                    $this->db->from('ci_admin');
+                    $query = $this->db->get();
+                    $cData =  $query->result_array();
+
+                    $examName = get_exam_name($eData[0]['exam_name']);
+
+                    $admin_id = $this->session->userdata['admin_id'];
+                    $this->db->select('*');
+                    $this->db->where('admin_id', $admin_id);
+                    $this->db->from('ci_admin');
+                    $query = $this->db->get();
+                    $cData =  $query->result_array();
+
+                    // Message for Mobile 
+                    $messageP1='Dear Sir/Madam ,%0a';
+                    $messageP1.='Consent has been sent for the '.$examName.' of UKPSC.%0a';
+                    $messageP1.='Regards,%0a';
+                    $messageP1.='Exam Center.';
+                    // Message For Email Address 
+                    $messageE1='Dear Sir/Madam ,<br>';
+                    $messageE1.='Consent has been sent for the '.$examName.' of UKPSC.<br>';
+                    $messageE1.='Regards,<br>';
+                    $messageE1.='Exam Center.';
+                    
+                    $email = $cData[0]['email'];
+                    $phone = $cData[0]['pri_mobile'];
+                    $template_id = "1007109235460260699";
+                    // EMAIL AND MESSAGE SEND UDING TEMPLETE
+                    sendSMS($phone,$messageP1,$template_id);
+                    sendEmail($email,$messageE1,$template_id);
+                 
+
                     $data['fileupload'] = 'fileupload';
                     $this->session->set_flashdata('consent_recievedsuss', 'Request for "Consent Letter" has been add successfully! ("सहमति पत्र" के लिए अनुरोध सफलतापूर्वक जोड़ दिया गया है!)');
                     // $this->session->set_flashdata('message_name', 'This is my message');

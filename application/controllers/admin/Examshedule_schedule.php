@@ -791,52 +791,29 @@ class Examshedule_schedule extends MY_Controller {
         
             foreach($data['user_data'] as $value){
                 foreach($value as $singledata){
-                    echo '<pre>';
-                    echo $singledata['school_name'];
-                    echo '<br/>';
-                    echo $singledata['address'];
-                    echo '<br/>';
-                    echo $singledata['landmark'];
-                    echo '<br/>';
-                    echo $singledata['principal_name'];
-                    echo '<br/>';
-                    echo $singledata['pri_mobile'];
-                    echo '<br/>';
-                    echo $singledata['email'];
-                    echo '<br/>';
+
+                $examName = get_exam_name($data['exam'][0]['exam_name']);
+                $messageP1='Dear Sir/Madam ,%0a';
+                $messageP1.='Consent for the '.$examName.' has been sent for your kind approval. Kindly login into your account on consent portal to complete the consent sending process.%0a';
+                $messageP1.='Regards,%0a';
+                $messageP1.='UKPSC, Haridwar';
+                // Message For Email Address 
+                $messageE1='Dear Sir/Madam ,<br>';
+                $messageE1.='Consent for the '.$examName.' has been sent for your kind approval. Kindly login into your account on consent portal to complete the consent sending process.<br>';
+                $messageE1.='Regards,<br>';
+                $messageE1.='UKPSC, Haridwar';
+                
+                $email = $singledata['email'];
+                $phone = $singledata['pri_mobile'];
+                $template_id = "1007076974594881905";
+                // EMAIL AND MESSAGE SEND UDING TEMPLETE
+                sendSMS($phone,$messageP1,$template_id);
+                sendEmail($email,$messageE1,$template_id);
+      
 
                 }
             }
-            // echo '<pre>';
-            // // print_r($emails);
-            // print_r($data);
-            // $string_version = implode(',', $emails);
-            // echo '<br/>';
-            // echo $string_version;
-             
-            //sending welcome email to user
-            $this->load->helper('email_helper');
-
-            $mail_data = array(
-                'fullname' => 'jogi'.' '.'-'.'KV School',
-                'email' => 'jogi.amu@gmail.com',
-                'verification_link' => base_url('admin/auth/verify').'/'.md5(rand(0,1000))
-            );
-
-            // $to = $data['email'];
-            $to = 'jugendra.singh@netprophetsglobal.com';
-
-            $email = $this->mailer->mail_template($to,'exam-schedule',$mail_data);
-            
-
-                if($email){
-                    $this->session->set_flashdata('success', 'Email send');	
-                    $this->load->view('admin/exam/send_letter_list_index', $data);
-                }	
-                else{
-                    echo 'Email Error';
-                }
-            // exit;
+  
 
         
         
@@ -889,45 +866,29 @@ class Examshedule_schedule extends MY_Controller {
             ];
             $this->db->where(['school_id' => $id])->update('ci_exam_according_to_school', $newDataForconsent);
 
-            $data['user_data'] = $this->Exam_model->get_all_invites_ids($id); 
-
-            echo '<pre>';
-            // print_r($data['user_data'][0]);
-            echo '<br/>';
-            echo $school_name = $data['user_data'][0]['school_name'];
-            echo '<br/>';
-            echo $address = $data['user_data'][0]['address'];
-            echo '<br/>';
-            echo $landmark = $data['user_data'][0]['landmark'];
-            echo '<br/>';
-            echo $principal_name = $data['user_data'][0]['principal_name'];
-            echo '<br/>';
-            echo $pri_mobile = $data['user_data'][0]['pri_mobile'];
-            echo '<br/>';
-            echo $user_email = $data['user_data'][0]['email'];
-            echo '<br/>';
-
-            //sending welcome email to user
-            $this->load->helper('email_helper');
-
-            $mail_data = array(
-                'fullname' => 'jogi'.' '.'-'.'KV School',
-                'email' => 'jogi.amu@gmail.com',
-                'verification_link' => base_url('admin/auth/verify').'/'.md5(rand(0,1000))
-            );
-
-            // $to = $data['email'];
-            $to = 'jugendra.singh@netprophetsglobal.com';
-
-            $email = $this->mailer->mail_template($to,'exam-schedule',$mail_data);
-
-            // exit;
+            $data['user_data'] = $this->Exam_model->get_all_invites_ids($id);     
+                   // Message for Mobile 
+            $examName = get_exam_name($data['exam'][0]['exam_name']);
+            
+            $messageP1='Dear Sir/Madam ,%0a';
+            $messageP1.='Consent for the '.$examName.' has been sent for your kind approval. Kindly login into your account on consent portal to complete the consent sending process.%0a';
+            $messageP1.='Regards,%0a';
+            $messageP1.='UKPSC, Haridwar';
+            // Message For Email Address 
+            $messageE1='Dear Sir/Madam ,<br>';
+            $messageE1.='Consent for the '.$examName.' has been sent for your kind approval. Kindly login into your account on consent portal to complete the consent sending process.<br>';
+            $messageE1.='Regards,<br>';
+            $messageE1.='UKPSC, Haridwar';
+            
+            $email = $data['user_data'][0]['email'];
+            $phone = $data['user_data'][0]['pri_mobile'];
+            $template_id = "1007076974594881905";
+            // EMAIL AND MESSAGE SEND UDING TEMPLETE
+            sendSMS($phone,$messageP1,$template_id);
+            sendEmail($email,$messageE1,$template_id);
         }
         
-        // $send_consent_id = $this->input->get('send_consent_id');
-        // echo $send_consent_id.'<br/>';
-        
-        // exit;
+
         
         
 
@@ -1014,45 +975,29 @@ class Examshedule_schedule extends MY_Controller {
         
             foreach($data['user_data'] as $value){
                 foreach($value as $singledata){
-                    echo '<pre>';
-                    echo $singledata['school_name'];
-                    echo '<br/>';
-                    echo $singledata['address'];
-                    echo '<br/>';
-                    echo $singledata['landmark'];
-                    echo '<br/>';
-                    echo $singledata['principal_name'];
-                    echo '<br/>';
-                    echo $singledata['pri_mobile'];
-                    echo '<br/>';
-                    echo $singledata['email'];
-                    echo '<br/>';
+                  
+                    $examName = get_exam_name($data['exam'][0]['exam_name']);
+                    $messageP1='Dear Sir/Madam ,%0a';
+                    $messageP1.='Your consent approval is still pending at your end. Kindly complete it by login into your account.%0a';
+                    $messageP1.='Kindly ignore if already done. %0a';
+                    $messageP1.='Regards,%0a';
+                    $messageP1.='UKPSC, Haridwar';
+                    // Message For Email Address 
+                    $messageE1='Dear Sir/Madam ,<br>';
+                    $messageE1.='Your consent approval is still pending at your end. Kindly complete it by login into your account.<br>';
+                    $messageE1.='Kindly ignore if already done.<br>';
+                    $messageE1.='Regards,<br>';
+                    $messageE1.='UKPSC, Haridwar';
+                    
+                    $email = $singledata['email'];
+                    $phone = $singledata['pri_mobile'];
+                    $template_id = "1007970272335112709";
+                    // EMAIL AND MESSAGE SEND UDING TEMPLETE
+                    sendSMS($phone,$messageP1,$template_id);
+                    sendEmail($email,$messageE1,$template_id);
 
                 }
             }
-            $this->load->helper('email_helper');
-
-            $mail_data = array(
-                'fullname' => 'jogi'.' '.'-'.'send notifyWith   testing',
-                'email' => 'jogi.amu@gmail.com',
-                'verification_link' => base_url('admin/auth/verify').'/'.md5(rand(0,1000))
-            );
-
-            // $to = $data['email'];
-            $to = 'jugendra.singh@netprophetsglobal.com';
-
-            $email = $this->mailer->mail_template($to,'exam-schedule',$mail_data);
-            
-
-                if($email){
-                    $this->session->set_flashdata('success', 'Email send');	
-                    $this->load->view('admin/exam/send_letter_list_index', $data);
-                }	
-                else{
-                    echo 'Email Error';
-                }
-            // exit;
-
         
         
         }else{
@@ -1060,37 +1005,26 @@ class Examshedule_schedule extends MY_Controller {
             $id = $this->input->get('id');
             $data['user_data'] = $this->Exam_model->get_all_invites_ids($id); 
 
-            echo '<pre>';
-            // print_r($data['user_data'][0]);
-            echo '<br/>';
-            echo $school_name = $data['user_data'][0]['school_name'];
-            echo '<br/>';
-            echo $address = $data['user_data'][0]['address'];
-            echo '<br/>';
-            echo $landmark = $data['user_data'][0]['landmark'];
-            echo '<br/>';
-            echo $principal_name = $data['user_data'][0]['principal_name'];
-            echo '<br/>';
-            echo $pri_mobile = $data['user_data'][0]['pri_mobile'];
-            echo '<br/>';
-            echo $user_email = $data['user_data'][0]['email'];
-            echo '<br/>';
-
-            //sending welcome email to user
-            $this->load->helper('email_helper');
-
-            $mail_data = array(
-                'fullname' => 'jogi'.' '.'-'.'send notifyWith   testing',
-                'email' => 'jogi.amu@gmail.com',
-                'verification_link' => base_url('admin/auth/verify').'/'.md5(rand(0,1000))
-            );
-
-            // $to = $data['email'];
-            $to = 'jugendra.singh@netprophetsglobal.com';
-
-            $email = $this->mailer->mail_template($to,'exam-schedule',$mail_data);
-
-            // exit;
+            $examName = get_exam_name($data['exam'][0]['exam_name']);
+            
+            $messageP1='Dear Sir/Madam ,%0a';
+            $messageP1.='Your consent approval is still pending at your end. Kindly complete it by login into your account.%0a';
+            $messageP1.='Kindly ignore if already done. %0a';
+            $messageP1.='Regards,%0a';
+            $messageP1.='UKPSC, Haridwar';
+            // Message For Email Address 
+            $messageE1='Dear Sir/Madam ,<br>';
+            $messageE1.='Your consent approval is still pending at your end. Kindly complete it by login into your account.<br>';
+            $messageE1.='Kindly ignore if already done.<br>';
+            $messageE1.='Regards,<br>';
+            $messageE1.='UKPSC, Haridwar';
+            
+            $email = $data['user_data'][0]['email'];
+            $phone = $data['user_data'][0]['pri_mobile'];
+            $template_id = "1007970272335112709";
+            // EMAIL AND MESSAGE SEND UDING TEMPLETE
+            sendSMS($phone,$messageP1,$template_id);
+            sendEmail($email,$messageE1,$template_id);
         }
     
         
@@ -1616,45 +1550,6 @@ class Examshedule_schedule extends MY_Controller {
         // $this->load->view('admin/exam/sending_invitations', $data);
     }
 
-    // public function view_recieved_consent(){
-    //     // $ref_id = urldecrypt($id);
-    //     // print_r($ref_id); die();
-    //     //  $examselect = $this->input->post('examselect') ? implode(',', $this->input->post('examselect')) : "";
-    //     // $sub_name = $this->input->post('sub_name') ? implode(',', $this->input->post('sub_name')) : "";
-    //     // $date_exam = $this->input->post('date_exam') ? implode(',', $this->input->post('date_exam')) : "";
-    //     // $shft_exam = $this->input->post('shft_exam') ? implode(',', $this->input->post('shft_exam')) : "";
-    //     // $time_exam = $this->input->post('time_exam') ? implode(',', $this->input->post('time_exam')) : "";
-    // //     if ($this->input->post()) {
-    // //         $data = array(
-    // //                 'ref_id' => $ref_id ,
-    // //                 'examselect' => $examselect,
-    // //                 'sub_name' => $sub_name,
-    // //                 'date_exam' => $date_exam,
-    // //                 'shft_exam' => $shft_exam,
-    // //                 'time_exam' => $time_exam,
-    // //                 'created_by' => $this->session->userdata('admin_id'),
-    // //                 'created_at' => date('d-m-Y : h:m:s'),
-    // //                 'created_by' => $this->session->userdata('admin_id'),
-    // //             );
-    // //         $dataUpdate = array(
-    // //             'invt_recieved' => '1'
-    // //         ); 
-    // //         $dataUpdate2 = array(
-    // //             'invt_recieved' => '1'
-    // //         );
-    // //             $data = $this->security->xss_clean($data);
-    // //             $result = $this->Exam_model->add_return_invitation($data,$dataUpdate,$dataUpdate2);
-    // //         $this->session->set_flashdata('success', ' Sent successfully!');
-    // //         redirect(base_url('admin/consent_active/consent_active_list'), 'refresh');
-    // // }else{
-    //             // $data['id'] = urldecrypt($id);
-    //             $data['admin'] = $this->Exam_model->get_return_data();  
-    //             // print_r($data['admin']); die();
-    //             $data['states'] = $this->location_model->get_states();
-    //             $this->load->view('admin/includes/_header');
-    //             $this->load->view('admin/exam/invitation_recieved_user', $data);
-    //             $this->load->view('admin/includes/_footer');
-    //         }
 
 
 

@@ -428,24 +428,24 @@ class Auth extends MY_Controller {
 						$to = $data['email'];
 
 						$email = $this->mailer->mail_template($to,'email-verification',$mail_data);
-						// SMS Template impletements 03-11-2022
-						$message='Dear Applicant,%0a';
-						$message.='your registration is completed, kindly complete your application using your emailid or user id  and password.%0a';
-						$message.='Regards,%0a';
-						$message.='UKPSC';
-						$phone = $this->input->post('pri_mobile');
-						$template_id = "1007550202180261279";
-                        sendSMS($phone,$message,$template_id);
-                       
-						// EMAIL Template impletements 03-11-2022
-
-						$message='Dear Applicant,<br>';
-						$message.='your registration is completed, kindly complete your application using your emailid or user id  and password.<br>';
-						$message.='Regards,<br>';
-						$message.='UKPSC';
+						// Message for Mobile 
+						$messageP1='Dear Sir/Madam ,%0a';
+						$messageP1.='Your primary registration is completed. Kindly complete your registration using your email id and password after clicking on password generation link on registered email id.%0a';
+						$messageP1.='Regards,%0a';
+						$messageP1.='UKPSC, Haridwar';
+						// Message For Email Address 
+						$messageE1='Dear Sir/Madam ,<br>';
+						$messageE1.='Your primary registration is completed. Kindly complete your registration using your email id and password after clicking on password generation link on registered email id.<br>';
+						$messageE1.='Regards,<br>';
+						$messageE1.='UKPSC, Haridwar';
+						
 						$email = $data['email'];
-						$template_id = "1007550202180261279";
-                        sendEmail($email,$message,$template_id);
+						$phone = $this->input->post('pri_mobile');
+						$template_id = "1007239655187710009";
+						// EMAIL AND MESSAGE SEND UDING TEMPLETE
+						sendSMS($phone,$messageP1,$template_id);
+						sendEmail($email,$messageE1,$template_id);
+
 
 						if($email){
 							$this->session->set_flashdata('registersuccess', 'Your account has been successfully created, please verify it by clicking the activation link that has been send to your email address and generate your new password to log in to UKPSC.');	
@@ -632,58 +632,6 @@ class Auth extends MY_Controller {
 			}
 		}
 
-		//----------------------------------------------------------------		
-		// public function reset_password($id=0){
-
-		// 	// print_r("hi");
-
-		// 	// check the activation code in database
-		// 	if($this->input->post('submit')){
-		// 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
-		// 		$this->form_validation->set_rules('confirm_password', 'Password Confirmation', 'trim|required|matches[password]');
-
-		// 		if ($this->form_validation->run() == FALSE) {
-		// 			$data = array(
-		// 				'errors' => validation_errors()
-		// 			);
-
-		// 			$this->session->set_flashdata('reset_code', $id);
-		// 			$this->session->set_flashdata('errors', $data['errors']);
-		// 			redirect($_SERVER['HTTP_REFERER'], 'refresh');
-		// 		}
-  
-		// 		else{
-		// 			$new_password = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
-		// 			$this->auth_model->reset_password($id, $new_password);
-		// 			$this->session->set_flashdata('success','New password has been Updated successfully.Please login below');
-		// 			redirect(base_url('admin/auth/login'));
-		// 		}
-		// 	}
-		// 	else{
-		// 		$result = $this->auth_model->check_password_reset_code($id);
-
-		// 		if($result){
-
-		// 			$data['title'] = 'Reseat Password';
-		// 			$data['reset_code'] = $id;
-		// 			$data['navbar'] = false;
-		// 			$data['sidebar'] = false;
-		// 			$data['footer'] = false;
-		// 			$data['bg_cover'] = true;
-
-		// 			$this->load->view('admin/includes/_header', $data);
-		// 			$this->load->view('admin/auth/reset_password');
-		// 			$this->load->view('admin/includes/_footer', $data);
-
-		// 		}
-		// 		else{
-		// 			$this->session->set_flashdata('error','Password Reset Code is either invalid or expired.');
-		// 			redirect(base_url('admin/auth/forgot_password'));
-		// 		}
-		// 	}
-		// }
-
-
 			public function reset_password($id=0){
 
 			// check the activation code in database
@@ -773,11 +721,32 @@ class Auth extends MY_Controller {
 
 
 
-		
+		public function sendSMSEMAIL(){
+			
+			$messageP1='Dear Sir/Madam ,%0a';
+			$messageP1.='Your primary registration is completed. Kindly complete your registration using your email id and password after clicking on password generation link on registered email id.%0a';
+			$messageP1.='Regards,%0a';
+			$messageP1.='UKPSC, Haridwar';
+			
+			$messageE1='Dear Sir/Madam ,<br>';
+			$messageE1.='Your primary registration is completed. Kindly complete your registration using your email id and password after clicking on password generation link on registered email id.<br>';
+			$messageE1.='Regards,<br>';
+			$messageE1.='UKPSC, Haridwar';
+
+            $email = 'demo@yopmail.com';
+			$phone = '8700488718';
+
+			$email = $data['email'];
+			$phone = $this->input->post('pri_mobile');
+			$template_id = "1007239655187710009";
+			// EMAIL AND MESSAGE SEND UDING TEMPLETE
+			sendSMS($phone,$messageP1,$template_id);
+			sendEmail($email,$messageE1,$template_id);
+		}
 
 			}  // end class
 
 
 
 
-?>   
+?>
