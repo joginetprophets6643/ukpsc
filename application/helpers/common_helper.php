@@ -477,7 +477,7 @@ function sendEmail($email,$message,$template_id){
         "replyto"=>"ukpschdr@gmail.com",
         "cright"=>"UKPSC",
         "display"=>"UKPSC",
-        'subject'=>'Test Message',
+        'subject'=>'UKPSC',
         'message'=>$message,
         'to'=>$email
     );

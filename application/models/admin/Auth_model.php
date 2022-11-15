@@ -129,12 +129,12 @@ class Auth_model extends CI_Model{
     function check_user_mail($email)
     {
     	$result = $this->db->get_where('ci_admin', array('email' => $email));
-
     	if($result->num_rows() > 0){
     		$result = $result->row_array();
     		return $result;
     	}
     	else {
+		
     		return false;
     	}
     }

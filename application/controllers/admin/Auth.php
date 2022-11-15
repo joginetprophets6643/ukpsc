@@ -499,8 +499,6 @@ class Auth extends MY_Controller {
 					);
 					$to = $data['email'];
 					$email = $this->mailer->mail_template($to,'welcome-email',$mail_data);
-
-
 					$this->session->set_flashdata('success','New password has been Updated successfully.Please login below with latest Login id and password');
 					redirect(base_url('admin/auth/login'));
 
@@ -574,7 +572,7 @@ class Auth extends MY_Controller {
 
 		//--------------------------------------------------		
 		public function forgot_password(){
-
+          
 				if($this->input->post('submit')){
 				//checking server side validation
 				$this->form_validation->set_rules('email', 'Email', 'valid_email|trim|required');
@@ -587,8 +585,8 @@ class Auth extends MY_Controller {
 				}
 
 				$email = $this->input->post('email');
+			
 				$response = $this->auth_model->check_user_mail($email);
-
 				if($response){
 
 					$rand_no = rand(0,1000);
@@ -596,13 +594,28 @@ class Auth extends MY_Controller {
 					$this->auth_model->update_reset_code($pwd_reset_code, $response['admin_id']);
 					
 					// --- sending email
-					$to = $response['email'];
-					$mail_data= array(
-						'fullname' => $response['firstname'].' '.$response['lastname'],
-						'reset_link' => base_url('admin/auth/reset_password/'.$pwd_reset_code)
-					);
-					$this->mailer->mail_template($to,'forget-password',$mail_data);
-
+					// $to = $response['email'];
+					// $mail_data= array(
+					// 	'fullname' => $response['firstname'].' '.$response['lastname'],
+					// 	'reset_link' => base_url('admin/auth/reset_password/'.$pwd_reset_code)
+					// );
+					// $this->mailer->mail_template($to,'forget-password',$mail_data);
+					$messageP1='Dear Applicant ,%0a';
+					$messageP1.='Kindly reset your password using the following link.'.$mail_data['reset_link'].'.%0a';
+					$messageP1.='Regards,%0a';
+					$messageP1.='UKPSC';
+					// Message For Email Address 
+					$messageE1='Dear Applicant ,<br>';
+					$messageE1.='Kindly reset your password using the following link.'. $mail_data['reset_link'].'<br>';
+					$messageE1.='Regards,<br>';
+					$messageE1.='UKPSC';
+					
+					$email = $to;
+					$phone = $response['pri_mobile'];
+					$template_id = "1007491885374897823";
+					// EMAIL AND MESSAGE SEND UDING TEMPLETE
+					sendSMS($phone,$messageP1,$template_id);
+					sendEmail($email,$messageE1,$template_id);
 					if($email){
 						$this->session->set_flashdata('success', 'We have sent instructions for resetting your password to your email');
 
