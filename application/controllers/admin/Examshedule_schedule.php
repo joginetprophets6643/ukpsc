@@ -261,7 +261,7 @@ class Examshedule_schedule extends MY_Controller {
     }
     // End Login Jogi..
     public function inv_list_data_for_mail() {
-
+      
         if((isset($_GET['district_id'])) && (!isset($_GET['state_id']))){
          
             $city_name = '';
@@ -377,29 +377,6 @@ class Examshedule_schedule extends MY_Controller {
                     <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
                
                 }
-            //    print_r($invitationStatus['invt_recieved']);
-            //    die;
-            //     if($invitationStatus==0)
-            //     {
-            //          $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
-            //         <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
-            //     }
-            //     else
-            //     {
-            //     if($row['invt_recieved']==0 && $row['invite_sent']==1)
-            //     {
-            //         $action =   'Pending';
-            //     }
-            //     elseif ($row['invt_recieved']==1 && $row['invite_sent']==1) {
-            //         $action =   'Done';
-            //     }
-            //     else{
-            //         $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
-            //         <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
-               
-            //     }
-            //     }
-
                 $row['principal_name'] = '<h4 class="m0 mb5">'.$row['principal_name'] .'</h4>'.'<small class="text-muted">'.$row['pri_mobile'].'</small><br/>'.'<small class="text-muted">'.$row['email'].'</small>';
                 $row['max_allocate_candidate'] = $row['max_allocate_candidate'];
                 $data[] = [
@@ -1054,23 +1031,9 @@ class Examshedule_schedule extends MY_Controller {
         print_r('hi');
     }
 
-    //  public function invitation_reply($id){
-    //  $data['id'] = ($id);
-    //     $data['admin'] = $this->Exam_model->get_invitation_data(urldecrypt($id))  ;
-    //     // print_r( $data['admin'] ); die;
-    //     $data['states'] = $this->location_model->get_states();
-    //     $this->load->view('admin/includes/_header');
-    //     $this->load->view('admin/exam/invitation_reply', $data);
-    //     $this->load->view('admin/includes/_footer');
-    // }
-
     public function invitation_reply($id) {
 
         $admin_id=$this->session->userdata('admin_id');
-        // echo $id;exit;
-        // print_r($admin_id); die();
-        // print_r($this->input->post()); die();
-
         if ($this->input->post()) {
             $ref_id = urldecrypt($id);
         
@@ -1140,37 +1103,9 @@ class Examshedule_schedule extends MY_Controller {
         }
     }
 
-//      public function invitation_reply_back() {
-//        $examselect = $this->input->post('examselect') ? implode(',', $this->input->post('examselect')) : "";
-//         $sub_name = $this->input->post('sub_name') ? implode(',', $this->input->post('sub_name')) : "";
-//         $date_exam = $this->input->post('date_exam') ? implode(',', $this->input->post('date_exam')) : "";
-//         $shft_exam = $this->input->post('shft_exam') ? implode(',', $this->input->post('shft_exam')) : "";
-//         $time_exam = $this->input->post('time_exam') ? implode(',', $this->input->post('time_exam')) : "";
-//         if ($this->input->post()) {
-//             $data = array(
-//                     'examselect' => $examselect,
-//                     'sub_name' => $sub_name,
-//                     'date_exam' => $date_exam,
-//                     'shft_exam' => $shft_exam,
-//                     'time_exam' => $time_exam,
-//                     'created_by' => $this->session->userdata('admin_id'),
-//                     'created_at' => date('d-m-Y : h:m:s'),
-//                     'created_by' => $this->session->userdata('admin_id'),
-//                 );
-//             $dataUpdate = array(
-//                 'invt_recieved' => '1'
-//             );
-//                 $data = $this->security->xss_clean($data);
-//                 $result = $this->Exam_model->add_return_invitation($data,$dataUpdate,$id );
-//             $this->session->set_flashdata('success', ' Sent successfully!');
-//             redirect(base_url('admin/consent_active/consent_active_list'), 'refresh');
-//     }
-// }
+
 
     public function invitation_sent_list() {
-
-
-        // $this->rbac->check_operation_access();
 
         $data['title'] = 'Invitation and Schedule List';
 

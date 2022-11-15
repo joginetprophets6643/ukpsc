@@ -244,7 +244,7 @@
         //clear the contents of captcha div first 
         document.getElementById('captcha').innerHTML = "";
         var charsArray =
-            "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         var lengthOtp = 7;
         var captcha = [];
         for (var i = 0; i < lengthOtp; i++) {

@@ -126,7 +126,7 @@
   function createCaptcha() {
     //clear the contents of captcha div first 
     document.getElementById('captcha').innerHTML = "";
-    var charsArray ="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var charsArray ="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     var lengthOtp = 7;
 

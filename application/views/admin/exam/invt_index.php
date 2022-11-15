@@ -228,6 +228,8 @@ $(document).ready(function() {
     $(function() {
         $('#state').change( function() {
             var district_id = $(this).val();
+            var exam_new_id = "<?= $this->uri->segment(4);?>";
+       
                 if (district_id != '') {
                     $('#othstate').val('').hide();
 
@@ -246,7 +248,8 @@ $(document).ready(function() {
                 } 
           var state_id = $('#state').val();
           var grade = $('#grade').val();
-          var district_id =  $('#district').val();;
+          var district_id =  $('#district').val();
+
           
             if (state_id != '') {
            
@@ -254,9 +257,9 @@ $(document).ready(function() {
                    type: "GET", 
                    url: base_url+'admin/Examshedule_schedule/inv_list_data_for_mail',
                    dataType: 'html',
-                   data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade, 'csfr_token_name':csfr_token_value },
+                   data: { 'state_id' : state_id, 'district_id':district_id,'grade':grade,exam_id:exam_new_id 'csfr_token_name':csfr_token_value },
                    success: function(data) {
-                    
+                      
                        $('#send_invitation_list').html(data);
                        // New Logic For Count Students on the basis of Distrcit Id  -- Jogi
                         $.ajax({
@@ -554,13 +557,12 @@ var table = $('#send_invitation_list').DataTable({
                 dataType: 'text',
                 data : {id:id,'send_consent_id':send_consent_id},
                 success:function(result){
-                  
                     if(result)
                     {
-                    $('.loader').addClass('d-none');
-                    alert("success, Sent Sucessfully");
-                    this.checked = false; 
-                    window.location.reload(); 
+                        $('.loader').addClass('d-none');
+                        alert("success, Sent Sucessfully");
+                        this.checked = false; 
+                        window.location.reload(); 
                     }
                    
                 }
