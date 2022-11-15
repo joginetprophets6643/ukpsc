@@ -29,10 +29,6 @@
             <th>Bank Name</th>
             <th>Branch Name</th>
             <th>IFSC Code</th>
-            <th>Total Class Number</th>
-            <th>Class Sitting Capacity</th>
-            <th>Max Number Student</th>
-            <th>Furniture Available</th>
             <th>Electricity Available</th>
             <th>Generator Available</th>
             <th>Wash Room</th>
@@ -44,8 +40,6 @@
             <th>Suggetions</th>
             <th>Number Room</th>
             <th>number of sheet</th>
-            <th>Consent Grading</th>
-            <th>Place</th>
          </tr>
       </thead>
       <tbody>
@@ -93,9 +87,6 @@
                <td><?=$row['ban_name']?></td>
                <td><?=$row['branch_name']?></td>
                <td><?=$row['ifsc']?></td>
-               <td><?=$row['total_class_number']?></td>
-               <td><?=$row['class_sitting_capacity']?></td>
-               <td><?=$row['max_num_student']?></td>
                <td><?=$row['furniture_avail']?></td>
                <td><?=$row['elec_avail']?></td>
                <td><?=$row['gen_avai']?></td>
@@ -105,11 +96,8 @@
                <td><?=$row['staff_suffi']?></td>
                <td><?=$row['ukpsc_exxma']?></td>
                <td><?=$row['remark_if']?></td>
-               <td><?=$row['suggetions']?></td>
                <td><?=$row['no_room']?></td>
                <td><?=$row['no_sheet']?></td>
-               <td><?=$row['consent_grading']?></td>
-               <td><?=$row['place']?></td>
             </tr>
          <?php
          }

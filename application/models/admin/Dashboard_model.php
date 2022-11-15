@@ -55,15 +55,9 @@ class Dashboard_model extends CI_Model {
 
 
     public function get_role_wise_users($role_id) {
-
-
-
         $query = $this->db->query("SELECT admin_role_id, count(admin_role_id) as count_Users FROM ci_admin where admin_role_id =$role_id and is_active= 1  group by admin_role_id;");
 
         $row = $query->row();
-
-
-
         if (isset($row)) {
 
             return $row;
@@ -300,6 +294,76 @@ class Dashboard_model extends CI_Model {
 
         return $arr;
 
+    }
+
+    public function get_register_school(){
+          // echo $state_name;
+          $this->db->from('ci_exam_registration');
+          $this->db->order_by('ci_exam_registration.id', 'desc');
+  
+          $query = $this->db->get();
+          $module = array();
+       
+          if ($query->num_rows() > 0) {
+              $module = $query->result_array();   
+          }
+       
+          return count($module);
+    }
+    public function get_total_sections(){
+        $this->db->select('ci_admin.*, ci_admin_roles.*, ci_cities.name as city_name, ci_states.name as state_name ');
+		$this->db->from('ci_admin');
+
+		$this->db->join('ci_admin_roles','ci_admin_roles.admin_role_id=ci_admin.admin_role_id');
+                $this->db->join('ci_cities','ci_cities.id=ci_admin.district_id', 'left');
+                $this->db->join('ci_states','ci_states.id=ci_admin.state_id', 'left');
+
+		if($this->session->userdata('filter_type')!='')
+
+			$this->db->where('ci_admin.admin_role_id',$this->session->userdata('filter_type'));
+
+		if($this->session->userdata('filter_status')!='')
+
+			$this->db->where('ci_admin.is_active',$this->session->userdata('filter_status'));
+                //-----------------------------------------------------------------------
+                // Filter data as per user role
+                $admin_role_id = $this->session->userdata('admin_role_id');
+                if($admin_role_id == 3 || $admin_role_id == 4){
+			$this->db->where('ci_admin.state_id',$this->session->userdata('state_id'));
+                }
+                if($admin_role_id == 5 )
+			$this->db->where('ci_admin.district_id',$this->session->userdata('district_id'));
+                if($admin_role_id == 6 )
+			$this->db->where('ci_admin.admin_id',$this->session->userdata('admin_id'));
+                // End Filter data as per user role
+                
+                
+		$filterData = $this->session->userdata('filter_keyword');
+                if($filterData!=''){
+                $this->db->group_start();
+		$this->db->like('ci_admin_roles.admin_role_title',$filterData);
+		$this->db->or_like('ci_admin.firstname',$filterData);
+		$this->db->or_like('ci_admin.lastname',$filterData);
+		$this->db->or_like('ci_admin.email',$filterData);
+		$this->db->or_like('ci_admin.mobile_no',$filterData);
+		$this->db->or_like('ci_admin.username',$filterData);
+                $this->db->group_end();
+                }
+		$this->db->where('ci_admin.is_supper !=', 1);
+                $this->db->where('ci_admin.admin_role_id !=', 6);
+                $this->db->where('ci_admin.admin_role_id !=', 7);
+		$this->db->order_by('ci_admin.admin_role_id','desc');
+
+		$query = $this->db->get();
+                //echo $this->db->last_query();
+		$module = array();
+
+		if ($query->num_rows() > 0) 
+		{
+			$module = $query->result_array();
+		}
+
+		return count($module);
     }
 
 

@@ -1219,7 +1219,17 @@ class Examshedule_schedule extends MY_Controller {
                     $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
                     <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
                
+
                 }
+                if(isset($row["consents_signstamp_file"]))
+                {
+                    $path = base_url("uploads/consent_form/".$row["consents_signstamp_file"]);
+                    $downloadConsent = '<a href='.$path.' class="btn btn-primary">Download Consent</a>';
+                }
+                else{
+                    $path ='<button class="btn btn-default" disabled>Consent Not available</button>';
+                }
+               
 
                 $row['principal_name'] = '<h4 class="m0 mb5">'.$row['principal_name'] .'</h4>'.'<small class="text-muted">'.$row['pri_mobile'].'</small><br/>'.'<small class="text-muted">'.$row['email'].'</small>';
                 $row['max_allocate_candidate'] = '<input style="height: 1px;width: 1px;" hidden type="checkbox" id="a" id="sum_value" name="sum_value" class="checkbox-item sum" rel="'.$row['max_allocate_candidate'].'"> '.$row['max_allocate_candidate'].'';
@@ -1233,6 +1243,7 @@ class Examshedule_schedule extends MY_Controller {
                     $row['ranking_admin']? $row['ranking_admin'] : '',
                     $row['max_allocate_candidate']? $row['max_allocate_candidate'] : '',
                     $action,
+                    $downloadConsent
                 ];
             }
         }

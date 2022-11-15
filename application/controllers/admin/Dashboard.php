@@ -69,10 +69,8 @@ class Dashboard extends My_Controller {
         $data['all_users'] = $this->dashboard_model->get_all_users();
 		$data['active_users'] = $this->dashboard_model->get_active_users();
 		$data['deactive_users'] = $this->dashboard_model->get_deactive_users();
-
-		// print_r($_SESSION['admin_role_id']); die();
-
-		// FOr Count Users
+        $data['registerSchool'] = $this->dashboard_model->get_register_school();
+        $data['sections'] = $this->dashboard_model->get_total_sections();
 		$data["row"] = $this->Certificate_model->get_all_active_consent_reg();
 		foreach ($data["row"] as $valueid){
             // echo '<pre>';

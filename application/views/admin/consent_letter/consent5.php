@@ -128,7 +128,7 @@
                                                 data-file_detail="file_detail5" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Upload Downloaded Consent Form (Signed and Stamped) (JPG format Only)*</label>
+                                            <label>Upload Downloaded Consent Form (Signed and Stamped) (PDF format Only)*</label>
                                             <input type="file" class="form-control" name="fileName6" id="fileName6"
                                                 data-file_detail="file_detail5" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>

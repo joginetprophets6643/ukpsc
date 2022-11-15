@@ -77,7 +77,6 @@ class Admin extends MY_Controller
                 //print_r($_SESSION); 
 
 		$data['info'] = $this->admin->get_all();
-
 		$this->load->view('admin/admin/list',$data);
 
 	}

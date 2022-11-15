@@ -58,7 +58,6 @@
                                             <th>S.No</th>
                                             <th>School Registration Number</th>
                                             <th>Center Name</th>
-                                            <th>Examination Center Code</th>
                                             <th>Address</th>
                                             <th>Landmark</th>
                                             <th>District</th>
@@ -71,9 +70,6 @@
                                             <th>Superintendent Mobile</th>
                                             <th>Superintendent Email</th>
                                             <th>Superintendent whatspp</th>
-                                            <th>Total Class Number</th>
-                                            <th>Class Sitting Capacity</th> 
-                                            <th>Max Num Student</th>
                                             <th>Furniture Available</th>
                                             <th>Electric Available</th>
                                             <th>generator Available</th> 
@@ -108,7 +104,6 @@
                                            <td><?php echo $key+1?></td>
                                            <td><?php echo $row['school_registration_number']?></td>
                                            <td><?php echo $row['school_name']?></td>
-                                           <td><?php echo $row['centerCode']?></td>
                                            <td><?php echo $row['address']?></td>
                                            <td><?php echo $row['landmark']?></td>
                                            <td><?php echo $row['district']?></td>
@@ -121,9 +116,6 @@
                                            <td><?php echo $row['super_mobile']?></td>
                                            <td><?php echo $row['super_email']?></td>
                                            <td><?php echo $row['super_whatspp']?></td>
-                                           <td><?php echo $row['total_class_number']?></td>
-                                           <td><?php echo $row['class_sitting_capacity']?></td>
-                                           <td><?php echo $row['max_num_student']?></td>
                                            <td><?php echo $row['furniture_avail']?></td>
                                            <td><?php echo $row['elec_avail']?></td>
                                            <td><?php echo $row['gen_avai']?></td>
@@ -179,7 +171,6 @@
                                             <th>S.No</th>
                                             <th>School Registration Number</th>
                                             <th>Center Name</th>
-                                            <th>Examination Center Code</th>
                                             <th>Address</th>
                                             <th>Landmark</th>
                                             <th>District</th>
@@ -192,9 +183,6 @@
                                             <th>Superintendent Mobile</th>
                                             <th>Superintendent Email</th>
                                             <th>Superintendent whatspp</th>
-                                            <th>Total Class Number</th>
-                                            <th>Class Sitting Capacity</th> 
-                                            <th>Max Num Student</th>
                                             <th>Furniture Available</th>
                                             <th>Electric Available</th>
                                             <th>generator Available</th> 
@@ -229,7 +217,6 @@
                                            <td><?php echo $key+1?></td>
                                            <td><?php echo $row['school_registration_number']?></td>
                                            <td><?php echo $row['school_name']?></td>
-                                           <td><?php echo $row['centerCode']?></td>
                                            <td><?php echo $row['address']?></td>
                                            <td><?php echo $row['landmark']?></td>
                                            <td><?php echo $row['district']?></td>
@@ -242,9 +229,6 @@
                                            <td><?php echo $row['super_mobile']?></td>
                                            <td><?php echo $row['super_email']?></td>
                                            <td><?php echo $row['super_whatspp']?></td>
-                                           <td><?php echo $row['total_class_number']?></td>
-                                           <td><?php echo $row['class_sitting_capacity']?></td>
-                                           <td><?php echo $row['max_num_student']?></td>
                                            <td><?php echo $row['furniture_avail']?></td>
                                            <td><?php echo $row['elec_avail']?></td>
                                            <td><?php echo $row['gen_avai']?></td>

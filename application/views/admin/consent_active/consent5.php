@@ -84,14 +84,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-md-6">
-                                                <label>Parking Image <i style="color:#ff0000; font-size:12px;">*</i>
+                                                <label>Parking Image (Only JPG)*<i style="color:#ff0000; font-size:12px;">*</i>
                                                 </label>
                                                 <input type="file" style="height: 35px !important; font-size: 14px !important;" class="form-control" name="fileName1" id="fileName1"
                                                     data-file_detail="file_detail1" onchange="get_detail(this);" />
                                                 
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Classroom Image <i
+                                                <label>Classroom Image (Only JPG)*<i
                                                         style="color:#ff0000; font-size:12px;">*</i></label>
                                                 <input type="file" style="height: 35px !important; font-size: 14px !important;" class="form-control" name="fileName2" id="fileName2"
                                                     data-file_detail="file_detail2" onchange="get_detail(this);" />
@@ -99,14 +99,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-md-6">
-                                                <label>Washroom Image <i
+                                                <label>Washroom Image (Only JPG)*<i
                                                         style="color:#ff0000; font-size:12px;">*</i></label>
                                                 <input type="file" style="height: 35px !important; font-size: 14px !important;" class="form-control" name="fileName3" id="fileName3"
                                                     data-file_detail="file_detail3" onchange="get_detail(this);" />
                                                 
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Main Gate Image <i
+                                                <label>Main Gate Image (Only JPG)*<i
                                                         style="color:#ff0000; font-size:12px;">*</i></label>
                                                 <input type="file" style="height: 35px !important; font-size: 14px !important;" class="form-control" name="fileName4" id="fileName4"
                                                     data-file_detail="file_detail4" onchange="get_detail(this);" />
@@ -115,14 +115,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-md-6">
-                                                <label>Locker Image <i
+                                                <label>Locker Image (Only JPG)*<i
                                                         style="color:#ff0000; font-size:12px;">*</i></label>
                                                 <input type="file" style="height: 35px !important; font-size: 14px !important;" class="form-control" name="fileName5" id="fileName5"
                                                     data-file_detail="file_detail5" onchange="get_detail(this);" />
                                                 
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Main Gate image<i
+                                                <label>Main Gate image (Only JPG)*<i
                                                         style="color:#ff0000; font-size:12px;">*</i></label>
                                                 <input type="file" style="height: 35px !important; font-size: 14px !important;" class="form-control" name="fileName6" id="fileName6"
                                                     data-file_detail="file_detail5" onchange="get_detail(this);" />
@@ -216,7 +216,7 @@
 
                                     <div class="main active" id="from_upload_show">
                                         <div class="text ">
-                                            <h2>Upload Downloaded Consent Form (Signed and Stamped)</h2>
+                                            <h2>Upload Downloaded Consent Form (Signed and Stamped)(Only PDF & Maximum size 30MB)*</h2>
                                             <!-- <p>Add your School/College/Institute Images as per required filed</p> -->
                                         </div>
                                         <div class="row">

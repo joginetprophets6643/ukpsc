@@ -199,20 +199,7 @@ class Certificate_model extends CI_Model {
         }
 
         $admin_role_id = $this->session->userdata('admin_role_id');
-//        if ($admin_role_id == 1 || $admin_role_id == 2) {
-//            
-//            $this->db->where('ci_exam_registration.file_movement !=', 1);
-//        }
-//         if ($admin_role_id == 3 || $admin_role_id == 4) {
-//             $this->db->where('ci_exam_registration.state',
-//                     $this->session->userdata('state_id'));
-// //            $this->db->where('ci_exam_registration.file_movement !=', 1);
-//         }
-//         if ($admin_role_id == 5) {
-//             $this->db->where('ci_exam_registration.district',
-//                     $this->session->userdata('district_id'));
-// //            $this->db->where('ci_exam_registration.file_movement !=', 1);
-//         }
+
         if ($admin_role_id == 6) {
             $this->db->where('ci_exam_registration.created_by',
                     $this->session->userdata('admin_id'));
@@ -244,7 +231,7 @@ class Certificate_model extends CI_Model {
         $this->db->from('ci_exam_registration');
 
         if ($city_name != '' && $state_name != '' ) {
-
+             
             $this->db->where('ci_exam_registration.district', $state_name);
             $this->db->where('ci_exam_registration.city', $city_name);
         }
@@ -256,34 +243,18 @@ class Certificate_model extends CI_Model {
         
         
         if ($grade_name != '') {
-
+           
             $this->db->where('ci_exam_registration.ranking_admin', $grade_name);
         }
 
-        // if ($this->session->userdata('filter_state') != '' && $this->session->userdata('filter_district') != '') {
-        //     $this->db->where('ci_exam_registration.district ',
-        //             $this->session->userdata('filter_district'));
-        // }
-
-        // if ($this->session->userdata('filter_status') != '') {
-        //     $this->db->where('ci_exam_registration.file_movement ',
-        //             $this->session->userdata('filter_status'));
-        // }
-
         $admin_role_id = $this->session->userdata('admin_role_id');
-//        if ($admin_role_id == 1 || $admin_role_id == 2) {
-//            
-//            $this->db->where('ci_exam_registration.file_movement !=', 1);
-//        }
-//         if ($admin_role_id == 3 || $admin_role_id == 4) {
-//             $this->db->where('ci_exam_registration.state',
-//                     $this->session->userdata('state_id'));
-// //            $this->db->where('ci_exam_registration.file_movement !=', 1);
-//         }
+       
         if ($admin_role_id == 5) {
+         
             $this->db->where('ci_exam_registration.fileName6 is  NOT NULL');
         }
         if ($admin_role_id == 6) {
+       
             $this->db->where('ci_exam_registration.fileName6 is  NOT NULL');
             $this->db->where('ci_exam_registration.created_by',
                     $this->session->userdata('admin_id'));
@@ -292,21 +263,17 @@ class Certificate_model extends CI_Model {
 
 
         $filterData = $this->session->userdata('filter_keyword');
-
-        // $this->db->where('status','1');
-
         $this->db->order_by('ci_exam_registration.id', 'desc');
 
         $query = $this->db->get();
-        // echo '<pre>';print_r($query->result_array());die;
-        // echo $this->db->last_query();
         $module = array();
-
+     
         if ($query->num_rows() > 0) {
             $module = $query->result_array();
+
             
         }
-        // echo '<pre>';print_r($module); die();
+     
         return $module;
     }
 

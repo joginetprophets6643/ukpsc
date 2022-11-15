@@ -41,7 +41,7 @@
 
               <div class="d-flex justify-content-between p-3 align-items-center">
                 <div class="inner">
-                  <h5 class="text-white mb-0 text-bold">NO OF SCHOOL/COLLEGE REGISTERED</h5>
+                  <h5 class="text-white mb-0 text-bold">NO OF SCHOOL/COLLEGE REGISTERED <?= $registerSchool?></h5>
                 </div>
 
                 <div class="img-wrapper">
@@ -59,7 +59,7 @@
             <div class="small-box bg-info">
               <div class="d-flex justify-content-between p-3 align-items-center">
                 <div class="inner">
-                  <h5 class="text-white mb-0 text-bold">NO OF SECTIONS</h5>
+                  <h5 class="text-white mb-0 text-bold">NO OF SECTIONS <?=$sections?></h5>
                 </div>
 
                 <div class="img-wrapper">

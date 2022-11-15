@@ -170,6 +170,7 @@
                             <th>Grade</th>
                             <th width="120">Max No of Applicant</th>
                             <th width="120"><?= trans('action') ?></th>
+                            <th width="120">Download Consent</th>
                         </tr>
                       </thead>
                       <!-- <div style="margin-left:63%;padding: 0 0 20px 10px;"> -->
