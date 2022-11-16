@@ -451,7 +451,7 @@ public function consent_add_1() {
                   if (!empty($_FILES['fileName6']['name'])) {
 
                     $config['upload_path'] = 'uploads/consent_data/';
-                    $config['allowed_types'] ='jpeg|jpg|pdf';
+                    $config['allowed_types'] ='pdf';
                     $config['file_name'] = time() . '-' . $_FILES['fileName6']['name'];
                     $config['max_size'] = 1024 * 1024;
 

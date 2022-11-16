@@ -7,6 +7,12 @@
         });
     });
 </script>
+<style>
+    .formatColor {
+        color:red;
+        font-size:0.75rem;
+    }
+</style>
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -62,6 +68,7 @@
 
                                         </div>
                                     </div>
+                                    <p class="formatColor mt-4 mb-0"> <strong> Instructions :</strong> Kindly click on preview and download form and take the printout of filled information, sign it and then click on ready to upload the form with sign and stamp and images.</p>
                                     <div class="input-text">
                                         <div id="input-text down_form_up">
 
@@ -98,37 +105,37 @@
                                     </div>
                                     <div class="row mt-4">
                                         <div class="form-group col-md-6">
-                                            <label>Parking Image(JPG format Only)* </label>
+                                            <label>Parking Image <span class="formatColor">(JPG format Only)* </span></label>
                                             <input type="file" class="form-control" name="fileName1" id="fileName1"
                                                 data-file_detail="file_detail1" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                             
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Classroom Image (JPG format Only)*</label>
+                                            <label>Classroom Image <span class="formatColor">(JPG format Only)*<span></label>
                                             <input type="file" class="form-control" name="fileName2" id="fileName2"
                                                 data-file_detail="file_detail2" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label>Washroom Image (JPG format Only)*</label>
+                                            <label>Washroom Image <span class="formatColor">(JPG format Only)*<span></label>
                                             <input type="file" class="form-control" name="fileName3" id="fileName3"
                                                 data-file_detail="file_detail3" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Main Gate Image (JPG format Only)*</label>
+                                            <label>Main Gate Image <span class="formatColor">(JPG format Only)*<span></label>
                                             <input type="file" class="form-control" name="fileName4" id="fileName4"
                                                 data-file_detail="file_detail4" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label>Locker Image (JPG format Only)*</label>
+                                            <label>Locker Image <span class="formatColor">(JPG format Only)*<span></label>
                                             <input type="file" class="form-control" name="fileName5" id="fileName5"
                                                 data-file_detail="file_detail5" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Upload Downloaded Consent Form (Signed and Stamped) (PDF format Only)*</label>
+                                            <label>Upload Downloaded Consent Form (Signed and Stamped) <span class="formatColor">(PDF format Only)*<span></label>
                                             <input type="file" class="form-control" name="fileName6" id="fileName6"
                                                 data-file_detail="file_detail5" onchange="get_detail(this);" style="height: 35px !important; font-size: 14px !important;"/>
                                         </div>
