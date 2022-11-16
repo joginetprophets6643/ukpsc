@@ -11,32 +11,44 @@
     ">
       <thead>
          <tr>
-            <th width="50">S.No.</th>
+         <th width="50">S.No.</th>
             <th>School Registration No.  </th>
             <th>School Name  </th>
+            <th>School Address</th>
+            <th>Landmark</th>
             <th>District</th>
             <th>City</th>
             <th>Principal Name</th>
             <th>Principal Mobile</th>
             <th>Principal Email</th>
-
+            <th>Principal whatsup Number</th>
+            <th>Centre Superintendent Name</th>
+            <th>Centre Superintendent Designation</th>
+            <th>Centre Superintendent Mobile No</th>
+            <th>Centre Superintendent Email</th>
+            <th>Centre Superintendent Whatups Number</th>
+            <th>Total Number of Rooms</th>
+            <th>Number of Seats for Candidates in Each Room</th>
+            <th>Maximum number of candidates can be allocated in the center</th>
+            <th>Sufficient furniture</th>
+            <th>Lighting facility</th>
+            <th>Generator facility</th>
+            <th>Separate Washroom facilities</th>
+            <th>Clock Room facility</th>
+            <th>Parking Facility</th>
+            <th>Number of invigilators and staff</th>
+            <th>Conduct any Examination</th>
+            <th>Debarred</th>
+            <th>Superintendent Brass Seal </th>
+            <th>Remarks</th>
             <th>Account Holder Name</th>
             <th>Bank Name</th>
             <th>Branch Name</th>
             <th>IFSC Code</th>
-            <th>Furniture Available</th>
-            <th>Electricity Available</th>
-            <th>Generator Available</th>
-            <th>Wash Room</th>
-            <th>Clock Room</th>
-            <th>Vehicle Available</th>
-            <th>Staff suff</th>
-            <th>ukpsc exam</th>
-            <th>Remark</th>
-            <th>Number Room</th>
-            <th>Number of sheet</th>
-            <th width="120">Ranking</th>
-            <th width="120">Status</th>
+            <th>Account Number</th>
+            <th>Confirm Account Number</th>
+            <th>Ranking</th>
+            <th>Status</th>
          </tr>
       </thead>
       <tbody>
@@ -55,49 +67,46 @@
                ?>
 
                   <tr>
-                     <td>
-                        <?= $i ?>
-                     </td>
-                     <td>
-                        <?= $row['school_registration_number'] ?>
-                     </td>
-                     <td>
-                        <?= $row['school_name'] ?>        
-                     </td>
-                     <td>
-                        <?= $row['district']; ?>
-                     </td>
-                     <td>
-                        <?= $row['city']; ?>
-                     </td>
-                     <td>
-                           <?= $row['principal_name']; ?>
-                     </td>
-                     <td>
-                        <?= $row['pri_mobile']; ?>
-                    </td>
-                     <td><?= $row['email']; ?></td>
-                     <td><?=$row['acc_holder_name']?></td>
-                     <td><?=$row['ban_name']?></td>
-                     <td><?=$row['branch_name']?></td>
-                     <td><?=$row['ifsc']?></td>
-                     <td><?=$row['furniture_avail']?></td>
-                     <td><?=$row['elec_avail']?></td>
-                     <td><?=$row['gen_avai']?></td>
-                     <td><?=$row['wash_rrom']?></td>
-                     <td><?=$row['clock_room']?></td>
-                     <td><?=$row['vehicle_avail']?></td>
-                     <td><?=$row['staff_suffi']?></td>
-                     <td><?=$row['ukpsc_exxma']?></td>
-                     <td><?=$row['remark_if']?></td>
-                     <td><?=$row['no_room']?></td>
-                     <td><?=$row['no_sheet']?></td>
-                     <td>
-                           <?= $row['ranking_admin']; ?>  
-                     </td>
-                     <td><?= $row['status_admin']; ?></td>
+                  <td><?= $i ?></td>
+                  <td><?=$row['school_registration_number'] ?></td>
+                  <td> <?=$row['school_name'] ?></td>
+                  <td><?=$row['address'] ?></td>
+                  <td><?=$row['landmark'] ?></td>
+                  <td><?=$row['district']; ?></td>
+                  <td><?=$row['city']; ?></td>
+                  <td><?=$row['principal_name']; ?></td>
+                  <td><?=$row['pri_mobile']?></td>
+                  <td><?=$row['email']?></td>
+                  <td><?=$row['whats_num']?></td>
+                  <td><?=$row['super_name']?></td>
+                  <td><?=$row['super_design']?></td>
+                  <td><?=$row['super_mobile']?></td>
+                  <td><?=$row['super_email']?></td>
+                  <td><?=$row['super_whatspp']?></td>
+                  <td><?=$row['no_room']?></td>
+                  <td><?=$row['no_sheet']?></td>
+                  <td><?=$row['max_allocate_candidate']?></td>
+                  <td><?=$row['furniture_avail']?></td>
+                  <td><?=$row['elec_avail']?></td>
+                  <td><?=$row['gen_avai']?></td>
+                  <td><?=$row['wash_rrom']?></td>
+                  <td><?=$row['clock_room']?></td>
+                  <td><?=$row['vehicle_avail']?></td>
+                  <td><?=$row['staff_suffi']?></td>
+                  <td><?=$row['ukpsc_exxma']?></td>
+                  <td><?=$row['debar']?></td>
+                  <td><?=$row['bras_Seal']?></td>
+                  <td><?=$row['remark_if']?></td>
+                  <td><?=$row['acc_holder_name']?></td>
+                  <td><?=$row['ban_name']?></td>
+                  <td><?=$row['branch_name']?></td>
+                  <td><?=$row['ifsc']?></td>
+                  <td><?=$row['acc_num']?></td>
+                  <td><?=$row['acc_num_con']?></td>
+               <td><?= $row['ranking_admin']; ?></td>
+               <td><?= $row['status_admin']; ?></td>
             
-                  </tr>
+             </tr>
             <?php
               }
             $i++;
