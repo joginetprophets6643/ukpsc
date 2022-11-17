@@ -1183,24 +1183,17 @@ class Examshedule_schedule extends MY_Controller {
     public function consent_recieved_by_user_data() {
 
         $data['info'] = $this->Exam_model->get_consent_recved_data();
-        
-        print_r($data['info']); die();
+  
         $this->load->view('admin/exam/consnt_recievd_list', $data);
     }
     
     public function consent_recieved_list($id) {
        
-        // $data['info'] = $this->Exam_model->get_consent_recved_data();
-        // print_r($data['info']); die();
-        // $this->load->view('admin/exam/consnt_recievd_list', $data);
-     
+   
         $state_name = $city_name = $grade_name = '';
         $records['data'][1] = $this->Exam_model->get_consent_recved_data($state_name, $city_name, $grade_name,$id);
 
         $data = [];
-        
-        // echo '<pre>'; print_r($records['data'][1][1]);
-        // die;
         
         $i = 0;
 
@@ -1227,6 +1220,7 @@ class Examshedule_schedule extends MY_Controller {
                     $downloadConsent = '<a href='.$path.' class="btn btn-primary">Download Consent</a>';
                 }
                 else{
+
                     $path ='<button class="btn btn-default" disabled>Consent Not available</button>';
                 }
                

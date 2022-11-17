@@ -230,6 +230,7 @@ var table = $('#consent_recieved_list').DataTable({
             {"targets": 5,"name": "ranking_admin",'searchable': true,'orderable': true},
             {"targets": 6,"name": "max_allocate_candidate",'max_allocate_candidate': true,'orderable': true},
             {"targets": 7,"name": "created_at",'searchable': true,'orderable': true},
+            {"targets": 8,"name": "consents_signstamp_file",'searchable': true,'orderable': true},
         ]
     });
 

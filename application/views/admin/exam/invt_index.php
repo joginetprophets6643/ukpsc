@@ -149,7 +149,7 @@
                             </div>
                             <div id="schoolCount" class="d-none">
                                 <h4 class="text-bold" style="font-size: 17px; color: #373250;">
-                                    Total No. of Applicants Selected in School :  
+                                    Selected school total seats  :  
                                     <span style="color: #e14658;" id="schoolWiseCounts"></span>
                                 </h4>
                             </div>
