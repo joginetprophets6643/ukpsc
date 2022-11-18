@@ -31,7 +31,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name" class="col-sm- control-label">Exam Date&nbsp;(परीक्षा तिथि)<i style="color:#ff0000; font-size:12px;">*</i></label>
-                            <input type="text" readonly name="exam_date" value="<?php echo $date_exam[$key]?>"  class="form-control" id="exam_date" placeholder="Enter a Date"  >
+                            <input type="text" readonly name="exam_date" value="<?php echo date("d-m-Y",strtotime($date_exam[$key]))?>"  class="form-control" id="exam_date" placeholder="Enter a Date"  >
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -123,7 +123,7 @@
         var pa = parseInt(present)+parseInt(absent);
         if(pa!=total)
         {
-          alert('Total Should be equal to total of Present Candidate and Absent Candidate');
+        //   alert('Total Should be equal to total of Present Candidate and Absent Candidate');
           $("#submit"). attr("disabled", true); 
           
         }

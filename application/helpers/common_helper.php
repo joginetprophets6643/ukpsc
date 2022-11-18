@@ -417,6 +417,19 @@ function getConsentAllocate_max($school_id)
     return $exam_center_code;
 }
 
+function checkOption($exam_id,$school_id,$dateexam,$shiftexam)
+{
+    $ci = & get_instance();
+    $q = $ci->db->select('choice')
+         ->where('examId',$exam_id)
+         ->where('schoolId', $school_id)
+         ->where('examShift', $shiftexam)
+         ->where('examDate', $dateexam)
+         ->get('examshiftchoice')->row_array();
+    $choice = isset($q['choice'])?$q['choice']:'';
+
+    return $choice;
+}
 
 
 function sendSMS($mobile,$message,$template_id){

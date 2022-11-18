@@ -347,18 +347,6 @@ public function get_all_active_consent_reg() {
     }
 
 
-    // public function get_all_active_consent() {
-    //     $admin_id = $this->session->userdata('admin_id');
-    //     $this->db->select('ci_exam_invitation.*, ci_exam_registration.* ');
-    //     $this->db->from('ci_exam_invitation');
-    //     $this->db->join('ci_exam_registration',
-    //             'ci_exam_registration.admin_id =ci_exam_invitation.id');
-    //     // $this->db->where('ci_exam_registration.admin_id', $admin_id);
-    //     $this->db->where('invite_sent','1');
-    //     $this->db->order_by('ci_exam_registration.admin_id', 'asc');
-    //     $query = $this->db->get();
-    //     return $query->result();
-    // }
 public function get_all_recieved_consent() {
            // $admin_id = $this->session->userdata('admin_id');
         $this->db->from('ci_invite_return');
@@ -377,36 +365,6 @@ public function get_all_recieved_consent() {
     //     $this->db->from('ci_exam_registration');
 
     //    -----------------------------------------------------------------------
-    //     Filter data as per user role
-    //     $admin_role_id = $this->session->userdata('admin_role_id');
-
-    //     End Filter data as per user role
-
-    //     $filterData = $this->session->userdata('filter_keyword');
-    //     if ($filterData != '') {
-    //         $this->db->group_start();
-    //         $this->db->like('ci_exam_registration.district',
-    //                 $filterData);
-    //         $this->db->or_like('ci_exam_registration.address1',
-    //                 $filterData);
-    //         $this->db->or_like('ci_exam_registration.city', $filterData);
-
-    //         $this->db->group_end();
-    //     }
-    //     $this->db->where('status_admin', 'Active');
-
-    //     $this->db->order_by('ci_exam_registration.id', 'desc');
-
-    //     $query = $this->db->get();
-    //     echo $this->db->last_query();
-    //     $module = array();
-
-    //     if ($query->num_rows() > 0) {
-    //         $module = $query->result_array();
-    //     }
-    //    print_r($module); die();
-    //     return $module;
-    // }
 
     public function get_remarks_by_consent_id($id) {
         $this->db->select('ci_consent_remarks.*, ci_admin.* ');
@@ -418,15 +376,6 @@ public function get_all_recieved_consent() {
         $query = $this->db->get();
         return $query->result();
     }
-
-//     public function add_provisional($json_data) {
-//             $this->db->insert('ci_certificate_provisional', $json_data);
-//             if ($this->db->affected_rows() > 0) {
-//             return true;
-//             } else {
-//             return false;
-//             }
-// }
 
 
 

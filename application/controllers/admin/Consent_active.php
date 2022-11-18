@@ -562,10 +562,7 @@ public function consent_recieved(){
         }
     }
        public function consent_add_5() {
-        // echo '<pre>';
-        // print_r($this->input->post('submitupload'));
-        // print_r($_FILES['from_upload_file']['name']);
-        // exit;
+  
         $admin_id = $this->session->userdata['admin_id'];
        
     
@@ -802,12 +799,7 @@ public function consent_recieved(){
                 }
        
         }else if($this->input->post('submitupload')){
-            // echo '123456';
-            // print_r($_FILES['from_upload_file']['name']);
             if (!empty($_FILES['from_upload_file']['name'])) {
-                // echo '123456';
-                // print_r($_FILES['from_upload_file']['name']);
-                // exit;
                 $config['upload_path'] = 'uploads/consent_form/';
                 $config['allowed_types'] ='pdf';
                 $config['file_name'] = time() . '-' . $_FILES['from_upload_file']['name'];
@@ -961,12 +953,22 @@ public function consent_recieved(){
             }
         }
         else {
+      
+        $this->db->select('*');
+        $this->db->from('ci_exam_registration');
+        $this->db->where('admin_id',$admin_id);
+        $q= $this->db->get();
+        $school_Id =  $q->row_array();
+        $school_Id = $school_Id['id'];
         $ref_id = $this->uri->segment(4);
         $data['admin'] = $this->admin_model->get_user_detail($admin_id);
         $data['user'] = $this->admin_model->get_center_data($admin_id,$ref_id);    
         $data["info"] = $this->Certificate_model->get_all_active_consent();
         $examinationid = $this->uri->segment(4);
+        $data["examinationid"] = $examinationid;
         $data["examination_form"] = $this->Certificate_model->get_examination_form($examinationid);
+        $data["schoolId"] = $school_Id;
+
         $sub_name = $data["examination_form"][0]['sub_name'];
         $sub_name_array = explode(",",$sub_name);
         $date_exam = $data["examination_form"][0]['date_exam'];
@@ -1107,13 +1109,38 @@ public function consent_recieved(){
 
         $this->db->where('admin_id',$admin_id) ;
         $this->db->update('ci_exam_registration',['exam_name'=>$exam_name]);
-        // $this->email->set_newline("\r\n");
-        //         $this->email->from('cpriwebmaster@cpri.in');
-        //         $this->email->to($to);
-        //         // $this->email->bcc($bcc);
-        //         // $this->email->subject($subject);
-        //         $this->email->message($message);
-        //         $this->email->send();
+    }
+
+
+    public function optionsCheck()
+    {
+       $data = explode(",",$_GET['passArray']);
+
+       $dataTable =[
+           'examId'=>$data[0],
+           'schoolId'=>$data[1],
+           'examDate'=>$data[2],
+           'examShift'=>$data[3],
+           'examTime'=>$data[4],
+           'choice' => $_GET['option']
+       ];
+
+       $this->db->from('examshiftchoice');
+       $this->db->where('examId', $data[0]);
+       $this->db->where('schoolId', $data[1]);
+       $this->db->where('examDate', $data[2]);
+       $this->db->where('examShift', $data[3]);
+       $query = $this->db->get();
+       if ($query->num_rows() > 0) {
+      
+        $this->db->update('examshiftchoice', $dataTable);
+      }
+      else{
+        $this->db->insert('examshiftchoice', $dataTable);
+      }
+
+  
+       return false;
     }
 
    

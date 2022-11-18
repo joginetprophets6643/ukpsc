@@ -50,12 +50,6 @@
                                     </div> -->
                                     <div class="steps-content">
                                         <h3 class="mb-0">Step <span class="step-number">6</span></h3>
-                                        <!--<p class="step-number-content active">Enter your School/College Information.</p>
-                                            <p class="step-number-content d-none">Enter your School/College Principal Deatils</p>
-                                            <p class="step-number-content d-none">Enter your School/College Centre Superintendent Details</p>
-                                            <p class="step-number-content d-none">Enter your School/College Centre Infrastructure Details.</p>
-                                            <p class="step-number-content d-none">Add Bank Details</p>
-                                            <p class="step-number-content d-none">Add your School/College Images as per required filed</p>-->
                                     </div>
                                     <ul class="progress-bar">
                                         <li>School/College Information <br>स्कूल/कॉलेज/विश्वविद्यालय विवरण</li>
@@ -155,18 +149,16 @@
                                                         </thead>
                                                         <tbody>
                                                         <?php
-                                                            // echo '<pre>';
-                                                            // print_r($sub_info);
-                                                            
-                                                            foreach($sub_info as $x => $val) {
-                                                            //    echo '<pre>';
-                                                            //    print_r($val); 
+                                                            foreach($sub_info as $x => $val) {                                                    
                                                             $all_value = $val['id'];
+                                                            // $passValue = ['dateExam'=>date("d-m-Y", strtotime($val['date_exam'])),'shiftExam'=>$val['shft_exam_array'],'timeExam'=>$val['time_exam_array'],'examId'=>$examinationid,'schoolId'=>$schoolId]
+                                                            $passValue = $examinationid.",".$schoolId.",". date("d-m-Y", strtotime($val['date_exam'])).",".$val['shft_exam_array'].",".$val['time_exam_array'];
+
                                                             ?>
                                                         
                                                             <tr>
                                                                 <td>
-                                                                    <?= $val['date_exam']; ?>
+                                                                    <?= date("d-m-Y", strtotime($val['date_exam'])); ?>
                                                                 </td>
                                                                 <td>
                                                                     <?= $val['sub_name_english'].'<br/>'.$val['sub_name_hindi'];?>
@@ -178,11 +170,12 @@
                                                                     <?= $val['time_exam_array']; ?>
                                                                 </td>
                                                                 <td>
+                                                                    
                                                                     <input type="hidden" id="yes" id="examincation_ids"
                                                                         name="examincation_ids" value="<?= $val['sub_name'] ?>">
-                                                                    <input type="radio" id="yes" name="exmin_ceter_option[]<?= $x; ?>"
+                                                                    <input type="radio" id="yes" onclick="optionFunction('<?=$passValue?>','yes')" name="exmin_ceter_option[]<?= $x; ?>"
                                                                         value="Yes" checked>Yes
-                                                                    <input type="radio" id="no" name="exmin_ceter_option[]<?= $x; ?>"
+                                                                    <input type="radio" id="no"  onclick="optionFunction('<?=$passValue?>','no')" name="exmin_ceter_option[]<?= $x; ?>"
                                                                         value="No">No
                                                                     <input type="hidden" name="examincation_id" id="examincation_id"
                                                                         value="<?= $all_value; ?>" />
@@ -254,117 +247,7 @@
 </section>
       </div>
             <?php echo form_close(); ?>
-            <script type='text/javascript' src='#'></script>
-            <script type='text/javascript' src='#'></script>
-            <script type='text/javascript' src='#'></script>
-            <script type='text/javascript' src='#'></script>
-            <script type='text/javascript'>
-                                                // var next_click = document.querySelectorAll(".next_button");
-                                                // var main_form = document.querySelectorAll(".main");
-                                                // var step_list = document.querySelectorAll(".progress-bar li");
-                                                // var num = document.querySelector(".step-number");
-                                                // let formnumber = 0;
-
-                                                // next_click.forEach(function (next_click_form) {
-                                                //     next_click_form.addEventListener('click', function () {
-                                                //         if (!validateform()) {
-                                                //             return false
-                                                //         }
-                                                //         formnumber++;
-                                                //         updateform();
-                                                //         progress_forward();
-                                                //         contentchange();
-                                                //     });
-                                                // });
-
-                                                // var back_click = document.querySelectorAll(".back_button");
-                                                // back_click.forEach(function (back_click_form) {
-                                                //     back_click_form.addEventListener('click', function () {
-                                                //         formnumber--;
-                                                //         updateform();
-                                                //         progress_backward();
-                                                //         contentchange();
-                                                //     });
-                                                // });
-
-                                                // var username = document.querySelector("#principal_name");
-                                                // var shownname = document.querySelector(".shown_name");
-
-
-                                                // var submit_click = document.querySelectorAll(".submit_button");
-                                                // submit_click.forEach(function (submit_click_form) {
-                                                //     submit_click_form.addEventListener('click', function () {
-                                                //         shownname.innerHTML = username.value;
-                                                //         formnumber++;
-                                                //         updateform();
-                                                //     });
-                                                // });
-
-                                                // var heart = document.querySelector(".fa-heart");
-                                                // heart.addEventListener('click', function () {
-                                                //     heart.classList.toggle('heart');
-                                                // });
-
-
-                                                // var share = document.querySelector(".fa-share-alt");
-                                                // share.addEventListener('click', function () {
-                                                //     share.classList.toggle('share');
-                                                // });
-
-
-
-                                                // function updateform() {
-                                                //     main_form.forEach(function (mainform_number) {
-                                                //         mainform_number.classList.remove('active');
-                                                //     })
-                                                //     main_form[formnumber].classList.add('active');
-                                                // }
-
-                                                // function progress_forward() {
-                                                //     // step_list.forEach(list => {
-
-                                                //     //     list.classList.remove('active');
-
-                                                //     // });
-
-
-                                                //     num.innerHTML = formnumber + 1;
-                                                //     step_list[formnumber].classList.add('active');
-                                                // }
-
-                                                // function progress_backward() {
-                                                //     var form_num = formnumber + 1;
-                                                //     step_list[form_num].classList.remove('active');
-                                                //     num.innerHTML = form_num;
-                                                // }
-
-                                                // var step_num_content = document.querySelectorAll(".step-number-content");
-
-                                                // function contentchange() {
-                                                //     step_num_content.forEach(function (content) {
-                                                //         content.classList.remove('active');
-                                                //         content.classList.add('d-none');
-                                                //     });
-                                                //     step_num_content[formnumber].classList.add('active');
-                                                // }
-
-
-                                                // function validateform() {
-                                                //     validate = true;
-                                                //     var validate_inputs = document.querySelectorAll(".main.active input");
-                                                //     validate_inputs.forEach(function (vaildate_input) {
-                                                //         vaildate_input.classList.remove('warning');
-                                                //         if (vaildate_input.hasAttribute('require')) {
-                                                //             if (vaildate_input.value.length == 0) {
-                                                //                 validate = false;
-                                                //                 vaildate_input.classList.add('warning');
-                                                //             }
-                                                //         }
-                                                //     });
-                                                //     return validate;
-
-                                                // }
-            </script>
+       
             <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
                 myLink.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -467,26 +350,29 @@
                             return false;
                         }
                         $("#submitupload").submit();
-
-                        // alert("123214564");
-                        // return false;
-                        //  $("#from_upload")["submitupload"](function () {
-                        //     alert("123214564");
-                        //     return false;
-                        // });
                     });
-
+             
                 });
-//     $('#xin-form').submit(function() {
-//     $.ajax({
-//         type: 'POST',
-//         url: $(this).attr('action'),
-//         dataType: 'json',
-//         success: function(json) {
-//            window.location.href = "<?php //base_url("admin/examshedule_schedule/invitation_reply/" . urlencrypt($info['id'])); ?>";
-//         }
-//     })
-//     return false;
-// });
+                    // yes ANd No Function 
+                function optionFunction(passArray,option)
+                 {
+                    var url = "<?php echo base_url('admin/Consent_active/optionsCheck/')?>"
+                        $.ajax({
+                            url: url,
+                            type:'get',
+                            data : {passArray: passArray,option:option},
+                            success:function(result){
+                                return false;
+                                if(result)
+                                {
+                                $('.loader').addClass('d-none');
+                                alert("success, Sent Sucessfully");
+                                this.checked = false; 
+                                window.location.reload(); 
+                                }
+                            
+                            }
+                        });
 
+                 }
             </script>

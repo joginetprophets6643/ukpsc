@@ -11,7 +11,7 @@
 
                 <?php foreach ($date_exam as $key1 => $date) {?>
                 <th>
-                    <?php echo date('d-m-y', strtotime($date));$date?>
+                    <?php echo date('d-m-Y', strtotime($date));$date?>
                     <br>
                     (<?php echo $shft_exam[$key1]?>)
                 </th>
@@ -72,14 +72,33 @@
 
                 <input hidden type="text" id="exam_id" name="exam_id" value="<?php echo $row['id']?>">
 
-                <?php $candidateNo = getCandidateNumbers( $row['school_id'],$row['id']); ?>
+                <?php 
+                  $candidateNo = getCandidateNumbers( $row['school_id'],$row['id']); 
+        
+                
+                ?>
 
                 <?php foreach ($no_candidate as $key => $value) { 
+              
                         ?>
                 <td>
+                    <?php  $option = checkOption($row['id'],$row['school_id'],date('d-m-Y',strtotime($date_exam[$key])),$shft_exam[$key]);
+                        if($option=='yes'){
+                    ?>
                     <input type="text" class="form-control" onkeypress="return onlyNumberKey(event)"
                         id="candidate_value_school_id_new<?php echo $i.$key?>"
                         value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
+
+                     <?php }else{
+                        ?>
+                          <input type="text" hidden class="form-control" onkeypress="return onlyNumberKey(event)"
+                        id="candidate_value_school_id_new<?php echo $i.$key?>"
+                        value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
+
+                        <?php
+
+                     }?>
+                        
                 </td>
                 <?php } ?>
                 <td>

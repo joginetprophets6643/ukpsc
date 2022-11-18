@@ -72,9 +72,14 @@
         
                                 <?php foreach ($no_candidate as $key => $value) { 
                                     ?>
+                                <?php if($candidateNo[$key]!=''){ ?>
                                 <td>
-                                <a href="<?= base_url("admin/allocation_user/allocate_user_attendance/" . urlencrypt($row['id'])."/".urlencrypt($key)."/".urlencrypt($candidateNo[$key]))?>" class="btn btn-success"><?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?></a>
+                                <a href="<?= base_url("admin/allocation_user/allocate_user_attendance/" . urlencrypt($row['id'])."/".urlencrypt($key)."/".urlencrypt($candidateNo[$key]))?>" class="btn btn-success"><?php echo isset($candidateNo[$key])?$candidateNo[$key]:'No Candidate'?></a>
                                 </td>
+                                <?php } else{?>
+                                    <td>No Candidate Assign</td>
+                                    <?php } ?>
+
                                 <?php } ?>
                             </tr>
         
