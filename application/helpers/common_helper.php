@@ -432,6 +432,20 @@ function checkOption($exam_id,$school_id,$dateexam,$shiftexam)
 }
 
 
+function checkExamInvitationStatus($exam_id,$school_rgister_id)
+{
+    $ci = & get_instance();
+    $ci->db->from('ci_registration_invitation');
+    $ci->db->where('ci_registration_invitation.ref_id',$exam_id);
+    $ci->db->where('ci_registration_invitation.school_id',$school_rgister_id);
+    // $data = $this->db->result_array();
+    $query = $ci->db->get();
+    // row_array
+    // $count = $query->num_rows();
+    return $query->row_array();
+//     die;
+}
+
 function sendSMS($mobile,$message,$template_id){
     $phone=$mobile;
     $user_message=$message;

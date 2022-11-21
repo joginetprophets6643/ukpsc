@@ -148,7 +148,36 @@ class Exam_model extends CI_Model {
     }
 	
     
-    function get_all_search_registration_data($state_name, $city_name, $grade_name) {
+    function get_all_search_registration_data($state_name, $city_name, $grade_name,$exam_id) {
+
+        $this->db->from('ci_exam_registration');
+        if ($state_name != '' ) {
+            $this->db->where('ci_exam_registration.district', $state_name);
+        }
+        if ($city_name != '') { 
+         
+            $this->db->where('ci_exam_registration.city', $city_name);
+        }
+        if ($grade_name != '') {
+            $this->db->where('ci_exam_registration.ranking_admin', $grade_name);
+        }
+        $admin_role_id = $this->session->userdata('admin_role_id');
+        if ($admin_role_id == 6) {
+            $this->db->where('ci_exam_registration.created_by',
+                    $this->session->userdata('admin_id'));
+        }
+
+        $filterData = $this->session->userdata('filter_keyword');
+        $this->db->order_by('ci_exam_registration.id', 'desc');
+        $query = $this->db->get();
+        $module = array();
+        
+        if ($query->num_rows() > 0) {
+            $module = $query->result_array();
+        }
+        return $module;
+    }
+    function get_all_search_registration_data_copy($state_name, $city_name, $grade_name) {
 
         $this->db->from('ci_exam_registration');
 
@@ -168,37 +197,7 @@ class Exam_model extends CI_Model {
 
             $this->db->where('ci_exam_registration.ranking_admin', $grade_name);
         }
-
-        // if ($this->session->userdata('filter_state') != '') {
-            // $this->db->where('ci_exam_registration.state ',
-                    // $this->session->userdata('filter_state'));
-        // }
-        // if ($this->session->userdata('filter_state') != '' && $this->session->userdata('filter_district') != '') {
-            // $this->db->where('ci_exam_registration.district ',
-                    // $this->session->userdata('filter_district'));
-        // }
-
-        // if ($this->session->userdata('filter_status') != '') {
-            // $this->db->where('ci_exam_registration.file_movement ',
-                    // $this->session->userdata('filter_status'));
-        // }
-
         $admin_role_id = $this->session->userdata('admin_role_id');
-        // echo '<pre>'; echo $admin_role_id;exit;
-//        if ($admin_role_id == 1 || $admin_role_id == 2) {
-//            
-//            $this->db->where('ci_exam_registration.file_movement !=', 1);
-//        }
-//         if ($admin_role_id == 3 || $admin_role_id == 4) {
-//             $this->db->where('ci_exam_registration.state',
-//                     $this->session->userdata('state_id'));
-// //            $this->db->where('ci_exam_registration.file_movement !=', 1);
-//         }
-//         if ($admin_role_id == 5) {
-//             $this->db->where('ci_exam_registration.district',
-//                     $this->session->userdata('district_id'));
-// //            $this->db->where('ci_exam_registration.file_movement !=', 1);
-//         }
         if ($admin_role_id == 6) {
             $this->db->where('ci_exam_registration.created_by',
                     $this->session->userdata('admin_id'));

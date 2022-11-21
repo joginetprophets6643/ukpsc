@@ -261,9 +261,25 @@ class Examshedule_schedule extends MY_Controller {
     }
     // End Login Jogi..
     public function inv_list_data_for_mail() {
-      
+        $state_name = isset($_GET['state_id'])?get_district_name($_GET['state_id']):'';
+        $city_name = isset($_GET['district_id'])?get_subcity_name($_GET['district_id']):'';
+        $grade_name = isset($_GET['grade'])?$_GET['grade']:'';
+        $exam_id = isset($_GET['exam_Id'])?$_GET['exam_Id']:'';
+        $data['exam_id'] = isset($_GET['exam_Id'])?$_GET['exam_Id']:'';
+        $data['data'] = $this->Exam_model->get_all_search_registration_data($state_name, $city_name, $grade_name,$exam_id);
+        $array = array('created_by' => $this->session->userdata('admin_id'));
+        $this->load->view('admin/exam/sending_invitations', $data);
+    }
+    public function inv_list_data_for_mail_copy() {
+        $state_name = isset($_GET['state_id'])?get_district_name($_GET['state_id']):'';
+        $city_name = isset($_GET['district_id'])?get_subcity_name($_GET['district_id']):'';
+        $grade_name = isset($_GET['grade'])?$_GET['grade']:'Grade New';
+
+        echo "district".$state_name."City".$city_name."Grade".$grade_name;
+        die();
         if((isset($_GET['district_id'])) && (!isset($_GET['state_id']))){
-         
+            echo '1';
+            die();
             $city_name = '';
             $grade_name = '';
             $id = $_GET['state_id'];
@@ -273,7 +289,8 @@ class Examshedule_schedule extends MY_Controller {
             
             
         }else if(isset($_GET['district_id'])){
-         
+            echo '2';
+            die();
             $state_id = $_GET['state_id'];
             $state_name = get_district_name($state_id);
             $district_id = $_GET['district_id'];
@@ -282,7 +299,8 @@ class Examshedule_schedule extends MY_Controller {
             $data['data'] = $this->Exam_model->get_all_search_registration_data($state_name, $city_name, $grade_name);
             
         }else if(isset($_GET['grade_id'])){
-           
+            echo '3';
+            die();
             $state_id = $_GET['state_id'];
             $state_name = get_district_name($state_id);
             $district_id = $_GET['district_id'];
@@ -291,7 +309,8 @@ class Examshedule_schedule extends MY_Controller {
             $data['data'] = $this->Exam_model->get_all_search_registration_data($state_name, $city_name, $grade_name);
             
         }else{
-          
+           echo '4';
+           die();
             $state_name = '';
             $city_name = '';
             $grade_name = '';
@@ -299,7 +318,6 @@ class Examshedule_schedule extends MY_Controller {
         }    
 
 
-        // echo '<pre>'; print_r($records); die();
         $array = array('created_by' => $this->session->userdata('admin_id'));
         // $records['data'] = $this->db
         //     ->select('*')

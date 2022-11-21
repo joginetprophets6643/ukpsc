@@ -83,15 +83,16 @@
                         ?>
                 <td>
                     <?php  $option = checkOption($row['id'],$row['school_id'],date('d-m-Y',strtotime($date_exam[$key])),$shft_exam[$key]);
-                        if($option=='yes'){
+                        if($option=='no'){
                     ?>
-                    <input type="text" class="form-control" onkeypress="return onlyNumberKey(event)"
+                     <input type="text" hidden class="form-control" onkeypress="return onlyNumberKey(event)"
                         id="candidate_value_school_id_new<?php echo $i.$key?>"
                         value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
 
                      <?php }else{
                         ?>
-                          <input type="text" hidden class="form-control" onkeypress="return onlyNumberKey(event)"
+                        
+                        <input type="text" class="form-control" onkeypress="return onlyNumberKey(event)"
                         id="candidate_value_school_id_new<?php echo $i.$key?>"
                         value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
 
