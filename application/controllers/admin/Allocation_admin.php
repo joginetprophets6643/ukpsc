@@ -158,7 +158,7 @@ class Allocation_admin extends MY_Controller {
         $data['candidates'] = isset($data['info'][0]['candidates']) ? explode(",",$data['info'][0]['candidates']) : [];
         $data['exam_id_new'] = $exam_id;
       
-        $this->load->view('admin/allocation/allocation_list', $data);
+        $this->load->view('admin/allocation/allocation_list_new', $data);
     }
 
 

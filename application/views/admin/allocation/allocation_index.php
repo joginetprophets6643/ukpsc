@@ -169,7 +169,8 @@
 
                 <!-- Load Admin list (json request)-->
 
-                <div class="data_container"></div>
+                <div class="data_container"  id="allocationTable_div"></div>
+                <div class="data_container d-none" id="allocationTable_recreate_div"></div>
 
             </div>
 
@@ -255,9 +256,8 @@ $(function() {
         var state_id = $(this).val();
         var exam_id = $('#exam_id_new').val();
         var grade = $('#grade').val();
-        
         if (state_id != '') {
-            // $('#allocationTable').html('');
+           
             $.ajax({
                 type: "GET",
                 url: base_url + 'admin/location/get_city_by_state_idForAllcationState',
@@ -282,8 +282,13 @@ $(function() {
                                 'csfr_token_name': csfr_token_value
                             },
                             success: function(data1) {
-                                
-                                $('#allocationTable').html(data1);
+                                $('#allocationTable').DataTable().destroy();
+                                $('#allocationTable').hide();
+                                $('#allocationTable_div').hide();
+                                $('#allocationTable_recreate_div').html(data1);
+                                $('#allocationTable_recreate_div').show();
+                                $("#allocationTable_recreate_div").removeClass('d-none');
+                                $('#allocationTable_recreate').DataTable();
                             }
                             });
                 }
@@ -321,7 +326,13 @@ $(function() {
                             'csfr_token_name': csfr_token_value
                         },
                         success: function(data1) {
-                            $('#allocationTable').html(data1);
+                               $('#allocationTable').DataTable().destroy();
+                                $('#allocationTable').hide();
+                                $('#allocationTable_div').hide();
+                                $('#allocationTable_recreate_div').html(data1);
+                                $('#allocationTable_recreate_div').show();
+                                $("#allocationTable_recreate_div").removeClass('d-none');
+                                $('#allocationTable_recreate').DataTable();
                         }
                         });
             }
@@ -350,7 +361,13 @@ $(function() {
                             'csfr_token_name': csfr_token_value
                         },
                         success: function(data1) {
-                            $('#allocationTable').html(data1);
+                            $('#allocationTable').DataTable().destroy();
+                            $('#allocationTable').hide();
+                            $('#allocationTable_div').hide();
+                            $('#allocationTable_recreate_div').html(data1);
+                            $('#allocationTable_recreate_div').show();
+                            $("#allocationTable_recreate_div").removeClass('d-none');
+                            $('#allocationTable_recreate').DataTable();
                         }
                         });
        
