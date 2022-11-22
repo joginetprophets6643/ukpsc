@@ -190,6 +190,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="table-responsive">
+                            <div id="consentNotRecievedDiv"></div>
                             <table id="consent_not_recieved_by_user_list" class="table table-bordered table-striped" style="border-collapse: collapse !important;">
                                 <thead>
                                     <tr>
@@ -306,7 +307,13 @@
                     dataType: 'html',
                     data: { 'state_id': state_id, 'district_id': district_id, 'grade': grade, 'exam_new_id': exam_new_id, 'csfr_token_name': csfr_token_value },
                     success: function (data) {
-                        $('#consent_not_recieved_by_user_list').html(data);
+                        // $('#consent_not_recieved_by_user_list').html(data);
+                        $('#consent_not_recieved_by_user_list').DataTable().destroy();
+                        $('#consent_not_recieved_by_user_list').hide();
+                        $('#consentRecievedRecreatedTable').html(data);
+                        $('#consentNotRecievedDiv').html(data);
+                        $('#consentRecievedRecreatedTable').DataTable();
+
                         // New Logic For Count Students on the basis of Distrcit Id  -- Jogi
                         $.ajax({
                             type: "GET",
@@ -346,8 +353,11 @@
                     dataType: 'html',
                     data: { 'district_id': district_id, 'state_id': state_id, 'grade': grade, 'exam_new_id': exam_new_id, 'csfr_token_name': csfr_token_value },
                     success: function (data) {
-
-                        $('#consent_not_recieved_by_user_list').html(data);
+                        $('#consent_not_recieved_by_user_list').DataTable().destroy();
+                        $('#consent_not_recieved_by_user_list').hide();
+                        $('#consentRecievedRecreatedTable').html(data);
+                        $('#consentNotRecievedDiv').html(data);
+                        $('#consentRecievedRecreatedTable').DataTable();
 
 
                     }
@@ -374,8 +384,11 @@
                     dataType: 'html',
                     data: { 'district_id': district_id, 'state_id': state_id, 'grade': grade, 'exam_new_id': exam_new_id, 'csfr_token_name': csfr_token_value },
                     success: function (data) {
-                        //  console.log("data",data);
-                        $('#consent_not_recieved_by_user_list').html(data);
+                        $('#consent_not_recieved_by_user_list').DataTable().destroy();
+                        $('#consent_not_recieved_by_user_list').hide();
+                        $('#consentRecievedRecreatedTable').html(data);
+                        $('#consentNotRecievedDiv').html(data);
+                        $('#consentRecievedRecreatedTable').DataTable();
                     }
                 });
             }
@@ -389,19 +402,11 @@
 
 
     $('#select_all').click(function (event) {
-
         var send_consent_id = $("#send_consent_id").val()
-        console.log("send_consent_id", send_consent_id);
-        // return false;
         var hrefs = new Array();
-        // alert(this.checked).attr('rel');
-        // Iterate each checkbox
-        // $("input:checkbox.myClass");
         $(':checkbox.send_email_ids').each(function () {
-            // alert(this.checked)
             this.checked = true;
             var r = $(this).attr('rel');
-
             if (r != undefined) {
                 hrefs.push(r);
             }
@@ -417,19 +422,9 @@
 
 
         if ($('input[name="send_email_ids"]:checked').length > 2) {
-            // alert(123456);
-            // return false;
             var send_consent_id = $("#send_consent_id").val()
-            // console.log("send_consent_id",send_consent_id);
-            // console.log('send_email_ids i am',$('input[name="send_email_ids"]:checked').length);
-            // return false;
-
             var hrefs = new Array();
-            // alert(this.checked).attr('rel');
-            // Iterate each checkbox
-            // $("input:checkbox.myClass");
             $(':checkbox.send_email_ids').each(function () {
-                // alert(this.checked)
                 this.checked = true;
                 var r = $(this).attr('rel');
 

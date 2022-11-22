@@ -1206,8 +1206,6 @@ class Examshedule_schedule extends MY_Controller {
     }
     
     public function consent_recieved_list($id) {
-       
-   
         $state_name = $city_name = $grade_name = '';
         $records['data'][1] = $this->Exam_model->get_consent_recved_data($state_name, $city_name, $grade_name,$id);
 
@@ -1235,7 +1233,7 @@ class Examshedule_schedule extends MY_Controller {
                 if(isset($row["consents_signstamp_file"]))
                 {
                     $path = base_url("uploads/consent_form/".$row["consents_signstamp_file"]);
-                    $downloadConsent = '<a href='.$path.' class="btn btn-primary">Download Consent</a>';
+                    $downloadConsent = '<a href='.$path.' target="_blank" class="btn btn-primary">Download Consent</a>';
                 }
                 else{
 
@@ -1313,28 +1311,17 @@ class Examshedule_schedule extends MY_Controller {
 
 
     public function consent_not_recieved_by_user_list() {
-    //    echo ('hi'); die();
-        // $this->rbac->check_operation_access();
         $id = urldecrypt($this->uri->segment(4));
         $data['states'] = $this->location_model->get_states();
-        
         $data['title'] = 'Recieved Not Consent';
         $data['id'] = $id;
         $this->load->view('admin/includes/_header', $data);
-
         $this->load->view('admin/exam/invt_not_recived_index', $data);
-
         $this->load->view('admin/includes/_footer', $data);
     }
 
 
     public function inv_list_search_for_mail() {
-
-        // $data['info'] = $this->Exam_model->get_all_registration_data();
-
-        // echo '<pre>'; print_r($data['info']);
-
-        // $this->load->view('admin/exam/invitation_user_list', $data);
         if((isset($_GET['district_id'])) && (!isset($_GET['state_id']))){
 
             $city_name = '';
@@ -1342,7 +1329,6 @@ class Examshedule_schedule extends MY_Controller {
             $id = $_GET['state_id'];
             $state_name = get_district_name($id); 
             $records['data'] = $this->Exam_model->get_consent_not_recved_data($state_name, $city_name, $grade_name);
-            echo '<pre>'; print_r($records); die();
             
         }else if(isset($_GET['district_id'])){
 
@@ -1351,10 +1337,7 @@ class Examshedule_schedule extends MY_Controller {
             $district_id = $_GET['district_id'];
             $city_name = get_subcity_name($district_id);
             $grade_name = $_GET['grade']; 
-            // echo $state_name; exit;
             $records['data'] = $this->Exam_model->get_consent_not_recved_data($state_name, $city_name, $grade_name);
-            // echo '<pre>'; print_r($data); die();
-            // $this->load->view('admin/consent_letter/consent_letter_list', $data);
             
         }else if(isset($_GET['grade_id'])){
 
@@ -1363,11 +1346,7 @@ class Examshedule_schedule extends MY_Controller {
             $district_id = $_GET['district_id'];
             $city_name = get_subcity_name($district_id);
             $grade_name = $_GET['grade'];
-            // $grade_name = get_subcity_name($id); 
-            // echo $grade_name; exit;
             $records['data'] = $this->Exam_model->get_consent_not_recved_data($state_name, $city_name, $grade_name);
-            // echo '<pre>'; print_r($data); die();
-            // $this->load->view('admin/consent_letter/consent_letter_list', $data);
             
         }else{
 
@@ -1375,25 +1354,10 @@ class Examshedule_schedule extends MY_Controller {
             $city_name = '';
             $grade_name = '';
             $records['data'] = $this->Exam_model->get_consent_not_recved_data($state_name, $city_name, $grade_name);
-            // $this->load->view('admin/consent_letter/consent_letter_list', $data);
         }    
-
-
-        // echo '<pre>'; print_r($records['data']); die();
         $array = array('created_by' => $this->session->userdata('admin_id'));
-        // $records['data'] = $this->db
-        //     ->select('*')
-        //     ->from('ci_exam_master')
-        //     ->where($array)
-        //     ->order_by('id','desc')
-        //     ->get()
-        //     ->result_array();
-        // $records['data'] = $this->Exam_model->get_all_registration_data();
         $data = [];
-        // echo '<pre>'; print_r($records['data']);
-        // die;
         $i = 0;
-
         foreach ($records['data'] as $row) {
             if($row['school_name'] != ''){
                 $data[] = [
@@ -1416,41 +1380,25 @@ class Examshedule_schedule extends MY_Controller {
         }
 
         $data['data'] = $records1['data'] = $data;        
-        // echo json_encode($records1);
         $this->load->view('admin/exam/sending_invitations', $data);
     }
 
     public function consent_notrecieved_search() {
-        // echo '<pre>'; echo 123456;exit;
-        // $data['info'] = $this->Exam_model->get_all_registration_data();
-
-        // echo '<pre>'; print_r($data['info']);
         $ref_id = isset($_GET['exam_new_id'])?$_GET['exam_new_id'] :0;
-        // $this->load->view('admin/exam/invitation_user_list', $data);
         if((isset($_GET['district_id'])) && (!isset($_GET['state_id']))){
-
             $city_name = '';
             $grade_name = '';
             $id = $_GET['state_id'];
             $state_name = get_district_name($id); 
-            
             $data['data'] = $this->Exam_model->get_consent_not_recved_data($state_name, $city_name, $grade_name,$ref_id);
-            // echo '<pre>'; print_r($records); die();
-            
         }else if(isset($_GET['district_id'])){
-
             $state_id = $_GET['state_id'];
             $state_name = get_district_name($state_id);
             $district_id = $_GET['district_id'];
             $city_name = get_subcity_name($district_id);
             $grade_name = $_GET['grade']; 
-            // echo $state_name; exit;
             $data['data'] = $this->Exam_model->get_consent_not_recved_data($state_name, $city_name, $grade_name,$ref_id);
-            // echo '<pre>'; print_r($data); die();
-            // $this->load->view('admin/consent_letter/consent_letter_list', $data);
-            
         }else if(isset($_GET['grade_id'])){
-
             $state_id = $_GET['state_id'];
             $state_name = get_district_name($state_id);
             $district_id = $_GET['district_id'];
@@ -1458,7 +1406,6 @@ class Examshedule_schedule extends MY_Controller {
             $grade_name = $_GET['grade'];
             $data['data'] = $this->Exam_model->get_consent_not_recved_data($state_name, $city_name, $grade_name,$ref_id);  
         }else{
-
             $state_name = '';
             $city_name = '';
             $grade_name = '';
@@ -1470,28 +1417,19 @@ class Examshedule_schedule extends MY_Controller {
     }
 
     public function consent_notrecieved_by_user_data($id) {
-
-      
         $data['states'] = $this->location_model->get_states();
-
         $state_name = $city_name = $grade_name = '';
         $records['data'] = $this->Exam_model->get_consent_not_recved_data($state_name, $city_name, $grade_name,$id);
         $data = [];
-        // echo '<pre>'; print_r($records['data'][1]);
-        // die;
         $i = 0;
-
         foreach ($records['data'][1] as $row) {
             if($row['school_name'] != ''){
-
                 $row['principal_name'] = '<h4 class="m0 mb5">'.$row['principal_name'] .'</h4>'.'<small class="text-muted">'.$row['pri_mobile'].'</small><br/>'.'<small class="text-muted">'.$row['email'].'</small>';
                 $row['max_allocate_candidate'] = '<input style="height: 1px;width: 1px;" type="checkbox" id="a" id="sum_value" name="sum_value" class="checkbox-item sum" rel="'.$row['max_allocate_candidate'].'"> '.$row['max_allocate_candidate'].'';
                 $action =   '<input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="'.$row['id'].'" value="'.$row['id'].'">
                  <a title="Send Invitations" class="btn btn-success btn-xs mr5" onClick="single_send_invitations('.$row['id'].')"> <i class="fa fa-paper-plane-o"></i></a>';
-
                 $data[] = [
                     ++$i,
-
                     $row['school_name'] ? $row['school_name'] : '',
                     $row['district'] ? $row['district'] : '',
                     $row['city']? $row['city'] : '',
@@ -1505,7 +1443,6 @@ class Examshedule_schedule extends MY_Controller {
 
         $records1['data'] = $data;        
         echo json_encode($records1);
-        // $this->load->view('admin/exam/sending_invitations', $data);
     }
 
 

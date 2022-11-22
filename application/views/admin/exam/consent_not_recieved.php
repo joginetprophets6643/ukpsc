@@ -5,7 +5,7 @@
 <!-- <div> -->
 <div class="row"><b>Consent Recieved Count :- </b>&nbsp;<?php echo $count; ?></div>
    <div class="row">
-   <table id="send_invitation_list" class="table table-bordered table-striped" width="100%">
+   <table id="consentRecievedRecreatedTable" class="table table-bordered table-striped" style="border-collapse: collapse !important;">
       <thead>
       <tr>
          <th>#</th>

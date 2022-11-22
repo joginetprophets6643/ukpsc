@@ -1,11 +1,7 @@
 
-<?php //echo '<pre>';print_r($data);exit;?>
-
-<!-- <div class="datalist"> -->
-<!-- <div> -->
 <div class="row"><b>Consent Recieved Count :- </b>&nbsp;<?php echo $count; ?></div>
    <div class="row">
-   <table id="send_invitation_list" class="table table-bordered table-striped" width="100%">
+   <table id="consentRecievedRecreatedTable" class="table table-bordered table-striped" style="border-collapse: collapse !important;">
       <thead>
       <tr>
          <th>#</th>
@@ -17,6 +13,7 @@
          <th>Grade</th>
          <th width="120">Max No of Applicant</th>
          <th width="120"><?= trans('action') ?></th>
+         <th width="120">Download Consent</th>
       </tr>
       </thead>
       <tbody>
@@ -70,16 +67,11 @@
                   <input style="height: 1px;width: 1px;" type="checkbox" id="a" id="sum_value" name="sum_value" class="checkbox-item sum" rel="<?php echo $row['max_allocate_candidate']; ?>">
                </td>             
                <td style="text-align: center;">
-                     <!-- <input type="checkbox" id="a" class="checkbox-item" rel="<?php echo $row['id']; ?>"> -->
-                     <input type="checkbox" id="a" class="send_email_ids" name="send_email_ids" rel="<?php echo $row['id']; ?>">
-                     
-                        <?php  if ($admin_role_id == 5 )  { ?>
-                           <!-- <a href="<?php // echo base_url("admin/examshedule_schedule/send_invitation_user/" . $row[8]); ?>" title="Send Invitations" class="btn btn-success btn-xs mr5" >
-                              <i class="fa fa-paper-plane-o"></i>
-                           </a> -->
-                           <a onClick="single_send_invitations(<?php echo $row['id']; ?>)" title="Send Invitations" class="btn btn-success btn-xs mr5" >
-                              <i class="fa fa-paper-plane-o"></i>
-                           </a>
+                        <?php  if ($admin_role_id == 5 )  { 
+                           if ($row['invt_recieved']==1 && $row['invite_sent']==1){
+                           ?>
+                             Recieved
+                         <?php }?>
                         <?php }  if ($admin_role_id == 5 )  { ?>
                                              
                         <?php }
@@ -88,6 +80,23 @@
                         <?php }
                         ?>               
                </td>
+               <td>
+                  <?php
+                     if(isset($row["consents_signstamp_file"]))
+                     {
+                        $file = $row["consents_signstamp_file"];
+                        ?>
+                        <a href="<?= base_url(); ?>uploads/consent_form/<?php echo $file;?>" target="_blank" class="btn btn-primary">Download Consent</a>
+                        <?php
+                     }
+                     else{
+                        ?>
+                        <button class="btn btn-default" disabled>Consent Not available</button>
+                        <?php
+                     }?>
+               </td>
+
+
             </tr>
          <?php
          }
