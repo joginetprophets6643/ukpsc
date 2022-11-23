@@ -1,7 +1,7 @@
 <div class="datalist">
-    <div class="row"></div>
+    <div class="table-responsive">
 
-    <table id="allocationTable" class="table table-bordered table-hover" style="border-collapse: collapse !important;">
+    <table id="allocationTable" class="table table-bordered table-hover dataTable no-footer" style="border-collapse: collapse !important;">
         <thead>
             <tr>
                 <th>S.No</th>
@@ -127,6 +127,7 @@
             <!-- <?php //echo form_close(); ?> -->
         </tbody>
     </table>
+    </div>
 
 </div>
 <!-- Modal -->

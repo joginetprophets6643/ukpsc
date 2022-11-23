@@ -53,7 +53,8 @@
             </div>
         </div>
         <div class="col-md-12">
-            <table id="allocationTablesend1" class="table table-bordered table-hover"
+            <div class="table-responsive">
+            <table id="allocationTablesend1" class="table table-bordered table-hover dataTable no-footer"
                 style="border-collapse: collapse !important;">
                 <thead>
                     <tr>
@@ -162,6 +163,7 @@
                     <!-- <?php //echo form_close(); ?> -->
                 </tbody>
             </table>
+            </div>
 
         </div>
         <div class="loader d-none"></div>

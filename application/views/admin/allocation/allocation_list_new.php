@@ -1,132 +1,133 @@
 <div class="datalist">
-    <div class="row"></div>
-
-    <table id="allocationTable_recreate" class="table table-bordered table-hover" style="border-collapse: collapse !important;">
-        <thead>
-            <tr>
-                <th>S.No</th>
-                <th>Examination Center Name</th>
-                <th>Consent recieved</th>
-                <th>Examination Center code</th>
-
-                <?php foreach ($date_exam as $key1 => $date) {?>
-                <th>
-                    <?php echo date('d-m-Y', strtotime($date));$date?>
-                    <br>
-                    (<?php echo $shft_exam[$key1]?>)
-                </th>
-
-
-                <?php } ?>
-
-                <th><?= trans('action') ?></th>
-            </tr>
-
-
-        </thead>
-        <tbody>
-
-            <?php
-             
-            $i = 1;
-            foreach ($info as $row):
-                $admin_role_id = $this->session->userdata('admin_role_id');
-                $admin_id = $this->session->userdata('admin_id');
-              //   if (($admin_role_id != 6) && ((in_array($row['file_movement'], array(1))) )) {
-              //       continue;
-              // }   
-       
-      ?>
-
-            <tr>
-
-                <td>
-                    <?= $i ?>
-                </td>
-
-                <td>
-                    <?php echo $row['school_name'].  '<br>'. '<small>'. $row['address'] .'</small>'  ?>
-                    <input hidden type="text" id="school_id_new<?php echo $i?>" name="school_id_new<?php echo $i?>"
-                        value="<?php echo $row['school_id']?>">
-                </td>
-                <td>
-                    <?php echo $row['max_allocate_candidate'] ?>
-                    <input hidden type="text" id="consent<?php echo $i?>" name="consent<?php echo $i?>"
-                        value="<?php echo $row['max_allocate_candidate']?>">
-                </td>
-
-                <td>
-                    <?php $getCenterCode = getCenterCode( $row['school_id'],$row['id']); 
+    <div class="table-responsive">
+        <table id="allocationTable_recreate" class="table table-bordered table-hover dataTable no-footer" style="border-collapse: collapse !important;">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Examination Center Name</th>
+                    <th>Consent recieved</th>
+                    <th>Examination Center code</th>
+    
+                    <?php foreach ($date_exam as $key1 => $date) {?>
+                    <th>
+                        <?php echo date('d-m-Y', strtotime($date));$date?>
+                        <br>
+                        (<?php echo $shft_exam[$key1]?>)
+                    </th>
+    
+    
+                    <?php } ?>
+    
+                    <th><?= trans('action') ?></th>
+                </tr>
+    
+    
+            </thead>
+            <tbody>
+    
+                <?php
+                 
+                $i = 1;
+                foreach ($info as $row):
+                    $admin_role_id = $this->session->userdata('admin_role_id');
+                    $admin_id = $this->session->userdata('admin_id');
+                  //   if (($admin_role_id != 6) && ((in_array($row['file_movement'], array(1))) )) {
+                  //       continue;
+                  // }   
+           
+          ?>
+    
+                <tr>
+    
+                    <td>
+                        <?= $i ?>
+                    </td>
+    
+                    <td>
+                        <?php echo $row['school_name'].  '<br>'. '<small>'. $row['address'] .'</small>'  ?>
+                        <input hidden type="text" id="school_id_new<?php echo $i?>" name="school_id_new<?php echo $i?>"
+                            value="<?php echo $row['school_id']?>">
+                    </td>
+                    <td>
+                        <?php echo $row['max_allocate_candidate'] ?>
+                        <input hidden type="text" id="consent<?php echo $i?>" name="consent<?php echo $i?>"
+                            value="<?php echo $row['max_allocate_candidate']?>">
+                    </td>
+    
+                    <td>
+                        <?php $getCenterCode = getCenterCode( $row['school_id'],$row['id']); 
+                        
+                        ?>
+                        <input type="text" class="form-control" onkeypress="return onlyNumberKey(event)"
+                            id="exam_center_code<?php echo $i?>" name="exam_center_code"
+                            value="<?php echo isset($getCenterCode)?$getCenterCode:''?>">
+                    </td>
+    
+                    <input hidden type="text" id="candidate_value_count<?php echo $i?>"
+                        value="<?php echo count($no_candidate)?>">
+    
+                    <input hidden type="text" id="admin_id<?php echo $i?>" name="admin_id"
+                        value="<?php echo $row['admin_id']?>">
+    
+                    <input hidden type="text" id="exam_id" name="exam_id" value="<?php echo $row['id']?>">
+    
+                    <?php 
+                      $candidateNo = getCandidateNumbers( $row['school_id'],$row['id']); 
+            
                     
                     ?>
-                    <input type="text" class="form-control" onkeypress="return onlyNumberKey(event)"
-                        id="exam_center_code<?php echo $i?>" name="exam_center_code"
-                        value="<?php echo isset($getCenterCode)?$getCenterCode:''?>">
-                </td>
-
-                <input hidden type="text" id="candidate_value_count<?php echo $i?>"
-                    value="<?php echo count($no_candidate)?>">
-
-                <input hidden type="text" id="admin_id<?php echo $i?>" name="admin_id"
-                    value="<?php echo $row['admin_id']?>">
-
-                <input hidden type="text" id="exam_id" name="exam_id" value="<?php echo $row['id']?>">
-
-                <?php 
-                  $candidateNo = getCandidateNumbers( $row['school_id'],$row['id']); 
-        
-                
+    
+                    <?php foreach ($no_candidate as $key => $value) { 
+                  
+                            ?>
+                    <td>
+                        <?php  $option = checkOption($row['id'],$row['school_id'],date('d-m-Y',strtotime($date_exam[$key])),$shft_exam[$key]);
+                            if($option=='no'){
+                        ?>
+                         <input type="text" hidden class="form-control" onkeypress="return onlyNumberKey(event)"
+                            id="candidate_value_school_id_new<?php echo $i.$key?>"
+                            value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
+    
+                         <?php }else{
+                            ?>
+                            
+                            <input type="text" class="form-control" onkeypress="return onlyNumberKey(event)"
+                            id="candidate_value_school_id_new<?php echo $i.$key?>"
+                            value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
+    
+                            <?php
+    
+                         }?>
+                            
+                    </td>
+                    <?php } ?>
+                    <td>
+                        <?php  if ($admin_role_id == 6 )  { ?>
+    
+                        </a>
+                        <?php }  if ($admin_role_id == 5 )  { ?>
+    
+                        <button class="btn btn-admin" onclick="formdataSubmit(<?php echo $i; ?>)"> Submit</button>
+    
+                        <?php }
+                       if ($admin_role_id == 5 ) { ?>
+    
+                        <?php }
+                        ?>
+    
+                    </td>
+                </tr>
+    
+    
+                <?php
+                $i++;
+                endforeach;
                 ?>
+                <!-- <?php //echo form_close(); ?> -->
+            </tbody>
+        </table>
 
-                <?php foreach ($no_candidate as $key => $value) { 
-              
-                        ?>
-                <td>
-                    <?php  $option = checkOption($row['id'],$row['school_id'],date('d-m-Y',strtotime($date_exam[$key])),$shft_exam[$key]);
-                        if($option=='no'){
-                    ?>
-                     <input type="text" hidden class="form-control" onkeypress="return onlyNumberKey(event)"
-                        id="candidate_value_school_id_new<?php echo $i.$key?>"
-                        value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
-
-                     <?php }else{
-                        ?>
-                        
-                        <input type="text" class="form-control" onkeypress="return onlyNumberKey(event)"
-                        id="candidate_value_school_id_new<?php echo $i.$key?>"
-                        value="<?php echo isset($candidateNo[$key])?$candidateNo[$key]:''?>">
-
-                        <?php
-
-                     }?>
-                        
-                </td>
-                <?php } ?>
-                <td>
-                    <?php  if ($admin_role_id == 6 )  { ?>
-
-                    </a>
-                    <?php }  if ($admin_role_id == 5 )  { ?>
-
-                    <button class="btn btn-admin" onclick="formdataSubmit(<?php echo $i; ?>)"> Submit</button>
-
-                    <?php }
-                   if ($admin_role_id == 5 ) { ?>
-
-                    <?php }
-                    ?>
-
-                </td>
-            </tr>
-
-
-            <?php
-            $i++;
-            endforeach;
-            ?>
-            <!-- <?php //echo form_close(); ?> -->
-        </tbody>
-    </table>
+    </div>
 
 </div>
 <!-- Modal -->

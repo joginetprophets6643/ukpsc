@@ -159,13 +159,7 @@
                                             </td>
                                             <?php } ?>
                                             <?php } else{?>
-
-                                            	 <?php foreach ($date_exam_consent_recieve as $key1 => $date) {?>
-                                                  <td>N/A</td>
-
-                                                <?php } ?>
-
-
+                                            	<td>N/A</td>
                                             <?php }?>
 
                                            <td>
@@ -239,7 +233,6 @@
                                                     <?php echo $shft_exam_consent_not_recieve[$key1]?>)
                                                 </th>
 
-
                                                 <?php } ?>
                                             <th>Status</th>
                                         </tr>
@@ -288,7 +281,6 @@
                                            <td><?php echo $row['max_allocate_candidate']?></td>
                                             <?php if(count($row['candidateNo'])>0){?>
                                            <?php 
-
                                            foreach ($row['candidateNo'] as $key1 => $v) { 
                                                 ?>
                                             <td>
@@ -296,14 +288,8 @@
                                             </td>
                                             <?php } ?>
                                             <?php } else{?>
-                                            	    <?php foreach ($date_exam_consent_not_recieve as $key1 => $date) {?>
-                                                     <td>N/A</td>
-
-                                             <?php } ?>
-                                            
-
+                                            	<td>N/A</td>
                                             <?php }?>
-
                                            <td>
                                             <?php 
                                              if ($row['invt_recieved']==0) {
