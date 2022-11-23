@@ -264,6 +264,7 @@ class Allocation_admin extends MY_Controller {
 
         public function allocationDatatoUserOnChange() {
             $exam_id = $_GET['exam_id'];
+         
             $id = empty($_GET['state_id'])?'':$_GET['state_id'];
             $state_name = $id!==''?get_district_name($id):''; 
             $district_id = empty($_GET['district_id'])?'':$_GET['district_id'];
@@ -276,8 +277,8 @@ class Allocation_admin extends MY_Controller {
             $data['candidates'] = isset($data['info'][0]['candidates']) ? explode(",",$data['info'][0]['candidates']) : [];
             $data['exam_id_new'] = $exam_id;
             $data['hideselectbutton'] = 'notok';
-            // $this->load->view('admin/allocation/allocation_list', $data);
-            $this->load->view('admin/allocation/allocation_list_send_to_user', $data);
+        
+            $this->load->view('admin/allocation/allocation_list_send_to_user_new', $data);
         }
 
         public function attendance_master() {

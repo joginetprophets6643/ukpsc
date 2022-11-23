@@ -168,7 +168,8 @@
 
                 <!-- Load Admin list (json request)-->
 
-                <div class="data_container"></div>
+                <div class="data_container" id="mainDiv"></div>
+                <div class="data_container d-none" id="userDiv"></div>
 
             </div>
 
@@ -272,6 +273,8 @@ $('.dd_state').change(function() {
       
     if (state_id != '') {
         // $('#allocationTablesend').html('');
+        $('#allocationTablesend').empty();
+        $('#allocationTablesend').DataTable().destroy();
         $.ajax({
             type: "GET",
             url: base_url + 'admin/location/get_city_by_state_idForAllcationState',
@@ -286,7 +289,6 @@ $('.dd_state').change(function() {
                     $.ajax({
                         type: "GET",
                         url: base_url + 'admin/Allocation_admin/allocationDatatoUserOnChange',
-                        // url: base_url + 'admin/Allocation_admin/allocation_list_datacopy1',
                         dataType: 'html',
                         data: {
                             'state_id': state_id,
@@ -297,7 +299,12 @@ $('.dd_state').change(function() {
                             'csfr_token_name': csfr_token_value
                         },
                         success: function(data1) {
+                            $('#allocationTablesend').DataTable().destroy();
+                            $('#userDiv').removeClass('d-none');
+                            $('#mainDiv').addClass('d-none');
+                            $('#userDiv').html(data1);
                             $('#allocationTablesend').html(data1);
+                            $('#allocationTablesend').DataTable();
                         }
                         });
             }
@@ -335,7 +342,13 @@ $('#district_filter').change( function() {
                         'csfr_token_name': csfr_token_value
                     },
                     success: function(data1) {
+                        // $('#allocationTablesend').html(data1);
+                        $('#allocationTablesend').DataTable().destroy();
+                        $('#userDiv').removeClass('d-none');
+                        $('#mainDiv').addClass('d-none');
+                        $('#userDiv').html(data1);
                         $('#allocationTablesend').html(data1);
+                        $('#allocationTablesend').DataTable();
                     }
                     });
         }
@@ -364,7 +377,13 @@ $('#district_filter').change( function() {
                         'csfr_token_name': csfr_token_value
                     },
                     success: function(data1) {
-                        $('#allocationTablesend').html(data1);
+                        // $('#allocationTablesend').html(data1);
+                        $('#allocationTablesend').DataTable().destroy();
+                        $('#userDiv').removeClass('d-none');
+                        $('#mainDiv').addClass('d-none');
+                        $('#userDiv').html(data1);
+                        // $('#allocationTablesend').html(data1);
+                        $('#allocationTablesend').DataTable();
                     }
                     });
    

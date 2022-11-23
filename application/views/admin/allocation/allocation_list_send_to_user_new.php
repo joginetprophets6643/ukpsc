@@ -28,10 +28,10 @@
 <div class="datalist">
     <div class="row">
        
-        
+       
         <div class="col-md-12">
             <!-- </div> -->
-            <?php if ($hideselectbutton=='ok') { ?>
+            <?php //if ($hideselectbutton=='ok') { ?>
             <div id="allcheckids" class="mb-5" style="">
                 <div class="d-flex justify-centent-between align-items-center">
                     <div class="check-option">
@@ -49,12 +49,11 @@
                             value="Send to Selected (चयनित को भेजें)">
                     </div>
                 </div>
-                <?php } ?>
+                <?php //} ?>
             </div>
         </div>
         <div class="col-md-12">
-
-            <table id="allocationTablesend" class="table table-bordered table-hover"
+            <table id="allocationTablesend1" class="table table-bordered table-hover"
                 style="border-collapse: collapse !important;">
                 <thead>
                     <tr>
@@ -175,7 +174,7 @@
 <!-- DataTables -->
 
 <script>
-var table = $('#allocationTablesend').DataTable({
+var table = $('#allocationTablesend1').DataTable({
     "retrieve": true,
     "processing": true,
     "serverSide": false,
