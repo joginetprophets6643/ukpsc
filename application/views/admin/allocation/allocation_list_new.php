@@ -7,7 +7,6 @@
                     <th>Examination Center Name</th>
                     <th>Consent recieved</th>
                     <th>Examination Center code</th>
-    
                     <?php foreach ($date_exam as $key1 => $date) {?>
                     <th>
                         <?php echo date('d-m-Y', strtotime($date));$date?>
@@ -140,8 +139,8 @@
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script>
 var table = $('#allocationTable').DataTable({
-    "processing": true,
-    "serverSide": true,
+    "processing": false,
+    "serverSide": false,
 });
 </script>
 <script>

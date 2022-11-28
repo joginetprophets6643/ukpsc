@@ -183,6 +183,8 @@
 </div>
 
 
+<script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.js"></script>
 
 
 
